@@ -161,9 +161,7 @@ def create():
     arr(ax, Lx + Bw/2 + 0.08, Y_open + 0.05,
         Rx - Bw/2 - 0.08, Y_H - 0.05,
         color=C_RED_FG, lw=1.5)
-    ax.text(mid_x + 0.1, mid_y + 0.15, 'this work',
-            ha='center', va='bottom', fontsize=5.5, fontstyle='italic',
-            color=C_RED_FG)
+    # ax.text(mid_x + 0.1, mid_y + 0.15, 'this work', ha='center', va='bottom', fontsize=5.5, fontstyle='italic', color=C_RED_FG)
 
     # ═══════════════ RIGHT COLUMN ═══════════════════════════════════════════
     # 8 boxes on the same sp grid:
@@ -245,13 +243,16 @@ def create():
 
     # ═══════════════ LEGEND ═════════════════════════════════════════════════
     # Anchor to fixed position just below the lower of the two column bottoms
+    # ═══════════════ LEGEND ═════════════════════════════════════════════════
     leg_y = min(yb_L, Y_os - 0.55/2) - 0.52
-    leg_x = 0.1;  dx = 3.05
+    dx = 2.20          # was 3.05 — tighter spacing between items
+    total_w = 3 * dx + 0.60   # 3 gaps + width of last item
+    leg_x = (12.0 - total_w) / 2   # center the group across the 12-unit axis
     for i, (fc, ec, label) in enumerate([
-        (C_BLUE_BG, C_BLUE_FG, 'Equations / systems'),
-        (C_GRAY_BG, C_GRAY_FG, 'Analytical machinery'),
-        (C_GREEN_BG, C_GREEN_FG, 'Results / resolved'),
-        (C_RED_BG, C_RED_FG, 'Obstruction / open'),
+        (C_BLUE_BG, C_BLUE_FG, 'Systems'),
+        (C_GRAY_BG, C_GRAY_FG, 'Analysis'),
+        (C_GREEN_BG, C_GREEN_FG, 'Results'),
+        (C_RED_BG, C_RED_FG, 'Open'),
     ]):
         xx = leg_x + i * dx
         swatch = FancyBboxPatch(
