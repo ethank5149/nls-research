@@ -1,0 +1,5446 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass extarticle
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+customHeadersFooters
+multicol
+tabs-within-sections
+theorems-ams-bytype
+\end_modules
+\maintain_unincluded_children no
+\language english
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\series bold
+Existence,
+ Uniqueness,
+ and Stability of Ground-State Solutions for the Nonlinear Schrödinger Equation in Optical Fibers
+\end_layout
+
+\begin_layout Author
+
+\series bold
+Eduard Kirr,
+ PhD
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+Associate Professor
+\begin_inset Newline newline
+\end_inset
+
+
+\shape italic
+University of Illinois - Urbana-Champaign
+\shape default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+
+\series bold
+Ethan Knox,
+ BS
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+Master's Student
+\begin_inset Newline newline
+\end_inset
+
+
+\shape italic
+University of Illinois - Urbana-Champaign
+\end_layout
+
+\begin_layout Date
+February 18,
+ 2026
+\end_layout
+
+\begin_layout Abstract
+We study multi-peak ground-state solutions of the nonlinear Schrödinger equation 
+\begin_inset Formula $\left(-\Delta+V+E\right)\psi+\sigma\left|\psi\right|^{2p}\psi=0$
+\end_inset
+
+ in the high-energy regime 
+\begin_inset Formula $E\to\infty$
+\end_inset
+
+.
+ Through the rescaling and concentration-compactness framework of Kirr and Natarajan (2018)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KirrNatarajan2018"
+literal "false"
+
+\end_inset
+
+,
+ ground states decompose into well-separated profiles whose positions are governed by a finite-dimensional algebraic system balancing the Hessian 
+\begin_inset Formula $H_{V}$
+\end_inset
+
+ of the potential against nonlinear inter-peak interactions.
+\end_layout
+
+\begin_layout Abstract
+We systematically classify all admissible multi-peak configurations near a non-degenerate critical point of 
+\begin_inset Formula $V$
+\end_inset
+
+:
+ collinear arrangements along a single eigenvector of 
+\begin_inset Formula $H_{V}$
+\end_inset
+
+,
+ and triangular configurations (isosceles,
+ equilateral,
+ and equilateral with rotational degree of freedom 
+\begin_inset Formula $\theta$
+\end_inset
+
+) in the plane spanned by two eigenvectors.
+ For the rotational case,
+ we derive explicit admissibility regions in 
+\begin_inset Formula $\left(\mu,\theta\right)$
+\end_inset
+
+ parameter space,
+ where 
+\begin_inset Formula $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$
+\end_inset
+
+ is the eigenvalue ratio:
+ all orientations are admissible when 
+\begin_inset Formula $\tfrac{1}{3}\leq\mu\leq3$
+\end_inset
+
+,
+ with restricted angular windows otherwise.
+\end_layout
+
+\begin_layout Abstract
+To extend these limiting configurations to exact solutions at finite energy,
+ we formulate a perturbation system 
+\begin_inset Formula $F_{i}\left(\delta y,R\right)=0$
+\end_inset
+
+,
+ construct explicit solutions at 
+\begin_inset Formula $R=0$
+\end_inset
+
+,
+ and show that the linearization has a nontrivial kernel generated by the translational invariance of the interaction.
+ Following the iterative kernel decomposition methodology of Kirr and Natarajan (who resolve analogous obstructions at the PDE and Lyapunov-Schmidt levels by modding out the symmetry responsible for each kernel) we decompose the reduced system into projections parallel and perpendicular to this kernel and identify the rotational equivariance as the structural property enabling application of the implicit function theorem on the complement.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+The propagation of intense light through optical fibers is governed by the interplay between linear dispersion and the nonlinear response of the dielectric medium.
+ In silica,
+ the centrosymmetric lattice eliminates second-order nonlinearity,
+ so the leading nonlinear effect is the Kerr term 
+\begin_inset Formula $\chi^{(3)}$
+\end_inset
+
+.
+ Starting from Maxwell’s equations in a source-free,
+ non-magnetic dielectric,
+ the electric field can be written as a slowly varying envelope modulating a carrier:
+\begin_inset Formula 
+\[
+\mathbf{E}\left(\mathbf{r},t\right)=\frac{1}{2}\hat{\mathbf{x}}\left[F\left(x,y\right)A\left(z,t\right)e^{i\left(\beta_{0}z-\omega_{0}t\right)}+\text{c.c.}\right].
+\]
+
+\end_inset
+
+Here 
+\begin_inset Formula $F\left(x,y\right)$
+\end_inset
+
+ is the transverse modal shape set by the fiber’s refractive-index profile,
+ 
+\begin_inset Formula $A\left(z,t\right)$
+\end_inset
+
+ is the envelope,
+ and 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+ is the propagation constant at the carrier frequency 
+\begin_inset Formula $\omega_{0}$
+\end_inset
+
+.
+ Applying the slowly varying envelope approximation and expanding the propagation constant to second order in frequency yields the nonlinear Schrödinger equation (NLS):
+\begin_inset Formula 
+\[
+i\partial_{z}A-\frac{\beta_{2}}{2}\partial_{T}^{2}A+\gamma\left|A\right|^{2}A=0,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\beta_{2}$
+\end_inset
+
+ is the group-velocity-dispersion parameter and 
+\begin_inset Formula $\gamma=\dfrac{n_{2}\omega_{0}}{cA_{\!\text{eff}}}$
+\end_inset
+
+ encodes the Kerr nonlinearity.
+\end_layout
+
+\begin_layout Standard
+In real fibers the refractive index is not spatially uniform.
+ Fiber Bragg gratings impose periodic modulations,
+ graded-index fibers create a parabolic transverse profile (an effective harmonic-oscillator potential),
+ and photonic-crystal fibers achieve confinement via a micro-structured air-hole lattice.
+ In every case,
+ the spatial variation of the index enters the governing equations as an external potential 
+\begin_inset Formula $V\left(\mathbf{x}\right)$
+\end_inset
+
+.
+ The transverse modal equation
+\begin_inset Formula 
+\[
+\nabla_{\perp}^{2}F+\left[\left(\frac{n\omega}{c}\right)^{2}\left(\mathbf{x}_{\perp}\right)-\beta^{2}\right]F=0
+\]
+
+\end_inset
+
+is mathematically identical to the stationary Schrödinger equation 
+\begin_inset Formula $-\Delta\psi+V\left(x\right)\psi=E\psi$
+\end_inset
+
+.
+ Guided modes of the fiber correspond to bound states of this effective potential,
+ and the fundamental mode is its ground state.
+ This equivalence motivates the present work:
+ engineering 
+\begin_inset Formula $V\left(\mathbf{x}\right)$
+\end_inset
+
+ via refractive-index design directly translates into questions about the existence,
+ uniqueness,
+ and stability of ground-state solutions of the NLS with an external potential.
+\end_layout
+
+\begin_layout Standard
+Consequently,
+ we study the stationary NLS
+\begin_inset Formula 
+\begin{equation}
+\left(-\Delta+V+E\right)\psi+\sigma\left|\psi\right|^{2p}\psi=0,\tag{1}\label{eq:NLS}
+\end{equation}
+
+\end_inset
+
+with 
+\begin_inset Formula $V:\mathbb{R}^{n}\to\mathbb{R}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\psi:\mathbb{R}^{n}\to\mathbb{C}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\sigma>0$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $E\ge0$
+\end_inset
+
+.
+ The parameter 
+\begin_inset Formula $E$
+\end_inset
+
+ represents the energy (or,
+ in the optical setting,
+ the propagation constant).
+ For each admissible 
+\begin_inset Formula $E$
+\end_inset
+
+ we seek ground-state solutions 
+\begin_inset Formula $\psi_{E}$
+\end_inset
+
+ and analyze how their spatial structure is governed by the geometry of 
+\begin_inset Formula $V$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Because 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:NLS"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ is posed on the unbounded domain 
+\begin_inset Formula $\mathbb{R}^{n}$
+\end_inset
+
+,
+ compactness is lost and standard variational methods fail.
+ The concentration-compactness principle introduced by Lions
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lions1984a"
+literal "false"
+
+\end_inset
+
+ classifies minimizing sequences into compactness,
+ vanishing,
+ or dichotomy.
+ By rescaling
+\begin_inset Formula 
+\[
+u_{E}\left(x\right)=E^{-\frac{1}{2p}}\psi_{E}\left(E^{-\frac{1}{2}}x\right),
+\]
+
+\end_inset
+
+(see the global bifurcation analysis of Kirr and Natarajan
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KirrNatarajan2018"
+literal "false"
+
+\end_inset
+
+) one obtains a bounded family in 
+\begin_inset Formula $H^{1}$
+\end_inset
+
+.
+ Concentration-compactness then yields a multi-peak decomposition:
+ 
+\begin_inset Formula $u_{E}$
+\end_inset
+
+ is approximated by a finite sum of well-separated profiles,
+ each solving the translation-invariant NLS 
+\begin_inset Formula $\left(-\,\Delta+1\right)u+\sigma\left|u\right|^{2p}u=0$
+\end_inset
+
+.
+ The rescaled peak positions converge to the critical points of 
+\begin_inset Formula $V$
+\end_inset
+
+ as 
+\begin_inset Formula $E\to\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+This multi-peak decomposition reduces the infinite-dimensional problem to a finite-dimensional system governing the peak locations.
+ A Lyapunov-Schmidt reduction first solves for the orthogonal remainder and then projects onto the span of the translational modes.
+ The resulting algebraic system balances the restoring force from the Hessian 
+\begin_inset Formula $H_{V}$
+\end_inset
+
+ of the potential against the attractive interaction between neighboring peaks:
+\begin_inset Formula 
+\[
+H_{V}\left(x_{0}\right)y_{i}=\sum_{k\in N_{i}}\alpha_{ki}\chi\left(y_{k}-y_{i}\right),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ are the rescaled peak positions,
+ 
+\begin_inset Formula $\alpha_{ki}\in\left[0,1\right]$
+\end_inset
+
+ are interaction coefficients,
+ and 
+\begin_inset Formula $\chi>0$
+\end_inset
+
+ quantifies the overall interaction strength.
+ The peak set must lie in the unstable manifold of 
+\begin_inset Formula $H_{V}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We classify admissible multi-peak configurations (collinear,
+ coplanar,
+ and triangular) by analyzing the Hessian eigenvalues 
+\begin_inset Formula $\lambda_{1},\lambda_{2}<0$
+\end_inset
+
+ and the ratio 
+\begin_inset Formula $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$
+\end_inset
+
+.
+ The interaction constraints 
+\begin_inset Formula $\alpha_{ki}\ge0$
+\end_inset
+
+ restrict the admissible 
+\begin_inset Formula $\left(\mu,\theta\right)$
+\end_inset
+
+ parameter space,
+ where 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is the orientation of a triangle relative to the eigenvector basis.
+ For example,
+ an equilateral triangle requires 
+\begin_inset Formula $\lambda_{2}=3\lambda_{1}$
+\end_inset
+
+,
+ while any triangle is admissible for 
+\begin_inset Formula $\tfrac{1}{3}\le\mu\le3$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+Our contribution is a systematic analysis of this reduced system,
+ yielding explicit geometric characterizations of multi-peak ground states near non-degenerate critical points of 
+\begin_inset Formula $V$
+\end_inset
+
+.
+ The analysis extends the concentration-compactness and Lyapunov-Schmidt framework by handling the nontrivial kernel of the linearized reduced system.
+ By decomposing the system into parallel and perpendicular components,
+ exploiting rotational symmetry,
+ and constructing solutions for finite scaling parameters 
+\begin_inset Formula $R=E^{-\tfrac{1}{2}}$
+\end_inset
+
+,
+ we obtain families of exact multi-peak solutions of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:NLS"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ for all sufficiently large energies 
+\begin_inset Formula $E$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /mnt/ssd1/NextCloud/Documents/School/Research/figures/output/figure_7_methodology_flowchart.png
+	height 100pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Analytical Pipeline:
+ PDE 
+\begin_inset Formula $\to$
+\end_inset
+
+ Multi-Peak Ground States
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Background
+\end_layout
+
+\begin_layout Standard
+We wish to study the following nonlinear (time independent) Schrodinger equation (NLS)
+\begin_inset Formula 
+\begin{equation}
+\left(-\Delta+V+E\right)\psi+\sigma\left|\psi\right|^{2p}\psi=0\label{eq:NLS-background}
+\end{equation}
+
+\end_inset
+
+for 
+\begin_inset Formula $V:\mathbb{R}^{n}\to\mathbb{R},\,\psi:\mathbb{R}^{n}\to\mathbb{C}$
+\end_inset
+
+ with 
+\begin_inset Formula $\sigma\in\mathbb{R}^{+},\,E\in\mathbb{R}^{+}\cup\left\{ 0\right\} $
+\end_inset
+
+.
+ For each value of the energy 
+\begin_inset Formula $E$
+\end_inset
+
+,
+ we denote solutions of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:NLS-background"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ as 
+\begin_inset Formula $\psi_{E}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $x\in\mathbb{R}^{n}$
+\end_inset
+
+,
+ consider 
+\begin_inset Formula 
+\begin{align}
+u_{E}\left(x\right) & =E^{-\frac{1}{2p}}\psi_{E}\left(E^{-\frac{1}{2}}x\right),\label{eq:rescaling}
+\end{align}
+
+\end_inset
+
+from 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KirrNatarajan2018"
+literal "false"
+
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+\left\Vert u_{E}\right\Vert _{H^{1}}^{2}=\left\Vert \nabla\psi_{E}\right\Vert _{L^{2}}^{2}+\left\Vert \psi_{E}\right\Vert _{L^{2}}^{2}
+\]
+
+\end_inset
+
+remains bounded.
+ By concentration compactness,
+ there exists 
+\begin_inset Formula $M\in\mathbb{N}$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\begin{equation}
+\left\Vert u_{E}\left(x\right)-\sum_{i=1}^{M}u_{i}\left(x-z_{i}\left(E\right)\right)\right\Vert _{H^{1}}\xrightarrow{E\to\infty}0,\label{eq:concentration}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $u_{i}:\mathbb{R}^{n}\to\mathbb{C}$
+\end_inset
+
+ solves
+\begin_inset Formula 
+\begin{equation}
+\left(-\Delta+1\right)u+\sigma\left|u\right|^{2p}u=0.\label{eq:profile}
+\end{equation}
+
+\end_inset
+
+Consider 
+\begin_inset Formula $R=E^{-\frac{1}{2}}$
+\end_inset
+
+.
+ Under certain decay conditions on the potential 
+\begin_inset Formula $V$
+\end_inset
+
+ as 
+\begin_inset Formula $\left|x\right|\to\infty$
+\end_inset
+
+ 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+List them
+\end_layout
+
+\end_inset
+
+,
+ 
+\begin_inset Formula $E^{-\frac{1}{2}}z_{i}\left(E\right)=Rz_{i}\left(R\right)$
+\end_inset
+
+ remain bounded and converge to the critical points of 
+\begin_inset Formula $V$
+\end_inset
+
+ as 
+\begin_inset Formula $R\to0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Claim
+Let 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ be a non-degenerate critical point of 
+\begin_inset Formula $V$
+\end_inset
+
+,
+ i.e.
+ Hessian at 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ is invertible.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+\begin_inset Formula $Rz_{i}\left(R\right)\xrightarrow{R\to0}x_{0}$
+\end_inset
+
+ for 
+\begin_inset Formula $i=1,\dots,M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /mnt/ssd1/NextCloud/Documents/School/Research/figures/output/figure_5_concentration_vs_peaks.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+graphic
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $R\coloneqq E^{-\frac{1}{2}}$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\begin{equation}
+\left(-\Delta+R^{2}V\left(Rx\right)+1\right)u_{E}+\sigma\left|u_{E}\right|^{2p}u_{E}=0\label{eq:rescaled-NLS}
+\end{equation}
+
+\end_inset
+
+Rewrite 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:concentration"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ using the definition of 
+\begin_inset Formula $R$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+u_{E}\left(x\right)=\sum_{i=1}^{M}u_{R}\left(x-z_{i}\left(R\right)\right)+h_{R}\left(x\right)
+\]
+
+\end_inset
+
+where now 
+\begin_inset Formula $u_{R}$
+\end_inset
+
+ is the only (up to bounded) positive and spherically symmetric solution of
+\begin_inset Formula 
+\[
+\left(-\Delta+R^{2}V\left(Rx_{0}\right)+1\right)u+\sigma\left|u\right|^{2p}u=0.
+\]
+
+\end_inset
+
+Therefore,
+ 
+\begin_inset Formula $\nabla u_{R}=\left(\frac{\partial u_{R}}{\partial x_{1}},\dots,\frac{\partial u_{R}}{\partial x_{n}}\right)$
+\end_inset
+
+ satisfy
+\begin_inset Formula 
+\[
+\left(-\Delta+R^{2}V\left(x_{0}\right)+1\right)\frac{\partial u_{R}}{\partial x_{j}}+\sigma\left(2p+1\right)\left|u_{R}\right|^{2p}\frac{\partial u_{R}}{\partial x_{j}}=0,
+\]
+
+\end_inset
+
+for each 
+\begin_inset Formula $j=1,\dots,n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Lemma
+There exists 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ such that if 
+\begin_inset Formula $0<R<\varepsilon$
+\end_inset
+
+,
+ then there exists 
+\begin_inset Formula $\tilde{z}_{1},\dots,\tilde{z}_{m}\in\mathbb{R}^{n}$
+\end_inset
+
+ for each 
+\begin_inset Formula $R$
+\end_inset
+
+ such that 
+\begin_inset Formula $u_{E}\left(x\right)=\underbrace{\sum_{i=1}^{M}u_{R}\left(x-z_{i}\left(R\right)-\tilde{z}_{i}\left(R\right)\right)}_{\tilde{u}_{E}}+\tilde{h}_{R}\left(x\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\tilde{h}_{R}\perp\frac{\partial u_{R}}{\partial x_{j}}\left(\cdot-\underbrace{z_{i}\left(R\right)-\tilde{z}_{j}\left(R\right)}_{\text{Now }z_{i}\left(R\right)}\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $i=1,\dots,M$
+\end_inset
+
+ and 
+\begin_inset Formula $j=1,\dots,n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Phantom Phantom
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+There exists 
+\begin_inset Formula $\tilde{\varepsilon},\delta,d>0$
+\end_inset
+
+ such that if 
+\begin_inset Formula $R<\tilde{\varepsilon}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left\Vert h\right\Vert _{H^{1}}<\delta$
+\end_inset
+
+ and 
+\begin_inset Formula $\left\Vert z_{i}-z_{j}\right\Vert >d$
+\end_inset
+
+ for 
+\begin_inset Formula $i,j=1,\dots,M$
+\end_inset
+
+,
+ then
+\begin_inset Formula 
+\[
+P_{\perp}F\left(h,z_{1},\dots,z_{M},R\right)=0
+\]
+
+\end_inset
+
+has a unique solution 
+\begin_inset Formula $h=h\left(z_{1},\dots,z_{M},R\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $z_{i},R$
+\end_inset
+
+ where 
+\begin_inset Formula $F=\left(-\Delta+R^{2}V\left(Rx\right)+1\right)\Phi_{R}+\sigma\left|\Phi_{R}\right|^{2p}\Phi_{R}$
+\end_inset
+
+ (LHS of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:rescaled-NLS"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) and 
+\begin_inset Formula $P_{\perp}$
+\end_inset
+
+ is the orthogonal projection.
+\end_layout
+
+\begin_layout Standard
+Consider
+\begin_inset Formula 
+\begin{equation}
+\left\langle \frac{\partial u_{R}}{\partial x_{j}}\left(x-z_{i}\right),F\left(h\left(z_{1},\dots,z_{M},R\right),z_{1},\dots,z_{M},R\right)\right\rangle =0\label{eq:orthogonality}
+\end{equation}
+
+\end_inset
+
+Let 
+\begin_inset Formula $s_{i}=Rz_{i}-x_{0}$
+\end_inset
+
+ such that 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:orthogonality"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ becomes
+\begin_inset Formula 
+\[
+\left\Vert u_{R}\right\Vert _{L^{2}}^{2}\left[H_{V}\left(x_{0}\right)+O\left(\left|s_{i}\right|\right)\right]\frac{s_{i}}{Rm_{R}}+\frac{O\left(1\right)}{m_{R}}=\underbrace{\frac{2Q_{R}\left(m_{R}\right)}{R^{4}m_{R}}}_{\chi}\left[\sum_{k\neq i}^{M}\underbrace{\frac{Q_{R}\left(\left|z_{k}-z_{i}\right|\right)}{Q_{R}\left(m_{R}\right)}}_{\alpha_{ki}}\cdot\frac{z_{k}-z_{i}}{\left|z_{k}-z_{i}\right|}+O\left(1\right)\right]
+\]
+
+\end_inset
+
+such that 
+\begin_inset Formula $m_{R}=\min\left\{ \left|z_{j}\left(R\right)-z_{i}\left(R\right)\right|:i\neq j;i,j=1,\dots,M\right\} $
+\end_inset
+
+,
+ 
+\begin_inset Formula $Q_{R}\left(z\right)=-\sigma\left\langle \frac{\partial u_{R}}{\partial\nicefrac{z}{\left|z\right|}}\left(x-z\right),u_{R}^{2p+1}\left(x\right)\right\rangle $
+\end_inset
+
+,
+ and 
+\begin_inset Formula $\frac{s_{i}}{Rm_{R}}=\min\left\{ \left|s_{k}-s_{j}\right|:i\neq j;i,j=1,\dots,M\right\} $
+\end_inset
+
+ remain bounded such that 
+\begin_inset Formula $\frac{s_{i}}{Rm_{R}}\xrightarrow{R\searrow0}y_{i}\in\mathbb{R}^{n}$
+\end_inset
+
+,
+ 
+\begin_inset Formula 
+\begin{align*}
+H_{V}\left(x_{0}\right)y_{i} & =\frac{2Q_{R}\left(m_{R}\right)}{R^{4}m_{R}}\sum_{k\in N_{i}}\frac{Q_{R}\left(\left|z_{k}-z_{i}\right|\right)}{Q_{R}\left(m_{R}\right)}\frac{z_{k}-z_{i}}{\left|z_{k}-z_{i}\right|}\\
+ & =\sum_{k\in N_{i}}\alpha_{ki}\chi\frac{y_{k}-y_{i}}{\left|y_{k}-y_{i}\right|}\\
+ & =\sum_{k\in N_{i}}\alpha_{ki}\chi\left(y_{k}-y_{i}\right)
+\end{align*}
+
+\end_inset
+
+since 
+\begin_inset Formula $\left|y_{k}-y_{i}\right|=1$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $N_{i}=\left\{ k=1,\dots,M:\left|y_{k}-y_{i}\right|=1\right\} ,0<\chi,0\leq\alpha_{ki}\leq1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /mnt/ssd1/NextCloud/Documents/School/Research/figures/output/figure_6_interaction_decay.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+(left) Exponential Decay of 
+\begin_inset Formula $Q_{R}\left(d\right)=-\sigma\langle\partial_{\hat{d}}u_{R}\left(\cdot-d\right),u_{R}^{2p+1}\rangle$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(right) Interaction Coefficient 
+\begin_inset Formula $\alpha_{ki}$
+\end_inset
+
+ vs Relative Distance.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $y_{i}=\lim_{R\to0}\frac{s_{i}}{Rm_{R}}$
+\end_inset
+
+,
+ we know:
+\end_layout
+
+\begin_layout Corollary
+Let 
+\begin_inset Formula $U=\text{span}\left\{ \boldsymbol{r}\in\mathbb{R}^{n}|\text{eigvec}\left(H_{V}\right)\ni\boldsymbol{r},\text{eigval}\left(H_{V}\right)<0\right\} $
+\end_inset
+
+ be the so-called 
+\begin_inset Quotes eld
+\end_inset
+
+unstable manifold
+\begin_inset Quotes erd
+\end_inset
+
+ of 
+\begin_inset Formula $H_{V}$
+\end_inset
+
+,
+ then 
+\begin_inset Formula $\text{span}\left\{ y_{1},\dots,y_{m}\right\} \subseteq U$
+\end_inset
+
+ and are invariant under 
+\begin_inset Formula $H_{V}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Summary of Scenarios
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /mnt/ssd1/NextCloud/Documents/School/Research/figures/output/figure_2_peak_configurations.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Peak Configurations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Collinear
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ denote the 
+\begin_inset Formula $n$
+\end_inset
+
+ connected,
+ collinear,
+ points lying along the vector 
+\begin_inset Formula $\boldsymbol{r_{1}}\in\mathbb{R}$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $n$
+\end_inset
+
+ odd:
+ let 
+\begin_inset Formula $y_{0}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{\pm i}=\pm i\boldsymbol{r_{1}}$
+\end_inset
+
+ such that 
+\begin_inset Formula $H_{V}y_{i}=\alpha_{i,i+1}\left(y_{i+1}-y_{i}\right)+\alpha_{i,i-1}\left(y_{i}-y_{i-1}\right)$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $n$
+\end_inset
+
+ even:
+ let 
+\begin_inset Formula $y_{\pm i}=\pm\left(i-\nicefrac{1}{2}\right)\boldsymbol{r_{1}}$
+\end_inset
+
+ such that 
+\begin_inset Formula $y_{i}=\left(i-\nicefrac{1}{2}\right)\boldsymbol{r_{1}}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{-i}=\left(-i+\nicefrac{1}{2}\right)\boldsymbol{r_{1}}$
+\end_inset
+
+;
+ similarly,
+ 
+\begin_inset Formula $H_{V}y_{i}=\alpha_{i,i+1}\left(y_{i+1}-y_{i}\right)+\alpha_{i,i-1}\left(y_{i}-y_{i-1}\right)$
+\end_inset
+
+.
+ Therefore
+\begin_inset Formula 
+\[
+\begin{cases}
+H_{V}\left(i-\nicefrac{1}{2}\right)\boldsymbol{r_{1}}=\left(\alpha_{i,i+1}+\alpha_{i,i-1}\right)\boldsymbol{r_{1}}\,\forall i\leq n\in\mathbb{N}, & n\,\text{even}\\
+H_{V}i\boldsymbol{r_{1}}=\left(\alpha_{i,i+1}+\alpha_{i,i-1}\right)\boldsymbol{r_{1}}\,\forall i\leq n\in\mathbb{N}, & n\,\text{odd}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Coplanar 
+\begin_inset Formula $\left(n=3,\text{Isosceles}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $y_{1},y_{2},y_{3}$
+\end_inset
+
+ denote the connected,
+ coplanar,
+ points lying in the plane spanned by vectors 
+\begin_inset Formula $\boldsymbol{r_{1}},\boldsymbol{r_{2}}\in\mathbb{R}^{2}$
+\end_inset
+
+;
+ 
+\begin_inset Formula $H_{V}\boldsymbol{r_{i}}=\lambda_{i}\boldsymbol{r_{i}},\lambda_{i}<0,\left|\boldsymbol{r_{i}}\right|=1\,\forall i=1,2$
+\end_inset
+
+.
+ Rotate the triangle such that 
+\begin_inset Formula $y_{1}$
+\end_inset
+
+ lies along 
+\begin_inset Formula $\boldsymbol{r_{2}}$
+\end_inset
+
+ by convention.
+ We can then write
+\begin_inset Formula 
+\begin{align*}
+y_{1} & =\left(0,h\right)^{\intercal} & y_{2} & =\left(-a,-\frac{h}{2}\right)^{\intercal} & y_{3} & =\left(a,-\frac{h}{2}\right)^{\intercal}\\
+ & =h\boldsymbol{r_{2}} &  & =-a\boldsymbol{r_{1}}-\left(\frac{h}{2}\right)\boldsymbol{r_{2}} &  & =a\boldsymbol{r_{1}}-\left(\frac{h}{2}\right)\boldsymbol{r_{2}}
+\end{align*}
+
+\end_inset
+
+such that
+\begin_inset Formula 
+\[
+\left\{ \begin{array}{c}
+2a>1\\
+a^{2}+\left(\frac{3h}{2}\right)^{2}=1
+\end{array}\right.\Longrightarrow\left\{ \begin{array}{c}
+a>\frac{1}{2}\\
+\left(\frac{3h}{2}\right)^{2}=1-a^{2}<\frac{3}{4}
+\end{array}\right.\Longrightarrow\left\{ \begin{array}{c}
+a>\frac{1}{2}\\
+h<\frac{1}{\sqrt{3}}
+\end{array}\right.
+\]
+
+\end_inset
+
+Now
+\begin_inset Formula 
+\begin{align*}
+H_{V}y_{1} & =\alpha_{12}\left(y_{2}-y_{1}\right)+\alpha_{13}\left(y_{3}-y_{1}\right)\\
+\left(0,\lambda_{2}h\right)^{\intercal} & =\alpha_{12}\left(-a,-\frac{3h}{2}\right)^{\intercal}+\alpha_{13}\left(a,-\frac{3h}{2}\right)^{\intercal}\\
+ & =\left(a\left(\alpha_{13}-\alpha_{12}\right),-\frac{3h}{2}\left(\alpha_{13}+\alpha_{12}\right)\right)^{\intercal}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{cases}
+a\left(\alpha_{13}-\alpha_{12}\right)= & 0\\
+-\frac{3h}{2}\left(\alpha_{13}+\alpha_{12}\right)= & \lambda_{2}h
+\end{cases}\Longrightarrow\alpha_{12}=\alpha_{13}=-\frac{\lambda_{2}}{3}
+\]
+
+\end_inset
+
+Similarly
+\begin_inset Formula 
+\begin{align*}
+H_{V}y_{2} & =\alpha_{12}\left(y_{1}-y_{2}\right)\\
+\left(-a\lambda_{1},-\left(\frac{h}{2}\right)\lambda_{2}\right)^{\intercal} & =\alpha_{12}\left(a,\frac{3h}{2}\right)^{\intercal}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{cases}
+a\alpha_{12}= & -a\lambda_{1}\\
+\frac{3h}{2}\alpha_{12}= & -\left(\frac{h}{2}\right)\lambda_{2}
+\end{cases}\Longrightarrow\alpha_{12}=-\lambda_{1}=-\frac{\lambda_{2}}{3}\Longrightarrow\lambda_{2}=3\lambda_{1}
+\]
+
+\end_inset
+
+(the case for 
+\begin_inset Formula $y_{3}$
+\end_inset
+
+ is superfluous).
+\end_layout
+
+\begin_layout Example
+Coplanar 
+\begin_inset Formula $\left(n=3,\text{Equilateral}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $y_{1},y_{2},y_{3}$
+\end_inset
+
+ denote the connected,
+ coplanar,
+ points lying in the plane spanned by vectors 
+\begin_inset Formula $\boldsymbol{r_{1}},\boldsymbol{r_{2}}\in\mathbb{R}^{2}$
+\end_inset
+
+;
+ 
+\begin_inset Formula $H_{V}\boldsymbol{r_{i}}=\lambda_{i}\boldsymbol{r_{i}},\lambda_{i}<0,\left|\boldsymbol{r_{i}}\right|=1\,\forall i=1,2$
+\end_inset
+
+.
+ Rotate the triangle such that 
+\begin_inset Formula $y_{1}$
+\end_inset
+
+ lies along 
+\begin_inset Formula $\boldsymbol{r_{2}}$
+\end_inset
+
+ by convention.
+ We can then write
+\begin_inset Formula 
+\begin{align*}
+y_{1} & =\left(0,h\right)^{\intercal} & y_{2} & =\left(-a,-\frac{h}{2}\right)^{\intercal} & y_{3} & =\left(a,-\frac{h}{2}\right)^{\intercal}\\
+ & =h\boldsymbol{r_{2}} &  & =-a\boldsymbol{r_{1}}-\left(\frac{h}{2}\right)\boldsymbol{r_{2}} &  & =a\boldsymbol{r_{1}}-\left(\frac{h}{2}\right)\boldsymbol{r_{2}}
+\end{align*}
+
+\end_inset
+
+such that
+\begin_inset Formula 
+\[
+\left\{ \begin{array}{c}
+2a=1\\
+a^{2}+\left(\frac{3h}{2}\right)^{2}=1
+\end{array}\right.\Longrightarrow\left\{ \begin{array}{c}
+a=\frac{1}{2}\\
+\left(\frac{3h}{2}\right)^{2}=1-a^{2}
+\end{array}\right.\Longrightarrow\left\{ \begin{array}{c}
+a=\frac{1}{2}\\
+h=\frac{1}{\sqrt{3}}
+\end{array}\right.
+\]
+
+\end_inset
+
+Now
+\begin_inset Formula 
+\begin{align*}
+H_{V}y_{1} & =\alpha_{12}\left(y_{2}-y_{1}\right)+\alpha_{13}\left(y_{3}-y_{1}\right)\\
+\left(0,\lambda_{2}h\right)^{\intercal} & =\alpha_{12}\left(-a,-\frac{3h}{2}\right)^{\intercal}+\alpha_{13}\left(a,-\frac{3h}{2}\right)^{\intercal}\\
+ & =\left(a\left(\alpha_{13}-\alpha_{12}\right),-\frac{3h}{2}\left(\alpha_{13}+\alpha_{12}\right)\right)^{\intercal}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{cases}
+a\left(\alpha_{13}-\alpha_{12}\right)= & 0\\
+-\frac{3h}{2}\left(\alpha_{13}+\alpha_{12}\right)= & \lambda_{2}h
+\end{cases}\Longrightarrow\alpha_{12}=\alpha_{13}=-\frac{\lambda_{2}}{3}
+\]
+
+\end_inset
+
+Similarly
+\begin_inset Formula 
+\begin{align*}
+H_{V}y_{2} & =\alpha_{12}\left(y_{1}-y_{2}\right)+\alpha_{23}\left(y_{3}-y_{2}\right)\\
+\left(-a\lambda_{1},-\left(\frac{h}{2}\right)\lambda_{2}\right)^{\intercal} & =\alpha_{12}\left(a,\frac{3h}{2}\right)^{\intercal}+\alpha_{23}\left(2a,0\right)^{\intercal}\\
+ & =\left(a\left(\alpha_{12}+2\alpha_{23}\right),\left(\frac{3h}{2}\right)\alpha_{12}\right)^{\intercal}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{cases}
+a\left(\alpha_{12}+2\alpha_{23}\right)= & -a\lambda_{1}\\
+\left(\frac{3h}{2}\right)\alpha_{12}= & -\left(\frac{h}{2}\right)\lambda_{2}
+\end{cases}\Longrightarrow\begin{cases}
+\alpha_{12}= & -\frac{\lambda_{2}}{3}\\
+\alpha_{23}= & \frac{\lambda_{2}}{6}-\frac{\lambda_{1}}{2}
+\end{cases}
+\]
+
+\end_inset
+
+(the case for 
+\begin_inset Formula $y_{3}$
+\end_inset
+
+ is superfluous).
+ Since we require each 
+\begin_inset Formula $\alpha\geq0$
+\end_inset
+
+ we can readily see
+\begin_inset Formula 
+\begin{align*}
+\alpha_{23} & \geq0\\
+\frac{\lambda_{2}}{6}-\frac{\lambda_{1}}{2} & \geq\\
+\lambda_{2} & \geq3\lambda_{1}\\
+\left|\lambda_{2}\right| & \geq3\left|\lambda_{1}\right|\\
+\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|} & \geq3
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Coplanar 
+\begin_inset Formula $\left(n=3,\text{Equilateral},\text{Rotational DOF }\theta\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $R\left(\theta\right)=\begin{pmatrix}\cos\theta & -\sin\theta\\
+\sin\theta & \cos\theta
+\end{pmatrix}$
+\end_inset
+
+ be the 2-dimensional rotation matrix with inverse 
+\begin_inset Formula $R^{-1}\left(\theta\right)=\begin{pmatrix}\cos\theta & \sin\theta\\
+-\sin\theta & \cos\theta
+\end{pmatrix}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $y_{1},y_{2},y_{3}$
+\end_inset
+
+ denote the connected,
+ coplanar,
+ points lying in the plane spanned by vectors 
+\begin_inset Formula $\boldsymbol{r_{1}},\boldsymbol{r_{2}}\in\mathbb{R}^{2}$
+\end_inset
+
+;
+ 
+\begin_inset Formula $H_{V}\boldsymbol{r_{i}}=\lambda_{i}\boldsymbol{r_{i}},\lambda_{i}<0,\left|\boldsymbol{r_{i}}\right|=1\,\forall i=1,2$
+\end_inset
+
+.
+ Rotate the triangle such that 
+\begin_inset Formula $y_{1}$
+\end_inset
+
+ lies along 
+\begin_inset Formula $\boldsymbol{r_{2}}$
+\end_inset
+
+ by convention.
+ We can then write
+\begin_inset Formula 
+\begin{align*}
+y_{1}^{\prime} & =\left(0,h\right)^{\intercal} & y_{2}^{\prime} & =\left(-a,-\frac{h}{2}\right)^{\intercal} & y_{3}^{\prime} & =\left(a,-\frac{h}{2}\right)^{\intercal}\\
+ & =h\boldsymbol{r_{2}} &  & =-a\boldsymbol{r_{1}}-\left(\frac{h}{2}\right)\boldsymbol{r_{2}} &  & =a\boldsymbol{r_{1}}-\left(\frac{h}{2}\right)\boldsymbol{r_{2}}
+\end{align*}
+
+\end_inset
+
+such that
+\begin_inset Formula 
+\[
+\left\{ \begin{array}{c}
+2a=1\\
+a^{2}+\left(\frac{3h}{2}\right)^{2}=1
+\end{array}\right.\Longrightarrow\left\{ \begin{array}{c}
+a=\frac{1}{2}\\
+\left(\frac{3h}{2}\right)^{2}=1-a^{2}
+\end{array}\right.\Longrightarrow\left\{ \begin{array}{c}
+a=\frac{1}{2}\\
+h=\frac{1}{\sqrt{3}}
+\end{array}\right.
+\]
+
+\end_inset
+
+as well as
+\begin_inset Formula 
+\begin{align*}
+y_{1} & =R\left(\theta\right)y_{1}^{\prime}=\begin{pmatrix}-h\sin\theta\\
+h\cos\theta
+\end{pmatrix}=-h\sin\left(\theta\right)\boldsymbol{r_{1}}+h\cos\left(\theta\right)\boldsymbol{r_{2}}\\
+y_{2} & =R\left(\theta\right)y_{2}^{\prime}=\begin{pmatrix}-a\cos\theta+\left(\frac{h}{2}\right)\sin\theta\\
+-a\sin\theta-\left(\frac{h}{2}\right)\cos\theta
+\end{pmatrix}=\left(-a\cos\theta+\left(\frac{h}{2}\right)\sin\theta\right)\boldsymbol{r_{1}}-\left(a\sin\theta+\left(\frac{h}{2}\right)\cos\theta\right)\boldsymbol{r_{2}}\\
+y_{3} & =R\left(\theta\right)y_{3}^{\prime}=\begin{pmatrix}a\cos\theta+\left(\frac{h}{2}\right)\sin\theta\\
+a\sin\theta-\left(\frac{h}{2}\right)\cos\theta
+\end{pmatrix}=\left(a\cos\theta+\left(\frac{h}{2}\right)\sin\theta\right)\boldsymbol{r_{1}}+\left(a\sin\theta-\left(\frac{h}{2}\right)\cos\theta\right)\boldsymbol{r_{2}}
+\end{align*}
+
+\end_inset
+
+Now 
+\begin_inset Formula 
+\begin{align*}
+H_{V}y_{1} & =\alpha_{12}\left(y_{2}-y_{1}\right)+\alpha_{13}\left(y_{3}-y_{1}\right)\\
+H_{V}R\left(\theta\right)y_{1}^{\prime} & =\\
+R^{-1}\left(\theta\right)H_{V}R\left(\theta\right)y_{1}^{\prime} & =\alpha_{12}\left(y_{2}^{\prime}-y_{1}^{\prime}\right)+\alpha_{13}\left(y_{3}^{\prime}-y_{1}^{\prime}\right)\\
+ & \Downarrow\\
+\alpha_{12}\begin{pmatrix}-a\\
+-\frac{3h}{2}
+\end{pmatrix}+\alpha_{13}\begin{pmatrix}a\\
+-\frac{3h}{2}
+\end{pmatrix} & =\begin{pmatrix}\lambda_{2}\sin^{2}\theta+\lambda_{1}\cos^{2}\theta & \left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta\\
+\left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta & \lambda_{2}\cos^{2}\theta+\lambda_{1}\sin^{2}\theta
+\end{pmatrix}\begin{pmatrix}0\\
+h
+\end{pmatrix}\\
+\begin{pmatrix}\alpha_{13}-\alpha_{12}\\
+\alpha_{13}+\alpha_{12}
+\end{pmatrix} & =\begin{pmatrix}\frac{h}{a}\left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta\\
+-\frac{2}{3}\left(\lambda_{2}\cos^{2}\theta+\lambda_{1}\sin^{2}\theta\right)
+\end{pmatrix}\\
+\alpha_{12} & =\frac{1}{3}\left(\lambda_{2}\left(-\sqrt{3}\sin\theta-\cos\theta\right)\cos\theta+\lambda_{1}\left(-\sin\theta+\sqrt{3}\cos\theta\right)\sin\theta\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+H_{V}y_{2} & =\alpha_{12}\left(y_{1}-y_{2}\right)+\alpha_{23}\left(y_{3}-y_{2}\right)\\
+H_{V}R\left(\theta\right)y_{2}^{\prime} & =\\
+R^{-1}\left(\theta\right)H_{V}R\left(\theta\right)y_{2}^{\prime} & =\alpha_{12}\left(y_{1}^{\prime}-y_{2}^{\prime}\right)+\alpha_{23}\left(y_{3}^{\prime}-y_{2}^{\prime}\right)\\
+ & \Downarrow\\
+\alpha_{12}\begin{pmatrix}a\\
+\frac{3h}{2}
+\end{pmatrix}+\alpha_{23}\begin{pmatrix}2a\\
+0
+\end{pmatrix} & =\begin{pmatrix}\lambda_{2}\sin^{2}\theta+\lambda_{1}\cos^{2}\theta & \left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta\\
+\left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta & \lambda_{2}\cos^{2}\theta+\lambda_{1}\sin^{2}\theta
+\end{pmatrix}\begin{pmatrix}-a\\
+-\frac{h}{2}
+\end{pmatrix}\\
+\begin{pmatrix}\alpha_{12}+2\alpha_{23}\\
+3\alpha_{12}
+\end{pmatrix} & =\begin{pmatrix}-\left(\lambda_{2}\sin^{2}\theta+\lambda_{1}\cos^{2}\theta\right)-\frac{h}{2a}\left(\left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta\right)\\
+-\left(\lambda_{2}\cos^{2}\theta+\lambda_{1}\sin^{2}\theta\right)-\frac{2a}{h}\left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta
+\end{pmatrix}\\
+\alpha_{13} & =\frac{1}{3}\left(\lambda_{2}\left(\sqrt{3}\sin\theta-\cos\theta\right)\cos\theta-\lambda_{1}\left(\sin\theta+\sqrt{3}\cos\theta\right)\sin\theta\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+H_{V}y_{3} & =\alpha_{13}\left(y_{1}-y_{3}\right)+\alpha_{23}\left(y_{2}-y_{3}\right)\\
+H_{V}R\left(\theta\right)y_{3}^{\prime} & =\\
+R^{-1}\left(\theta\right)H_{V}R\left(\theta\right)y_{3}^{\prime} & =\alpha_{13}\left(y_{1}^{\prime}-y_{3}^{\prime}\right)+\alpha_{23}\left(y_{2}^{\prime}-y_{3}^{\prime}\right)\\
+ & \Downarrow\\
+\alpha_{13}\begin{pmatrix}-a\\
+\frac{3h}{2}
+\end{pmatrix}+\alpha_{23}\begin{pmatrix}-2a\\
+0
+\end{pmatrix} & =\begin{pmatrix}\lambda_{2}\sin^{2}\theta+\lambda_{1}\cos^{2}\theta & \left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta\\
+\left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta & \lambda_{2}\cos^{2}\theta+\lambda_{1}\sin^{2}\theta
+\end{pmatrix}\begin{pmatrix}a\\
+-\frac{h}{2}
+\end{pmatrix}\\
+\begin{pmatrix}\alpha_{13}+2\alpha_{23}\\
+3\alpha_{13}
+\end{pmatrix} & =\begin{pmatrix}-\left(\lambda_{2}\sin^{2}\theta+\lambda_{1}\cos^{2}\theta\right)+\frac{h}{2a}\left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta\\
+-\left(\lambda_{2}\cos^{2}\theta+\lambda_{1}\sin^{2}\theta\right)+\frac{2a}{h}\left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta
+\end{pmatrix}\\
+\alpha_{23} & =\frac{1}{6}\left(\lambda_{2}\left(2\cos\left(2\theta\right)-1\right)-\lambda_{1}\left(2\cos\left(2\theta\right)+1\right)\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /mnt/ssd1/NextCloud/Documents/School/Research/figures/output/figure_3_alpha_vs_theta_vs_mu.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha$
+\end_inset
+
+ vs.
+ 
+\begin_inset Formula $\theta$
+\end_inset
+
+ plots for various 
+\begin_inset Formula $\mu$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We again assert each 
+\begin_inset Formula $\alpha\geq0$
+\end_inset
+
+ which constrains 
+\begin_inset Formula $\theta$
+\end_inset
+
+ for different ranges of 
+\begin_inset Formula $\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$
+\end_inset
+
+.
+ Define 
+\begin_inset Formula $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$
+\end_inset
+
+,
+ note that 
+\begin_inset Formula $\lambda_{i}=\text{sign}\left(\lambda_{i}\right)\left|\lambda_{i}\right|\,\forall i\in\left\{ 1,2\right\} $
+\end_inset
+
+ by definition,
+ and that 
+\begin_inset Formula $\lambda_{i}\leq0\,\forall i\in\left\{ 1,2\right\} \Rightarrow0<\mu<\infty;\alpha_{12},\alpha_{13},\alpha_{23}\geq0;0\leq\theta\leq\frac{\pi}{2}$
+\end_inset
+
+ by assumption.
+ We therefore seek admissible solutions of 
+\begin_inset Formula 
+\[
+\begin{cases}
+\frac{1}{3}\left(\lambda_{2}\left(-\sqrt{3}\sin\theta-\cos\theta\right)\cos\theta+\lambda_{1}\left(-\sin\theta+\sqrt{3}\cos\theta\right)\sin\theta\right) & \geq0\\
+\frac{1}{3}\left(\lambda_{2}\left(+\sqrt{3}\sin\theta-\cos\theta\right)\cos\theta-\lambda_{1}\left(+\sin\theta+\sqrt{3}\cos\theta\right)\sin\theta\right) & \geq0\\
+\frac{1}{6}\left(\lambda_{2}\left(2\cos\left(2\theta\right)-1\right)-\lambda_{1}\left(2\cos\left(2\theta\right)+1\right)\right) & \geq0
+\end{cases}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{cases}
+\sin^{2}\theta+\mu\cos^{2}\theta+\sqrt{3}\left(\mu-1\right)\sin\theta\cos\theta & \geq0\quad\left(\text{I}\right)\\
+\sin^{2}\theta+\mu\cos^{2}\theta-\sqrt{3}\left(\mu-1\right)\sin\theta\cos\theta & \geq0\quad\left(\text{II}\right)\\
+\left(\mu+1\right)-2\left(\mu-1\right)\cos\left(2\theta\right) & \geq0\quad\left(\text{III}\right)
+\end{cases}
+\]
+
+\end_inset
+
+Since 
+\begin_inset Formula $\cos^{2}\theta=\frac{1}{2}\left(1+\cos\left(2\theta\right)\right)$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\sin^{2}\theta=\frac{1}{2}\left(1-\cos\left(2\theta\right)\right)$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $\sin\theta\cos\theta=\frac{1}{2}\sin\left(2\theta\right)$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left(\text{I}\right)$
+\end_inset
+
+ & 
+\begin_inset Formula $\left(\text{II}\right)$
+\end_inset
+
+ are equivalent to 
+\begin_inset Formula 
+\[
+\left(\mu+1\right)+\left(\mu-1\right)\cos\left(2\theta\right)\pm\sqrt{3}\left(\mu-1\right)\sin\left(2\theta\right)\geq0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Updownarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(\mu+1\right)+2\left(\mu-1\right)\cos\left(2\theta\mp\frac{\pi}{3}\right)\geq0\quad\left(\text{IV}\right),\left(\text{V}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\left(\text{III}\right)$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\left(\text{IV}\right)$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $\left(\text{V}\right)$
+\end_inset
+
+ require
+\begin_inset Formula 
+\[
+\left(\mu+1\right)+2\left(\mu-1\right)\cos\phi\geq0\quad\phi\in\left\{ 2\theta-\frac{\pi}{3},2\theta,2\theta+\frac{\pi}{3}\right\} 
+\]
+
+\end_inset
+
+Let 
+\begin_inset Formula $\nu\left(\mu\right)=\frac{\mu+1}{2\left|\mu-1\right|}$
+\end_inset
+
+ and 
+\begin_inset Formula $\varphi\left(\mu\right)=\arccos\nu\left(\mu\right)$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+\varphi\left(\mu\right)=\begin{cases}
+\frac{\pi}{3}, & \nu\left(\mu\right)\leq\frac{1}{2}\\
+0<\varphi\left(\mu\right)<\frac{\pi}{3}, & \frac{1}{2}<\nu\left(\mu\right)<1\\
+0, & 1\leq\nu\left(\mu\right)
+\end{cases}
+\]
+
+\end_inset
+
+For 
+\begin_inset Formula $0<\mu<\frac{1}{3}$
+\end_inset
+
+ we know 
+\begin_inset Formula $\mu-1<0\Rightarrow\nu\left(\mu\right)=\frac{\mu+1}{2\left(1-\mu\right)}\in\left(\frac{1}{2},1\right)$
+\end_inset
+
+.
+ We have
+\begin_inset Formula 
+\[
+\varphi\left(\mu\right)=\arccos\left(\frac{\mu+1}{2\left(1-\mu\right)}\right)\in\left(0,\frac{\pi}{3}\right)
+\]
+
+\end_inset
+
+such that
+\begin_inset Formula 
+\[
+\theta\in\left[0,\frac{\frac{\pi}{3}-\varphi\left(\mu\right)}{2}\right]\cup\left[\frac{\frac{\pi}{3}+\varphi\left(\mu\right)}{2},\frac{\pi-\varphi\left(\mu\right)}{2}\right]
+\]
+
+\end_inset
+
+For 
+\begin_inset Formula $\frac{1}{3}\leq\mu\leq3$
+\end_inset
+
+ we have all 
+\begin_inset Formula $\theta$
+\end_inset
+
+ admissible,
+ i.e.
+\begin_inset Formula 
+\[
+\theta\in\left[0,\frac{\pi}{2}\right]
+\]
+
+\end_inset
+
+For 
+\begin_inset Formula $3<\mu$
+\end_inset
+
+ we know 
+\begin_inset Formula $\mu-1>0\Rightarrow\nu\left(\mu\right)=\frac{\mu+1}{2\left(\mu-1\right)}\in\left(\frac{1}{2},1\right)$
+\end_inset
+
+.
+ We have
+\begin_inset Formula 
+\[
+\varphi\left(\mu\right)=\arccos\left(\frac{\mu+1}{2\left(\mu-1\right)}\right)\in\left(0,\frac{\pi}{3}\right)
+\]
+
+\end_inset
+
+such that
+\begin_inset Formula 
+\[
+\theta\in\left[\frac{\varphi\left(\mu\right)}{2},\frac{\frac{2\pi}{3}-\varphi\left(\mu\right)}{2}\right]\cup\left[\frac{\frac{2\pi}{3}+\varphi\left(\mu\right)}{2},\frac{\pi}{2}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Float table
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Summary of Results
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mu-$
+\end_inset
+
+Range
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta-$
+\end_inset
+
+Range
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="1theight%">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0<\mu<\frac{1}{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[0,\frac{\pi}{6}-\frac{\varphi\left(\mu\right)}{2}\right]\cup\left[\frac{\pi}{6}+\frac{\varphi\left(\mu\right)}{2},\frac{\pi}{2}-\frac{\varphi\left(\mu\right)}{2}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="1theight%">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{1}{3}\leq\mu\leq3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[0,\frac{\pi}{2}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="1theight%">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3<\mu$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\frac{\varphi\left(\mu\right)}{2},\frac{\pi}{3}-\frac{\varphi\left(\mu\right)}{2}\right]\cup\left[\frac{\pi}{3}+\frac{\varphi\left(\mu\right)}{2},\frac{\pi}{2}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment center
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /mnt/ssd1/NextCloud/Documents/School/Research/figures/output/figure_1_admissibility_binding.png
+	darkModeSensitive
+	width 50line%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Admissible Configurations in 
+\begin_inset Formula $\left(\mu,\theta\right)$
+\end_inset
+
+ Space:
+ Binding Constraint Identification
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Research Problem
+\end_layout
+
+\begin_layout Standard
+We seek solutions of
+\begin_inset Formula 
+\begin{equation}
+H_{V}\frac{\tilde{y}_{i}}{\tilde{m}_{R}}=\sum_{k\in N_{i}}\frac{2Q_{R}\left(\left|\tilde{y}_{k}-\tilde{y}_{i}\right|\right)}{\left\Vert u_{R}\right\Vert _{L^{2}}^{2}R^{4}\left|\tilde{y}_{k}-\tilde{y}_{i}\right|}\cdot\frac{\tilde{y}_{k}-\tilde{y}_{i}}{\tilde{m}_{R}}\label{eq:reduced-system}
+\end{equation}
+
+\end_inset
+
+such that 
+\begin_inset Formula $\frac{\tilde{y}_{i}}{\tilde{m}_{R}}\xrightarrow[R\searrow0]{}y_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+\frac{2Q_{R}\left(\left|\tilde{y}_{k}-\tilde{y}_{i}\right|\right)}{\left\Vert u_{R}\right\Vert _{L^{2}}^{2}R^{4}\left|\tilde{y}_{k}-\tilde{y}_{i}\right|}\xrightarrow[R\searrow0]{}\tilde{\alpha}_{ki}.
+\]
+
+\end_inset
+
+We write 
+\begin_inset Formula $\tilde{y}_{i}=\tilde{m}_{R}y_{i}+\delta y_{i}$
+\end_inset
+
+ (such that 
+\begin_inset Formula $\frac{\delta y_{i}}{\tilde{m}_{R}}\xrightarrow[R\searrow0]{}0$
+\end_inset
+
+),
+ 
+\begin_inset Formula $\delta y_{i}\in\text{span}\left\{ \boldsymbol{r_{1}},\boldsymbol{r_{2}}\right\} \forall i=\overline{1,3}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $R>0$
+\end_inset
+
+.
+ Define
+\begin_inset Formula 
+\begin{equation}
+F_{i}\left(\delta y,R\right)=H_{V}y_{i}+H_{V}\frac{\delta y_{i}}{\tilde{m}_{R}}-\sum_{k\in N_{i}}\frac{2Q_{R}\left(\left|\tilde{m}_{R}\left(y_{k}-y_{i}\right)+\delta y_{k}-\delta y_{i}\right|\right)}{\left\Vert u_{R}\right\Vert _{L^{2}}^{2}R^{4}\left|\tilde{m}_{R}\left(y_{k}-y_{i}\right)+\delta y_{k}-\delta y_{i}\right|}\left(y_{k}-y_{i}+\frac{\delta y_{k}-\delta y_{i}}{\tilde{m}_{R}}\right),\label{eq:Fi-definition}
+\end{equation}
+
+\end_inset
+
+and extend 
+\begin_inset Formula $F_{i}$
+\end_inset
+
+ at 
+\begin_inset Formula $R=0$
+\end_inset
+
+ by continuity
+\begin_inset Formula 
+\begin{equation}
+F_{i}\left(\delta y,0\right)=H_{V}y_{i}-\sum_{k\in N_{i}}\underbrace{e^{-\left\langle y_{k}-y_{i},\delta y_{k}-\delta y_{i}\right\rangle }\chi}_{\alpha_{ki}\,=\,\tilde{\alpha}_{ki}\chi}\left(y_{k}-y_{i}\right),\label{eq:Fi-at-zero}
+\end{equation}
+
+\end_inset
+
+with derivative along a vector 
+\begin_inset Formula $w\in\text{span}\left\{ \boldsymbol{r_{1}},\boldsymbol{r_{2}}\right\} $
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+D_{\delta y}F_{i}\left(\delta y,0\right)\left[w\right]=\sum_{k\in N_{i}}\left\langle w_{k}-w_{i},y_{k}-y_{i}\right\rangle e^{-\left\langle y_{k}-y_{i},\delta y_{k}-\delta y_{i}\right\rangle }\chi\left(y_{k}-y_{i}\right).\label{eq:Fi-derivative}
+\end{equation}
+
+\end_inset
+
+With the ultimate goal of utilizing the implicit function theorem (IFT) we must start with a solution of 
+\begin_inset Formula 
+\begin{equation}
+F_{i}\left(\delta y,0\right)=0\quad\forall i=\overline{1,3}\label{eq:Fi-system}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+\begin_inset Formula $\delta y^{0}=\left(\delta y_{1}^{0},\delta y_{2}^{0},\delta y_{3}^{0}\right)$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\delta y_{1}^{0}=-\gamma\boldsymbol{r_{2}}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\delta y_{2,3}^{0}=\mp\beta\boldsymbol{r_{1}}+\frac{\gamma}{2}\boldsymbol{r_{2}}$
+\end_inset
+
+,
+ with 
+\begin_inset Formula $\beta=\frac{1}{2}\ln\left(\frac{\alpha_{12}}{\alpha_{23}}\right)$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\gamma=\frac{2\beta}{3\sqrt{3}}$
+\end_inset
+
+ solves 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Fi-system"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Plugging the given ansatz into 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Fi-system"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ we obtain
+\begin_inset Formula 
+\[
+\begin{cases}
+F_{1}= & H_{V}y_{1}-\left(e^{-\left\langle y_{2}-y_{1},\delta y_{2}-\delta y_{1}\right\rangle }\left(y_{2}-y_{1}\right)+e^{-\left\langle y_{3}-y_{1},\delta y_{3}-\delta y_{1}\right\rangle }\left(y_{3}-y_{1}\right)\right)\chi\\
+F_{2}= & H_{V}y_{2}-\left(e^{-\left\langle y_{1}-y_{2},\delta y_{1}-\delta y_{2}\right\rangle }\left(y_{1}-y_{2}\right)+e^{-\left\langle y_{3}-y_{2},\delta y_{3}-\delta y_{2}\right\rangle }\left(y_{3}-y_{2}\right)\right)\chi\\
+F_{3}= & H_{V}y_{3}-\left(e^{-\left\langle y_{1}-y_{3},\delta y_{1}-\delta y_{3}\right\rangle }\left(y_{1}-y_{3}\right)+e^{-\left\langle y_{2}-y_{3},\delta y_{2}-\delta y_{3}\right\rangle }\left(y_{2}-y_{3}\right)\right)\chi
+\end{cases}
+\]
+
+\end_inset
+
+With 
+\begin_inset Formula $\tilde{\alpha}_{ki}=e^{-\left\langle y_{k}-y_{i},\delta y_{k}-\delta y_{i}\right\rangle }\Rightarrow\tilde{\alpha}_{ki}=\tilde{\alpha}_{ik}$
+\end_inset
+
+,
+ we find 
+\begin_inset Formula $\tilde{\alpha}_{12}=\tilde{\alpha}_{21}=\tilde{\alpha}_{13}=\tilde{\alpha}_{31}=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\tilde{\alpha}_{23}=\tilde{\alpha}_{32}=\frac{\alpha_{23}}{\alpha_{12}}$
+\end_inset
+
+.
+ For the equilateral triangle we know 
+\begin_inset Formula $\alpha_{12}=\alpha_{13}=-\frac{\lambda_{2}}{3}>\alpha_{23}=\frac{-\lambda_{1}+\frac{\lambda_{2}}{3}}{2}\Rightarrow\chi=\max\left\{ \alpha_{12},\alpha_{13},\alpha_{23}\right\} =\alpha_{12}=\alpha_{13}$
+\end_inset
+
+ and 
+\begin_inset Formula $H_{V}=\begin{pmatrix}\lambda_{1} & 0\\
+0 & \lambda_{2}
+\end{pmatrix},y_{1}=\left(0,\frac{1}{\sqrt{3}}\right)^{\intercal},y_{2}=\left(-\frac{1}{2},-\frac{1}{2\sqrt{3}}\right)^{\intercal},y_{3}=\left(\frac{1}{2},-\frac{1}{2\sqrt{3}}\right)^{\intercal}$
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula 
+\[
+\begin{cases}
+H_{V}y_{1}-\left(\tilde{\alpha}_{21}\left(y_{2}-y_{1}\right)+\tilde{\alpha}_{31}\left(y_{3}-y_{1}\right)\right)\chi & =0\\
+H_{V}y_{2}-\left(\tilde{\alpha}_{12}\left(y_{1}-y_{2}\right)+\tilde{\alpha}_{32}\left(y_{3}-y_{2}\right)\right)\chi & =0\\
+H_{V}y_{3}-\left(\tilde{\alpha}_{13}\left(y_{1}-y_{3}\right)+\tilde{\alpha}_{23}\left(y_{2}-y_{3}\right)\right)\chi & =0
+\end{cases}\Rightarrow\begin{cases}
+H_{V}y_{1}-\left(y_{2}-y_{1}+y_{3}-y_{1}\right)\chi & =0\\
+H_{V}y_{2}-\left(y_{1}-y_{2}+\frac{\alpha_{23}}{\alpha_{12}}\left(y_{3}-y_{2}\right)\right)\chi & =0\\
+H_{V}y_{3}-\left(y_{1}-y_{3}+\frac{\alpha_{23}}{\alpha_{12}}\left(y_{2}-y_{3}\right)\right)\chi & =0
+\end{cases}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{cases}
+\begin{pmatrix}0\\
+\frac{\lambda_{2}}{\sqrt{3}}
+\end{pmatrix}-\left[\begin{pmatrix}-\frac{1}{2}\\
+-\frac{\sqrt{3}}{2}
+\end{pmatrix}+\begin{pmatrix}\frac{1}{2}\\
+-\frac{\sqrt{3}}{2}
+\end{pmatrix}\right]\chi & =\boldsymbol{0}\\
+\begin{pmatrix}-\frac{\lambda_{1}}{2}\\
+-\frac{\lambda_{2}}{2\sqrt{3}}
+\end{pmatrix}-\left[\begin{pmatrix}\frac{1}{2}\\
+\frac{\sqrt{3}}{2}
+\end{pmatrix}+\frac{\alpha_{23}}{\alpha_{12}}\begin{pmatrix}1\\
+0
+\end{pmatrix}\right]\chi & =\boldsymbol{0}\\
+\begin{pmatrix}\frac{\lambda_{1}}{2}\\
+-\frac{\lambda_{2}}{2\sqrt{3}}
+\end{pmatrix}-\left[\begin{pmatrix}-\frac{1}{2}\\
+\frac{\sqrt{3}}{2}
+\end{pmatrix}+\frac{\alpha_{23}}{\alpha_{12}}\begin{pmatrix}-1\\
+0
+\end{pmatrix}\right]\chi & =\boldsymbol{0}
+\end{cases}\Rightarrow\begin{cases}
+\begin{pmatrix}0\\
+\frac{\lambda_{2}}{\sqrt{3}}
+\end{pmatrix}+\begin{pmatrix}0\\
+\sqrt{3}\alpha_{12}
+\end{pmatrix} & =\boldsymbol{0}\\
+\begin{pmatrix}-\frac{\lambda_{1}}{2}\\
+-\frac{\lambda_{2}}{2\sqrt{3}}
+\end{pmatrix}-\begin{pmatrix}\frac{\alpha_{12}}{2}\\
+\frac{\sqrt{3}\alpha_{12}}{2}
+\end{pmatrix}-\begin{pmatrix}\alpha_{23}\\
+0
+\end{pmatrix} & =\boldsymbol{0}\\
+\begin{pmatrix}\frac{\lambda_{1}}{2}\\
+-\frac{\lambda_{2}}{2\sqrt{3}}
+\end{pmatrix}-\begin{pmatrix}-\frac{\alpha_{12}}{2}\\
+\frac{\sqrt{3}\alpha_{12}}{2}
+\end{pmatrix}+\begin{pmatrix}\alpha_{23}\\
+0
+\end{pmatrix} & =\boldsymbol{0}
+\end{cases}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Downarrow
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{cases}
+\begin{pmatrix}0\\
+\frac{\lambda_{2}}{\sqrt{3}}
+\end{pmatrix}+\begin{pmatrix}0\\
+-\frac{\sqrt{3}\lambda_{2}}{3}
+\end{pmatrix} & =\boldsymbol{0}\\
+\begin{pmatrix}-\frac{\lambda_{1}}{2}\\
+-\frac{\lambda_{2}}{2\sqrt{3}}
+\end{pmatrix}-\begin{pmatrix}-\frac{\lambda_{2}}{6}\\
+-\frac{\sqrt{3}\lambda_{2}}{6}
+\end{pmatrix}-\begin{pmatrix}\frac{-\lambda_{1}+\frac{\lambda_{2}}{3}}{2}\\
+0
+\end{pmatrix} & =\boldsymbol{0}\\
+\begin{pmatrix}\frac{\lambda_{1}}{2}\\
+-\frac{\lambda_{2}}{2\sqrt{3}}
+\end{pmatrix}-\begin{pmatrix}\frac{\lambda_{2}}{6}\\
+-\frac{\sqrt{3}\lambda_{2}}{6}
+\end{pmatrix}+\begin{pmatrix}\frac{-\lambda_{1}+\frac{\lambda_{2}}{3}}{2}\\
+0
+\end{pmatrix} & =\boldsymbol{0}
+\end{cases}\Rightarrow\begin{cases}
+\begin{pmatrix}0\\
+\frac{\lambda_{2}}{\sqrt{3}}-\frac{\lambda_{2}}{\sqrt{3}}
+\end{pmatrix} & =\boldsymbol{0}\\
+\begin{pmatrix}\frac{\lambda_{1}}{2}-\frac{\lambda_{1}}{2}\\
+\frac{\lambda_{2}}{2\sqrt{3}}-\frac{\lambda_{2}}{2\sqrt{3}}
+\end{pmatrix} & =\boldsymbol{0}\\
+\begin{pmatrix}\frac{\lambda_{1}}{2}-\frac{\lambda_{1}}{2}\\
+\frac{\lambda_{2}}{2\sqrt{3}}-\frac{\lambda_{2}}{2\sqrt{3}}
+\end{pmatrix} & =\boldsymbol{0}
+\end{cases}\:\checkmark
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\therefore\delta y^{0}$
+\end_inset
+
+ as stated above solves 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Fi-system"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ for the equilateral triangle.
+\end_layout
+
+\begin_layout Claim
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Fi-derivative"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ has a nontrivial kernel 
+\begin_inset Formula $\left(w_{1},w_{2},w_{3}\right)$
+\end_inset
+
+ so the IFT does not apply.
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula 
+\begin{align*}
+\Omega & =\ker\left(D_{\delta y}F_{i}\left(\delta y^{0},0\right)\right)\\
+ & =\text{span}\left\{ \left(w_{1},w_{2},w_{3}\right)\vert\left\langle w_{k}-w_{i},y_{k}-y_{i}\right\rangle =0\,\forall\,i\neq k\right\} 
+\end{align*}
+
+\end_inset
+
+We can immediately see that 
+\begin_inset Formula $\Omega\supseteq\boldsymbol{0}$
+\end_inset
+
+.
+ Consider the following
+\begin_inset Formula 
+\begin{align*}
+\Phi & =\sum_{i}w_{i}\cdot D_{\delta y}F_{i}\left(\delta y,0\right)\left[w\right]\\
+ & =\sum_{i}w_{i}\cdot\sum_{k\in N_{i}}\left\langle w_{k}-w_{i},y_{k}-y_{i}\right\rangle \cdot\alpha_{ik}\left(y_{k}-y_{i}\right)\\
+ & =\sum_{k,i\in N_{k,i}}\alpha_{ik}\left\langle w_{k}-w_{i},y_{k}-y_{i}\right\rangle \left\langle w_{i},y_{k}-y_{i}\right\rangle +\alpha_{ki}\left\langle w_{i}-w_{k},y_{i}-y_{k}\right\rangle \left\langle w_{k},y_{i}-y_{k}\right\rangle \\
+ & =-\sum_{k,i\in N_{k,i}}\alpha_{ik}\left(\left\langle w_{k}-w_{i},y_{k}-y_{i}\right\rangle \right)^{2}
+\end{align*}
+
+\end_inset
+
+It follows that
+\begin_inset Formula 
+\[
+w\in\Omega\Longrightarrow\Phi\equiv\boldsymbol{0}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+\alpha_{ik}\neq0\Longrightarrow\left\langle w_{k}-w_{i},y_{k}-y_{i}\right\rangle =0\,\forall\,i\neq k
+\]
+
+\end_inset
+
+which is precisely the defining condition placed on 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula $\left\{ \left(w_{1},w_{2},w_{3}\right)|\left\langle w_{k}-w_{i},y_{k}-y_{i}\right\rangle =0\,\forall\,i\neq k\right\} \subseteq\Omega$
+\end_inset
+
+,
+ therefore 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Fi-derivative"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ has a nontrivial kernel.
+ For example,
+ take all three vectors equal.
+ (Let 
+\begin_inset Formula $v\in\mathbb{R}^{2}$
+\end_inset
+
+ be any nonzero vector and set
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+w_{1}=w_{2}=w_{3}=v.
+\]
+
+\end_inset
+
+Then 
+\begin_inset Formula $w_{k}-w_{i}=0$
+\end_inset
+
+ for every pair 
+\begin_inset Formula $\left(i,k\right)$
+\end_inset
+
+,
+ hence 
+\begin_inset Formula $\left\langle w_{k}-w_{i},y_{k}-y_{i}\right\rangle =0$
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula $\left(v,v,v\right)\in\Omega$
+\end_inset
+
+.
+ Because 
+\begin_inset Formula $v$
+\end_inset
+
+ can be chosen arbitrarily in 
+\begin_inset Formula $\mathbb{R}^{2}$
+\end_inset
+
+,
+ the kernel 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ contains at least the 
+\begin_inset Formula $2-$
+\end_inset
+
+dimensional subspace
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\left\{ \left(v,v,v\right)\mid v\in\mathbb{R}^{2}\right\} \subsetneq\left\{ 0\right\} ,
+\]
+
+\end_inset
+
+which is nontrivial.
+ In particular,
+ 
+\begin_inset Formula $\Omega\neq\left\{ 0\right\} $
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Standard
+Assume 
+\begin_inset Formula $\left(w_{1},w_{2},w_{3}\right)\in\Omega$
+\end_inset
+
+.
+ Consider
+\begin_inset Formula 
+\begin{align*}
+P_{w}F\left(\delta y,R\right) & =\sum_{i}w_{i}\cdot F_{i}\left(\delta y,R\right)\\
+ & =\sum_{i}\left[\left\langle w_{i},H_{V}y_{i}\right\rangle +\left\langle w_{i},H_{V}\frac{\delta y_{i}}{\tilde{m}_{R}}\right\rangle -\sum_{k\in N_{i}}\left[\left\langle w_{i},\alpha_{ik}\left(R\right)\left(y_{k}-y_{i}\right)\right\rangle +\alpha_{ik}\left(R\right)\left\langle w_{i},\frac{\delta y_{k}-\delta y_{i}}{\tilde{m}_{R}}\right\rangle \right]\right]\\
+ & =\frac{1}{\tilde{m}_{R}}\sum_{i}\left[\left\langle w_{i},H_{V}\delta y_{i}\right\rangle -\sum_{k\in N_{i}}\alpha_{ik}\left(R\right)\left\langle w_{i},\delta y_{k}-\delta y_{i}\right\rangle \right]\\
+ & =\frac{1}{\tilde{m}_{R}}\sum_{i}\left\langle w_{i},H_{V}\delta y_{i}-\sum_{k\in N_{i}}\alpha_{ik}\left(R\right)\left(\delta y_{k}-\delta y_{i}\right)\right\rangle 
+\end{align*}
+
+\end_inset
+
+we then multiply by 
+\begin_inset Formula $\tilde{m}_{R}$
+\end_inset
+
+ and extend continuously to 
+\begin_inset Formula $R\to0$
+\end_inset
+
+ via
+\begin_inset Formula 
+\begin{align*}
+P_{w}F\left(\delta y,0\right) & =\sum_{i}\left\langle w_{i},H_{V}\delta y_{i}-\sum_{k\in N_{i}}\alpha_{ik}\left(0\right)\left(\delta y_{k}-\delta y_{i}\right)\right\rangle 
+\end{align*}
+
+\end_inset
+
+with 
+\begin_inset Formula $\alpha_{ik}\left(0\right)=e^{-\left\langle y_{k}-y_{i},\delta y_{k}-\delta y_{i}\right\rangle }\chi$
+\end_inset
+
+.
+ Now consider 
+\begin_inset Formula $P_{\perp}F\left(\delta y^{0},0\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{\parallel}F\left(\delta y^{0},0\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $\perp,\parallel$
+\end_inset
+
+ are with respect to 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ We then have 
+\begin_inset Formula 
+\begin{align*}
+D_{\delta y}P_{\perp}F\left(\delta y^{0},0\right)\left[\delta w\right] & =P_{\perp}\sum_{k\in N_{i}}\left\langle \delta w_{k}-\delta w_{i},y_{k}-y_{i}\right\rangle \alpha_{ik}\left(0\right)\left(y_{k}-y_{i}\right)\\
+D_{\delta y}P_{\parallel}F\left(\delta y^{0},0\right)\left[\delta w\right] & =\sum_{i}\left\langle w_{i},H_{V}\delta w_{i}\right\rangle \\
+ & +\sum_{i}\sum_{k\in N_{i}}\left[\left\langle w_{i},\alpha_{ki}\left(0\right)\left(\delta y_{k}^{0}-\delta y_{i}^{0}\right)\right\rangle \left\langle y_{k}-y_{i},\delta w_{k}-\delta w_{i}\right\rangle -\alpha_{ki}\left(0\right)\left\langle w_{i},\delta w_{k}-\delta w_{i}\right\rangle \right]
+\end{align*}
+
+\end_inset
+
+For 
+\begin_inset Formula $\delta w\in\Gamma=\ker\left(D_{\delta y}P_{\perp}F\left(\delta y^{0},0\right)\oplus D_{\delta y}P_{\parallel}F\left(\delta y^{0},0\right)\right)\Rightarrow\delta w\in\Omega$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+\sum_{i}\left\langle w_{i},H_{V}\delta w_{i}-\sum_{k\in N_{i}}\alpha_{ki}\left(0\right)\left\langle w_{i},\delta w_{k}-\delta w_{i}\right\rangle \right\rangle =0
+\]
+
+\end_inset
+
+for all 
+\begin_inset Formula $w\in\Gamma$
+\end_inset
+
+.
+ Alternatively,
+ 
+\begin_inset Formula $\delta w\in\Gamma$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $\delta w\in\Omega$
+\end_inset
+
+ and
+\begin_inset Formula 
+\begin{align*}
+P_{\delta w} & =H_{V}\delta w_{i}-\sum_{k\in N_{i}}\alpha_{ki}\left(0\right)\left(\delta w_{k}-\delta w_{i}\right)\\
+\Omega^{\perp} & \ni\\
+ & =\left\{ z\in\mathbb{R}^{2\times3}|\exists c_{ki}=c_{ik}|z_{i}=\sum_{k\in N_{i}}c_{ki}\left(y_{k}-y_{i}\right)\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Claim
+If we restrict 
+\begin_inset Formula $\delta y_{1}$
+\end_inset
+
+ to be orthogonal to 
+\begin_inset Formula $\boldsymbol{r_{1}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta y_{3}-\delta y_{2}$
+\end_inset
+
+ to be parallel to 
+\begin_inset Formula $\boldsymbol{r_{1}}$
+\end_inset
+
+.
+ From 
+\begin_inset Formula $\sum_{i}F_{i}\left(\delta y,R\right)=0$
+\end_inset
+
+ we can find 
+\begin_inset Formula $\delta y_{1}\left(R\right),\delta y_{2}\left(R\right),\delta y_{3}\left(R\right)$
+\end_inset
+
+ that solve 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:reduced-system"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ and 
+\begin_inset Formula $\delta y_{1}\left(0\right)=\delta y_{1}^{0},\delta y_{2}\left(0\right)=\delta y_{2}^{0},\delta y_{3}\left(0\right)=\delta y_{3}^{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Starting with 
+\begin_inset Formula $\sum_{i}F_{i}\left(\delta y,R\right)=0$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\sum_{i}F_{i}\left(\delta y,R\right) & =0\\
+\sum_{i}H_{V}y_{i}+H_{V}\frac{\delta y_{i}}{\tilde{m}_{R}}-\sum_{k\in N_{i}}\frac{2Q_{R}\left(\left|\tilde{m}_{R}\left(y_{k}-y_{i}\right)+\delta y_{k}-\delta y_{i}\right|\right)}{\left\Vert u_{R}\right\Vert _{L^{2}}^{2}R^{4}\left|\tilde{m}_{R}\left(y_{k}-y_{i}\right)+\delta y_{k}-\delta y_{i}\right|}\left(y_{k}-y_{i}+\frac{\delta y_{k}-\delta y_{i}}{\tilde{m}_{R}}\right) & =\\
+\sum_{i}H_{V}\left(\frac{\tilde{m}_{R}y_{i}+\delta y_{i}}{\tilde{m}_{R}}\right)-\sum_{k\in N_{i}}\frac{2Q_{R}\left(\left|\tilde{m}_{R}\left(y_{k}-y_{i}\right)+\delta y_{k}-\delta y_{i}\right|\right)}{\left\Vert u_{R}\right\Vert _{L^{2}}^{2}R^{4}\left|\tilde{m}_{R}\left(y_{k}-y_{i}\right)+\delta y_{k}-\delta y_{i}\right|}\left(\frac{\tilde{m}_{R}y_{k}-\tilde{m}_{R}y_{i}+\delta y_{k}-\delta y_{i}}{\tilde{m}_{R}}\right) & =\\
+\sum_{i}H_{V}\frac{\tilde{y}_{i}}{\tilde{m}_{R}}-\sum_{k\in N_{i}}\frac{2Q_{R}\left(\left|\tilde{m}_{R}y_{k}+\delta y_{k}-\left(\tilde{m}_{R}y_{i}+\delta y_{i}\right)\right|\right)}{\left\Vert u_{R}\right\Vert _{L^{2}}^{2}R^{4}\left|\tilde{m}_{R}y_{k}+\delta y_{k}-\left(\tilde{m}_{R}y_{i}+\delta y_{i}\right)\right|}\left(\frac{\tilde{m}_{R}y_{k}+\delta y_{k}-\left(\tilde{m}_{R}y_{i}+\delta y_{i}\right)}{\tilde{m}_{R}}\right) & =\\
+\sum_{i}H_{V}\frac{\tilde{y}_{i}}{\tilde{m}_{R}}-\sum_{k\in N_{i}}\frac{2Q_{R}\left(\left|\tilde{y}_{k}-\tilde{y}_{i}\right|\right)}{\left\Vert u_{R}\right\Vert _{L^{2}}^{2}R^{4}\left|\tilde{y}_{k}-\tilde{y}_{i}\right|}\cdot\frac{\tilde{y}_{k}-\tilde{y}_{i}}{\tilde{m}_{R}} & =\\
+ & \Downarrow\\
+H_{V}\frac{\tilde{y}_{i}}{\tilde{m}_{R}}-\sum_{k\in N_{i}}\frac{2Q_{R}\left(\left|\tilde{y}_{k}-\tilde{y}_{i}\right|\right)}{\left\Vert u_{R}\right\Vert _{L^{2}}^{2}R^{4}\left|\tilde{y}_{k}-\tilde{y}_{i}\right|}\cdot\frac{\tilde{y}_{k}-\tilde{y}_{i}}{\tilde{m}_{R}} & =0
+\end{align*}
+
+\end_inset
+
+which is precisely 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:reduced-system"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ and since
+\begin_inset Formula 
+\begin{align*}
+H_{V}\frac{\tilde{y}_{i}}{\tilde{m}_{R}} & =\sum_{k\in N_{i}}\frac{2Q_{R}\left(\left|\tilde{y}_{k}-\tilde{y}_{i}\right|\right)}{\left\Vert u_{R}\right\Vert _{L^{2}}^{2}R^{4}\left|\tilde{y}_{k}-\tilde{y}_{i}\right|}\cdot\frac{\tilde{y}_{k}-\tilde{y}_{i}}{\tilde{m}_{R}}\\
+ & \Downarrow\:\left(R\searrow0\right)\\
+H_{V}y_{i} & =\sum_{k\in N_{i}}\alpha_{ki}\chi\left(y_{k}-y_{i}\right)
+\end{align*}
+
+\end_inset
+
+has solutions (by construction) 
+\begin_inset Formula $\delta y_{i}^{0}$
+\end_inset
+
+,
+ we also can see 
+\begin_inset Formula $\delta y_{i}\left(0\right)=\lim_{R\searrow0}\delta y_{i}\left(R\right)=\delta y_{i}^{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+More generally,
+ 
+\begin_inset Formula $\left(\delta y_{1},\delta y_{2},\delta y_{3}\right)\perp\left(w_{1},w_{2},w_{3}\right)=w_{\text{rot}}\iff\delta y\in\left\{ w_{\text{rot}}\right\} ^{\perp}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $F_{i}\left(\delta y_{i},R\right)$
+\end_inset
+
+ does not necessarily preserve 
+\begin_inset Formula $\left\{ w_{\text{rot}}\right\} ^{\perp}$
+\end_inset
+
+;
+ however,
+ 
+\begin_inset Formula $\left\{ w_{\text{rot}}\right\} ^{\perp}=P_{\perp_{\text{rot}}}F_{i}\left(\delta y_{i},R\right)=0$
+\end_inset
+
+ has a unique solution.
+ If 
+\begin_inset Formula $F_{i}\left(R_{w}\delta y_{i},R\right)=R_{w}F_{i}\left(\delta y_{i},R\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $w\in\left[-\pi,\pi\right]$
+\end_inset
+
+,
+ then 
+\begin_inset Formula $F_{i}\left(R_{w}\delta y_{i},R\right)=0$
+\end_inset
+
+ such that 
+\begin_inset Formula $F_{i}\left(\delta y_{i},R\right)\mapsto R_{w}F_{i}\left(\delta y_{i},R\right)$
+\end_inset
+
+ (since 
+\begin_inset Formula $F_{i}\left(\delta y_{i},R\right)=0$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Section
+Conclusion
+\end_layout
+
+\begin_layout Standard
+We have carried out a complete finite-dimensional study of multi-peak ground states for the nonlinear Schrödinger equation
+\begin_inset Formula 
+\[
+(-\Delta+V+E)\psi+\sigma|\psi|^{2p}\psi=0,\qquad E\to\infty,
+\]
+
+\end_inset
+
+using the rescaling and concentration-compactness framework.
+ The existence question is reduced to an algebraic system
+\begin_inset Formula 
+\[
+F_{i}(\delta y,R)=0,
+\]
+
+\end_inset
+
+which governs the positions of well-separated profiles near a non-degenerate critical point of the potential 
+\begin_inset Formula $V$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Our main results are threefold.
+\end_layout
+
+\begin_layout Enumerate
+Classification of limiting configurations (
+\begin_inset Formula $R=0$
+\end_inset
+
+).
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Collinear peaks along a single Hessian eigenvector.
+\end_layout
+
+\begin_layout Enumerate
+Isosceles and equilateral triangles in the plane spanned by two eigenvectors.
+\end_layout
+
+\begin_layout Enumerate
+Equilateral triangles with a continuous rotational degree of freedom 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ For the rotational case we derived admissible regions in the 
+\begin_inset Formula $(\mu,\theta)-$
+\end_inset
+
+plane,
+ where 
+\begin_inset Formula $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$
+\end_inset
+
+.
+ All orientations are admissible when 
+\begin_inset Formula $\frac{1}{3}\le\mu\le3$
+\end_inset
+
+;
+ otherwise only restricted angular windows remain.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Perturbation of the limiting system (
+\begin_inset Formula $R>0$
+\end_inset
+
+).
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+We formulated the system 
+\begin_inset Formula $F_{i}(\delta y,R)=0$
+\end_inset
+
+ and constructed explicit solutions 
+\begin_inset Formula $\delta y^{0}$
+\end_inset
+
+ at 
+\begin_inset Formula $R=0$
+\end_inset
+
+ for the equilateral triangle (Claim 3).
+\end_layout
+
+\begin_layout Enumerate
+The linearization 
+\begin_inset Formula $D_{\delta y}F_{i}(\delta y^{0},0)$
+\end_inset
+
+ has a nontrivial kernel 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ containing the two-dimensional subspace of rigid translations,
+ which blocks a direct application of the implicit function theorem.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Resolution strategy for the kernel obstruction.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Following the iterative kernel-decomposition method,
+ we decomposed the reduced system into components perpendicular and parallel to the kernel.
+\end_layout
+
+\begin_layout Enumerate
+Gauge-fixing constraints (removing the rotational freedom) yield a projected system that is expected to admit a unique branch,
+ provided the full system is rotationally equivariant.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+The work stops at a precise point:
+ the concentration-compactness decomposition,
+ the Lyapunov-Schmidt reduction,
+ and the link back to the full PDE are already established.
+ What remains is to finish the finite-dimensional step by:
+\end_layout
+
+\begin_layout Enumerate
+Verifying rotational equivariance of 
+\begin_inset Formula $F_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Proving invertibility of the linearized operator on the gauge-fixed subspace.
+\end_layout
+
+\begin_layout Enumerate
+Extending the analysis to configurations with a continuous rotation angle 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Once these are done,
+ the Lyapunov-Schmidt machinery lifts the finite-dimensional solutions to exact multi-peak ground states for all sufficiently large energies 
+\begin_inset Formula $E$
+\end_inset
+
+.
+ Stability properties are largely understood:
+ multi-profile branches with two or more peaks have at least two negative directions in the linearized operator,
+ implying orbital instability;
+ asymptotic stability of single-peak states has been established in earlier works,
+ and adapting those techniques to multi-peak states remains an open problem.
+\end_layout
+
+\begin_layout Standard
+In summary,
+ we have classified all admissible multi-peak geometries,
+ identified the kernel obstruction,
+ and set up the finite-dimensional reduction.
+ The remaining tasks (equivariance,
+ invertibility,
+ and handling of the 
+\begin_inset Formula $\theta-$
+\end_inset
+
+dependent case) are concrete,
+ finite-dimensional problems whose solution will complete the existence theory for multi-peak ground states at finite energy.
+\end_layout
+
+\begin_layout Section
+Notation
+\end_layout
+
+\begin_layout Subsection
+Equation and Basic Parameters
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Symbol
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\psi:\mathbb{R}^{n}\to\mathbb{C}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Solution of the nonlinear Schrödinger equation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $V:\mathbb{R}^{n}\to\mathbb{R}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+External potential (encodes refractive index profile)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $E\in\mathbb{R}^{+}\cup\left\{ 0\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Energy parameter (propagation constant in optics)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma\in\mathbb{R}^{+}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nonlinearity coefficient (sign determines focusing/defocusing)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $p$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nonlinear power exponent;
+ 
+\begin_inset Formula $p=1$
+\end_inset
+
+ corresponds to cubic (Kerr) nonlinearity
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Non-degenerate critical point of 
+\begin_inset Formula $V$
+\end_inset
+
+,
+ i.e.,
+ 
+\begin_inset Formula $\nabla V\left(x_{0}\right)=0$
+\end_inset
+
+ with 
+\begin_inset Formula $H_{V}\left(x_{0}\right)$
+\end_inset
+
+ invertible
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Notation - Equation and Basic Parameters
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Scaling and Profile Functions
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Symbol
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $R=E^{-\frac{1}{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Scaling parameter;
+ 
+\begin_inset Formula $R\to0$
+\end_inset
+
+ as 
+\begin_inset Formula $E\to\infty$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $u_{E}\left(x\right)=E^{-\frac{1}{2p}}\psi_{E}\left(E^{-\frac{1}{2}}x\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Rescaled solution with 
+\begin_inset Formula $\left\Vert u_{E}\right\Vert _{H^{1}}$
+\end_inset
+
+ uniformly bounded
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $u_{R}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Profile function solving 
+\begin_inset Formula $\left(-\Delta+R^{2}V\left(x_{0}\right)+1\right)u+\sigma\left|u\right|^{2p}u=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $M\in\mathbb{N}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Number of peaks in the multi-peak decomposition
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $z_{i}\left(R\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Position of the 
+\begin_inset Formula $i-$
+\end_inset
+
+th peak center in rescaled coordinates
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $h_{R}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Remainder term:
+ 
+\begin_inset Formula $u_{E}=\sum_{i=1}^{M}u_{R}\left(\cdot-z_{i}\right)+h_{R}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Notation - Scaling and Profile Functions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Hessian and Spectral Properties
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Symbol
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $H_{V}=H_{V}\left(x_{0}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hessian matrix of 
+\begin_inset Formula $V$
+\end_inset
+
+ at the critical point 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eigenvalue of 
+\begin_inset Formula $H_{V}$
+\end_inset
+
+;
+ assumed 
+\begin_inset Formula $\lambda_{i}<0$
+\end_inset
+
+ for directions in which peaks spread
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\boldsymbol{r}_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unit eigenvector of 
+\begin_inset Formula $H_{V}$
+\end_inset
+
+ associated with eigenvalue 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eigenvalue ratio;
+ key parameter for admissibility constraints
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $U$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unstable manifold:
+ 
+\begin_inset Formula $U=\text{span}\left\{ \boldsymbol{r}:H_{V}\boldsymbol{r}=\lambda\boldsymbol{r},\lambda<0\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Notation - Hessian and Spectral Properties
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Bump Positions and Geometry
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Symbol
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $s_{i}=Rz_{i}-x_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Displacement of 
+\begin_inset Formula $i-$
+\end_inset
+
+th peak from critical point 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $m_{R}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Minimum inter-peak distance:
+ 
+\begin_inset Formula $m_{R}=\min_{i\neq j}\left|z_{i}\left(R\right)-z_{j}\left(R\right)\right|$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y_{i}=\lim_{R\to0}\frac{s_{i}}{Rm_{R}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Limiting position vector of the 
+\begin_inset Formula $i-$
+\end_inset
+
+th peak;
+ satisfies 
+\begin_inset Formula $\left|y_{k}-y_{i}\right|=1$
+\end_inset
+
+ for nearest neighbors
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Set of nearest neighbors of peak 
+\begin_inset Formula $i$
+\end_inset
+
+:
+ 
+\begin_inset Formula $N_{i}=\left\{ k:\left|y_{k}-y_{i}\right|=1\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a,h$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Geometric parameters for triangular configurations:
+ 
+\begin_inset Formula $a$
+\end_inset
+
+ = half-base,
+ 
+\begin_inset Formula $h$
+\end_inset
+
+ = apex height
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Notation - Bump Positions and Geometry
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Interaction Functional and Coefficients
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Symbol
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Q_{R}\left(z\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interaction functional:
+ 
+\begin_inset Formula $Q_{R}\left(z\right)=-\sigma\left\langle \partial_{\frac{z}{\left|z\right|}}u_{R}\left(\cdot-z\right),u_{R}^{2p+1}\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha_{ki}=\frac{Q_{R}\left(\left|z_{k}-z_{i}\right|\right)}{Q_{R}\left(m_{R}\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interaction coefficient between peaks 
+\begin_inset Formula $k$
+\end_inset
+
+ and 
+\begin_inset Formula $i$
+\end_inset
+
+;
+ satisfies 
+\begin_inset Formula $0\leq\alpha_{ki}\leq1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tilde{\alpha}_{ki}=e^{-\left\langle y_{k}-y_{i},\delta y_{k}-\delta y_{i}\right\rangle }$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Perturbed interaction coefficient at 
+\begin_inset Formula $R=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\chi=\frac{2Q_{R}\left(m_{R}\right)}{R^{4}m_{R}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Overall interaction strength;
+ 
+\begin_inset Formula $\chi>0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Notation - Interaction Functional and Coefficients
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Reduced System and Perturbations
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Symbol
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tilde{y}_{i}=\tilde{m}_{R}y_{i}+\delta y_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Perturbed peak position;
+ 
+\begin_inset Formula $\frac{\delta y_{i}}{\tilde{m}_{R}}\to0$
+\end_inset
+
+ as 
+\begin_inset Formula $R\to0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\delta y_{i}\in\text{span}\left\{ \boldsymbol{r}_{1},\boldsymbol{r}_{2}\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Perturbation of the 
+\begin_inset Formula $i-$
+\end_inset
+
+th peak position
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\delta y^{0}=\left(\delta y_{1}^{0},\delta y_{2}^{0},\delta y_{3}^{0}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Explicit solution at 
+\begin_inset Formula $R=0$
+\end_inset
+
+ with 
+\begin_inset Formula $\delta y_{1}^{0}=-\gamma\boldsymbol{r}_{2}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\delta y_{2,3}^{0}=\mp\beta\boldsymbol{r}_{1}+\frac{\gamma}{2}\boldsymbol{r}_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\beta=\frac{1}{2}\ln\left(\frac{\alpha_{12}}{\alpha_{23}}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter in the explicit solution 
+\begin_inset Formula $\delta y^{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\gamma=\frac{2\beta}{3\sqrt{3}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter in the explicit solution 
+\begin_inset Formula $\delta y^{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $F_{i}\left(\delta y,R\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Perturbation system governing peak positions.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $F_{i}\left(\delta y,0\right)=0$
+\end_inset
+
+ characterizes limiting configurations
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Notation - Reduced System and Perturbations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Kernel and Projections
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="2">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Symbol
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Omega$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kernel of 
+\begin_inset Formula $D_{\delta y}F_{i}\left(\delta y^{0},0\right)$
+\end_inset
+
+;
+ contains 
+\begin_inset Formula $\left\{ \left(v,v,v\right):v\in\mathbb{R}^{2}\right\} $
+\end_inset
+
+ (translations)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Omega^{\perp}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Orthogonal complement:
+ perturbations expressible as 
+\begin_inset Formula $z_{i}=\sum_{k\in N_{i}}c_{ki}\left(y_{k}-y_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P_{\perp}F$
+\end_inset
+
+,
+ 
+\begin_inset Formula $P_{\parallel}F$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Projections of 
+\begin_inset Formula $F$
+\end_inset
+
+ perpendicular and parallel to the kernel 
+\begin_inset Formula $\Omega$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P_{w}F\left(\delta y,R\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Projection along 
+\begin_inset Formula $w\in\Omega$
+\end_inset
+
+:
+ 
+\begin_inset Formula $P_{w}F=\sum_{i}\left\langle w_{i},F_{i}\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Gamma$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Joint kernel:
+ 
+\begin_inset Formula $\Gamma=\ker\left(D_{\delta y}P_{\perp}F\oplus D_{\delta y}P_{\parallel}F\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P_{\delta w}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Linear operator acting on perturbations 
+\begin_inset Formula $\delta w_{i}$
+\end_inset
+
+:
+ 
+\begin_inset Formula $P_{\delta w}=H_{V}\delta w_{i}-\sum_{k\in N_{i}}\alpha_{ki}\left(0\right)\left(\delta w_{k}-\delta w_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $w_{\text{rot}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Generator of the rotational kernel direction
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Notation - Kernel and Projections
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Rotations and Equivariance
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Symbol
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Rotation angle;
+ orientation of triangular configuration relative to eigenvector basis
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $R\left(\theta\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2D rotation matrix:
+ 
+\begin_inset Formula $\begin{pmatrix}\cos\theta & -\sin\theta\\
+\sin\theta & \cos\theta
+\end{pmatrix}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $R^{-1}\left(\theta\right)=R\left(-\theta\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Inverse rotation matrix:
+ 
+\begin_inset Formula $\begin{pmatrix}\cos\theta & \sin\theta\\
+-\sin\theta & \cos\theta
+\end{pmatrix}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $R_{\omega}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Rotation by angle 
+\begin_inset Formula $\omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+Used in equivariance condition 
+\begin_inset Formula $F_{i}\left(R_{\omega}\delta y,R\right)=R_{\omega}F_{i}\left(\delta y,R\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y_{i}'=R^{-1}\left(\theta\right)y_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bump positions in the rotated (canonical) frame
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Notation - Rotations and Equivariance
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Admissibility Functions
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Symbol
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\nu\left(\mu\right)=\frac{\mu+1}{2|\mu-1|}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Auxiliary function for admissibility.
+\end_layout
+
+\begin_layout Plain Layout
+Determines critical angle
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\varphi\left(\mu\right)=\arccos\left(\nu\left(\mu\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Critical angle function:
+ 
+\begin_inset Formula $\varphi=\frac{\pi}{3}$
+\end_inset
+
+ when 
+\begin_inset Formula $\nu\leq\frac{1}{2}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\varphi=0$
+\end_inset
+
+ when 
+\begin_inset Formula $\nu\geq1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left(\mu,\theta\right)-$
+\end_inset
+
+space
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter space for rotational equilateral configurations
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Notation - Admissibility Functions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Inner Products and Norms
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Symbol
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\langle \cdot,\cdot\right\rangle $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Standard Euclidean inner product in 
+\begin_inset Formula $\mathbb{R}^{n}$
+\end_inset
+
+ or 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ inner product (context-dependent)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left|\cdot\right|$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Euclidean norm in 
+\begin_inset Formula $\mathbb{R}^{n}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\Vert \cdot\right\Vert _{H^{1}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sobolev 
+\begin_inset Formula $H^{1}$
+\end_inset
+
+ norm:
+ 
+\begin_inset Formula $\left\Vert u\right\Vert _{H^{1}}^{2}=\left\Vert \nabla u\right\Vert _{L^{2}}^{2}+\left\Vert u\right\Vert _{L^{2}}^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\Vert \cdot\right\Vert _{L^{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Standard 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ norm
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\perp$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Orthogonality (with respect to 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ or Euclidean inner product)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Notation - Inner Products and Norms
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Linearization Operators
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Symbol
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $D_{\delta y}F_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fréchet derivative of 
+\begin_inset Formula $F_{i}$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\delta y$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $D_{\delta y}F_{i}\left(\delta y^{0},0\right)\left[w\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Linearization at 
+\begin_inset Formula $\left(\delta y^{0},0\right)$
+\end_inset
+
+ applied to direction 
+\begin_inset Formula $w$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $L_{+}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Linearized operator at the Lyapunov-Schmidt level.
+ Kernel generated by translational invariance
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $D_{\psi}F\left(\psi_{E},E\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Linearization of the full PDE at a solution 
+\begin_inset Formula $\psi_{E}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Notation - Linearization Operators
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintAll"
+bibfiles "Research"
+options "plain"
+encoding "default"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
