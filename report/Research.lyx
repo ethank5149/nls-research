@@ -601,7 +601,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_7_methodology_flowchart.png
-	width 100page%
+	width 100line%
 
 \end_inset
 
