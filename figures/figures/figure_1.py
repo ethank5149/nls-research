@@ -5,6 +5,7 @@ import matplotlib.patches as mpatches
 from matplotlib.lines import Line2D
 from matplotlib.patches import FancyBboxPatch
 from matplotlib.colors import ListedColormap
+from config import OUTPUT_DIR
 
 warnings.filterwarnings("ignore")
 plt.rcParams.update(
@@ -233,8 +234,8 @@ def create():
     )
 
     fig.tight_layout()
-    fig.savefig(f"figures/output/figure_1_admissibility_binding.pdf")
-    fig.savefig(f"figures/output/figure_1_admissibility_binding.png")
+    fig.savefig(OUTPUT_DIR / "figure_1_admissibility_binding.pdf")
+    fig.savefig(OUTPUT_DIR / "figure_1_admissibility_binding.png")
     plt.close(fig)
     print("Done!")
 

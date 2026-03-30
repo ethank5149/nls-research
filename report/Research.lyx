@@ -596,12 +596,12 @@ placement H
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /mnt/ssd1/NextCloud/Documents/School/Research/figures/output/figure_7_methodology_flowchart.png
-	height 100pheight%
+	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_7_methodology_flowchart.png
+	width 100page%
 
 \end_inset
 
@@ -819,7 +819,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /mnt/ssd1/NextCloud/Documents/School/Research/figures/output/figure_5_concentration_vs_peaks.png
+	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_5_concentration_vs_peaks.png
 	width 100line%
 
 \end_inset
@@ -1112,7 +1112,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /mnt/ssd1/NextCloud/Documents/School/Research/figures/output/figure_6_interaction_decay.png
+	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_6_interaction_decay.png
 	width 100line%
 
 \end_inset
@@ -1201,7 +1201,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /mnt/ssd1/NextCloud/Documents/School/Research/figures/output/figure_2_peak_configurations.png
+	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_2_peak_configurations.png
 	width 100line%
 
 \end_inset
@@ -1751,7 +1751,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /mnt/ssd1/NextCloud/Documents/School/Research/figures/output/figure_3_alpha_vs_theta_vs_mu.png
+	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_3_alpha_vs_theta_vs_mu.png
 	width 100line%
 
 \end_inset
@@ -2150,13 +2150,13 @@ placement H
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /mnt/ssd1/NextCloud/Documents/School/Research/figures/output/figure_1_admissibility_binding.png
+	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_1_admissibility_binding.png
 	darkModeSensitive
-	width 50line%
+	width 75line%
 
 \end_inset
 

@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from matplotlib.patches import FancyBboxPatch
+from config import OUTPUT_DIR
 
 
 warnings.filterwarnings("ignore")
@@ -191,8 +192,8 @@ def create():
     )
 
     fig.tight_layout()
-    fig.savefig(f"figures/output/figure_3_alpha_vs_theta_vs_mu.pdf")
-    fig.savefig(f"figures/output/figure_3_alpha_vs_theta_vs_mu.png")
+    fig.savefig(OUTPUT_DIR / "figure_3_alpha_vs_theta_vs_mu.pdf")
+    fig.savefig(OUTPUT_DIR / "figure_3_alpha_vs_theta_vs_mu.png")
     plt.close(fig)
     print("Done!")
 

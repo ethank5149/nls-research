@@ -2,6 +2,7 @@ import warnings
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch
+from config import OUTPUT_DIR
 
 
 warnings.filterwarnings("ignore")
@@ -163,8 +164,8 @@ def create():
         fontsize=10,
     )
 
-    fig.savefig(f"figures/output/figure_4_profile_decomposition.pdf")
-    fig.savefig(f"figures/output/figure_4_profile_decomposition.png")
+    fig.savefig(OUTPUT_DIR / "figure_4_profile_decomposition.pdf")
+    fig.savefig(OUTPUT_DIR / "figure_4_profile_decomposition.png")
     plt.close(fig)
     print("Done!")
 

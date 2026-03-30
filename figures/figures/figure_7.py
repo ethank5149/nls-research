@@ -3,88 +3,131 @@ Figure 7 — Analytical Pipeline: PDE → Multi-Peak Ground States
 Compact two-column layout for inclusion in extarticle report.
 Spacing-normalized version: uniform sp=1.12 grid throughout both columns.
 """
+
 import warnings
 import matplotlib
-matplotlib.use('Agg')
+
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch
+from config import OUTPUT_DIR
 
-warnings.filterwarnings('ignore')
+warnings.filterwarnings("ignore")
 
-plt.rcParams.update({
-    'font.family': 'serif',
-    'font.serif': ['Computer Modern Roman', 'DejaVu Serif'],
-    'mathtext.fontset': 'cm',
-    'font.size': 7.5,
-    'figure.dpi': 300,
-    'savefig.dpi': 300,
-    'savefig.bbox': 'tight',
-})
+plt.rcParams.update(
+    {
+        "font.family": "serif",
+        "font.serif": ["Computer Modern Roman", "DejaVu Serif"],
+        "mathtext.fontset": "cm",
+        "font.size": 7.5,
+        "figure.dpi": 300,
+        "savefig.dpi": 300,
+        "savefig.bbox": "tight",
+    }
+)
 
-C_BLUE_FG  = '#2c5f8a';  C_BLUE_BG  = '#dce8f2'
-C_GRAY_FG  = '#4a4a4a';  C_GRAY_BG  = '#edeceb'
-C_GREEN_FG = '#2a6b4a';  C_GREEN_BG = '#d6ead6'
-C_RED_FG   = '#9b2d2d';  C_RED_BG   = '#f5e0e0'
-C_OPEN_FG  = '#7a6520';  C_OPEN_BG  = '#faf3dc'
-C_ARROW    = '#3d3d3d'
-C_HDR_R    = '#7b3333'
+C_BLUE_FG = "#2c5f8a"
+C_BLUE_BG = "#dce8f2"
+C_GRAY_FG = "#4a4a4a"
+C_GRAY_BG = "#edeceb"
+C_GREEN_FG = "#2a6b4a"
+C_GREEN_BG = "#d6ead6"
+C_RED_FG = "#9b2d2d"
+C_RED_BG = "#f5e0e0"
+C_OPEN_FG = "#7a6520"
+C_OPEN_BG = "#faf3dc"
+C_ARROW = "#3d3d3d"
+C_HDR_R = "#7b3333"
 
 
-def box(ax, x, y, w, h, text, fc, ec, fs=7, bold=False, lw=1.2, ls='-'):
+def box(ax, x, y, w, h, text, fc, ec, fs=7, bold=False, lw=1.2, ls="-"):
     b = FancyBboxPatch(
-        (x - w/2, y - h/2), w, h,
+        (x - w / 2, y - h / 2),
+        w,
+        h,
         boxstyle="round,pad=0.08",
-        facecolor=fc, edgecolor=ec, lw=lw, linestyle=ls,
+        facecolor=fc,
+        edgecolor=ec,
+        lw=lw,
+        linestyle=ls,
     )
     ax.add_patch(b)
-    ax.text(x, y, text, ha='center', va='center', fontsize=fs,
-            fontweight='bold' if bold else 'normal',
-            multialignment='center', color='#1a1a1a', linespacing=1.25)
+    ax.text(
+        x,
+        y,
+        text,
+        ha="center",
+        va="center",
+        fontsize=fs,
+        fontweight="bold" if bold else "normal",
+        multialignment="center",
+        color="#1a1a1a",
+        linespacing=1.25,
+    )
 
 
-def arr(ax, x1, y1, x2, y2, color=C_ARROW, lw=1.0, ls='-'):
-    ax.annotate('', xy=(x2, y2), xytext=(x1, y1),
-                arrowprops=dict(arrowstyle='->', color=color, lw=lw,
-                                linestyle=ls, shrinkA=1, shrinkB=1))
+def arr(ax, x1, y1, x2, y2, color=C_ARROW, lw=1.0, ls="-"):
+    ax.annotate(
+        "",
+        xy=(x2, y2),
+        xytext=(x1, y1),
+        arrowprops=dict(
+            arrowstyle="->", color=color, lw=lw, linestyle=ls, shrinkA=1, shrinkB=1
+        ),
+    )
 
 
 def col_header(ax, x, y, w, text, color):
     rect = FancyBboxPatch(
-        (x - w/2, y - 0.22), w, 0.44,
+        (x - w / 2, y - 0.22),
+        w,
+        0.44,
         boxstyle="round,pad=0.06",
-        facecolor=color, edgecolor=color, lw=1.5, alpha=0.90,
+        facecolor=color,
+        edgecolor=color,
+        lw=1.5,
+        alpha=0.90,
     )
     ax.add_patch(rect)
-    ax.text(x, y, text, ha='center', va='center',
-            fontsize=7.5, fontweight='bold', color='white')
+    ax.text(
+        x,
+        y,
+        text,
+        ha="center",
+        va="center",
+        fontsize=7.5,
+        fontweight="bold",
+        color="white",
+    )
 
 
 def create():
-    print("Creating Figure 7 – Methodology Flowchart...", end=' ', flush=True)
+    print("Creating Figure 7 – Methodology Flowchart...", end=" ", flush=True)
 
     fig, ax = plt.subplots(figsize=(6.5, 6.5))
     ax.set_xlim(-0.2, 12.2)
-    ax.axis('off')
-    ax.set_aspect('equal')
+    ax.axis("off")
+    ax.set_aspect("equal")
 
-    Lx  = 2.75;   Rx  = 9.25
-    Bw  = 4.6
-    sp  = 1.12          # uniform step — both columns use this exclusively
-    bh  = 0.62          # standard box height
-    bhL = 0.74          # tall box height  (3-line content)
-    tag_h = 0.32        # narrow tag/badge height
-    pad = 0.18          # border padding
+    Lx = 2.75
+    Rx = 9.25
+    Bw = 4.6
+    sp = 1.12  # uniform step — both columns use this exclusively
+    bh = 0.62  # standard box height
+    bhL = 0.74  # tall box height  (3-line content)
+    tag_h = 0.32  # narrow tag/badge height
+    pad = 0.18  # border padding
 
     Y_top = 17.0
 
-    col_header(ax, Lx, Y_top, Bw + 0.2, 'Kirr\u2013Natarajan (2018)', C_BLUE_FG)
-    col_header(ax, Rx, Y_top, Bw + 0.2, 'Kirr\u2013Knox (2026)',       C_HDR_R)
+    col_header(ax, Lx, Y_top, Bw + 0.2, "Kirr\u2013Natarajan (2018)", C_BLUE_FG)
+    col_header(ax, Rx, Y_top, Bw + 0.2, "Kirr\u2013Knox (2026)", C_HDR_R)
 
     # ─── helper: step down and draw arrow from previous box bottom ──────────
     # prev_h is the height of the box we're leaving; next_h is the box we arrive at
     def step(ax, cx, Y_prev, prev_h, next_h):
         Y_new = Y_prev - sp
-        arr(ax, cx, Y_prev - prev_h/2, cx, Y_new + next_h/2)
+        arr(ax, cx, Y_prev - prev_h / 2, cx, Y_new + next_h / 2)
         return Y_new
 
     # ═══════════════ LEFT COLUMN ════════════════════════════════════════════
@@ -92,75 +135,164 @@ def create():
     #   1 PDE (bh)  2 Rescaling (bh)  3 Conc-Comp (bh)  4 Lyap-Schm (bh)
     #   5 Reduced (bhL)  6 Thm 4.3 (bhL)  7 Resolved tag (tag_h)  8 Open (bhL)
 
-    Y = Y_top - sp * 0.71           # first box center  (same as original Y_top - 0.80)
+    Y = Y_top - sp * 0.71  # first box center  (same as original Y_top - 0.80)
 
-    box(ax, Lx, Y, Bw, bh,
-        r'$(-\Delta + V + E)\psi + \sigma|\psi|^{2p}\psi = 0$'
-        '\nFull PDE on ' r'$\mathbb{R}^n$',
-        C_BLUE_BG, C_BLUE_FG, fs=6.8, bold=True)
-
-    Y = step(ax, Lx, Y, bh, bh)
-    box(ax, Lx, Y, Bw, bh,
-        r'Rescaling:  $u_E = E^{-1/(2p)}\psi_E(E^{-1/2}\cdot)$'
-        '\n' r'$\|u_E\|_{H^1}$ bounded;  $R = E^{-1/2}\to 0$',
-        C_GRAY_BG, C_GRAY_FG, fs=6.3)
-
-    Y = step(ax, Lx, Y, bh, bh)
-    box(ax, Lx, Y, Bw, bh,
-        'Conc.-Compactness (Lions)'
-        '\n' r'$u_E \approx \sum_{i=1}^{M} u_R(\cdot - z_i) + h_R$',
-        C_GRAY_BG, C_GRAY_FG, fs=6.3)
+    box(
+        ax,
+        Lx,
+        Y,
+        Bw,
+        bh,
+        r"$(-\Delta + V + E)\psi + \sigma|\psi|^{2p}\psi = 0$"
+        "\nFull PDE on "
+        r"$\mathbb{R}^n$",
+        C_BLUE_BG,
+        C_BLUE_FG,
+        fs=6.8,
+        bold=True,
+    )
 
     Y = step(ax, Lx, Y, bh, bh)
-    box(ax, Lx, Y, Bw, bh,
-        'Lyapunov\u2013Schmidt (Lemma 2)'
-        '\n' r'$P_\perp F = 0 \Rightarrow h_R = h_R(z_1,\ldots,z_M,R)$',
-        C_GRAY_BG, C_GRAY_FG, fs=6.3)
+    box(
+        ax,
+        Lx,
+        Y,
+        Bw,
+        bh,
+        r"Rescaling:  $u_E = E^{-1/(2p)}\psi_E(E^{-1/2}\cdot)$"
+        "\n"
+        r"$\|u_E\|_{H^1}$ bounded;  $R = E^{-1/2}\to 0$",
+        C_GRAY_BG,
+        C_GRAY_FG,
+        fs=6.3,
+    )
+
+    Y = step(ax, Lx, Y, bh, bh)
+    box(
+        ax,
+        Lx,
+        Y,
+        Bw,
+        bh,
+        "Conc.-Compactness (Lions)"
+        "\n"
+        r"$u_E \approx \sum_{i=1}^{M} u_R(\cdot - z_i) + h_R$",
+        C_GRAY_BG,
+        C_GRAY_FG,
+        fs=6.3,
+    )
+
+    Y = step(ax, Lx, Y, bh, bh)
+    box(
+        ax,
+        Lx,
+        Y,
+        Bw,
+        bh,
+        "Lyapunov\u2013Schmidt (Lemma 2)"
+        "\n"
+        r"$P_\perp F = 0 \Rightarrow h_R = h_R(z_1,\ldots,z_M,R)$",
+        C_GRAY_BG,
+        C_GRAY_FG,
+        fs=6.3,
+    )
 
     Y = step(ax, Lx, Y, bh, bhL)
-    box(ax, Lx, Y, Bw, bhL,
-        'Reduced System'
-        '\n' r'$H_V y_i = \sum_{k \in N_i} \alpha_{ki}\,\chi(y_k - y_i)$'
-        '\n' r'peaks $\in$ unstable manifold of $H_V$',
-        C_GREEN_BG, C_GREEN_FG, fs=6.3, bold=True)
+    box(
+        ax,
+        Lx,
+        Y,
+        Bw,
+        bhL,
+        "Reduced System"
+        "\n"
+        r"$H_V y_i = \sum_{k \in N_i} \alpha_{ki}\,\chi(y_k - y_i)$"
+        "\n"
+        r"peaks $\in$ unstable manifold of $H_V$",
+        C_GREEN_BG,
+        C_GREEN_FG,
+        fs=6.3,
+        bold=True,
+    )
 
     Y = step(ax, Lx, Y, bhL, bhL)
-    box(ax, Lx, Y, Bw, bhL,
-        'Thm 4.3: one profile per critical point'
-        '\n' r'$\|U_E - \sum \mu_i u_\infty(\cdot - x_i\sqrt{E})\|_{H^2} < \varepsilon$'
-        '\nExistence + uniqueness + stability',
-        C_GREEN_BG, C_GREEN_FG, fs=6.3)
+    box(
+        ax,
+        Lx,
+        Y,
+        Bw,
+        bhL,
+        "Thm 4.3: one profile per critical point"
+        "\n"
+        r"$\|U_E - \sum \mu_i u_\infty(\cdot - x_i\sqrt{E})\|_{H^2} < \varepsilon$"
+        "\nExistence + uniqueness + stability",
+        C_GREEN_BG,
+        C_GREEN_FG,
+        fs=6.3,
+    )
 
     Y = step(ax, Lx, Y, bhL, tag_h)
-    box(ax, Lx, Y, Bw * 0.78, tag_h,
-        'Resolved for distinct critical points',
-        C_GREEN_BG, '#1a5632', fs=6.0, bold=True)
+    box(
+        ax,
+        Lx,
+        Y,
+        Bw * 0.78,
+        tag_h,
+        "Resolved for distinct critical points",
+        C_GREEN_BG,
+        "#1a5632",
+        fs=6.0,
+        bold=True,
+    )
 
     Y = step(ax, Lx, Y, tag_h, bhL)
-    box(ax, Lx, Y, Bw, bhL,
-        'Open Problem (K-N Remark 4.1):'
-        '\n' r'Multiple profiles $\to$ same critical point'
-        '\n' r'along eigenvectors with $\lambda_j < 0$',
-        C_RED_BG, C_RED_FG, fs=6.3, bold=True, lw=1.6)
+    box(
+        ax,
+        Lx,
+        Y,
+        Bw,
+        bhL,
+        "Open Problem (K-N Remark 4.1):"
+        "\n"
+        r"Multiple profiles $\to$ same critical point"
+        "\n"
+        r"along eigenvectors with $\lambda_j < 0$",
+        C_RED_BG,
+        C_RED_FG,
+        fs=6.3,
+        bold=True,
+        lw=1.6,
+    )
 
     Y_open = Y
-    yb_L = Y_open - bhL/2 - 0.10
+    yb_L = Y_open - bhL / 2 - 0.10
     yt_col = Y_top - 0.48
 
     left_rect = FancyBboxPatch(
-        (Lx - Bw/2 - pad, yb_L), Bw + 2*pad, yt_col - yb_L,
+        (Lx - Bw / 2 - pad, yb_L),
+        Bw + 2 * pad,
+        yt_col - yb_L,
         boxstyle="round,pad=0.10",
-        facecolor='none', edgecolor=C_BLUE_FG, lw=0.7, alpha=0.22,
+        facecolor="none",
+        edgecolor=C_BLUE_FG,
+        lw=0.7,
+        alpha=0.22,
     )
     ax.add_patch(left_rect)
 
     # ═══════════════ BRIDGE ═════════════════════════════════════════════════
-    Y_H = Y_top - sp * 0.71       # top of right column (same as left)
-    mid_x = (Lx + Bw/2 + Rx - Bw/2) / 2
+    Y_H = Y_top - sp * 0.71  # top of right column (same as left)
+    mid_x = (Lx + Bw / 2 + Rx - Bw / 2) / 2
     mid_y = (Y_open + Y_H) / 2
-    arr(ax, Lx + Bw/2 + 0.08, Y_open + 0.05,
-        Rx - Bw/2 - 0.08, Y_H - 0.05,
-        color=C_RED_FG, lw=1.5)
+    arr(
+        ax,
+        Lx + Bw / 2 + 0.08,
+        Y_open + 0.05,
+        Rx - Bw / 2 - 0.08,
+        Y_H - 0.05,
+        color=C_RED_FG,
+        lw=1.5,
+    )
     # ax.text(mid_x + 0.1, mid_y + 0.15, 'this work', ha='center', va='bottom', fontsize=5.5, fontstyle='italic', color=C_RED_FG)
 
     # ═══════════════ RIGHT COLUMN ═══════════════════════════════════════════
@@ -171,106 +303,209 @@ def create():
 
     Y = Y_H
 
-    box(ax, Rx, Y, Bw, bh,
-        r'Classify Limiting Configs ($R = 0$)'
-        '\nCollinear | Isosceles | Equilateral | Rot. ' r'$\theta$',
-        C_GRAY_BG, C_GRAY_FG, fs=6.3)
+    box(
+        ax,
+        Rx,
+        Y,
+        Bw,
+        bh,
+        r"Classify Limiting Configs ($R = 0$)"
+        "\nCollinear | Isosceles | Equilateral | Rot. "
+        r"$\theta$",
+        C_GRAY_BG,
+        C_GRAY_FG,
+        fs=6.3,
+    )
 
     Y = step(ax, Rx, Y, bh, bh)
-    box(ax, Rx, Y, Bw, bh,
-        r'Admissibility:  $\alpha_{ki} \geq 0$'
-        '\n' r'$\frac{1}{3} \leq \mu \leq 3$: all $\theta$;  restricted otherwise',
-        C_GREEN_BG, C_GREEN_FG, fs=6.3)
+    box(
+        ax,
+        Rx,
+        Y,
+        Bw,
+        bh,
+        r"Admissibility:  $\alpha_{ki} \geq 0$"
+        "\n"
+        r"$\frac{1}{3} \leq \mu \leq 3$: all $\theta$;  restricted otherwise",
+        C_GREEN_BG,
+        C_GREEN_FG,
+        fs=6.3,
+    )
 
     Y = step(ax, Rx, Y, bh, bh)
-    box(ax, Rx, Y, Bw, bh,
-        r'Perturbation System:  $F_i(\delta y, R) = 0$'
-        '\n' r'Extended to $R = 0$ by continuity',
-        C_BLUE_BG, C_BLUE_FG, fs=6.3)
+    box(
+        ax,
+        Rx,
+        Y,
+        Bw,
+        bh,
+        r"Perturbation System:  $F_i(\delta y, R) = 0$"
+        "\n"
+        r"Extended to $R = 0$ by continuity",
+        C_BLUE_BG,
+        C_BLUE_FG,
+        fs=6.3,
+    )
 
     Y = step(ax, Rx, Y, bh, bhL)
-    box(ax, Rx, Y, Bw, bhL,
-        r'Explicit Solution at $R=0$ (Claim 3)'
-        '\n' r'$\delta y_1^0=-\gamma\mathbf{r}_2$,  '
-        r'$\delta y_{2,3}^0=\mp\beta\mathbf{r}_1+\frac{\gamma}{2}\mathbf{r}_2$',
-        C_BLUE_BG, C_BLUE_FG, fs=6.3)
+    box(
+        ax,
+        Rx,
+        Y,
+        Bw,
+        bhL,
+        r"Explicit Solution at $R=0$ (Claim 3)"
+        "\n"
+        r"$\delta y_1^0=-\gamma\mathbf{r}_2$,  "
+        r"$\delta y_{2,3}^0=\mp\beta\mathbf{r}_1+\frac{\gamma}{2}\mathbf{r}_2$",
+        C_BLUE_BG,
+        C_BLUE_FG,
+        fs=6.3,
+    )
 
     Y = step(ax, Rx, Y, bhL, bhL)
-    box(ax, Rx, Y, Bw, bhL,
-        'Kernel Obstruction (Claim 4)'
-        '\n' r'$\Omega = \ker(D_{\delta y}F_i) \supseteq \{(v,v,v):v \in \mathbb{R}^2\}$'
-        '\nIFT blocked by translational invariance',
-        C_RED_BG, C_RED_FG, fs=6.3, bold=True, lw=1.6)
+    box(
+        ax,
+        Rx,
+        Y,
+        Bw,
+        bhL,
+        "Kernel Obstruction (Claim 4)"
+        "\n"
+        r"$\Omega = \ker(D_{\delta y}F_i) \supseteq \{(v,v,v):v \in \mathbb{R}^2\}$"
+        "\nIFT blocked by translational invariance",
+        C_RED_BG,
+        C_RED_FG,
+        fs=6.3,
+        bold=True,
+        lw=1.6,
+    )
 
     Y = step(ax, Rx, Y, bhL, bhL)
-    box(ax, Rx, Y, Bw, bhL,
-        r'Decompose:  $\mathbb{R}^{2\times 3}=\Omega\oplus\Omega^\perp$'
-        '\n' r'$P_\perp F$: IFT on $\Omega^\perp$  |  '
-        r'$P_w F$: via equivariance',
-        C_GRAY_BG, C_GRAY_FG, fs=6.0)
+    box(
+        ax,
+        Rx,
+        Y,
+        Bw,
+        bhL,
+        r"Decompose:  $\mathbb{R}^{2\times 3}=\Omega\oplus\Omega^\perp$"
+        "\n"
+        r"$P_\perp F$: IFT on $\Omega^\perp$  |  "
+        r"$P_w F$: via equivariance",
+        C_GRAY_BG,
+        C_GRAY_FG,
+        fs=6.0,
+    )
 
     Y = step(ax, Rx, Y, bhL, bh)
-    box(ax, Rx, Y, Bw, bh,
-        r'Gauge-Fixing:  $\delta y_1 \perp \mathbf{r}_1$  ;  '
-        r'$(\delta y_3-\delta y_2) \parallel \mathbf{r}_1$',
-        C_GRAY_BG, C_GRAY_FG, fs=6.3)
+    box(
+        ax,
+        Rx,
+        Y,
+        Bw,
+        bh,
+        r"Gauge-Fixing:  $\delta y_1 \perp \mathbf{r}_1$  ;  "
+        r"$(\delta y_3-\delta y_2) \parallel \mathbf{r}_1$",
+        C_GRAY_BG,
+        C_GRAY_FG,
+        fs=6.3,
+    )
 
     Y = step(ax, Rx, Y, bh, bhL)
-    box(ax, Rx, Y, Bw, bhL,
-        'IFT + Lift via Lemma 2'
-        '\n' r'$\Rightarrow$ exact multi-peak $\psi_E$ for $E \gg 1$'
-        '\n(contingent on completing open steps)',
-        C_GREEN_BG, '#1a5632', fs=6.3, bold=True, lw=1.3, ls='--')
+    box(
+        ax,
+        Rx,
+        Y,
+        Bw,
+        bhL,
+        "IFT + Lift via Lemma 2"
+        "\n"
+        r"$\Rightarrow$ exact multi-peak $\psi_E$ for $E \gg 1$"
+        "\n(contingent on completing open steps)",
+        C_GREEN_BG,
+        "#1a5632",
+        fs=6.3,
+        bold=True,
+        lw=1.3,
+        ls="--",
+    )
     Y_Q = Y
 
-    yb_R = Y_Q - bhL/2 - 0.10
+    yb_R = Y_Q - bhL / 2 - 0.10
     right_rect = FancyBboxPatch(
-        (Rx - Bw/2 - pad, yb_R), Bw + 2*pad, yt_col - yb_R,
+        (Rx - Bw / 2 - pad, yb_R),
+        Bw + 2 * pad,
+        yt_col - yb_R,
         boxstyle="round,pad=0.10",
-        facecolor='none', edgecolor=C_HDR_R, lw=0.7, alpha=0.22,
+        facecolor="none",
+        edgecolor=C_HDR_R,
+        lw=0.7,
+        alpha=0.22,
     )
     ax.add_patch(right_rect)
 
     # Open-steps callout (below right border, same as original)
     Y_os = yb_R - 0.42
-    box(ax, Rx, Y_os, Bw, 0.55,
-        'Remaining:  (1) Verify equivariance of ' r'$F_i$'
-        '\n(2) Invertibility on gauge-fixed subspace'
-        '\n(3) Extend to continuous ' r'$\theta$',
-        C_OPEN_BG, C_OPEN_FG, fs=5.8, lw=1.0, ls='--')
-    arr(ax, Rx, Y_os + 0.28, Rx, yb_R,
-        color=C_OPEN_FG, lw=0.7, ls='--')
+    box(
+        ax,
+        Rx,
+        Y_os,
+        Bw,
+        0.55,
+        "Remaining:  (1) Verify equivariance of "
+        r"$F_i$"
+        "\n(2) Invertibility on gauge-fixed subspace"
+        "\n(3) Extend to continuous "
+        r"$\theta$",
+        C_OPEN_BG,
+        C_OPEN_FG,
+        fs=5.8,
+        lw=1.0,
+        ls="--",
+    )
+    arr(ax, Rx, Y_os + 0.28, Rx, yb_R, color=C_OPEN_FG, lw=0.7, ls="--")
 
     # ═══════════════ LEGEND ═════════════════════════════════════════════════
     # Anchor to fixed position just below the lower of the two column bottoms
     # ═══════════════ LEGEND ═════════════════════════════════════════════════
-    leg_y = min(yb_L, Y_os - 0.55/2) - 0.52
-    dx = 2.20          # was 3.05 — tighter spacing between items
-    total_w = 3 * dx + 0.60   # 3 gaps + width of last item
-    leg_x = (12.0 - total_w) / 2   # center the group across the 12-unit axis
-    for i, (fc, ec, label) in enumerate([
-        (C_BLUE_BG, C_BLUE_FG, 'Systems'),
-        (C_GRAY_BG, C_GRAY_FG, 'Analysis'),
-        (C_GREEN_BG, C_GREEN_FG, 'Results'),
-        (C_RED_BG, C_RED_FG, 'Open'),
-    ]):
+    leg_y = min(yb_L, Y_os - 0.55 / 2) - 0.52
+    dx = 2.20  # was 3.05 — tighter spacing between items
+    total_w = 3 * dx + 0.60  # 3 gaps + width of last item
+    leg_x = (12.0 - total_w) / 2  # center the group across the 12-unit axis
+    for i, (fc, ec, label) in enumerate(
+        [
+            (C_BLUE_BG, C_BLUE_FG, "Systems"),
+            (C_GRAY_BG, C_GRAY_FG, "Analysis"),
+            (C_GREEN_BG, C_GREEN_FG, "Results"),
+            (C_RED_BG, C_RED_FG, "Open"),
+        ]
+    ):
         xx = leg_x + i * dx
         swatch = FancyBboxPatch(
-            (xx, leg_y - 0.09), 0.26, 0.18,
+            (xx, leg_y - 0.09),
+            0.26,
+            0.18,
             boxstyle="round,pad=0.03",
-            facecolor=fc, edgecolor=ec, lw=0.7,
+            facecolor=fc,
+            edgecolor=ec,
+            lw=0.7,
         )
         ax.add_patch(swatch)
-        ax.text(xx + 0.34, leg_y, label, fontsize=5.5,
-                va='center', color='#333')
+        ax.text(xx + 0.34, leg_y, label, fontsize=5.5, va="center", color="#333")
 
     ax.set_ylim(leg_y - 0.40, 17.5)
     fig.subplots_adjust(left=0.01, right=0.99, top=0.99, bottom=0.01)
 
-    fig.savefig('figures/output/figure_7_methodology_flowchart.pdf',
-                bbox_inches='tight', pad_inches=0.05)
-    fig.savefig('figures/output/figure_7_methodology_flowchart.png',
-                bbox_inches='tight', pad_inches=0.05)
+    fig.savefig(
+        OUTPUT_DIR / "figure_7_methodology_flowchart.pdf",
+        bbox_inches="tight",
+        pad_inches=0.05,
+    )
+    fig.savefig(
+        OUTPUT_DIR / "figure_7_methodology_flowchart.png",
+        bbox_inches="tight",
+        pad_inches=0.05,
+    )
     plt.close(fig)
     print("Done!")
 

@@ -2,6 +2,7 @@ import warnings
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch
+from config import OUTPUT_DIR
 
 
 warnings.filterwarnings("ignore")
@@ -226,8 +227,8 @@ def create():
         bbox=dict(boxstyle="round,pad=0.3", facecolor="#fef9e7", edgecolor="#ddd"),
     )
 
-    fig.savefig(f"figures/output/figure_5_concentration_vs_peaks.pdf")
-    fig.savefig(f"figures/output/figure_5_concentration_vs_peaks.png")
+    fig.savefig(OUTPUT_DIR / "figure_5_concentration_vs_peaks.pdf")
+    fig.savefig(OUTPUT_DIR / "figure_5_concentration_vs_peaks.png")
     plt.close(fig)
     print("Done!")
 

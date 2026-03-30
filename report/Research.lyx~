@@ -172,7 +172,7 @@ We study multi-peak ground-state solutions of the nonlinear Schrödinger equatio
 \end_inset
 
 .
- Through the rescaling and concentration-compactness framework of Kirr and Natarajan (2018)
+ Through the rescaling and concentration compactness framework of Kirr and Natarajan (2018)
 \begin_inset CommandInset citation
 LatexCommand cite
 key "KirrNatarajan2018"
@@ -423,7 +423,7 @@ nolink "false"
 
 ,
  compactness is lost and standard variational methods fail.
- The concentration-compactness principle introduced by Lions
+ The concentration compactness principle introduced by Lions
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lions1984a"
@@ -455,7 +455,7 @@ literal "false"
 \end_inset
 
 .
- Concentration-compactness then yields a multi-peak decomposition:
+ Concentration compactness then yields a multi-peak decomposition:
  
 \begin_inset Formula $u_{E}$
 \end_inset
@@ -564,7 +564,7 @@ Our contribution is a systematic analysis of this reduced system,
 \end_inset
 
 .
- The analysis extends the concentration-compactness and Lyapunov-Schmidt framework by handling the nontrivial kernel of the linearized reduced system.
+ The analysis extends the concentration compactness and Lyapunov-Schmidt framework by handling the nontrivial kernel of the linearized reduced system.
  By decomposing the system into parallel and perpendicular components,
  exploiting rotational symmetry,
  and constructing solutions for finite scaling parameters 
@@ -596,7 +596,7 @@ placement H
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -2913,7 +2913,7 @@ We have carried out a complete finite-dimensional study of multi-peak ground sta
 
 \end_inset
 
-using the rescaling and concentration-compactness framework.
+using the rescaling and concentration compactness framework.
  The existence question is reduced to an algebraic system
 \begin_inset Formula 
 \[
@@ -3033,7 +3033,7 @@ Gauge-fixing constraints (removing the rotational freedom) yield a projected sys
 \end_deeper
 \begin_layout Standard
 The work stops at a precise point:
- the concentration-compactness decomposition,
+ the concentration compactness decomposition,
  the Lyapunov-Schmidt reduction,
  and the link back to the full PDE are already established.
  What remains is to finish the finite-dimensional step by:

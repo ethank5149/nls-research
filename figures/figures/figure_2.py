@@ -2,6 +2,7 @@ import warnings
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch
+from config import OUTPUT_DIR
 
 warnings.filterwarnings("ignore")
 plt.rcParams.update(
@@ -349,8 +350,8 @@ def create():
     fig.delaxes(fig.add_subplot(236))
 
     fig.tight_layout(h_pad=1.5, w_pad=1.0)
-    fig.savefig(f"figures/output/figure_2_peak_configurations.pdf")
-    fig.savefig(f"figures/output/figure_2_peak_configurations.png")
+    fig.savefig(OUTPUT_DIR / "figure_2_peak_configurations.pdf")
+    fig.savefig(OUTPUT_DIR / "figure_2_peak_configurations.png")
     plt.close(fig)
     print("Done!")
 

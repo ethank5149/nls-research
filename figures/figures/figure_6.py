@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from matplotlib.patches import FancyBboxPatch
+from config import OUTPUT_DIR
 
 
 warnings.filterwarnings("ignore")
@@ -161,8 +162,8 @@ def create():
     ax2.legend(fontsize=8, loc="center right")
 
     fig.tight_layout()
-    fig.savefig(f"figures/output/figure_6_interaction_decay.pdf")
-    fig.savefig(f"figures/output/figure_6_interaction_decay.png")
+    fig.savefig(OUTPUT_DIR / "figure_6_interaction_decay.pdf")
+    fig.savefig(OUTPUT_DIR / "figure_6_interaction_decay.png")
     plt.close(fig)
     print("Done!")
 
