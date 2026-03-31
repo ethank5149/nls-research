@@ -1,6 +1,6 @@
 # Multi-Peak Ground States of the Nonlinear Schrödinger Equation in Optical Fibers
 
-Mathematical research on multi-peak ground-state solutions of the stationary NLS with external potential in the high-energy regime ($E \to \infty$), using concentration compactness and Lyapunov-Schmidt reduction. The work establishes existence, uniqueness, and stability of ground-state configurations with multiple concentration peaks at a nondegenerate minimum of the potential $V$.
+Mathematical research on multi-peak ground-state solutions of the stationary NLS with external potential in the high-energy regime ($E \to \infty$), using concentration compactness and Lyapunov-Schmidt reduction. The work establishes existence, uniqueness, and stability of ground-state configurations with multiple concentration peaks at a non-degenerate critical point of the potential $V$.
 
 ## Authors
 
@@ -19,9 +19,9 @@ as $E \to \infty$. The work is motivated by optical fiber physics — the envelo
 
 1. **Rescaling.** Define $u_E(x) = E^{-1/(2p)} \psi_E(E^{-1/2} x)$, which transforms the problem into a family of equations parametrized by $R = E^{-1/2} \to 0$.
 
-2. **Concentration compactness decomposition.** Each solution decomposes into $M$ well-separated profiles $Q$ centered at distinct points $z_1, \ldots, z_M$, with a remainder $h_R$:
+2. **Concentration compactness decomposition.** Each solution decomposes into $M$ well-separated profiles $u_R$ centered at distinct points $z_1(R), \ldots, z_M(R)$, with a remainder $h_R$:
 
-$$\psi_E(x) = \sum_{i=1}^{M} u_E(x - Rz_i) + h_R(x)$$
+$$u_E(x) = \sum_{i=1}^{M} u_R(x - z_i(R)) + h_R(x)$$
 
 3. **Lyapunov-Schmidt reduction.** Projection onto the kernel of the linearized operator yields a finite-dimensional algebraic system for peak positions:
 
@@ -46,8 +46,8 @@ The algebraic system admits four qualitatively distinct configuration types:
 
 | $\mu$-range | $\theta$-range | Configuration |
 |---|---|---|
-| $\mu = 1$ | All $\theta \in [0, 2\pi)$ | Fully admissible (isotropic potential) |
-| $1/3 \leq \mu \leq 3$ | All $\theta \in [0, 2\pi)$ | All orientations admissible |
+| $\mu = 1$ | All $\theta \in [0, \pi/2]$ | Fully admissible (isotropic potential) |
+| $1/3 \leq \mu \leq 3$ | All $\theta \in [0, \pi/2]$ | All orientations admissible |
 | $\mu < 1/3$ or $\mu > 3$ | Restricted angular windows | Partially admissible |
 
 The admissible $(\mu, \theta)$ phase diagram is shown in Figure 1.
@@ -84,8 +84,6 @@ nls-research/
 │   ├── Research.tex                     # Exported LaTeX source
 │   ├── Research.pdf                     # Compiled PDF
 │   ├── Research.bib                     # BibTeX bibliography (14 entries)
-│   ├── Research-old.tex                 # Previous version (LaTeX)
-│   ├── Research-old.pdf                 # Previous version (PDF)
 │   └── archive/                         # Archived drafts
 │       ├── Research_Draft_2.3.lyx
 │       ├── Research_Draft_2.3.tex
@@ -114,12 +112,11 @@ nls-research/
 │   ├── Research-Triangle-Pertubation.pdf # Compiled perturbation notebook
 │   └── triangle_soln.md                 # Markdown derivation of admissibility
 │
-├── eddy-notes/                          # Research notes (gitignored)
-│   ├── ResearchNotes.md
-│   ├── Peak interaction project.pdf
-│   └── Multipeaks at same critical point.pdf
-│
-├── reference/                           # Reference papers (14 PDFs)
+├── dev/                                  # Development and verification
+│   └── audit/                            # Mathematica audit notebooks
+│       ├── NLS_Mathematical_Audit.nb
+│       ├── NLS_Mathematical_Audit.m
+│       └── NLS_Mathematical_Audit (2).nb
 │
 ├── requirements.txt                     # Python dependencies
 ├── .forgejo/workflows/                  # CI: GitHub mirror
