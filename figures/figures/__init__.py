@@ -1,4 +1,0 @@
-from . import figure_1, figure_2, figure_3, figure_4, figure_5, figure_6, figure_7
-
-
-figures = [figure_1, figure_2, figure_3, figure_4, figure_5, figure_6, figure_7]

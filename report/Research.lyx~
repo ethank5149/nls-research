@@ -654,7 +654,7 @@ placement htbp
 alignment document
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -671,7 +671,7 @@ centering
 
  
 \begin_inset Graphics
-	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_7_methodology_flowchart.png
+	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_7_methodology_flowchart.png
 	width 100line%
 
 \end_inset
@@ -680,12 +680,19 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Analytical pipeline from the PDE to multi-peak ground states.
- The left column shows the framework established in Kirr–Natarajan
-\begin_inset space ~
+Complete analytical pipeline from the full PDE to the existence of multi-peak ground states.
+ The top portion (marked 
+\begin_inset Quotes eld
 \end_inset
 
+Kirr-Natarajan,
+ 2018
+\begin_inset Quotes erd
+\end_inset
 
+) covers the rescaling,
+ concentration-compactness decomposition,
+ and Lyapunov-Schmidt reduction established in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "KirrNatarajan2018"
@@ -693,19 +700,24 @@ literal "false"
 
 \end_inset
 
-:
- rescaling,
- concentration compactness decomposition,
- and Lyapunov–Schmidt reduction to a finite-dimensional algebraic system.
- The right column shows the contributions of the present work:
- classification of admissible peak geometries,
- construction of the perturbation system 
-\begin_inset Formula $F_{i}(\delta y,R)=0$
+.
+ The lower portion (marked 
+\begin_inset Quotes eld
+\end_inset
+
+This work
+\begin_inset Quotes erd
+\end_inset
+
+) covers the classification of admissible configurations,
+ the perturbation system 
+\begin_inset Formula $F_{i}\left(\delta y,R\right)=0$
 \end_inset
 
 ,
- kernel analysis,
- and gauge-fixing strategy.
+ the kernel obstruction and its resolution via gauge-fixing,
+ and the application of the implicit function theorem on the constrained subspace.
+ The open step (verifying rotational equivariance and invertibility on the complement) is indicated at left.
 \end_layout
 
 \end_inset
@@ -1431,7 +1443,7 @@ placement htbp
 alignment document
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -1448,7 +1460,7 @@ centering
 
  
 \begin_inset Graphics
-	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_4_profile_decomposition.png
+	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_4_profile_decomposition.png
 	width 100line%
 
 \end_inset
@@ -1457,23 +1469,9 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Multi-peak profile decomposition.
- The rescaled solution 
-\begin_inset Formula $u_{E}$
-\end_inset
-
- (solid black) is approximated by a sum of well-separated profiles 
-\begin_inset Formula $u_{R}(\cdot-z_{i})$
-\end_inset
-
- (colored dashed),
- each solving the translation-invariant NLS
-\begin_inset space ~
-\end_inset
-
-
+Illustration of the concentration-compactness decomposition (
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "eq:profile"
 plural "false"
 caps "false"
@@ -1482,20 +1480,71 @@ nolink "false"
 
 \end_inset
 
-.
- The remainder 
-\begin_inset Formula $h_{R}$
+) for 
+\begin_inset Formula $M=3$
 \end_inset
 
- (gray shaded) satisfies 
-\begin_inset Formula $\norm{h_{R}}_{H^{1}}\to0$
+ peaks.
+\series bold
+
+\begin_inset Newline newline
+\end_inset
+
+Top:
+
+\series default
+ The rescaled solution 
+\begin_inset Formula $u_{E}\left(x\right)$
+\end_inset
+
+ (solid blue) is approximated by a sum of well-separated profiles 
+\begin_inset Formula $u_{R}\left(x-z_{i}\right)$
+\end_inset
+
+ (dashed),
+ each solving 
+\begin_inset Formula $\left(-\Delta+R^{2}V\left(x_{0}\right)+1\right)u+\sigma\left|u\right|^{2p}u=0$
+\end_inset
+
+.
+ The minimum inter-peak distance 
+\begin_inset Formula $m_{R}=\min_{i\neq j}\left|z_{i}-z_{j}\right|$
+\end_inset
+
+ is indicated.
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Bottom:
+
+\series default
+ The remainder 
+\begin_inset Formula $h_{R}\left(x\right)$
+\end_inset
+
+,
+ which satisfies 
+\begin_inset Formula $\left\Vert h_{R}\right\Vert _{H^{1}}\to0$
 \end_inset
 
  as 
-\begin_inset Formula $R\to0$
+\begin_inset Formula $E\to\infty$
 \end_inset
 
-.
+ and is recovered uniquely from the peak positions via the implicit function theorem (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:LS2"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
 \end_layout
 
 \end_inset
@@ -1670,7 +1719,7 @@ placement htbp
 alignment document
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -1687,7 +1736,7 @@ centering
 
  
 \begin_inset Graphics
-	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_5_concentration_vs_peaks.png
+	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_5_concentration_vs_peaks.png
 	width 100line%
 
 \end_inset
@@ -1696,39 +1745,70 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Concentration of rescaled peak positions.
- As 
-\begin_inset Formula $E\to\infty$
-\end_inset
-
- (equivalently 
-\begin_inset Formula $R\to0$
-\end_inset
-
-),
- the rescaled positions 
-\begin_inset Formula $Rz_{i}$
-\end_inset
-
- converge to the critical point 
-\begin_inset Formula $x_{0}$
-\end_inset
-
- of 
-\begin_inset Formula $V$
+Evolution of peak structure with increasing energy 
+\begin_inset Formula $E$
 \end_inset
 
 .
- The peak positions 
-\begin_inset Formula $z_{i}$
+\begin_inset Newline newline
 \end_inset
 
- in the blown-up coordinates separate to distances 
-\begin_inset Formula $\sim m_{R}$
+
+\series bold
+Left panels:
+
+\series default
+ Profiles 
+\begin_inset Formula $\left|\psi_{E}\left(x\right)\right|$
+\end_inset
+
+ at 
+\begin_inset Formula $E=1,4,16,64$
 \end_inset
 
 ,
- the minimum inter-peak spacing.
+ showing the transition from a single peak to well-separated multi-peak structure.
+ Red triangles mark the peak centers 
+\begin_inset Formula $z_{i}\left(E\right)$
+\end_inset
+
+;
+ purple squares mark the rescaled positions 
+\begin_inset Formula $Rz_{i}$
+\end_inset
+
+ converging toward the critical point 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ (green dashed line).
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Right:
+
+\series default
+ Convergence of 
+\begin_inset Formula $Rz_{i}\left(E\right)=E^{-\frac{1}{2}}z_{i}\left(E\right)$
+\end_inset
+
+ to 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ as 
+\begin_inset Formula $E\to\infty$
+\end_inset
+
+,
+ illustrating Claim 2.
+ The convergence rate is 
+\begin_inset Formula $\left|Rz_{i}-x_{0}\right|=O\left(E^{-\frac{1}{2}}\right)$
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -2134,7 +2214,7 @@ placement htbp
 alignment document
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -2151,7 +2231,7 @@ centering
 
  
 \begin_inset Graphics
-	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_6_interaction_decay.png
+	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_6_interaction_decay.png
 	width 100line%
 
 \end_inset
@@ -2160,28 +2240,68 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Left:
- Exponential decay of the interaction functional 
-\begin_inset Formula $Q_{R}(d)=-\sigma\langle\partial_{\hat{d}}\,u_{R}(\cdot-d),\,u_{R}^{2p+1}\rangle$
+
+\series bold
+(a)
+\series default
+ Semilog plot of the interaction functional 
+\begin_inset Formula $Q_{R}\left(d\right)=-\sigma\left\langle \partial_{\hat{d}}u_{R}\left(\cdot-d\right),u_{R}^{2p+1}\right\rangle $
 \end_inset
 
  as a function of inter-peak distance 
 \begin_inset Formula $d$
 \end_inset
 
-,
- illustrating that only nearest-neighbor interactions contribute at leading order.
- Right:
+ for several values of 
+\begin_inset Formula $R=E^{-\frac{1}{2}}$
+\end_inset
+
+.
+ The exponential decay 
+\begin_inset Formula $Q_{R}\left(d\right)\sim C\cdot d^{-\frac{n-1}{2}}\cdot e^{-d\sqrt{1+R^{2}V\left(x_{0}\right)}}$
+\end_inset
+
+ ensures that only nearest-neighbor interactions contribute at leading order,
+ justifying the truncation of the sum to 
+\begin_inset Formula $k\in N_{i}$
+\end_inset
+
+.
+\series bold
+
+\begin_inset Newline newline
+\end_inset
+
+(b)
+\series default
  The interaction coefficient 
-\begin_inset Formula $\alpha_{ki}=Q_{R}(|z_{k}-z_{i}|)/Q_{R}(m_{R})$
+\begin_inset Formula $\alpha_{ki}=\frac{Q_{R}\left(\left|z_{k}-z_{i}\right|\right)}{Q_{R}\left(m_{R}\right)}$
 \end_inset
 
- as a function of the relative distance 
-\begin_inset Formula $|z_{k}-z_{i}|/m_{R}$
+ as a function of the distance ratio 
+\begin_inset Formula $\frac{\left|z_{k}-z_{i}\right|}{m_{R}}$
+\end_inset
+
+.
+ By construction 
+\begin_inset Formula $0\leq\alpha_{ki}\leq1$
 \end_inset
 
 ,
- normalized to unity at the minimum distance.
+ with 
+\begin_inset Formula $\alpha_{ki}=1$
+\end_inset
+
+ for nearest neighbors (
+\begin_inset Formula $\left|z_{k}-z_{i}\right|=m_{R}$
+\end_inset
+
+) and 
+\begin_inset Formula $\alpha_{ki}\ll1$
+\end_inset
+
+ for next-nearest neighbors,
+ which are dropped from the reduced system.
 \end_layout
 
 \end_inset
@@ -2389,10 +2509,6 @@ not
 \end_inset
 
 
-\end_layout
-
-\begin_layout Proof
-
 \series bold
 Right side.
 
@@ -2527,7 +2643,7 @@ placement htbp
 alignment document
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -2544,7 +2660,7 @@ centering
 
  
 \begin_inset Graphics
-	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_2_peak_configurations.png
+	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_2_peak_configurations.png
 	width 100line%
 
 \end_inset
@@ -2553,14 +2669,10 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Representative peak configurations classified in Theorem
-\begin_inset space ~
-\end_inset
-
-
+Schematic representations of the admissible multi-peak configurations classified in Section 3 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "thm:classification"
+reference "sec:classification"
 plural "false"
 caps "false"
 noprefix "false"
@@ -2569,41 +2681,141 @@ nolink "false"
 \end_inset
 
 .
- From left to right:
- collinear arrangements with 
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+(a)
+\series default
+ Collinear arrangement with 
 \begin_inset Formula $M=2$
 \end_inset
 
- and 
-\begin_inset Formula $M=5$
+ peaks along the eigenvector 
+\begin_inset Formula $\boldsymbol{r}_{1}$
 \end_inset
 
- peaks along a single eigenvector;
- isosceles triangle (
-\begin_inset Formula $M=3$
-\end_inset
-
-) requiring 
-\begin_inset Formula $\lambda_{2}=3\lambda_{1}$
+ of 
+\begin_inset Formula $H_{V}$
 \end_inset
 
 ;
- equilateral triangle (
-\begin_inset Formula $M=3$
+ the reduced system yields 
+\begin_inset Formula $\alpha_{12}=-\lambda_{1}$
 \end_inset
 
-) requiring 
-\begin_inset Formula $|\lambda_{2}|/|\lambda_{1}|\geq3$
+.
+ 
+\series bold
+
+\begin_inset Newline newline
 \end_inset
 
-;
- and equilateral triangle with rotational degree of freedom 
-\begin_inset Formula $\theta$
+(b)
+\series default
+ Collinear arrangement with $M=5$ (odd) peaks;
+ the nearest-neighbor coupling structure 
+\begin_inset Formula $H_{V}(i\boldsymbol{r}_{1})=(\alpha_{i,i+1}+\alpha_{i,i-1})\boldsymbol{r}_{1}$
+\end_inset
+
+ is indicated.
+\series bold
+
+\begin_inset Newline newline
+\end_inset
+
+(c)
+\series default
+ Isosceles triangle (
+\begin_inset Formula $a>\frac{1}{2}$
 \end_inset
 
 ,
- with a schematic perturbation 
-\begin_inset Formula $\delta y$
+ 
+\begin_inset Formula $h<\frac{1}{\sqrt{3}}$
+\end_inset
+
+) in the plane spanned by 
+\begin_inset Formula $\boldsymbol{r}_{1},\boldsymbol{r}_{2}$
+\end_inset
+
+,
+ with 
+\begin_inset Formula $\alpha_{23}=0$
+\end_inset
+
+ (base edge decoupled) and the constraint 
+\begin_inset Formula $\lambda_{2}=3\lambda_{1}$
+\end_inset
+
+.
+\series bold
+
+\begin_inset Newline newline
+\end_inset
+
+(d)
+\series default
+ Equilateral triangle at 
+\begin_inset Formula $\theta=0$
+\end_inset
+
+ with explicit 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ values;
+ the admissibility condition 
+\begin_inset Formula $\alpha_{23}\geq0$
+\end_inset
+
+ is equivalent to 
+\begin_inset Formula $\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}\geq3$
+\end_inset
+
+.
+\series bold
+
+\begin_inset Newline newline
+\end_inset
+
+(e)
+\series default
+ The perturbation 
+\begin_inset Formula $\delta y^{0}$
+\end_inset
+
+ (Claim 3) at 
+\begin_inset Formula $R=0$
+\end_inset
+
+ for 
+\begin_inset Formula $\mu=4$
+\end_inset
+
+:
+ gray circles show the unperturbed positions 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+,
+ colored squares show the perturbed positions 
+\begin_inset Formula $y_{i}+\delta y_{i}^{0}$
+\end_inset
+
+,
+ with arrows indicating the displacement.
+ The parameters 
+\begin_inset Formula $\beta=\frac{1}{2}\ln\left(\frac{\alpha_{12}}{\alpha_{23}}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\gamma=\frac{2\beta}{3\sqrt{3}}$
+\end_inset
+
+ are derived from the requirement that 
+\begin_inset Formula $\tilde{\alpha}_{12}=\tilde{\alpha}_{13}=1$
 \end_inset
 
 .
@@ -3573,7 +3785,7 @@ placement htbp
 alignment document
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -3590,7 +3802,7 @@ centering
 
  
 \begin_inset Graphics
-	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_3_alpha_vs_theta_vs_mu.png
+	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_3_alpha_vs_theta_vs_mu.png
 	width 100line%
 
 \end_inset
@@ -3599,49 +3811,97 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Interaction coefficients 
-\begin_inset Formula $\alpha_{12}(\theta)$
+Dependence of the interaction coefficients 
+\begin_inset Formula $\alpha_{12}\left(\theta\right)$
 \end_inset
 
 ,
  
-\begin_inset Formula $\alpha_{13}(\theta)$
+\begin_inset Formula $\alpha_{13}\left(\theta\right)$
 \end_inset
 
 ,
- 
-\begin_inset Formula $\alpha_{23}(\theta)$
+ and 
+\begin_inset Formula $\alpha_{23}\left(\theta\right)$
 \end_inset
 
- as functions of the rotation angle 
-\begin_inset Formula $\theta\in[0,\pi/2]$
-\end_inset
-
- for four representative eigenvalue ratios 
-\begin_inset Formula $\mu\in\{0.3,\,1.0,\,3.0,\,6.0\}$
-\end_inset
-
-.
- A configuration is admissible at angle 
+ on the rotation angle 
 \begin_inset Formula $\theta$
 \end_inset
 
- if and only if all three coefficients are non-negative.
+ for six values of the eigenvalue ratio 
+\begin_inset Formula $\mu\in\left\{ \frac{1}{5},\frac{1}{2},1,2,3,5\right\} $
+\end_inset
+
+.
+ Each coefficient is computed from the expressions derived in Example 3.4 (equations for 
+\begin_inset Formula $\alpha_{12}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\alpha_{13}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\alpha_{23}$
+\end_inset
+
+ as functions of 
+\begin_inset Formula $\lambda_{1}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\lambda_{2}$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $\theta$
+\end_inset
+
+).
+ The shaded region 
+\begin_inset Formula $\alpha<0$
+\end_inset
+
+ is forbidden by the physical requirement that inter-peak interactions be attractive for the focusing nonlinearity (
+\begin_inset Formula $\sigma>0$
+\end_inset
+
+).
+ Physical interpretation:
+ 
+\begin_inset Formula $\alpha_{12}$
+\end_inset
+
+ quantifies the apex-to-base-left coupling,
+ 
+\begin_inset Formula $\alpha_{13}$
+\end_inset
+
+ the apex-to-base-right coupling,
+ and 
+\begin_inset Formula $\alpha_{23}$
+\end_inset
+
+ the base edge coupling.
  For 
 \begin_inset Formula $\mu=1$
 \end_inset
 
- (isotropic potential) all orientations are admissible.
- For 
-\begin_inset Formula $\mu=6>3$
-\end_inset
-
-,
- the admissible 
+ (isotropic Hessian) all three coefficients coincide at every 
 \begin_inset Formula $\theta$
 \end_inset
 
--range breaks into two disjoint intervals.
+;
+ as 
+\begin_inset Formula $\mu$
+\end_inset
+
+ departs from unity the curves separate and angular windows of inadmissibility open.
 \end_layout
 
 \end_inset
@@ -4002,7 +4262,7 @@ placement htbp
 alignment document
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -4019,7 +4279,7 @@ centering
 
  
 \begin_inset Graphics
-	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_1_admissibility_binding.png
+	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_1_admissibility_binding.png
 	width 75line%
 
 \end_inset
@@ -4028,40 +4288,96 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Admissible region (shaded) in the 
-\begin_inset Formula $(\mu,\theta)$
+Admissibility analysis for the equilateral triangle configuration with rotational degree of freedom 
+\begin_inset Formula $\theta$
 \end_inset
 
- parameter space for equilateral triangle configurations with rotational degree of freedom.
- The dashed vertical lines mark 
-\begin_inset Formula $\mu=1/3$
+ in the 
+\begin_inset Formula $\left(\mu,\theta\right)$
+\end_inset
+
+ parameter space,
+ where 
+\begin_inset Formula $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$
+\end_inset
+
+ is the Hessian eigenvalue ratio.
+ 
+\series bold
+(a)
+\series default
+ Admissibility region (blue) defined by 
+\begin_inset Formula $\alpha_{12},\alpha_{13},\alpha_{23}\geq0$
+\end_inset
+
+.
+ Dashed red lines mark the critical values 
+\begin_inset Formula $\mu=\frac{1}{3}$
 \end_inset
 
  and 
 \begin_inset Formula $\mu=3$
 \end_inset
 
+ between which all orientations 
+\begin_inset Formula $\theta\in\left[0,\pi/2\right]$
+\end_inset
+
+ are admissible.
+ The point 
+\begin_inset Formula $\left(\mu,\theta\right)=\left(3,0\right)$
+\end_inset
+
+ corresponds to the unrotated equilateral triangle requiring 
+\begin_inset Formula $\lambda_{2}=3\lambda_{1}$
+\end_inset
+
+.
+ 
+\series bold
+(b)
+\series default
+ Identification of the tightest (binding) constraint at each admissible point:
+ red indicates 
+\begin_inset Formula $\alpha_{12}$
+\end_inset
+
+ is smallest,
+ orange indicates 
+\begin_inset Formula $\alpha_{13}$
+\end_inset
+
 ,
- the boundaries of the fully admissible strip.
- For 
+ gray indicates 
+\begin_inset Formula $\alpha_{23}$
+\end_inset
+
+.
+ The boundary between colored regions corresponds to the loci where two constraints are simultaneously active.
+ 
+\series bold
+(c)
+\series default
+ Admissible 
+\begin_inset Formula $\theta$
+\end_inset
+
+-ranges as a function of 
 \begin_inset Formula $\mu$
 \end_inset
 
- outside this strip,
- the constraint 
-\begin_inset Formula $\alpha_{ki}\geq0$
-\end_inset
-
- excludes angular windows whose width is controlled by 
-\begin_inset Formula $\varphi(\mu)=\arccos(\nu(\mu))$
+,
+ constructed by sweeping the three nonnegativity constraints over 
+\begin_inset Formula $\mu\in\left(0,6\right)$
 \end_inset
 
 .
- The boundary curves correspond to the binding constraints where exactly one 
-\begin_inset Formula $\alpha_{ki}=0$
+ Blue shading indicates admissible 
+\begin_inset Formula $\left(\mu,\theta\right)$
 \end_inset
 
-.
+ pairs;
+ this panel provides a complementary view of the same feasibility region shown in (a).
 \end_layout
 
 \end_inset

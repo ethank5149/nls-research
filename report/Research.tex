@@ -239,14 +239,17 @@ overall analytical pipeline, building on~\cite{KirrNatarajan2018}
 and extended in the present work, is illustrated in Figure~\ref{fig:pipeline}.
 
 \begin{figure}[htbp]
-\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_7_methodology_flowchart}
-\caption{Analytical pipeline from the PDE to multi-peak ground states. The
-left column shows the framework established in Kirr--Natarajan~\cite{KirrNatarajan2018}:
-rescaling, concentration compactness decomposition, and Lyapunov--Schmidt
-reduction to a finite-dimensional algebraic system. The right column
-shows the contributions of the present work: classification of admissible
-peak geometries, construction of the perturbation system $F_{i}(\delta y,R)=0$,
-kernel analysis, and gauge-fixing strategy.}
+\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_7_methodology_flowchart}
+\caption{Complete analytical pipeline from the full PDE to the existence of
+multi-peak ground states. The top portion (marked ``Kirr-Natarajan,
+2018'') covers the rescaling, concentration-compactness decomposition,
+and Lyapunov-Schmidt reduction established in \cite{KirrNatarajan2018}.
+The lower portion (marked ``This work'') covers the classification
+of admissible configurations, the perturbation system $F_{i}\left(\delta y,R\right)=0$,
+the kernel obstruction and its resolution via gauge-fixing, and the
+application of the implicit function theorem on the constrained subspace.
+The open step (verifying rotational equivariance and invertibility
+on the complement) is indicated at left.}
 \label{fig:pipeline}
 \end{figure}
 
@@ -341,12 +344,18 @@ equation
 \end{equation}
 
 \begin{figure}[htbp]
-\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_4_profile_decomposition}
-\caption{Multi-peak profile decomposition. The rescaled solution $u_{E}$ (solid
-black) is approximated by a sum of well-separated profiles $u_{R}(\cdot-z_{i})$
-(colored dashed), each solving the translation-invariant NLS~(\ref{eq:profile}).
-The remainder $h_{R}$ (gray shaded) satisfies $\norm{h_{R}}_{H^{1}}\to0$
-as $R\to0$.}
+\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_4_profile_decomposition}
+\caption{Illustration of the concentration-compactness decomposition (\ref{eq:profile})
+for $M=3$ peaks.\textbf{}\protect \\
+\textbf{Top:} The rescaled solution $u_{E}\left(x\right)$ (solid
+blue) is approximated by a sum of well-separated profiles $u_{R}\left(x-z_{i}\right)$
+(dashed), each solving $\left(-\Delta+R^{2}V\left(x_{0}\right)+1\right)u+\sigma\left|u\right|^{2p}u=0$.
+The minimum inter-peak distance $m_{R}=\min_{i\protect\neq j}\left|z_{i}-z_{j}\right|$
+is indicated.\protect \\
+\textbf{Bottom:} The remainder $h_{R}\left(x\right)$, which satisfies
+$\left\Vert h_{R}\right\Vert _{H^{1}}\to0$ as $E\to\infty$ and is
+recovered uniquely from the peak positions via the implicit function
+theorem (\ref{lem:LS2}).}
 \label{fig:decomposition}
 \end{figure}
 
@@ -362,12 +371,16 @@ points of $V$ as $R\to0$.
 $Rz_{i}(R)\to x_{0}$ for each $i=1,\ldots,M$ as $R\to0$. 
 \end{prop}
 \begin{figure}[htbp]
-\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_5_concentration_vs_peaks}
-\caption{Concentration of rescaled peak positions. As $E\to\infty$ (equivalently
-$R\to0$), the rescaled positions $Rz_{i}$ converge to the critical
-point $x_{0}$ of $V$. The peak positions $z_{i}$ in the blown-up
-coordinates separate to distances $\sim m_{R}$, the minimum inter-peak
-spacing.}
+\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_5_concentration_vs_peaks}
+\caption{Evolution of peak structure with increasing energy $E$.\protect \\
+\textbf{Left panels:} Profiles $\left|\psi_{E}\left(x\right)\right|$
+at $E=1,4,16,64$, showing the transition from a single peak to well-separated
+multi-peak structure. Red triangles mark the peak centers $z_{i}\left(E\right)$;
+purple squares mark the rescaled positions $Rz_{i}$ converging toward
+the critical point $x_{0}$ (green dashed line).\protect \\
+\textbf{Right:} Convergence of $Rz_{i}\left(E\right)=E^{-\frac{1}{2}}z_{i}\left(E\right)$
+to $x_{0}$ as $E\to\infty$, illustrating Claim 2. The convergence
+rate is $\left|Rz_{i}-x_{0}\right|=O\left(E^{-\frac{1}{2}}\right)$.}
 \label{fig:concentration}
 \end{figure}
 
@@ -431,13 +444,17 @@ is \emph{not} equal to any individual $\alpha_{ki}$; rather, the
 force on peak $i$ from peak $k$ has magnitude $\alpha_{ki}\chi$. 
 \end{defn}
 \begin{figure}[htbp]
-\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_6_interaction_decay}
-\caption{Left: Exponential decay of the interaction functional $Q_{R}(d)=-\sigma\langle\partial_{\hat{d}}\,u_{R}(\cdot-d),\,u_{R}^{2p+1}\rangle$
-as a function of inter-peak distance $d$, illustrating that only
-nearest-neighbor interactions contribute at leading order. Right:
-The interaction coefficient $\alpha_{ki}=Q_{R}(|z_{k}-z_{i}|)/Q_{R}(m_{R})$
-as a function of the relative distance $|z_{k}-z_{i}|/m_{R}$, normalized
-to unity at the minimum distance.}
+\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_6_interaction_decay}
+\caption{\textbf{(a)} Semilog plot of the interaction functional $Q_{R}\left(d\right)=-\sigma\left\langle \partial_{\hat{d}}u_{R}\left(\cdot-d\right),u_{R}^{2p+1}\right\rangle $
+as a function of inter-peak distance $d$ for several values of $R=E^{-\frac{1}{2}}$.
+The exponential decay $Q_{R}\left(d\right)\sim C\cdot d^{-\frac{n-1}{2}}\cdot e^{-d\sqrt{1+R^{2}V\left(x_{0}\right)}}$
+ensures that only nearest-neighbor interactions contribute at leading
+order, justifying the truncation of the sum to $k\in N_{i}$.\textbf{}\protect \\
+\textbf{(b)} The interaction coefficient $\alpha_{ki}=\frac{Q_{R}\left(\left|z_{k}-z_{i}\right|\right)}{Q_{R}\left(m_{R}\right)}$
+as a function of the distance ratio $\frac{\left|z_{k}-z_{i}\right|}{m_{R}}$.
+By construction $0\protect\leq\alpha_{ki}\protect\leq1$, with $\alpha_{ki}=1$
+for nearest neighbors ($\left|z_{k}-z_{i}\right|=m_{R}$) and $\alpha_{ki}\ll1$
+for next-nearest neighbors, which are dropped from the reduced system.}
 \label{fig:interaction}
 \end{figure}
 
@@ -506,14 +523,27 @@ for peaks lying in the plane spanned by two eigenvectors $\boldsymbol{r}_{1},\bo
 of $\HV(x_{0})$, with eigenvalues $\lambda_{1},\lambda_{2}<0$.
 
 \begin{figure}[htbp]
-\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_2_peak_configurations}
-\caption{Representative peak configurations classified in Theorem~\ref{thm:classification}.
-From left to right: collinear arrangements with $M=2$ and $M=5$
-peaks along a single eigenvector; isosceles triangle ($M=3$) requiring
-$\lambda_{2}=3\lambda_{1}$; equilateral triangle ($M=3$) requiring
-$|\lambda_{2}|/|\lambda_{1}|\protect\geq3$; and equilateral triangle
-with rotational degree of freedom $\theta$, with a schematic perturbation
-$\delta y$.}
+\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_2_peak_configurations}
+\caption{Schematic representations of the admissible multi-peak configurations
+classified in Section 3 \ref{sec:classification}.\protect \\
+\textbf{(a)} Collinear arrangement with $M=2$ peaks along the eigenvector
+$\boldsymbol{r}_{1}$ of $H_{V}$; the reduced system yields $\alpha_{12}=-\lambda_{1}$.
+\textbf{}\protect \\
+\textbf{(b)} Collinear arrangement with \$M=5\$ (odd) peaks; the nearest-neighbor
+coupling structure $H_{V}(i\boldsymbol{r}_{1})=(\alpha_{i,i+1}+\alpha_{i,i-1})\boldsymbol{r}_{1}$
+is indicated.\textbf{}\protect \\
+\textbf{(c)} Isosceles triangle ($a>\frac{1}{2}$, $h<\frac{1}{\sqrt{3}}$)
+in the plane spanned by $\boldsymbol{r}_{1},\boldsymbol{r}_{2}$,
+with $\alpha_{23}=0$ (base edge decoupled) and the constraint $\lambda_{2}=3\lambda_{1}$.\textbf{}\protect \\
+\textbf{(d)} Equilateral triangle at $\theta=0$ with explicit $\alpha$
+values; the admissibility condition $\alpha_{23}\protect\geq0$ is
+equivalent to $\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}\protect\geq3$.\textbf{}\protect \\
+\textbf{(e)} The perturbation $\delta y^{0}$ (Claim 3) at $R=0$
+for $\mu=4$: gray circles show the unperturbed positions $y_{i}$,
+colored squares show the perturbed positions $y_{i}+\delta y_{i}^{0}$,
+with arrows indicating the displacement. The parameters $\beta=\frac{1}{2}\ln\left(\frac{\alpha_{12}}{\alpha_{23}}\right)$
+and $\gamma=\frac{2\beta}{3\sqrt{3}}$ are derived from the requirement
+that $\tilde{\alpha}_{12}=\tilde{\alpha}_{13}=1$.}
 \label{fig:configurations}
 \end{figure}
 
@@ -656,14 +686,21 @@ for each vertex yields the $\theta$-dependent coefficients:
 \end{align}
 \end{proof}
 \begin{figure}[htbp]
-\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_3_alpha_vs_theta_vs_mu}
-\caption{Interaction coefficients $\alpha_{12}(\theta)$, $\alpha_{13}(\theta)$,
-$\alpha_{23}(\theta)$ as functions of the rotation angle $\theta\in[0,\pi/2]$
-for four representative eigenvalue ratios $\mu\in\{0.3,\,1.0,\,3.0,\,6.0\}$.
-A configuration is admissible at angle $\theta$ if and only if all
-three coefficients are non-negative. For $\mu=1$ (isotropic potential)
-all orientations are admissible. For $\mu=6>3$, the admissible $\theta$-range
-breaks into two disjoint intervals.}
+\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_3_alpha_vs_theta_vs_mu}
+\caption{Dependence of the interaction coefficients $\alpha_{12}\left(\theta\right)$,
+$\alpha_{13}\left(\theta\right)$, and $\alpha_{23}\left(\theta\right)$
+on the rotation angle $\theta$ for six values of the eigenvalue ratio
+$\mu\in\left\{ \frac{1}{5},\frac{1}{2},1,2,3,5\right\} $. Each coefficient
+is computed from the expressions derived in Example 3.4 (equations
+for $\alpha_{12}$, $\alpha_{13}$, $\alpha_{23}$ as functions of
+$\lambda_{1}$, $\lambda_{2}$, and $\theta$). The shaded region
+$\alpha<0$ is forbidden by the physical requirement that inter-peak
+interactions be attractive for the focusing nonlinearity ($\sigma>0$).
+Physical interpretation: $\alpha_{12}$ quantifies the apex-to-base-left
+coupling, $\alpha_{13}$ the apex-to-base-right coupling, and $\alpha_{23}$
+the base edge coupling. For $\mu=1$ (isotropic Hessian) all three
+coefficients coincide at every $\theta$; as $\mu$ departs from unity
+the curves separate and angular windows of inadmissibility open.}
 \label{fig:alpha-theta}
 \end{figure}
 
@@ -709,15 +746,26 @@ $0<\mu<\frac{1}{3}$ & $\bigl[0,\;\frac{\pi}{6}-\frac{\varphi(\mu)}{2}\bigr]\cup\
 \end{table}
 
 \begin{figure}[htbp]
-\centering \includegraphics[width=0.75\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_1_admissibility_binding}
-\caption{Admissible region (shaded) in the $(\mu,\theta)$ parameter space
-for equilateral triangle configurations with rotational degree of
-freedom. The dashed vertical lines mark $\mu=1/3$ and $\mu=3$, the
-boundaries of the fully admissible strip. For $\mu$ outside this
-strip, the constraint $\alpha_{ki}\protect\geq0$ excludes angular
-windows whose width is controlled by $\varphi(\mu)=\arccos(\nu(\mu))$.
-The boundary curves correspond to the binding constraints where exactly
-one $\alpha_{ki}=0$.}
+\centering \includegraphics[width=0.75\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_1_admissibility_binding}
+\caption{Admissibility analysis for the equilateral triangle configuration
+with rotational degree of freedom $\theta$ in the $\left(\mu,\theta\right)$
+parameter space, where $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$
+is the Hessian eigenvalue ratio.\textbf{}\protect \\
+\textbf{(a)} Admissibility region (blue) defined by $\alpha_{12},\alpha_{13},\alpha_{23}\protect\geq0$.
+Dashed red lines mark the critical values $\mu=\frac{1}{3}$ and $\mu=3$
+between which all orientations $\theta\in\left[0,\pi/2\right]$ are
+admissible. The point $\left(\mu,\theta\right)=\left(3,0\right)$
+corresponds to the unrotated equilateral triangle requiring $\lambda_{2}=3\lambda_{1}$.\protect \\
+\textbf{(b)} Identification of the tightest (binding) constraint at
+each admissible point: red indicates $\alpha_{12}$ is smallest, orange
+indicates $\alpha_{13}$, gray indicates $\alpha_{23}$. The boundary
+between colored regions corresponds to the loci where two constraints
+are simultaneously active.\protect \\
+\textbf{(c)} Admissible $\theta$-ranges as a function of $\mu$,
+constructed by sweeping the three nonnegativity constraints over $\mu\in\left(0,6\right)$.
+Blue shading indicates admissible $\left(\mu,\theta\right)$ pairs;
+this panel provides a complementary view of the same feasibility region
+shown in (a).}
 \label{fig:admissibility}
 \end{figure}
 
