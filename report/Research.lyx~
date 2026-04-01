@@ -329,9 +329,11 @@ Keywords:
 
 
 \series bold
-GRANT PLACEHOLDER
-\series default
- 
+MSC 2020:
+ 35Q55,
+ 35B40,
+ 35B32,
+ 78A60
 \end_layout
 
 \begin_layout Abstract
@@ -671,7 +673,7 @@ centering
 
  
 \begin_inset Graphics
-	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_7_methodology_flowchart.png
+	filename ../figures/figure_7_methodology_flowchart.png
 	width 100line%
 
 \end_inset
@@ -916,6 +918,25 @@ literal "false"
 \end_inset
 
  by providing the first complete geometric classification of multi-peak configurations and a systematic resolution strategy for the kernel obstruction in the reduced system.
+ Specifically,
+ we carry out the analysis identified as an open problem in Remark 4.1 of 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KirrNatarajan2018"
+literal "false"
+
+\end_inset
+
+,
+ which notes that 
+\begin_inset Quotes eld
+\end_inset
+
+multiple profiles approaching the same critical point along eigenvectors with negative eigenvalues
+\begin_inset Quotes erd
+\end_inset
+
+ requires a separate treatment from the distinct-critical-point case resolved in their Theorem 4.3
 \end_layout
 
 \begin_layout Section
@@ -1460,7 +1481,7 @@ centering
 
  
 \begin_inset Graphics
-	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_4_profile_decomposition.png
+	filename ../figures/figure_4_profile_decomposition.png
 	width 100line%
 
 \end_inset
@@ -1736,7 +1757,7 @@ centering
 
  
 \begin_inset Graphics
-	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_5_concentration_vs_peaks.png
+	filename ../figures/figure_5_concentration_vs_peaks.png
 	width 100line%
 
 \end_inset
@@ -2231,7 +2252,7 @@ centering
 
  
 \begin_inset Graphics
-	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_6_interaction_decay.png
+	filename ../figures/figure_6_interaction_decay.png
 	width 100line%
 
 \end_inset
@@ -2332,7 +2353,7 @@ The orthogonality condition from the Lyapunov–Schmidt projection yields,
 \end_inset
 
  with 
-\begin_inset Formula $y_{i}=\lim_{R\to0}s_{i}/(Rm_{R})$
+\begin_inset Formula $y_{i}=\lim_{R\to0}\frac{s_{i}}{Rm_{R}}$
 \end_inset
 
 :
@@ -2660,7 +2681,7 @@ centering
 
  
 \begin_inset Graphics
-	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_2_peak_configurations.png
+	filename ../figures/figure_2_peak_configurations.png
 	width 100line%
 
 \end_inset
@@ -3802,7 +3823,7 @@ centering
 
  
 \begin_inset Graphics
-	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_3_alpha_vs_theta_vs_mu.png
+	filename ../figures/figure_3_alpha_vs_theta_vs_mu.png
 	width 100line%
 
 \end_inset
@@ -4117,7 +4138,7 @@ Summary of admissible
 \end_inset
 
 -ranges as a function of 
-\begin_inset Formula $\mu=|\lambda_{2}|/|\lambda_{1}|$
+\begin_inset Formula $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$
 \end_inset
 
 .
@@ -4195,7 +4216,6 @@ name "tab:summary"
 \begin_inset Text
 
 \begin_layout Plain Layout
-[8pt] 
 \begin_inset Formula $\frac{1}{3}\leq\mu\leq3$
 \end_inset
 
@@ -4222,7 +4242,6 @@ name "tab:summary"
 \begin_inset Text
 
 \begin_layout Plain Layout
-[8pt] 
 \begin_inset Formula $\mu>3$
 \end_inset
 
@@ -4279,7 +4298,7 @@ centering
 
  
 \begin_inset Graphics
-	filename /run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_1_admissibility_binding.png
+	filename ../figures/figure_1_admissibility_binding.png
 	width 75line%
 
 \end_inset
@@ -4302,8 +4321,11 @@ Admissibility analysis for the equilateral triangle configuration with rotationa
 \end_inset
 
  is the Hessian eigenvalue ratio.
- 
 \series bold
+
+\begin_inset Newline newline
+\end_inset
+
 (a)
 \series default
  Admissibility region (blue) defined by 
@@ -4333,7 +4355,10 @@ Admissibility analysis for the equilateral triangle configuration with rotationa
 \end_inset
 
 .
- 
+\begin_inset Newline newline
+\end_inset
+
+
 \series bold
 (b)
 \series default
@@ -4354,7 +4379,10 @@ Admissibility analysis for the equilateral triangle configuration with rotationa
 
 .
  The boundary between colored regions corresponds to the loci where two constraints are simultaneously active.
- 
+\begin_inset Newline newline
+\end_inset
+
+
 \series bold
 (c)
 \series default
@@ -5039,17 +5067,6 @@ name "sec:gauge"
 
 \end_inset
 
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%% ==================================================================
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -5152,9 +5169,8 @@ At
  
 \begin_inset Formula 
 \begin{align}
-D_{\delta y}P_{\perp}F(\delta y^{0},0)[\delta w] & =P_{\perp}\sum_{k\in N_{i}}\ip{\delta w_{k}-\delta w_{i}}{y_{k}-y_{i}}\,\tilde{\alpha}_{ik}(0)\,\chi\,(y_{k}-y_{i}),\label{eq:DPperp}\\
-D_{\delta y}P_{w}F(\delta y^{0},0)[\delta w] & =\sum_{i}\Bigl[\ip{w_{i}}{\HV\delta w_{i}}+\sum_{k\in N_{i}}\tilde{\alpha}_{ki}(0)\bigl(\ip{w_{i}}{\delta y_{k}^{0}-\delta y_{i}^{0}}\ip{y_{k}-y_{i}}{\delta w_{k}-\delta w_{i}}\nonumber \\
- & \quad\qquad-\ip{w_{i}}{\delta w_{k}-\delta w_{i}}\bigr)\Bigr].\label{eq:DPpar}
+D_{\delta y}P_{\perp}F\left(\delta y^{0},0\right)\left[\delta w\right] & =P_{\perp}\sum_{k\in N_{i}}\left\langle \delta w_{k}-\delta w_{i},y_{k}-y_{i}\right\rangle \,\tilde{\alpha}_{ik}\left(0\right)\,\chi\,\left(y_{k}-y_{i}\right),\label{eq:DPperp}\\
+D_{\delta y}P_{w}F\left(\delta y^{0},0\right)\left[\delta w\right] & =\sum_{i}\left[\left\langle w_{i},\HV\delta w_{i}\right\rangle +\sum_{k\in N_{i}}\tilde{\alpha}_{ki}\left(0\right)\bigl(\left\langle w_{i},\delta y_{k}^{0}-\delta y_{i}^{0}\right\rangle \left\langle y_{k}-y_{i},\delta w_{k}-\delta w_{i}\right\rangle -\left\langle w_{i},\delta w_{k}-\delta w_{i}\right\rangle \bigr)\right].\label{eq:DPpar}
 \end{align}
 
 \end_inset
@@ -5932,24 +5948,15 @@ end{rmk}
 \end_layout
 
 \begin_layout Section
-Conclusion and Open Problems
+Conclusion,
+ Open Problems,
+ and Acknowledgements
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:conclusion"
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%% ==================================================================
-\end_layout
 
 \end_inset
 
@@ -6344,6 +6351,17 @@ nolink "false"
 .
 \end_layout
 
+\begin_layout Paragraph
+Acknowledgments
+\end_layout
+
+\begin_layout Standard
+The second author thanks Eduard Kirr for proposing this problem,
+ for many insightful discussions throughout the course of this research,
+ and for his academic guidance.
+ This work was partially supported by [DMS-XXXXXXX Placeholder etc.].
+\end_layout
+
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
@@ -6370,10 +6388,6 @@ name "app:notation"
 
 \end_layout
 
-\begin_layout Subsection
-Equation and Basic Parameters
-\end_layout
-
 \begin_layout Standard
 \align center
 \begin_inset Float table
@@ -6385,2322 +6399,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="2">
-<features booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt" varwidth="true">
-<column alignment="center" valignment="top" width="0pt">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Symbol
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Description
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\psi:\mathbb{R}^{n}\to\mathbb{C}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Solution of the nonlinear Schrödinger equation
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $V:\mathbb{R}^{n}\to\mathbb{R}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-External potential (encodes refractive index profile)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $E\in\mathbb{R}^{+}\cup\left\{ 0\right\} $
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Energy parameter (propagation constant in optics)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\sigma\in\mathbb{R}^{+}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nonlinearity coefficient (sign determines focusing/defocusing)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $p$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Nonlinear power exponent;
- 
-\begin_inset Formula $p=1$
-\end_inset
-
- corresponds to cubic (Kerr) nonlinearity
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $x_{0}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Non-degenerate critical point of 
-\begin_inset Formula $V$
-\end_inset
-
-,
- i.e.,
- 
-\begin_inset Formula $\nabla V\left(x_{0}\right)=0$
-\end_inset
-
- with 
-\begin_inset Formula $H_{V}\left(x_{0}\right)$
-\end_inset
-
- invertible
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Notation - Equation and Basic Parameters
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Scaling and Profile Functions
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float table
-placement H
-alignment center
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="2">
-<features booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt" varwidth="true">
-<column alignment="center" valignment="top" width="0pt">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Symbol
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Description
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $R=E^{-\frac{1}{2}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Scaling parameter;
- 
-\begin_inset Formula $R\to0$
-\end_inset
-
- as 
-\begin_inset Formula $E\to\infty$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $u_{E}\left(x\right)=E^{-\frac{1}{2p}}\psi_{E}\left(E^{-\frac{1}{2}}x\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Rescaled solution with 
-\begin_inset Formula $\left\Vert u_{E}\right\Vert _{H^{1}}$
-\end_inset
-
- uniformly bounded
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $u_{R}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Profile function solving 
-\begin_inset Formula $\left(-\Delta+R^{2}V\left(x_{0}\right)+1\right)u+\sigma\left|u\right|^{2p}u=0$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $M\in\mathbb{N}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Number of peaks in the multi-peak decomposition
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $z_{i}\left(R\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Position of the 
-\begin_inset Formula $i-$
-\end_inset
-
-th peak center in rescaled coordinates
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $h_{R}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Remainder term:
- 
-\begin_inset Formula $u_{E}=\sum_{i=1}^{M}u_{R}\left(\cdot-z_{i}\right)+h_{R}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Notation - Scaling and Profile Functions
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Hessian and Spectral Properties
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float table
-placement H
-alignment center
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt" varwidth="true">
-<column alignment="center" valignment="top" width="0pt">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Symbol
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Description
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $H_{V}=H_{V}\left(x_{0}\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Hessian matrix of 
-\begin_inset Formula $V$
-\end_inset
-
- at the critical point 
-\begin_inset Formula $x_{0}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\lambda_{i}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Eigenvalue of 
-\begin_inset Formula $H_{V}$
-\end_inset
-
-;
- assumed 
-\begin_inset Formula $\lambda_{i}<0$
-\end_inset
-
- for directions in which peaks spread
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\boldsymbol{r}_{i}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Unit eigenvector of 
-\begin_inset Formula $H_{V}$
-\end_inset
-
- associated with eigenvalue 
-\begin_inset Formula $\lambda_{i}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Eigenvalue ratio;
- key parameter for admissibility constraints
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $U$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Unstable manifold:
- 
-\begin_inset Formula $U=\text{span}\left\{ \boldsymbol{r}:H_{V}\boldsymbol{r}=\lambda\boldsymbol{r},\lambda<0\right\} $
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Notation - Hessian and Spectral Properties
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Bump Positions and Geometry
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float table
-placement H
-alignment center
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt" varwidth="true">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Symbol
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Description
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $s_{i}=Rz_{i}-x_{0}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Displacement of 
-\begin_inset Formula $i-$
-\end_inset
-
-th peak from critical point 
-\begin_inset Formula $x_{0}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $m_{R}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Minimum inter-peak distance:
- 
-\begin_inset Formula $m_{R}=\min_{i\neq j}\left|z_{i}\left(R\right)-z_{j}\left(R\right)\right|$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $y_{i}=\lim_{R\to0}\frac{s_{i}}{Rm_{R}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Limiting position vector of the 
-\begin_inset Formula $i-$
-\end_inset
-
-th peak;
- satisfies 
-\begin_inset Formula $\left|y_{k}-y_{i}\right|=1$
-\end_inset
-
- for nearest neighbors
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $N_{i}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Set of nearest neighbors of peak 
-\begin_inset Formula $i$
-\end_inset
-
-:
- 
-\begin_inset Formula $N_{i}=\left\{ k:\left|y_{k}-y_{i}\right|=1\right\} $
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $a,h$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Geometric parameters for triangular configurations:
- 
-\begin_inset Formula $a$
-\end_inset
-
- = half-base,
- 
-\begin_inset Formula $h$
-\end_inset
-
- = apex height
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Notation - Bump Positions and Geometry
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Interaction Functional and Coefficients
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float table
-placement H
-alignment center
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="2">
-<features booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt" varwidth="true">
-<column alignment="center" valignment="top" width="0pt">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Symbol
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Description
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $Q_{R}\left(z\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Interaction functional:
- 
-\begin_inset Formula $Q_{R}\left(z\right)=-\sigma\left\langle \partial_{\frac{z}{\left|z\right|}}u_{R}\left(\cdot-z\right),u_{R}^{2p+1}\right\rangle $
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\alpha_{ki}=\frac{Q_{R}\left(\left|z_{k}-z_{i}\right|\right)}{Q_{R}\left(m_{R}\right)}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Interaction coefficient between peaks 
-\begin_inset Formula $k$
-\end_inset
-
- and 
-\begin_inset Formula $i$
-\end_inset
-
-;
- satisfies 
-\begin_inset Formula $0\leq\alpha_{ki}\leq1$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\tilde{\alpha}_{ki}=e^{-\left\langle y_{k}-y_{i},\delta y_{k}-\delta y_{i}\right\rangle }$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Perturbed interaction coefficient at 
-\begin_inset Formula $R=0$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\chi=\frac{2Q_{R}\left(m_{R}\right)}{R^{4}m_{R}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Overall interaction strength;
- 
-\begin_inset Formula $\chi>0$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Notation - Interaction Functional and Coefficients
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Reduced System and Perturbations
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float table
-placement H
-alignment center
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="2">
-<features booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt" varwidth="true">
-<column alignment="center" valignment="top" width="0pt">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Symbol
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Description
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\tilde{y}_{i}=\tilde{m}_{R}y_{i}+\delta y_{i}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Perturbed peak position;
- 
-\begin_inset Formula $\frac{\delta y_{i}}{\tilde{m}_{R}}\to0$
-\end_inset
-
- as 
-\begin_inset Formula $R\to0$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\delta y_{i}\in\text{span}\left\{ \boldsymbol{r}_{1},\boldsymbol{r}_{2}\right\} $
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Perturbation of the 
-\begin_inset Formula $i-$
-\end_inset
-
-th peak position
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\delta y^{0}=\left(\delta y_{1}^{0},\delta y_{2}^{0},\delta y_{3}^{0}\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Explicit solution at 
-\begin_inset Formula $R=0$
-\end_inset
-
- with 
-\begin_inset Formula $\delta y_{1}^{0}=-\gamma\boldsymbol{r}_{2}$
-\end_inset
-
-,
- 
-\begin_inset Formula $\delta y_{2,3}^{0}=\mp\beta\boldsymbol{r}_{1}+\frac{\gamma}{2}\boldsymbol{r}_{2}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\beta=\frac{1}{2}\ln\left(\frac{\alpha_{12}}{\alpha_{23}}\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Parameter in the explicit solution 
-\begin_inset Formula $\delta y^{0}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\gamma=\frac{2\beta}{3\sqrt{3}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Parameter in the explicit solution 
-\begin_inset Formula $\delta y^{0}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $F_{i}\left(\delta y,R\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Perturbation system governing peak positions.
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Formula $F_{i}\left(\delta y,0\right)=0$
-\end_inset
-
- characterizes limiting configurations
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Notation - Reduced System and Perturbations
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Kernel and Projections
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float table
-placement H
-alignment center
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="2">
-<features booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt" varwidth="true">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Symbol
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Description
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\Omega$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Kernel of 
-\begin_inset Formula $D_{\delta y}F_{i}\left(\delta y^{0},0\right)$
-\end_inset
-
-;
- contains 
-\begin_inset Formula $\left\{ \left(v,v,v\right):v\in\mathbb{R}^{2}\right\} $
-\end_inset
-
- (translations)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\Omega^{\perp}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Orthogonal complement:
- perturbations expressible as 
-\begin_inset Formula $z_{i}=\sum_{k\in N_{i}}c_{ki}\left(y_{k}-y_{i}\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $P_{\perp}F$
-\end_inset
-
-,
- 
-\begin_inset Formula $P_{\parallel}F$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Projections of 
-\begin_inset Formula $F$
-\end_inset
-
- perpendicular and parallel to the kernel 
-\begin_inset Formula $\Omega$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $P_{w}F\left(\delta y,R\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Projection along 
-\begin_inset Formula $w\in\Omega$
-\end_inset
-
-:
- 
-\begin_inset Formula $P_{w}F=\sum_{i}\left\langle w_{i},F_{i}\right\rangle $
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\Gamma$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Joint kernel:
- 
-\begin_inset Formula $\Gamma=\ker\left(D_{\delta y}P_{\perp}F\oplus D_{\delta y}P_{\parallel}F\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $P_{\delta w}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Linear operator acting on perturbations 
-\begin_inset Formula $\delta w_{i}$
-\end_inset
-
-:
- 
-\begin_inset Formula $P_{\delta w}=H_{V}\delta w_{i}-\sum_{k\in N_{i}}\alpha_{ki}\left(0\right)\left(\delta w_{k}-\delta w_{i}\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $w_{\text{rot}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Generator of the rotational kernel direction
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Notation - Kernel and Projections
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Rotations and Equivariance
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float table
-placement H
-alignment center
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt" varwidth="true">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Symbol
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Description
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\theta$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Rotation angle;
- orientation of triangular configuration relative to eigenvector basis
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $R\left(\theta\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2D rotation matrix:
- 
-\begin_inset Formula $\begin{pmatrix}\cos\theta & -\sin\theta\\
-\sin\theta & \cos\theta
-\end{pmatrix}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $R^{-1}\left(\theta\right)=R\left(-\theta\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Inverse rotation matrix:
- 
-\begin_inset Formula $\begin{pmatrix}\cos\theta & \sin\theta\\
--\sin\theta & \cos\theta
-\end{pmatrix}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $R_{\omega}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Rotation by angle 
-\begin_inset Formula $\omega$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Plain Layout
-Used in equivariance condition 
-\begin_inset Formula $F_{i}\left(R_{\omega}\delta y,R\right)=R_{\omega}F_{i}\left(\delta y,R\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $y_{i}'=R^{-1}\left(\theta\right)y_{i}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Bump positions in the rotated (canonical) frame
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Notation - Rotations and Equivariance
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Admissibility Functions
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float table
-placement H
-alignment center
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="2">
-<features booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt" varwidth="true">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Symbol
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Description
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\nu\left(\mu\right)=\frac{\mu+1}{2|\mu-1|}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Auxiliary function for admissibility.
-\end_layout
-
-\begin_layout Plain Layout
-Determines critical angle
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\varphi\left(\mu\right)=\arccos\left(\nu\left(\mu\right)\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Critical angle function:
- 
-\begin_inset Formula $\varphi=\frac{\pi}{3}$
-\end_inset
-
- when 
-\begin_inset Formula $\nu\leq\frac{1}{2}$
-\end_inset
-
-,
- 
-\begin_inset Formula $\varphi=0$
-\end_inset
-
- when 
-\begin_inset Formula $\nu\geq1$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\left(\mu,\theta\right)-$
-\end_inset
-
-space
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Parameter space for rotational equilateral configurations
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Notation - Admissibility Functions
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Inner Products and Norms
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float table
-placement H
-alignment center
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt" varwidth="true">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Symbol
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Description
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\left\langle \cdot,\cdot\right\rangle $
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Standard Euclidean inner product in 
-\begin_inset Formula $\mathbb{R}^{n}$
-\end_inset
-
- or 
-\begin_inset Formula $L^{2}$
-\end_inset
-
- inner product (context-dependent)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\left|\cdot\right|$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Euclidean norm in 
-\begin_inset Formula $\mathbb{R}^{n}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\left\Vert \cdot\right\Vert _{H^{1}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sobolev 
-\begin_inset Formula $H^{1}$
-\end_inset
-
- norm:
- 
-\begin_inset Formula $\left\Vert u\right\Vert _{H^{1}}^{2}=\left\Vert \nabla u\right\Vert _{L^{2}}^{2}+\left\Vert u\right\Vert _{L^{2}}^{2}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\left\Vert \cdot\right\Vert _{L^{2}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Standard 
-\begin_inset Formula $L^{2}$
-\end_inset
-
- norm
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\perp$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Orthogonality (with respect to 
-\begin_inset Formula $L^{2}$
-\end_inset
-
- or Euclidean inner product)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Notation - Inner Products and Norms
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Linearization Operators
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float table
-placement H
-alignment center
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="2">
-<features booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt" varwidth="true">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Symbol
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Description
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $D_{\delta y}F_{i}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Fréchet derivative of 
-\begin_inset Formula $F_{i}$
-\end_inset
-
- with respect to 
-\begin_inset Formula $\delta y$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $D_{\delta y}F_{i}\left(\delta y^{0},0\right)\left[w\right]$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Linearization at 
-\begin_inset Formula $\left(\delta y^{0},0\right)$
-\end_inset
-
- applied to direction 
-\begin_inset Formula $w$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $L_{+}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Linearized operator at the Lyapunov-Schmidt level.
- Kernel generated by translational invariance
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $D_{\psi}F\left(\psi_{E},E\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Linearization of the full PDE at a solution 
-\begin_inset Formula $\psi_{E}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Notation - Linearization Operators
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Principal Notation
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float table
-placement H
-alignment center
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Tabular
-<lyxtabular version="3" rows="18" columns="2">
+<lyxtabular version="3" rows="21" columns="2">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top" varwidth="true">
 <column alignment="left" valignment="top">
@@ -8729,7 +6428,7 @@ Description
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\psi_{E}$
+\begin_inset Formula $\psi_{E}:\mathbb{R}^{n}\to\mathbb{C}$
 \end_inset
 
 
@@ -8771,12 +6470,12 @@ nolink "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $V$
+\begin_inset Formula $V:\mathbb{R}^{n}\to\mathbb{R}$
 \end_inset
 
 ,
  
-\begin_inset Formula $\HV(x_{0})$
+\begin_inset Formula $\HV\left(x_{0}\right):\mathbb{R}^{n}\to\mathbb{R}^{n\times n}$
 \end_inset
 
 
@@ -8793,6 +6492,39 @@ External potential and its Hessian at
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma\in\mathbb{R}^{+}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $p$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nonlinearity coefficient and nonlinearity exponent;
+ 
+\begin_inset Formula $p=1$
+\end_inset
+
+ corresponds to cubic (Kerr) nonlinearity
 \end_layout
 
 \end_inset
@@ -8840,7 +6572,7 @@ Eigenvalues/eigenvectors of
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mu=|\lambda_{2}|/|\lambda_{1}|$
+\begin_inset Formula $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$
 \end_inset
 
 
@@ -8863,7 +6595,12 @@ Eigenvalue ratio
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $R=E^{-1/2}$
+\begin_inset Formula $E\in\mathbb{R}^{+}\cup\left\{ 0\right\} $
+\end_inset
+
+,
+ 
+\begin_inset Formula $R=E^{-\frac{1}{2}}$
 \end_inset
 
 
@@ -8875,7 +6612,7 @@ Eigenvalue ratio
 \begin_inset Text
 
 \begin_layout Plain Layout
-Rescaling parameter;
+Energy parameter and rescaling parameter;
  
 \begin_inset Formula $R\to0$
 \end_inset
@@ -8895,7 +6632,7 @@ Rescaling parameter;
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $u_{E}(x)=E^{-1/(2p)}\psi_{E}(E^{-1/2}x)$
+\begin_inset Formula $u_{E}\left(x\right)=E^{-\frac{1}{2p}}\psi_{E}\left(E^{-\frac{1}{2}}x\right)$
 \end_inset
 
 
@@ -9049,7 +6786,43 @@ nolink "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Minimum inter-peak distance
+Minimum inter-peak distance:
+ 
+\begin_inset Formula $m_{R}=\min_{i\neq j}\left|z_{i}\left(R\right)-z_{j}\left(R\right)\right|$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $s_{i}=Rz_{i}-x_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Displacement of 
+\begin_inset Formula $i-$
+\end_inset
+
+th peak from critical point 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -9060,7 +6833,7 @@ Minimum inter-peak distance
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $y_{i}=\lim s_{i}/(Rm_{R})$
+\begin_inset Formula $y_{i}=\lim_{R\to0}\frac{s_{i}}{Rm_{R}}$
 \end_inset
 
 
@@ -9083,7 +6856,7 @@ Limiting peak positions
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\delta y_{i}$
+\begin_inset Formula $\delta y_{i}\in\text{span}\left\{ \boldsymbol{r}_{1},\boldsymbol{r}_{2}\right\} $
 \end_inset
 
 
@@ -9097,11 +6870,6 @@ Limiting peak positions
 \begin_layout Plain Layout
 Perturbation of peak 
 \begin_inset Formula $i$
-\end_inset
-
-;
- 
-\begin_inset Formula $\delta y_{i}\in\operatorname{span}\{\boldsymbol{r}_{1},\boldsymbol{r}_{2}\}$
 \end_inset
 
 
@@ -9165,7 +6933,43 @@ nolink "false"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Perturbed interaction coefficient
+Perturbed interaction coefficient (
+\begin_inset Formula $R=0$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tilde{y}_{i}=\tilde{m}_{R}y_{i}+\delta y_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Perturbed peak position;
+ 
+\begin_inset Formula $\frac{\delta y_{i}}{\tilde{m}_{R}}\to0$
+\end_inset
+
+ as 
+\begin_inset Formula $R\to0$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -9285,7 +7089,7 @@ nolink "false"
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Notation - Principal Notation
+Table of commonly used symbols
 \end_layout
 
 \end_inset

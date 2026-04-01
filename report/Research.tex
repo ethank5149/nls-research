@@ -7,7 +7,6 @@
 \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
 \usepackage{float}
 \usepackage{booktabs}
-\usepackage{varwidth}
 \usepackage{tabularx}
 \usepackage{amsmath}
 \usepackage{amsthm}
@@ -19,10 +18,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
 %% Because html converters don't know tabularnewline
 \providecommand{\tabularnewline}{\\}
-%% Variable width box for table cells
-\newenvironment{cellvarwidth}[1][t]
-    {\begin{varwidth}[#1]{\linewidth}}
-    {\@finalstrut\@arstrutbox\end{varwidth}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
 \numberwithin{equation}{section}
@@ -152,7 +147,7 @@ concentration compactness, Lyapunov--Schmidt reduction, ground states,
 optical fibers
 
 \medskip{}
-\noindent\textbf{GRANT PLACEHOLDER} 
+\noindent\textbf{MSC 2020: 35Q55, 35B40, 35B32, 78A60}
 
 \pagebreak{}
 \end{abstract}
@@ -239,7 +234,7 @@ overall analytical pipeline, building on~\cite{KirrNatarajan2018}
 and extended in the present work, is illustrated in Figure~\ref{fig:pipeline}.
 
 \begin{figure}[htbp]
-\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_7_methodology_flowchart}
+\centering \includegraphics[width=1\linewidth]{../figures/figure_7_methodology_flowchart}
 \caption{Complete analytical pipeline from the full PDE to the existence of
 multi-peak ground states. The top portion (marked ``Kirr-Natarajan,
 2018'') covers the rescaling, concentration-compactness decomposition,
@@ -278,7 +273,12 @@ and asymptotic stability of ground states was proved in~\cite{KirrZarnescu2007,K
 The present work extends the global bifurcation analysis of~\cite{KirrNatarajan2018}
 by providing the first complete geometric classification of multi-peak
 configurations and a systematic resolution strategy for the kernel
-obstruction in the reduced system.
+obstruction in the reduced system. Specifically, we carry out the
+analysis identified as an open problem in Remark 4.1 of \cite{KirrNatarajan2018},
+which notes that ``multiple profiles approaching the same critical
+point along eigenvectors with negative eigenvalues'' requires a separate
+treatment from the distinct-critical-point case resolved in their
+Theorem 4.3
 
 \section{Setup and Preliminaries}
 
@@ -344,7 +344,7 @@ equation
 \end{equation}
 
 \begin{figure}[htbp]
-\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_4_profile_decomposition}
+\centering \includegraphics[width=1\linewidth]{../figures/figure_4_profile_decomposition}
 \caption{Illustration of the concentration-compactness decomposition (\ref{eq:profile})
 for $M=3$ peaks.\textbf{}\protect \\
 \textbf{Top:} The rescaled solution $u_{E}\left(x\right)$ (solid
@@ -371,7 +371,7 @@ points of $V$ as $R\to0$.
 $Rz_{i}(R)\to x_{0}$ for each $i=1,\ldots,M$ as $R\to0$. 
 \end{prop}
 \begin{figure}[htbp]
-\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_5_concentration_vs_peaks}
+\centering \includegraphics[width=1\linewidth]{../figures/figure_5_concentration_vs_peaks}
 \caption{Evolution of peak structure with increasing energy $E$.\protect \\
 \textbf{Left panels:} Profiles $\left|\psi_{E}\left(x\right)\right|$
 at $E=1,4,16,64$, showing the transition from a single peak to well-separated
@@ -444,7 +444,7 @@ is \emph{not} equal to any individual $\alpha_{ki}$; rather, the
 force on peak $i$ from peak $k$ has magnitude $\alpha_{ki}\chi$. 
 \end{defn}
 \begin{figure}[htbp]
-\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_6_interaction_decay}
+\centering \includegraphics[width=1\linewidth]{../figures/figure_6_interaction_decay}
 \caption{\textbf{(a)} Semilog plot of the interaction functional $Q_{R}\left(d\right)=-\sigma\left\langle \partial_{\hat{d}}u_{R}\left(\cdot-d\right),u_{R}^{2p+1}\right\rangle $
 as a function of inter-peak distance $d$ for several values of $R=E^{-\frac{1}{2}}$.
 The exponential decay $Q_{R}\left(d\right)\sim C\cdot d^{-\frac{n-1}{2}}\cdot e^{-d\sqrt{1+R^{2}V\left(x_{0}\right)}}$
@@ -460,7 +460,7 @@ for next-nearest neighbors, which are dropped from the reduced system.}
 
 The orthogonality condition from the Lyapunov--Schmidt projection
 yields, after the rescaling $s_{i}=Rz_{i}-x_{0}$ and passage to the
-limit $R\to0$ with $y_{i}=\lim_{R\to0}s_{i}/(Rm_{R})$: 
+limit $R\to0$ with $y_{i}=\lim_{R\to0}\frac{s_{i}}{Rm_{R}}$: 
 \begin{equation}
 \HV(x_{0})\,y_{i}=\chi\sum_{k\in N_{i}}\alpha_{ki}(y_{k}-y_{i}),\label{eq:algebraic}
 \end{equation}
@@ -523,7 +523,7 @@ for peaks lying in the plane spanned by two eigenvectors $\boldsymbol{r}_{1},\bo
 of $\HV(x_{0})$, with eigenvalues $\lambda_{1},\lambda_{2}<0$.
 
 \begin{figure}[htbp]
-\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_2_peak_configurations}
+\centering \includegraphics[width=1\linewidth]{../figures/figure_2_peak_configurations}
 \caption{Schematic representations of the admissible multi-peak configurations
 classified in Section 3 \ref{sec:classification}.\protect \\
 \textbf{(a)} Collinear arrangement with $M=2$ peaks along the eigenvector
@@ -686,7 +686,7 @@ for each vertex yields the $\theta$-dependent coefficients:
 \end{align}
 \end{proof}
 \begin{figure}[htbp]
-\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_3_alpha_vs_theta_vs_mu}
+\centering \includegraphics[width=1\linewidth]{../figures/figure_3_alpha_vs_theta_vs_mu}
 \caption{Dependence of the interaction coefficients $\alpha_{12}\left(\theta\right)$,
 $\alpha_{13}\left(\theta\right)$, and $\alpha_{23}\left(\theta\right)$
 on the rotation angle $\theta$ for six values of the eigenvalue ratio
@@ -732,21 +732,21 @@ angles are $\theta\in[\frac{\varphi}{2},\frac{\pi}{3}-\frac{\varphi}{2}]\cup[\fr
 \end{enumerate}
 \end{prop}
 \begin{table}[htbp]
-\centering \caption{Summary of admissible $\theta$-ranges as a function of $\mu=|\lambda_{2}|/|\lambda_{1}|$.}
+\centering \caption{Summary of admissible $\theta$-ranges as a function of $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$.}
 \label{tab:summary} %
 \begin{tabular}{cc}
 \toprule 
 $\mu$-Range & $\theta$-Range\tabularnewline
 \midrule 
 $0<\mu<\frac{1}{3}$ & $\bigl[0,\;\frac{\pi}{6}-\frac{\varphi(\mu)}{2}\bigr]\cup\bigl[\frac{\pi}{6}+\frac{\varphi(\mu)}{2},\;\frac{\pi}{2}-\frac{\varphi(\mu)}{2}\bigr]$\tabularnewline
-{[}8pt{]} $\frac{1}{3}\leq\mu\leq3$ & $\bigl[0,\;\frac{\pi}{2}\bigr]$\tabularnewline
-{[}8pt{]} $\mu>3$ & $\bigl[\frac{\varphi(\mu)}{2},\;\frac{\pi}{3}-\frac{\varphi(\mu)}{2}\bigr]\cup\bigl[\frac{\pi}{3}+\frac{\varphi(\mu)}{2},\;\frac{\pi}{2}\bigr]$\tabularnewline
+$\frac{1}{3}\leq\mu\leq3$ & $\bigl[0,\;\frac{\pi}{2}\bigr]$\tabularnewline
+$\mu>3$ & $\bigl[\frac{\varphi(\mu)}{2},\;\frac{\pi}{3}-\frac{\varphi(\mu)}{2}\bigr]\cup\bigl[\frac{\pi}{3}+\frac{\varphi(\mu)}{2},\;\frac{\pi}{2}\bigr]$\tabularnewline
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{figure}[htbp]
-\centering \includegraphics[width=0.75\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/figure_1_admissibility_binding}
+\centering \includegraphics[width=0.75\linewidth]{../figures/figure_1_admissibility_binding}
 \caption{Admissibility analysis for the equilateral triangle configuration
 with rotational degree of freedom $\theta$ in the $\left(\mu,\theta\right)$
 parameter space, where $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$
@@ -772,7 +772,7 @@ shown in (a).}
 
 \section{The Perturbation System}
 
-\label{sec:perturbation} %% ==================================================================
+\label{sec:perturbation}
 
 We now extend the limiting configurations ($R=0$) to exact solutions
 at finite energy ($R>0$). We focus on the equilateral triangle at
@@ -896,7 +896,7 @@ must be handled by the parallel projection $P_{w}F$. \end{rmk}
 
 \section{Kernel Resolution and Gauge-Fixing}
 
-\label{sec:gauge} %% ==================================================================
+\label{sec:gauge}
 
 The four-dimensional kernel $\Omega$ prevents a direct application
 of the implicit function theorem (IFT) to continue solutions from
@@ -918,9 +918,8 @@ $P_{w}F$ for $w$ ranging over a basis of $\Omega$.
 
 At $(\delta y^{0},0)$, the linearizations are: 
 \begin{align}
-D_{\delta y}P_{\perp}F(\delta y^{0},0)[\delta w] & =P_{\perp}\sum_{k\in N_{i}}\ip{\delta w_{k}-\delta w_{i}}{y_{k}-y_{i}}\,\tilde{\alpha}_{ik}(0)\,\chi\,(y_{k}-y_{i}),\label{eq:DPperp}\\
-D_{\delta y}P_{w}F(\delta y^{0},0)[\delta w] & =\sum_{i}\Bigl[\ip{w_{i}}{\HV\delta w_{i}}+\sum_{k\in N_{i}}\tilde{\alpha}_{ki}(0)\bigl(\ip{w_{i}}{\delta y_{k}^{0}-\delta y_{i}^{0}}\ip{y_{k}-y_{i}}{\delta w_{k}-\delta w_{i}}\nonumber \\
- & \quad\qquad-\ip{w_{i}}{\delta w_{k}-\delta w_{i}}\bigr)\Bigr].\label{eq:DPpar}
+D_{\delta y}P_{\perp}F\left(\delta y^{0},0\right)\left[\delta w\right] & =P_{\perp}\sum_{k\in N_{i}}\left\langle \delta w_{k}-\delta w_{i},y_{k}-y_{i}\right\rangle \,\tilde{\alpha}_{ik}\left(0\right)\,\chi\,\left(y_{k}-y_{i}\right),\label{eq:DPperp}\\
+D_{\delta y}P_{w}F\left(\delta y^{0},0\right)\left[\delta w\right] & =\sum_{i}\left[\left\langle w_{i},\HV\delta w_{i}\right\rangle +\sum_{k\in N_{i}}\tilde{\alpha}_{ki}\left(0\right)\bigl(\left\langle w_{i},\delta y_{k}^{0}-\delta y_{i}^{0}\right\rangle \left\langle y_{k}-y_{i},\delta w_{k}-\delta w_{i}\right\rangle -\left\langle w_{i},\delta w_{k}-\delta w_{i}\right\rangle \bigr)\right].\label{eq:DPpar}
 \end{align}
 
 
@@ -1049,9 +1048,9 @@ group. For anisotropic $\mu\neq1$, the equivariance is broken but
 the family structure (Proposition~\ref{prop:family}) provides the
 necessary tangent-space information. \end{rmk}
 
-\section{Conclusion and Open Problems}
+\section{Conclusion, Open Problems, and Acknowledgements}
 
-\label{sec:conclusion} %% ==================================================================
+\label{sec:conclusion}
 
 We have carried out a complete finite-dimensional study of multi-peak
 ground states for the nonlinear Schrödinger equation 
@@ -1099,6 +1098,13 @@ machinery of~\cite{KirrNatarajan2018} lifts the finite-dimensional
 solutions to exact multi-peak ground states of~(\ref{eq:NLS}) for
 all sufficiently large energies $E$.
 
+\paragraph{Acknowledgments}
+
+The second author thanks Eduard Kirr for proposing this problem, for
+many insightful discussions throughout the course of this research,
+and for his academic guidance. This work was partially supported by
+{[}DMS-XXXXXXX Placeholder etc.{]}.
+
 \bibliographystyle{plain}
 \bibliography{Research}
 
@@ -1108,261 +1114,6 @@ all sufficiently large energies $E$.
 \section{Notation Reference}
 
 \label{app:notation}
-
-\subsection{Equation and Basic Parameters}
-\begin{center}
-\begin{table}[H]
-\centering
-\begin{tabularx}{\columnwidth}{>{\centering\arraybackslash}Xc}
-\toprule 
-Symbol & Description\tabularnewline
-\midrule
-$\psi:\mathbb{R}^{n}\to\mathbb{C}$ & Solution of the nonlinear Schrödinger equation\tabularnewline
-$V:\mathbb{R}^{n}\to\mathbb{R}$ & External potential (encodes refractive index profile)\tabularnewline
-$E\in\mathbb{R}^{+}\cup\left\{ 0\right\} $ & Energy parameter (propagation constant in optics)\tabularnewline
-$\sigma\in\mathbb{R}^{+}$ & Nonlinearity coefficient (sign determines focusing/defocusing)\tabularnewline
-$p$ & Nonlinear power exponent; $p=1$ corresponds to cubic (Kerr) nonlinearity\tabularnewline
-$x_{0}$ & Non-degenerate critical point of $V$, i.e., $\nabla V\left(x_{0}\right)=0$
-with $H_{V}\left(x_{0}\right)$ invertible\tabularnewline
-\bottomrule
-\end{tabularx}
-
-\caption{Notation - Equation and Basic Parameters}
-\end{table}
-\par\end{center}
-
-\subsection{Scaling and Profile Functions}
-\begin{center}
-\begin{table}[H]
-\centering
-\begin{tabularx}{\columnwidth}{>{\centering\arraybackslash}Xc}
-\toprule 
-Symbol & Description\tabularnewline
-\midrule
-$R=E^{-\frac{1}{2}}$ & Scaling parameter; $R\to0$ as $E\to\infty$\tabularnewline
-$u_{E}\left(x\right)=E^{-\frac{1}{2p}}\psi_{E}\left(E^{-\frac{1}{2}}x\right)$ & Rescaled solution with $\left\Vert u_{E}\right\Vert _{H^{1}}$ uniformly
-bounded\tabularnewline
-$u_{R}$ & Profile function solving $\left(-\Delta+R^{2}V\left(x_{0}\right)+1\right)u+\sigma\left|u\right|^{2p}u=0$\tabularnewline
-$M\in\mathbb{N}$ & Number of peaks in the multi-peak decomposition\tabularnewline
-$z_{i}\left(R\right)$ & Position of the $i-$th peak center in rescaled coordinates\tabularnewline
-$h_{R}$ & Remainder term: $u_{E}=\sum_{i=1}^{M}u_{R}\left(\cdot-z_{i}\right)+h_{R}$\tabularnewline
-\bottomrule
-\end{tabularx}
-
-\caption{Notation - Scaling and Profile Functions}
-\end{table}
-\par\end{center}
-
-\subsection{Hessian and Spectral Properties}
-\begin{center}
-\begin{table}[H]
-\centering
-\begin{tabularx}{\columnwidth}{>{\centering\arraybackslash}Xc}
-\toprule 
-Symbol & Description\tabularnewline
-\midrule
-$H_{V}=H_{V}\left(x_{0}\right)$ & Hessian matrix of $V$ at the critical point $x_{0}$\tabularnewline
-$\lambda_{i}$ & Eigenvalue of $H_{V}$; assumed $\lambda_{i}<0$ for directions in
-which peaks spread\tabularnewline
-$\boldsymbol{r}_{i}$ & Unit eigenvector of $H_{V}$ associated with eigenvalue $\lambda_{i}$\tabularnewline
-$\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$ & Eigenvalue ratio; key parameter for admissibility constraints\tabularnewline
-$U$ & Unstable manifold: $U=\text{span}\left\{ \boldsymbol{r}:H_{V}\boldsymbol{r}=\lambda\boldsymbol{r},\lambda<0\right\} $\tabularnewline
-\bottomrule
-\end{tabularx}
-
-\caption{Notation - Hessian and Spectral Properties}
-\end{table}
-\par\end{center}
-
-\subsection{Bump Positions and Geometry}
-\begin{center}
-\begin{table}[H]
-\centering
-\begin{tabularx}{\columnwidth}{c>{\centering\arraybackslash}X}
-\toprule 
-Symbol & Description\tabularnewline
-\midrule
-$s_{i}=Rz_{i}-x_{0}$ & Displacement of $i-$th peak from critical point $x_{0}$\tabularnewline
-$m_{R}$ & Minimum inter-peak distance: $m_{R}=\min_{i\neq j}\left|z_{i}\left(R\right)-z_{j}\left(R\right)\right|$\tabularnewline
-$y_{i}=\lim_{R\to0}\frac{s_{i}}{Rm_{R}}$ & Limiting position vector of the $i-$th peak; satisfies $\left|y_{k}-y_{i}\right|=1$
-for nearest neighbors\tabularnewline
-$N_{i}$ & Set of nearest neighbors of peak $i$: $N_{i}=\left\{ k:\left|y_{k}-y_{i}\right|=1\right\} $\tabularnewline
-$a,h$ & Geometric parameters for triangular configurations: $a$ = half-base,
-$h$ = apex height\tabularnewline
-\bottomrule
-\end{tabularx}
-
-\caption{Notation - Bump Positions and Geometry}
-\end{table}
-\par\end{center}
-
-\subsection{Interaction Functional and Coefficients}
-\begin{center}
-\begin{table}[H]
-\centering
-\begin{tabularx}{\columnwidth}{>{\centering\arraybackslash}Xc}
-\toprule 
-Symbol & Description\tabularnewline
-\midrule
-$Q_{R}\left(z\right)$ & Interaction functional: $Q_{R}\left(z\right)=-\sigma\left\langle \partial_{\frac{z}{\left|z\right|}}u_{R}\left(\cdot-z\right),u_{R}^{2p+1}\right\rangle $\tabularnewline
-$\alpha_{ki}=\frac{Q_{R}\left(\left|z_{k}-z_{i}\right|\right)}{Q_{R}\left(m_{R}\right)}$ & Interaction coefficient between peaks $k$ and $i$; satisfies $0\leq\alpha_{ki}\leq1$\tabularnewline
-$\tilde{\alpha}_{ki}=e^{-\left\langle y_{k}-y_{i},\delta y_{k}-\delta y_{i}\right\rangle }$ & Perturbed interaction coefficient at $R=0$\tabularnewline
-$\chi=\frac{2Q_{R}\left(m_{R}\right)}{R^{4}m_{R}}$ & Overall interaction strength; $\chi>0$\tabularnewline
-\bottomrule
-\end{tabularx}
-
-\caption{Notation - Interaction Functional and Coefficients}
-\end{table}
-\par\end{center}
-
-\subsection{Reduced System and Perturbations}
-\begin{center}
-\begin{table}[H]
-\centering
-\begin{tabularx}{\columnwidth}{>{\centering\arraybackslash}Xc}
-\toprule 
-Symbol & Description\tabularnewline
-\midrule
-$\tilde{y}_{i}=\tilde{m}_{R}y_{i}+\delta y_{i}$ & Perturbed peak position; $\frac{\delta y_{i}}{\tilde{m}_{R}}\to0$
-as $R\to0$\tabularnewline
-$\delta y_{i}\in\text{span}\left\{ \boldsymbol{r}_{1},\boldsymbol{r}_{2}\right\} $ & Perturbation of the $i-$th peak position\tabularnewline
-$\delta y^{0}=\left(\delta y_{1}^{0},\delta y_{2}^{0},\delta y_{3}^{0}\right)$ & Explicit solution at $R=0$ with $\delta y_{1}^{0}=-\gamma\boldsymbol{r}_{2}$,
-$\delta y_{2,3}^{0}=\mp\beta\boldsymbol{r}_{1}+\frac{\gamma}{2}\boldsymbol{r}_{2}$\tabularnewline
-$\beta=\frac{1}{2}\ln\left(\frac{\alpha_{12}}{\alpha_{23}}\right)$ & Parameter in the explicit solution $\delta y^{0}$\tabularnewline
-$\gamma=\frac{2\beta}{3\sqrt{3}}$ & Parameter in the explicit solution $\delta y^{0}$\tabularnewline
-$F_{i}\left(\delta y,R\right)$ & \begin{cellvarwidth}[t]
-\centering
-Perturbation system governing peak positions.
-
-$F_{i}\left(\delta y,0\right)=0$ characterizes limiting configurations
-\end{cellvarwidth}\tabularnewline
-\bottomrule
-\end{tabularx}
-
-\caption{Notation - Reduced System and Perturbations}
-\end{table}
-\par\end{center}
-
-\subsection{Kernel and Projections}
-\begin{center}
-\begin{table}[H]
-\centering
-\begin{tabularx}{\columnwidth}{c>{\centering\arraybackslash}X}
-\toprule 
-Symbol & Description\tabularnewline
-\midrule
-$\Omega$ & Kernel of $D_{\delta y}F_{i}\left(\delta y^{0},0\right)$; contains
-$\left\{ \left(v,v,v\right):v\in\mathbb{R}^{2}\right\} $ (translations)\tabularnewline
-$\Omega^{\perp}$ & Orthogonal complement: perturbations expressible as $z_{i}=\sum_{k\in N_{i}}c_{ki}\left(y_{k}-y_{i}\right)$\tabularnewline
-$P_{\perp}F$, $P_{\parallel}F$ & Projections of $F$ perpendicular and parallel to the kernel $\Omega$\tabularnewline
-$P_{w}F\left(\delta y,R\right)$ & Projection along $w\in\Omega$: $P_{w}F=\sum_{i}\left\langle w_{i},F_{i}\right\rangle $\tabularnewline
-$\Gamma$ & Joint kernel: $\Gamma=\ker\left(D_{\delta y}P_{\perp}F\oplus D_{\delta y}P_{\parallel}F\right)$\tabularnewline
-$P_{\delta w}$ & Linear operator acting on perturbations $\delta w_{i}$: $P_{\delta w}=H_{V}\delta w_{i}-\sum_{k\in N_{i}}\alpha_{ki}\left(0\right)\left(\delta w_{k}-\delta w_{i}\right)$\tabularnewline
-$w_{\text{rot}}$ & Generator of the rotational kernel direction\tabularnewline
-\bottomrule
-\end{tabularx}
-
-\caption{Notation - Kernel and Projections}
-\end{table}
-\par\end{center}
-
-\subsection{Rotations and Equivariance}
-\begin{center}
-\begin{table}[H]
-\centering
-\begin{tabularx}{\columnwidth}{c>{\centering\arraybackslash}X}
-\toprule 
-Symbol & Description\tabularnewline
-\midrule
-$\theta$ & Rotation angle; orientation of triangular configuration relative to
-eigenvector basis\tabularnewline
-$R\left(\theta\right)$ & 2D rotation matrix: $\begin{pmatrix}\cos\theta & -\sin\theta\\
-\sin\theta & \cos\theta
-\end{pmatrix}$\tabularnewline
-$R^{-1}\left(\theta\right)=R\left(-\theta\right)$ & Inverse rotation matrix: $\begin{pmatrix}\cos\theta & \sin\theta\\
--\sin\theta & \cos\theta
-\end{pmatrix}$\tabularnewline
-$R_{\omega}$ & \begin{cellvarwidth}[t]
-\centering
-Rotation by angle $\omega$.
-
-Used in equivariance condition $F_{i}\left(R_{\omega}\delta y,R\right)=R_{\omega}F_{i}\left(\delta y,R\right)$
-\end{cellvarwidth}\tabularnewline
-$y_{i}'=R^{-1}\left(\theta\right)y_{i}$ & Bump positions in the rotated (canonical) frame\tabularnewline
-\bottomrule
-\end{tabularx}
-
-\caption{Notation - Rotations and Equivariance}
-\end{table}
-\par\end{center}
-
-\subsection{Admissibility Functions}
-\begin{center}
-\begin{table}[H]
-\centering
-\begin{tabularx}{\columnwidth}{c>{\centering\arraybackslash}X}
-\toprule 
-Symbol & Description\tabularnewline
-\midrule
-$\nu\left(\mu\right)=\frac{\mu+1}{2|\mu-1|}$ & \begin{cellvarwidth}[t]
-\centering
-Auxiliary function for admissibility.
-
-Determines critical angle
-\end{cellvarwidth}\tabularnewline
-$\varphi\left(\mu\right)=\arccos\left(\nu\left(\mu\right)\right)$ & Critical angle function: $\varphi=\frac{\pi}{3}$ when $\nu\leq\frac{1}{2}$,
-$\varphi=0$ when $\nu\geq1$\tabularnewline
-$\left(\mu,\theta\right)-$space & Parameter space for rotational equilateral configurations\tabularnewline
-\bottomrule
-\end{tabularx}
-
-\caption{Notation - Admissibility Functions}
-\end{table}
-\par\end{center}
-
-\subsection{Inner Products and Norms}
-\begin{center}
-\begin{table}[H]
-\centering
-\begin{tabularx}{\columnwidth}{c>{\centering\arraybackslash}X}
-\toprule 
-Symbol & Description\tabularnewline
-\midrule
-$\left\langle \cdot,\cdot\right\rangle $ & Standard Euclidean inner product in $\mathbb{R}^{n}$ or $L^{2}$
-inner product (context-dependent)\tabularnewline
-$\left|\cdot\right|$ & Euclidean norm in $\mathbb{R}^{n}$\tabularnewline
-$\left\Vert \cdot\right\Vert _{H^{1}}$ & Sobolev $H^{1}$ norm: $\left\Vert u\right\Vert _{H^{1}}^{2}=\left\Vert \nabla u\right\Vert _{L^{2}}^{2}+\left\Vert u\right\Vert _{L^{2}}^{2}$\tabularnewline
-$\left\Vert \cdot\right\Vert _{L^{2}}$ & Standard $L^{2}$ norm\tabularnewline
-$\perp$ & Orthogonality (with respect to $L^{2}$ or Euclidean inner product)\tabularnewline
-\bottomrule
-\end{tabularx}
-
-\caption{Notation - Inner Products and Norms}
-\end{table}
-\par\end{center}
-
-\subsection{Linearization Operators}
-\begin{center}
-\begin{table}[H]
-\centering
-\begin{tabularx}{\columnwidth}{c>{\centering\arraybackslash}X}
-\toprule 
-Symbol & Description\tabularnewline
-\midrule
-$D_{\delta y}F_{i}$ & Fréchet derivative of $F_{i}$ with respect to $\delta y$\tabularnewline
-$D_{\delta y}F_{i}\left(\delta y^{0},0\right)\left[w\right]$ & Linearization at $\left(\delta y^{0},0\right)$ applied to direction
-$w$\tabularnewline
-$L_{+}$ & Linearized operator at the Lyapunov-Schmidt level. Kernel generated
-by translational invariance\tabularnewline
-$D_{\psi}F\left(\psi_{E},E\right)$ & Linearization of the full PDE at a solution $\psi_{E}$\tabularnewline
-\bottomrule
-\end{tabularx}
-
-\caption{Notation - Linearization Operators}
-\end{table}
-\par\end{center}
-
-\subsection{Principal Notation}
 \begin{center}
 \begin{table}[H]
 \centering
@@ -1370,27 +1121,31 @@ $D_{\psi}F\left(\psi_{E},E\right)$ & Linearization of the full PDE at a solution
 \toprule 
 Symbol & Description\tabularnewline
 \midrule 
-$\psi_{E}$ & Solution of~(\ref{eq:NLS}) at energy $E$\tabularnewline
-$V$, $\HV(x_{0})$ & External potential and its Hessian at $x_{0}$\tabularnewline
+$\psi_{E}:\mathbb{R}^{n}\to\mathbb{C}$ & Solution of~(\ref{eq:NLS}) at energy $E$\tabularnewline
+$V:\mathbb{R}^{n}\to\mathbb{R}$, $\HV\left(x_{0}\right):\mathbb{R}^{n}\to\mathbb{R}^{n\times n}$ & External potential and its Hessian at $x_{0}$\tabularnewline
+$\sigma\in\mathbb{R}^{+}$, $p$ & Nonlinearity coefficient and nonlinearity exponent\tabularnewline
 $\lambda_{i}$, $\boldsymbol{r}_{i}$ & Eigenvalues/eigenvectors of $\HV(x_{0})$; $\lambda_{i}<0$\tabularnewline
-$\mu=|\lambda_{2}|/|\lambda_{1}|$ & Eigenvalue ratio\tabularnewline
-$R=E^{-1/2}$ & Rescaling parameter; $R\to0$ as $E\to\infty$\tabularnewline
-$u_{E}(x)=E^{-1/(2p)}\psi_{E}(E^{-1/2}x)$ & Rescaled solution\tabularnewline
+$\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$ & Eigenvalue ratio\tabularnewline
+$E\in\mathbb{R}^{+}\cup\left\{ 0\right\} $, $R=E^{-\frac{1}{2}}$ & Energy parameter and rescaling parameter; $R\to0$ as $E\to\infty$\tabularnewline
+$u_{E}\left(x\right)=E^{-\frac{1}{2p}}\psi_{E}\left(E^{-\frac{1}{2}}x\right)$ & Rescaled solution\tabularnewline
 $Q_{R}(z)$ & Interaction functional (Definition~\ref{def:interaction})\tabularnewline
 $\alpha_{ki}$ & Interaction coefficient (Definition~\ref{def:interaction}); $0\leq\alpha_{ki}\leq1$\tabularnewline
 $\chi$ & Overall interaction strength (Definition~\ref{def:chi})\tabularnewline
-$m_{R}$ & Minimum inter-peak distance\tabularnewline
-$y_{i}=\lim s_{i}/(Rm_{R})$ & Limiting peak positions\tabularnewline
-$\delta y_{i}$ & Perturbation of peak $i$; $\delta y_{i}\in\operatorname{span}\{\boldsymbol{r}_{1},\boldsymbol{r}_{2}\}$\tabularnewline
+$m_{R}$ & Minimum inter-peak distance: $m_{R}=\min_{i\neq j}\left|z_{i}\left(R\right)-z_{j}\left(R\right)\right|$\tabularnewline
+$s_{i}=Rz_{i}-x_{0}$ & Displacement of $i-$th peak from critical point $x_{0}$\tabularnewline
+$y_{i}=\lim_{R\to0}\frac{s_{i}}{Rm_{R}}$ & Limiting peak positions\tabularnewline
+$\delta y_{i}\in\text{span}\left\{ \boldsymbol{r}_{1},\boldsymbol{r}_{2}\right\} $ & Perturbation of peak $i$\tabularnewline
 $F_{i}(\delta y,R)$ & Perturbation system (Definition~\ref{def:Fi})\tabularnewline
-$\tilde{\alpha}_{ki}=e^{-\left\langle y_{k}-y_{i},\delta y_{k}-\delta y_{i}\right\rangle }$ & Perturbed interaction coefficient\tabularnewline
+$\tilde{\alpha}_{ki}=e^{-\left\langle y_{k}-y_{i},\delta y_{k}-\delta y_{i}\right\rangle }$ & Perturbed interaction coefficient ($R=0$)\tabularnewline
+$\tilde{y}_{i}=\tilde{m}_{R}y_{i}+\delta y_{i}$ & Perturbed peak position; $\frac{\delta y_{i}}{\tilde{m}_{R}}\to0$
+as $R\to0$\tabularnewline
 $\Omega$ & Kernel of $D_{\delta y}F_{i}(\delta y^{0},0)$ (Proposition~\ref{prop:kernel})\tabularnewline
 $\theta$ & Rotation angle of equilateral triangle\tabularnewline
 $\nu(\mu),\varphi(\mu)$ & Admissibility functions (Definition~\ref{def:nu-phi})\tabularnewline
 \bottomrule
 \end{tabularx}
 
-\caption{Notation - Principal Notation}
+\caption{Table of commonly used symbols}
 \end{table}
 \par\end{center}
 
