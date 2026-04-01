@@ -429,6 +429,15 @@ where
 \end_inset
 
  encodes the Kerr nonlinearity.
+ The existence of optical solitons in this setting was predicted by Hasegawa and Tappert 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "HasegawaTappert1973a,HasegawaTappert1973b"
+literal "false"
+
+\end_inset
+
+ for both anomalous and normal dispersion regimes.
 \end_layout
 
 \begin_layout Standard
@@ -638,7 +647,7 @@ placement htbp
 alignment document
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -812,7 +821,16 @@ literal "false"
 \end_inset
 
  for bounded potentials.
- The concentration compactness framework for multi-peak decomposition was developed in
+ The existence of ground states for nonlinear scalar field equations was established by Berestycki and Lions 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BerestyckiLions1983"
+literal "false"
+
+\end_inset
+
+,
+ and the concentration compactness framework for multi-peak decomposition was developed in
 \begin_inset space ~
 \end_inset
 
@@ -889,17 +907,6 @@ Setup and Preliminaries
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:setup"
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%% ==================================================================
-\end_layout
 
 \end_inset
 
@@ -1417,7 +1424,7 @@ placement htbp
 alignment document
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -1656,7 +1663,7 @@ placement htbp
 alignment document
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -2120,7 +2127,7 @@ placement htbp
 alignment document
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -2234,10 +2241,14 @@ name "cor:unstable"
 
 ,
  where 
-\begin_inset Formula $U=\operatorname{span}\{\boldsymbol{r}\in\R^{n}:\HV(x_{0})\boldsymbol{r}=\lambda\boldsymbol{r},\;\lambda<0\}$
+\begin_inset Formula 
+\[
+U=\operatorname{span}\bigl\{\boldsymbol{r}\in\R^{n}:\HV(x_{0})\boldsymbol{r}=\lambda\boldsymbol{r},\;\lambda<0\bigr\}
+\]
+
 \end_inset
 
- is the unstable subspace of 
+is the unstable subspace of 
 \begin_inset Formula $\HV(x_{0})$
 \end_inset
 
@@ -2250,7 +2261,7 @@ Write
 \begin_inset Formula $y_{i}=y_{i}^{U}+y_{i}^{S}$
 \end_inset
 
- where 
+ with 
 \begin_inset Formula $y_{i}^{U}\in U$
 \end_inset
 
@@ -2259,22 +2270,54 @@ Write
 \end_inset
 
 .
- Applying the projection 
+ Applying the orthogonal projection 
 \begin_inset Formula $P_{S}$
 \end_inset
 
- onto the stable subspace (
-\begin_inset Formula $\lambda>0$
+ onto 
+\begin_inset Formula $U^{\perp}$
 \end_inset
 
-) to
+ to the algebraic system
+\begin_inset space ~
+\end_inset
+
+(2.4) gives 
+\begin_inset Formula 
+\begin{equation}
+\HV\,y_{i}^{S}=\chi\sum_{k\in N_{i}}\alpha_{ki}\bigl(y_{k}^{S}-y_{i}^{S}\bigr),\label{eq:projected-stable}
+\end{equation}
+
+\end_inset
+
+since 
+\begin_inset Formula $\HV$
+\end_inset
+
+ preserves both 
+\begin_inset Formula $U$
+\end_inset
+
+ and 
+\begin_inset Formula $U^{\perp}$
+\end_inset
+
+ (they are eigenspaces) and 
+\begin_inset Formula $P_{S}(y_{k}-y_{i})=y_{k}^{S}-y_{i}^{S}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Now take the inner product of
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:algebraic"
+reference "eq:projected-stable"
 plural "false"
 caps "false"
 noprefix "false"
@@ -2282,37 +2325,143 @@ nolink "false"
 
 \end_inset
 
+ with 
+\begin_inset Formula $y_{i}^{S}$
+\end_inset
+
+ and sum over
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $i$
+\end_inset
+
 :
  
-\begin_inset Formula $\HV P_{S}y_{i}=\chi\sum_{k\in N_{i}}\alpha_{ki}P_{S}(y_{k}-y_{i})$
+\begin_inset Formula 
+\[
+\sum_{i=1}^{M}\ip{y_{i}^{S}}{\HV\,y_{i}^{S}}=\chi\sum_{i=1}^{M}\sum_{k\in N_{i}}\alpha_{ki}\,\ip{y_{i}^{S}}{y_{k}^{S}-y_{i}^{S}}.
+\]
+
+\end_inset
+
+
+\series bold
+Left side.
+
+\series default
+ Since 
+\begin_inset Formula $\HV\big|_{U^{\perp}}$
+\end_inset
+
+ has all eigenvalues in 
+\begin_inset Formula $[\lambda_{\min}^{S},\infty)$
+\end_inset
+
+ with 
+\begin_inset Formula $\lambda_{\min}^{S}>0$
+\end_inset
+
+ (Hypothesis
+\begin_inset space ~
+\end_inset
+
+V4 places the peaks at a strict local maximum,
+ so eigenvalues in directions 
+\emph on
+not
+\emph default
+ used by the peaks are positive),
+ we have 
+\begin_inset Formula 
+\[
+\text{LHS}\;\geq\;\lambda_{\min}^{S}\sum_{i}\abs{y_{i}^{S}}^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+
+\series bold
+Right side.
+
+\series default
+ Each nearest-neighbor edge 
+\begin_inset Formula $\{i,k\}$
+\end_inset
+
+ contributes the ordered pairs 
+\begin_inset Formula $(i,k)$
+\end_inset
+
+ and 
+\begin_inset Formula $(k,i)$
 \end_inset
 
 .
- Since 
-\begin_inset Formula $\HV|_{U^{\perp}}$
+ Using the symmetry 
+\begin_inset Formula $\alpha_{ki}=\alpha_{ik}$
 \end_inset
 
- has all positive eigenvalues and 
+ (since 
+\begin_inset Formula $Q_{R}$
+\end_inset
+
+ depends only on 
+\begin_inset Formula $\abs{z_{k}-z_{i}}$
+\end_inset
+
+),
+ the contribution of each edge is 
+\begin_inset Formula 
+\begin{align*}
+\alpha_{ki}\Bigl[\ip{y_{i}^{S}}{y_{k}^{S}-y_{i}^{S}}+\ip{y_{k}^{S}}{y_{i}^{S}-y_{k}^{S}}\Bigr] & =-\alpha_{ki}\abs{y_{k}^{S}-y_{i}^{S}}^{2}.
+\end{align*}
+
+\end_inset
+
+Summing over all edges:
+ 
+\begin_inset Formula 
+\[
+\text{RHS}=-\chi\!\!\sum_{\{i,k\}\in\text{edges}}\alpha_{ki}\abs{y_{k}^{S}-y_{i}^{S}}^{2}\;\leq\;0,
+\]
+
+\end_inset
+
+since 
 \begin_inset Formula $\chi>0$
 \end_inset
 
-,
- 
+ and every 
 \begin_inset Formula $\alpha_{ki}\geq0$
 \end_inset
 
-,
- the right side is a convex combination of differences 
-\begin_inset Formula $P_{S}(y_{k}-y_{i})$
+.
+\end_layout
+
+\begin_layout Proof
+Combining:
+ 
+\begin_inset Formula $\lambda_{\min}^{S}\sum_{i}\abs{y_{i}^{S}}^{2}\leq0$
 \end_inset
 
- scaled by positive factors.
- A discrete maximum principle argument shows 
+.
+ Because 
+\begin_inset Formula $\lambda_{\min}^{S}>0$
+\end_inset
+
+,
+ we conclude 
 \begin_inset Formula $y_{i}^{S}=0$
 \end_inset
 
- for all 
-\begin_inset Formula $i$
+ for every 
+\begin_inset Formula $i=1,\ldots,M$
 \end_inset
 
 .
@@ -2327,17 +2476,6 @@ Classification of Limiting Configurations
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:classification"
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%% ==================================================================
-\end_layout
 
 \end_inset
 
@@ -2382,7 +2520,7 @@ placement htbp
 alignment document
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -2728,6 +2866,216 @@ nolink "false"
 \end_inset
 
  occupies the remainder of this section.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{rmk}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+Convention for interaction coefficients in the classification
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "rmk:alpha-convention"
+
+\end_inset
+
+ In the proofs of Theorem
+\begin_inset space ~
+\end_inset
+
+3.1 that follow,
+ the algebraic system
+\begin_inset space ~
+\end_inset
+
+(2.4) is written in the absorbed form 
+\begin_inset Formula 
+\begin{equation}
+\HV(x_{0})\,y_{i}=\sum_{k\in N_{i}}\hat{\alpha}_{ki}(y_{k}-y_{i}),\quad\hat{\alpha}_{ki}\geq0,\label{eq:algebraic-absorbed}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\hat{\alpha}_{ki}=\alpha_{ki}\chi$
+\end_inset
+
+ is the 
+\emph on
+combined force coefficient
+\emph default
+,
+ incorporating the overall interaction strength 
+\begin_inset Formula $\chi$
+\end_inset
+
+ from Definition
+\begin_inset space ~
+\end_inset
+
+2.8.
+ This convention avoids carrying 
+\begin_inset Formula $\chi$
+\end_inset
+
+ through the algebraic manipulations.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+To recover the normalized coefficients of Definition
+\begin_inset space ~
+\end_inset
+
+2.7 (satisfying 
+\begin_inset Formula $0\leq\alpha_{ki}\leq1$
+\end_inset
+
+ with 
+\begin_inset Formula $\alpha_{ki}=1$
+\end_inset
+
+ at minimum distance),
+ one divides by 
+\begin_inset Formula $\chi$
+\end_inset
+
+:
+ 
+\begin_inset Formula 
+\[
+\alpha_{ki}=\frac{\hat{\alpha}_{ki}}{\chi},\qquad\chi=\max_{k,i}\hat{\alpha}_{ki}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\series bold
+Example:
+ equilateral triangle at 
+\begin_inset Formula $\theta=0$
+\end_inset
+
+.
+
+\series default
+ The proofs below yield 
+\begin_inset Formula $\hat{\alpha}_{12}=\hat{\alpha}_{13}=-\lambda_{2}/3$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{\alpha}_{23}=\lambda_{2}/6-\lambda_{1}/2$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\hat{\alpha}_{12}=\hat{\alpha}_{13}\geq\hat{\alpha}_{23}$
+\end_inset
+
+ for 
+\begin_inset Formula $\mu\geq3$
+\end_inset
+
+ (with equality only at 
+\begin_inset Formula $\mu=3$
+\end_inset
+
+),
+ the overall interaction strength is 
+\begin_inset Formula 
+\[
+\chi=\hat{\alpha}_{12}=-\frac{\lambda_{2}}{3}>0,
+\]
+
+\end_inset
+
+and the normalized base-edge coefficient is 
+\begin_inset Formula 
+\[
+\alpha_{23}=\frac{\hat{\alpha}_{23}}{\chi}=\frac{\lambda_{2}/6-\lambda_{1}/2}{-\lambda_{2}/3}=1-\frac{3}{2\mu}\;\in\;[0,1).
+\]
+
+\end_inset
+
+In particular,
+ 
+\begin_inset Formula $\alpha_{23}<1$
+\end_inset
+
+ for 
+\begin_inset Formula $\mu>3$
+\end_inset
+
+,
+ reflecting the fact that the base edge is 
+\emph on
+not
+\emph default
+ at the minimum inter-peak distance:
+ the perturbation 
+\begin_inset Formula $\delta y^{0}$
+\end_inset
+
+ of Proposition
+\begin_inset space ~
+\end_inset
+
+4.1 pushes the base vertices slightly apart relative to the apex–base edges.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{rmk}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -3218,7 +3566,7 @@ placement htbp
 alignment document
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -4015,10 +4363,30 @@ The first follows from the fact that
 
 \begin_layout Proof
 Setting 
-\begin_inset Formula $\chi=\alpha_{12}$
+\begin_inset Formula $\chi=-\lambda_{2}/3$
 \end_inset
 
- (the nearest-neighbor coefficient),
+ (the overall interaction strength from Remark
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "rmk:alpha-convention"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ equal to the combined force coefficient 
+\begin_inset Formula $\hat{\alpha}_{12}$
+\end_inset
+
+ of the apex–base edges),
  the system 
 \begin_inset Formula $F_{i}(\delta y^{0},0)=0$
 \end_inset
@@ -4696,26 +5064,72 @@ name "cor:tangent-kernel"
 \end_layout
 
 \begin_layout Proof
-Differentiating 
+Since 
 \begin_inset Formula $F_{i}(\delta y^{0}(\theta),0)=0$
 \end_inset
 
- with respect to 
+ holds for all admissible 
+\begin_inset Formula $\theta$
+\end_inset
+
+,
+ differentiating with respect to 
 \begin_inset Formula $\theta$
 \end_inset
 
  gives 
-\begin_inset Formula $D_{\delta y}F_{i}\bigl[\frac{d}{d\theta}\delta y^{0}\bigr]+\partial_{\theta}F_{i}=0$
+\begin_inset Formula 
+\[
+D_{\delta y}F_{i}(\delta y^{0}(\theta),0)\Bigl[\frac{d}{d\theta}\delta y^{0}(\theta)\Bigr]+\frac{\partial}{\partial\theta}\Bigl[F_{i}\bigl(\delta y^{0}(\theta),0\bigr)\Bigr]\bigg|_{\delta y\,\text{fixed}}=0.
+\]
+
+\end_inset
+
+The second term accounts for the 
+\begin_inset Formula $\theta$
+\end_inset
+
+-dependence of the base configuration 
+\begin_inset Formula $y_{i}(\theta)$
+\end_inset
+
+ and the coefficients 
+\begin_inset Formula $\alpha_{ki}(\theta)$
+\end_inset
+
+;
+ it vanishes because the entire expression 
+\begin_inset Formula $F_{i}(\delta y^{0}(\theta),0)$
+\end_inset
+
+ is identically zero in
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\theta$
 \end_inset
 
 .
- Since 
-\begin_inset Formula $\partial_{\theta}F_{i}$
+ Consequently,
+ 
+\begin_inset Formula 
+\[
+D_{\delta y}F_{i}(\delta y^{0}(\theta),0)\Bigl[\frac{d}{d\theta}\delta y^{0}(\theta)\Bigr]=0,
+\]
+
 \end_inset
 
- encodes the change in the base configuration (which is already accounted for),
- the tangent direction lies in the kernel.
+so 
+\begin_inset Formula $w_{\mathrm{rot}}(\theta)=\frac{d}{d\theta}\delta y^{0}(\theta)\in\Omega(\theta)$
+\end_inset
+
+.
  
+\end_layout
+
+\begin_layout Subsection
+
 \end_layout
 
 \begin_layout Subsection
@@ -4827,126 +5241,206 @@ The conjecture is supported by the following partial result:
 \end_layout
 
 \begin_layout Proposition
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Center-of-mass identity
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset label
 LatexCommand label
 name "prop:sum-Fi"
 
 \end_inset
 
- The constraint 
-\begin_inset Formula $\sum_{i}F_{i}(\delta y,R)=0$
+ For any 
+\begin_inset Formula $\delta y=(\delta y_{1},\delta y_{2},\delta y_{3})$
 \end_inset
 
- is automatically satisfied and recovers the reduced system
+ and any 
+\begin_inset Formula $R\geq0$
+\end_inset
+
+,
+ 
+\begin_inset Formula 
+\begin{equation}
+\sum_{i=1}^{3}F_{i}(\delta y,R)=\HV\frac{\sum_{i}\delta y_{i}}{\tilde{m}_{R}}\,.\label{eq:sum-Fi-identity}
+\end{equation}
+
+\end_inset
+
+In particular,
+ 
+\begin_inset Formula $\sum_{i}F_{i}=0$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $\sum_{i}\delta y_{i}=0$
+\end_inset
+
+ (the center-of-mass condition).
+ The explicit solution 
+\begin_inset Formula $\delta y^{0}$
+\end_inset
+
+ of Proposition
+\begin_inset space ~
+\end_inset
+
+4.1 satisfies this condition,
+ and the gauge-fixing constraints 
+\shape up
+(G1)–(G2)
+\shape default
+ are compatible with
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:algebraic"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- in the limit 
-\begin_inset Formula $R\to0$
-\end_inset
-
-.
- The gauge-fixing conditions (G1)–(G2) are compatible with the solution 
 \begin_inset Formula $\delta y^{0}$
 \end_inset
 
- (which satisfies them by construction).
+.
  
 \end_layout
 
 \begin_layout Proof
-Summing 
+The interaction terms in 
 \begin_inset Formula $F_{i}$
 \end_inset
 
- over 
-\begin_inset Formula $i$
+ (Definition
+\begin_inset space ~
 \end_inset
 
-:
- each interaction term 
-\begin_inset Formula $\alpha_{ik}(y_{k}-y_{i})$
+4.1) involve differences 
+\begin_inset Formula $(y_{k}-y_{i})$
 \end_inset
 
- appears once with sign 
-\begin_inset Formula $+$
+ and 
+\begin_inset Formula $(\delta y_{k}-\delta y_{i})/\tilde{m}_{R}$
 \end_inset
 
- (from peak 
-\begin_inset Formula $i$
+.
+ Each nearest-neighbor edge 
+\begin_inset Formula $\{i,k\}$
 \end_inset
 
-) and once with sign 
-\begin_inset Formula $-$
+ contributes to 
+\begin_inset Formula $\sum_{i}F_{i}$
 \end_inset
 
- (from peak 
-\begin_inset Formula $k$
+ through both the 
+\begin_inset Formula $F_{i}$
 \end_inset
 
-),
- so the interaction terms cancel in pairs.
- What remains is 
+ summand (with factor 
+\begin_inset Formula $y_{k}-y_{i}+(\delta y_{k}-\delta y_{i})/\tilde{m}_{R}$
+\end_inset
+
+) and the 
+\begin_inset Formula $F_{k}$
+\end_inset
+
+ summand (with factor 
+\begin_inset Formula $y_{i}-y_{k}+(\delta y_{i}-\delta y_{k})/\tilde{m}_{R}$
+\end_inset
+
+).
+ Since the scalar coefficient 
+\begin_inset Formula $\frac{2Q_{R}(|\tilde{y}_{k}-\tilde{y}_{i}|)}{\norm{u_{R}}_{L^{2}}^{2}R^{4}|\tilde{y}_{k}-\tilde{y}_{i}|}$
+\end_inset
+
+ depends only on 
+\begin_inset Formula $|\tilde{y}_{k}-\tilde{y}_{i}|=|\tilde{y}_{i}-\tilde{y}_{k}|$
+\end_inset
+
+,
+ these contributions are equal in magnitude and opposite in sign;
+ hence they cancel.
+\end_layout
+
+\begin_layout Proof
+What remains from the Hessian terms is 
 \begin_inset Formula 
 \[
-\sum_{i}F_{i}=\sum_{i}\HV\frac{\tilde{y}_{i}}{\tilde{m}_{R}}-\sum_{i}\sum_{k\in N_{i}}\frac{2Q_{R}(\cdots)}{\cdots}\cdot\frac{\tilde{y}_{k}-\tilde{y}_{i}}{\tilde{m}_{R}}=\sum_{i}\Bigl[\HV\frac{\tilde{y}_{i}}{\tilde{m}_{R}}-\sum_{k\in N_{i}}\cdots\Bigr]=0,
+\sum_{i=1}^{3}F_{i}(\delta y,R)=\sum_{i=1}^{3}\Bigl[\HV y_{i}+\HV\frac{\delta y_{i}}{\tilde{m}_{R}}\Bigr]=\HV\frac{\sum_{i}\bigl(\tilde{m}_{R}\,y_{i}+\delta y_{i}\bigr)}{\tilde{m}_{R}}\,.
 \]
 
 \end_inset
 
-where the last equality follows from the fact that each term in the sum is precisely the reduced system
+For the equilateral triangle,
+ 
+\begin_inset Formula $\sum_{i}y_{i}=0$
+\end_inset
+
+ by symmetry (the centroid is at the origin),
+ so 
+\begin_inset Formula $\sum_{i}F_{i}=\HV\,\bigl(\sum_{i}\delta y_{i}\bigr)/\tilde{m}_{R}$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\HV$
+\end_inset
+
+ is invertible (Hypothesis
 \begin_inset space ~
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:algebraic"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
+V3),
+ 
+\begin_inset Formula $\sum_{i}F_{i}=0$
 \end_inset
 
- applied to peak 
-\begin_inset Formula $i$
+ if and only if 
+\begin_inset Formula $\sum_{i}\delta y_{i}=0$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Proof
-For compatibility:
+\begin_inset VSpace smallskip
+\end_inset
+
+For the explicit solution:
+ 
+\begin_inset Formula $\sum_{i}\delta y_{i}^{0}=(-\gamma\boldsymbol{r}_{2})+(-\beta\boldsymbol{r}_{1}+\tfrac{\gamma}{2}\boldsymbol{r}_{2})+(\beta\boldsymbol{r}_{1}+\tfrac{\gamma}{2}\boldsymbol{r}_{2})=\boldsymbol{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+\begin_inset VSpace smallskip
+\end_inset
+
+For the gauge-fixing compatibility:
  
 \begin_inset Formula $\delta y_{1}^{0}=-\gamma\boldsymbol{r}_{2}$
 \end_inset
 
- satisfies 
-\begin_inset Formula $\delta y_{1}^{0}\perp\boldsymbol{r}_{1}$
-\end_inset
-
- since it has no 
+ has zero 
 \begin_inset Formula $\boldsymbol{r}_{1}$
 \end_inset
 
--component.
+-component,
+ so 
+\begin_inset Formula $\delta y_{1}^{0}\perp\boldsymbol{r}_{1}$
+\end_inset
+
+ (condition G1).
  And 
 \begin_inset Formula $\delta y_{3}^{0}-\delta y_{2}^{0}=2\beta\boldsymbol{r}_{1}\parallel\boldsymbol{r}_{1}$
 \end_inset
 
-.
+ (condition G2).
  
 \end_layout
 
@@ -5409,7 +5903,7 @@ literal "false"
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "KirrZarnescu2007,KirrMizrak2008,Kirr2016"
+key "KirrZarnescu2007,KirrMizrak2008,KirrZarnescu2009,Kirr2016"
 literal "false"
 
 \end_inset
@@ -5506,13 +6000,13 @@ placement H
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt" varwidth="true">
 <column alignment="center" valignment="top" width="0pt">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
@@ -5726,13 +6220,13 @@ placement H
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt" varwidth="true">
 <column alignment="center" valignment="top" width="0pt">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
@@ -5953,13 +6447,13 @@ placement H
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
 <features booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt" varwidth="true">
 <column alignment="center" valignment="top" width="0pt">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
@@ -6162,14 +6656,14 @@ placement H
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt" varwidth="true">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -6381,13 +6875,13 @@ placement H
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
 <features booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt" varwidth="true">
 <column alignment="center" valignment="top" width="0pt">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
@@ -6563,13 +7057,13 @@ placement H
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt" varwidth="true">
 <column alignment="center" valignment="top" width="0pt">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
@@ -6805,14 +7299,14 @@ placement H
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt" varwidth="true">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -7079,14 +7573,14 @@ placement H
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt" varwidth="true">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -7284,14 +7778,14 @@ placement H
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt" varwidth="true">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -7438,14 +7932,14 @@ placement H
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt" varwidth="true">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -7645,14 +8139,14 @@ placement H
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt" varwidth="true">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -7815,18 +8309,19 @@ Principal Notation
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Float table
 placement H
 alignment center
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="18" columns="2">
 <features booktabs="true" tabularvalignment="middle">
-<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" varwidth="true">
 <column alignment="left" valignment="top">
 <row>
 <cell alignment="left" valignment="top" topline="true" usebox="none">

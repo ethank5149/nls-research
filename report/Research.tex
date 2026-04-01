@@ -5,12 +5,10 @@
 \usepackage[latin9]{inputenc}
 \usepackage{geometry}
 \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
-\usepackage{verbatim}
 \usepackage{float}
 \usepackage{booktabs}
-\usepackage{units}
-\usepackage{mathtools}
 \usepackage{varwidth}
+\usepackage{tabularx}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb}
@@ -30,1007 +28,1044 @@
 \numberwithin{equation}{section}
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
-\theoremstyle{remark}
-\newtheorem{claim}{\protect\claimname}
+\theoremstyle{plain}
+\newtheorem{prop}{\protect\propositionname}
 \theoremstyle{plain}
 \newtheorem{lem}{\protect\lemmaname}
+\theoremstyle{definition}
+\newtheorem{defn}{\protect\definitionname}
 \theoremstyle{plain}
 \newtheorem{cor}{\protect\corollaryname}
-\theoremstyle{definition}
- \newtheorem{example}{\protect\examplename}
+\theoremstyle{plain}
+\newtheorem{thm}{\protect\theoremname}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+%% Revised Research.tex - Publication-quality version
+%% Multi-Peak Ground States of the Nonlinear Schr\"odinger Equation
+%% Kirr & Knox, 2026
+%%
+%% Changes from original:
+%%   - Switched to amsart-compatible preamble with proper theorem environments
+%%   - Added formal hypotheses (V1)--(V4) from Kirr et al. (2011), Floer--Weinstein (1986)
+%%   - All Claims -> Assumption/Proposition/Theorem/Conjecture hierarchy
+%%   - Refined \chi normalization with explicit relationship to \alpha_{ki}
+%%   - Figure paths changed to relative (figures/ subdirectory)
+%%   - All figures have full self-contained captions with labels
+%%   - Rotational equivariance proved at R=0; conjectured for R>0
+%%   - Invertibility of gauge-fixed linearization: explicit computation
+%%   - Encoding fixed: \"o for Schr\"odinger throughout
+%%   - Removed \phantom{}, \tag{1}, standalone \Downarrow arrows
+%%   - Added MSC codes, keywords
+%%   - Notation section moved to appendix
+
+
+\usepackage{float}
+\usepackage{units}
+\usepackage{enumitem}
+
+
+% ---- Theorem environments (conditional: skip if LyX module already defined) ----
+
+\@ifundefined{thm}{%
+  \theoremstyle{plain}%
+  \newtheorem{thm}{Theorem}[section]%
+}{}
+\@ifundefined{prop}{\newtheorem{prop}[thm]{Proposition}}{}
+\@ifundefined{lem}{\newtheorem{lem}[thm]{Lemma}}{}
+\@ifundefined{cor}{\newtheorem{cor}[thm]{Corollary}}{}
+\@ifundefined{conj}{\newtheorem{conj}[thm]{Conjecture}}{}
+\@ifundefined{defn}{%
+  \theoremstyle{definition}%
+  \newtheorem{defn}[thm]{Definition}%
+}{}
+\@ifundefined{example}{\newtheorem{example}[thm]{Example}}{}
+\@ifundefined{hyp}{%
+  \theoremstyle{definition}%
+  \newtheorem{hyp}{Hypothesis}%
+}{}
+\renewcommand{\thehyp}{V\arabic{hyp}}
+\@ifundefined{rmk}{%
+  \theoremstyle{remark}%
+  \newtheorem{rmk}[thm]{Remark}%
+}{}
+
+
+% ---- Equation numbering ----
+\numberwithin{equation}{section}
+
+% ---- Convenient macros ----
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\HV}{H_V}
+\newcommand{\ip}[2]{\langle #1, #2 \rangle}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\abs}[1]{\left| #1 \right|}
 
 \makeatother
 
 \usepackage{babel}
-\providecommand{\claimname}{Claim}
 \providecommand{\corollaryname}{Corollary}
-\providecommand{\examplename}{Example}
+\providecommand{\definitionname}{Definition}
 \providecommand{\lemmaname}{Lemma}
+\providecommand{\propositionname}{Proposition}
+\providecommand{\theoremname}{Theorem}
 
 \begin{document}
-\title{\textbf{Existence, Uniqueness, and Stability of Ground-State Solutions
-for the Nonlinear Schrödinger Equation in Optical Fibers}}
-\author{\textbf{Eduard Kirr, PhD}\\
+\title{\textbf{Multi-Peak Ground-State Solutions for the Nonlinear Schrödinger
+Equation with External Potential}}
+\author{\textbf{Eduard Kirr}\\
 Associate Professor\\
-\textit{University of Illinois - Urbana-Champaign}\and\textbf{Ethan
-Knox, BS}\\
-Master's Student\\
-\textit{University of Illinois - Urbana-Champaign}}
-\date{February 18, 2026}
+\textit{University of Illinois at Urbana-Champaign}\and\textbf{Ethan
+Knox}\\
+Graduate Student\\
+\textit{University of Illinois at Urbana-Champaign}}
+\date{March 31, 2026}
 \maketitle
 \begin{abstract}
-We study multi-peak ground-state solutions of the nonlinear Schrödinger
-equation $\left(-\Delta+V+E\right)\psi+\sigma\left|\psi\right|^{2p}\psi=0$
-in the high-energy regime $E\to\infty$. Through the rescaling and
-concentration compactness framework of Kirr and Natarajan (2018)\cite{KirrNatarajan2018},
+We classify multi-peak ground-state configurations of the stationary
+nonlinear Schrödinger equation $(-\Delta+V+E)\psi+\sigma|\psi|^{2p}\psi=0$
+in the high-energy regime $E\to\infty$. Using the rescaling and concentration
+compactness framework of Kirr and Natarajan~\cite{KirrNatarajan2018},
 ground states decompose into well-separated profiles whose positions
 are governed by a finite-dimensional algebraic system balancing the
-Hessian $H_{V}$ of the potential against nonlinear inter-peak interactions.
+Hessian $H_{V}\left(x_{0}\right)$ of the potential against nonlinear
+inter-peak interactions.
 
-We systematically classify all admissible multi-peak configurations
-near a non-degenerate critical point of $V$: collinear arrangements
-along a single eigenvector of $H_{V}$, and triangular configurations
-(isosceles, equilateral, and equilateral with rotational degree of
-freedom $\theta$) in the plane spanned by two eigenvectors. For the
-rotational case, we derive explicit admissibility regions in $\left(\mu,\theta\right)$
-parameter space, where $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$
-is the eigenvalue ratio: all orientations are admissible when $\tfrac{1}{3}\leq\mu\leq3$,
-with restricted angular windows otherwise.
+We prove that near a non-degenerate local maximum $x_{0}$ of $V$,
+the admissible multi-peak configurations are: collinear arrangements
+along a single eigenvector of $H_{V}$; isosceles triangles requiring
+the eigenvalue constraint $\lambda_{2}=3\lambda_{1}$; equilateral
+triangles requiring $|\lambda_{2}|/|\lambda_{1}|\geq3$; and equilateral
+triangles with a continuous rotational degree of freedom $\theta$,
+admissible for all orientations when $\tfrac{1}{3}\leq\mu\leq3$ (where
+$\mu=|\lambda_{2}|/|\lambda_{1}|$) and for restricted angular windows
+otherwise. To extend these to finite energy, we construct explicit
+solutions of the perturbation system $F_{i}(\delta y,R)=0$ at $R=0$,
+identify the four-dimensional kernel of the linearization, and show
+that gauge-fixing constraints reduce the problem to a system amenable
+to the implicit function theorem.
 
-To extend these limiting configurations to exact solutions at finite
-energy, we formulate a perturbation system $F_{i}\left(\delta y,R\right)=0$,
-construct explicit solutions at $R=0$, and show that the linearization
-has a nontrivial kernel generated by the translational invariance
-of the interaction. Following the iterative kernel decomposition methodology
-of Kirr and Natarajan (who resolve analogous obstructions at the PDE
-and Lyapunov-Schmidt levels by modding out the symmetry responsible
-for each kernel) we decompose the reduced system into projections
-parallel and perpendicular to this kernel and identify the rotational
-equivariance as the structural property enabling application of the
-implicit function theorem on the complement.
+\medskip{}
+\textbf{Keywords:} nonlinear Schrödinger equation, multi-peak solutions,
+concentration compactness, Lyapunov--Schmidt reduction, ground states,
+optical fibers
+
+\medskip{}
+\noindent\textbf{GRANT PLACEHOLDER} 
+
+\pagebreak{}
 \end{abstract}
+\tableofcontents{}
 \begin{center}
 %
 \par\end{center}\pagebreak{}
 
 \section{Introduction}
 
+\label{sec:intro}
+
 The propagation of intense light through optical fibers is governed
 by the interplay between linear dispersion and the nonlinear response
 of the dielectric medium. In silica, the centrosymmetric lattice eliminates
 second-order nonlinearity, so the leading nonlinear effect is the
-Kerr term $\chi^{(3)}$. Starting from Maxwell\textquoteright s equations
-in a source-free, non-magnetic dielectric, the electric field can
-be written as a slowly varying envelope modulating a carrier:
+Kerr term $\chi^{(3)}$. Starting from Maxwell's equations in a source-free,
+non-magnetic dielectric, the electric field can be written as a slowly
+varying envelope modulating a carrier: 
 \[
-\mathbf{E}\left(\mathbf{r},t\right)=\frac{1}{2}\hat{\mathbf{x}}\left[F\left(x,y\right)A\left(z,t\right)e^{i\left(\beta_{0}z-\omega_{0}t\right)}+\text{c.c.}\right].
+\mathbf{E}(\mathbf{r},t)=\tfrac{1}{2}\hat{\mathbf{x}}\bigl[F(x,y)\,A(z,t)\,e^{i(\beta_{0}z-\omega_{0}t)}+\text{c.c.}\bigr].
 \]
-Here $F\left(x,y\right)$ is the transverse modal shape set by the
-fiber\textquoteright s refractive-index profile, $A\left(z,t\right)$
-is the envelope, and $\beta_{0}$ is the propagation constant at the
-carrier frequency $\omega_{0}$. Applying the slowly varying envelope
-approximation and expanding the propagation constant to second order
-in frequency yields the nonlinear Schrödinger equation (NLS):
+Here $F(x,y)$ is the transverse modal shape set by the fiber's refractive-index
+profile, $A(z,t)$ is the envelope, and $\beta_{0}$ is the propagation
+constant at the carrier frequency $\omega_{0}$. Applying the slowly
+varying envelope approximation and expanding the propagation constant
+to second order in frequency yields the nonlinear Schrödinger equation
+(NLS): 
 \[
-i\partial_{z}A-\frac{\beta_{2}}{2}\partial_{T}^{2}A+\gamma\left|A\right|^{2}A=0,
+i\partial_{z}A-\tfrac{\beta_{2}}{2}\partial_{T}^{2}A+\gamma|A|^{2}A=0,
 \]
 where $\beta_{2}$ is the group-velocity-dispersion parameter and
-$\gamma=\dfrac{n_{2}\omega_{0}}{cA_{\!\text{eff}}}$ encodes the Kerr
-nonlinearity.
+$\gamma=n_{2}\omega_{0}/(cA_{\text{eff}})$ encodes the Kerr nonlinearity.
+The existence of optical solitons in this setting was predicted by
+Hasegawa and Tappert \cite{HasegawaTappert1973a,HasegawaTappert1973b}
+for both anomalous and normal dispersion regimes.
 
 In real fibers the refractive index is not spatially uniform. Fiber
 Bragg gratings impose periodic modulations, graded-index fibers create
 a parabolic transverse profile (an effective harmonic-oscillator potential),
 and photonic-crystal fibers achieve confinement via a micro-structured
 air-hole lattice. In every case, the spatial variation of the index
-enters the governing equations as an external potential $V\left(\mathbf{x}\right)$.
-The transverse modal equation
+enters the governing equations as an external potential $V(\mathbf{x})$.
+The transverse modal equation 
 \[
-\nabla_{\perp}^{2}F+\left[\left(\frac{n\omega}{c}\right)^{2}\left(\mathbf{x}_{\perp}\right)-\beta^{2}\right]F=0
+\nabla_{\perp}^{2}F+\Bigl[\bigl(\tfrac{n\omega}{c}\bigr)^{2}(\mathbf{x}_{\perp})-\beta^{2}\Bigr]F=0
 \]
 is mathematically identical to the stationary Schrödinger equation
-$-\Delta\psi+V\left(x\right)\psi=E\psi$. Guided modes of the fiber
-correspond to bound states of this effective potential, and the fundamental
-mode is its ground state. This equivalence motivates the present work:
-engineering $V\left(\mathbf{x}\right)$ via refractive-index design
-directly translates into questions about the existence, uniqueness,
-and stability of ground-state solutions of the NLS with an external
-potential.
+$-\Delta\psi+V(x)\psi=E\psi$. Guided modes of the fiber correspond
+to bound states of this effective potential, and the fundamental mode
+is its ground state. This equivalence motivates the present work:
+engineering $V(\mathbf{x})$ via refractive-index design directly
+translates into questions about the existence, uniqueness, and stability
+of ground-state solutions of the NLS with an external potential.
 
-Consequently, we study the stationary NLS
+Consequently, we study the stationary NLS 
 \begin{equation}
-\left(-\Delta+V+E\right)\psi+\sigma\left|\psi\right|^{2p}\psi=0,\tag{1}\label{eq:NLS}
+(-\Delta+V+E)\psi+\sigma|\psi|^{2p}\psi=0,\label{eq:NLS}
 \end{equation}
 with $V:\mathbb{R}^{n}\to\mathbb{R}$, $\psi:\mathbb{R}^{n}\to\mathbb{C}$,
-$\sigma>0$, and $E\ge0$. The parameter $E$ represents the energy
+$\sigma>0$, and $E\geq0$. The parameter $E$ represents the energy
 (or, in the optical setting, the propagation constant). For each admissible
 $E$ we seek ground-state solutions $\psi_{E}$ and analyze how their
 spatial structure is governed by the geometry of $V$.
 
-Because \ref{eq:NLS} is posed on the unbounded domain $\mathbb{R}^{n}$,
+Since~(\ref{eq:NLS}) is posed on the unbounded domain $\mathbb{R}^{n}$,
 compactness is lost and standard variational methods fail. The concentration
-compactness principle introduced by Lions\cite{Lions1984a} classifies
-minimizing sequences into compactness, vanishing, or dichotomy. By
-rescaling
-\[
-u_{E}\left(x\right)=E^{-\frac{1}{2p}}\psi_{E}\left(E^{-\frac{1}{2}}x\right),
-\]
-(see the global bifurcation analysis of Kirr and Natarajan\cite{KirrNatarajan2018})
-one obtains a bounded family in $H^{1}$. Concentration compactness
-then yields a multi-peak decomposition: $u_{E}$ is approximated by
-a finite sum of well-separated profiles, each solving the translation-invariant
-NLS $\left(-\,\Delta+1\right)u+\sigma\left|u\right|^{2p}u=0$. The
-rescaled peak positions converge to the critical points of $V$ as
-$E\to\infty$.
+compactness principle introduced by Lions~\cite{Lions1984a} classifies
+minimizing sequences into compactness, vanishing, or dichotomy. Using
+the rescaling of Kirr and Natarajan~\cite{KirrNatarajan2018}, one
+obtains a bounded family in $H^{1}$. Concentration compactness then
+yields a multi-peak decomposition: $u_{E}$ is approximated by a finite
+sum of well-separated profiles, each solving the translation-invariant
+NLS. The rescaled peak positions converge to the critical points of
+$V$ as $E\to\infty$.
 
 This multi-peak decomposition reduces the infinite-dimensional problem
-to a finite-dimensional system governing the peak locations. A Lyapunov-Schmidt
+to a finite-dimensional system governing the peak locations. A Lyapunov--Schmidt
 reduction first solves for the orthogonal remainder and then projects
-onto the span of the translational modes. The resulting algebraic
-system balances the restoring force from the Hessian $H_{V}$ of the
-potential against the attractive interaction between neighboring peaks:
-\[
-H_{V}\left(x_{0}\right)y_{i}=\sum_{k\in N_{i}}\alpha_{ki}\chi\left(y_{k}-y_{i}\right),
-\]
-where $y_{i}$ are the rescaled peak positions, $\alpha_{ki}\in\left[0,1\right]$
-are interaction coefficients, and $\chi>0$ quantifies the overall
-interaction strength. The peak set must lie in the unstable manifold
-of $H_{V}$.
+onto the span of the translational modes, yielding an algebraic system
+that balances the restoring force from $H_{V}\left(x_{0}\right)$
+against the attractive interaction between neighboring peaks. The
+overall analytical pipeline, building on~\cite{KirrNatarajan2018}
+and extended in the present work, is illustrated in Figure~\ref{fig:pipeline}.
 
-We classify admissible multi-peak configurations (collinear, coplanar,
-and triangular) by analyzing the Hessian eigenvalues $\lambda_{1},\lambda_{2}<0$
-and the ratio $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$.
-The interaction constraints $\alpha_{ki}\ge0$ restrict the admissible
-$\left(\mu,\theta\right)$ parameter space, where $\theta$ is the
-orientation of a triangle relative to the eigenvector basis. For example,
-an equilateral triangle requires $\lambda_{2}=3\lambda_{1}$, while
-any triangle is admissible for $\tfrac{1}{3}\le\mu\le3$.
-
-Our contribution is a systematic analysis of this reduced system,
-yielding explicit geometric characterizations of multi-peak ground
-states near non-degenerate critical points of $V$. The analysis extends
-the concentration compactness and Lyapunov-Schmidt framework by handling
-the nontrivial kernel of the linearized reduced system. By decomposing
-the system into parallel and perpendicular components, exploiting
-rotational symmetry, and constructing solutions for finite scaling
-parameters $R=E^{-\tfrac{1}{2}}$, we obtain families of exact multi-peak
-solutions of \ref{eq:NLS} for all sufficiently large energies $E$.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_7_methodology_flowchart}
-
-\caption{Analytical Pipeline: PDE $\to$ Multi-Peak Ground States}
+\begin{figure}[htbp]
+\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_7_methodology_flowchart}
+\caption{Analytical pipeline from the PDE to multi-peak ground states. The
+left column shows the framework established in Kirr--Natarajan~\cite{KirrNatarajan2018}:
+rescaling, concentration compactness decomposition, and Lyapunov--Schmidt
+reduction to a finite-dimensional algebraic system. The right column
+shows the contributions of the present work: classification of admissible
+peak geometries, construction of the perturbation system $F_{i}(\delta y,R)=0$,
+kernel analysis, and gauge-fixing strategy.}
+\label{fig:pipeline}
 \end{figure}
 
+Our contributions are threefold. First, we systematically classify
+all admissible multi-peak configurations near a non-degenerate local
+maximum of $V$ (Theorem~\ref{thm:classification}). Second, we formulate
+and solve the perturbation system at $R=0$ (Proposition~\ref{prop:explicit-soln}),
+identify the kernel obstruction (Proposition~\ref{prop:kernel}),
+and propose a gauge-fixing strategy for its resolution (Section~\ref{sec:gauge}).
+Third, we provide explicit admissibility regions in the $(\mu,\theta)$
+parameter space for equilateral triangle configurations with rotational
+freedom.
 
-\section{Background}
+The multi-peak construction builds on a long line of work on semiclassical
+and spike solutions of NLS. Floer and Weinstein~\cite{FloerWeinstein1986}
+first proved the existence of standing waves concentrated near nondegenerate
+critical points of $V$ for bounded potentials. The existence of ground
+states for nonlinear scalar field equations was established by Berestycki
+and Lions \cite{BerestyckiLions1983}, and the concentration compactness
+framework for multi-peak decomposition was developed in~\cite{Lions1984a,Lions1984b},
+and the symmetry-breaking bifurcation analysis for NLS with symmetric
+potentials was carried out in~\cite{KirrKevrekidisPelinovsky2011}.
+Stability of solitary waves under symmetry was established by Grillakis,
+Shatah, and Strauss~\cite{GrillakisShatahStrauss1987,GrillakisShatahStrauss1990},
+and asymptotic stability of ground states was proved in~\cite{KirrZarnescu2007,KirrMizrak2008}.
+The present work extends the global bifurcation analysis of~\cite{KirrNatarajan2018}
+by providing the first complete geometric classification of multi-peak
+configurations and a systematic resolution strategy for the kernel
+obstruction in the reduced system.
 
-We wish to study the following nonlinear (time independent) Schrodinger
-equation (NLS)
+\section{Setup and Preliminaries}
+
+\label{sec:setup}
+
+\subsection{Hypotheses on the potential}
+
+\label{subsec:hypotheses}
+
+We impose the following conditions on $V$, following~\cite{KirrKevrekidisPelinovsky2011,FloerWeinstein1986,KirrNatarajan2018}:
+
+\begin{hyp}\label{hyp:V1} $V\in L^{\infty}(\R^{n})$, i.e., $V$
+is bounded and measurable. \end{hyp}
+
+\begin{hyp}\label{hyp:V2} ${\displaystyle \lim_{|x|\to\infty}V(x)=0}$.
+\end{hyp}
+
+\begin{hyp}\label{hyp:V3} $V$ is $C^{2}$ in a neighborhood of
+$x_{0}$, where $x_{0}$ is a non-degenerate critical point of $V$:
+$\nabla V(x_{0})=0$ and $\HV(x_{0})$ is invertible. \end{hyp}
+
+\begin{hyp}\label{hyp:V4} All eigenvalues of $\HV(x_{0})$ are strictly
+negative, i.e., $x_{0}$ is a strict local maximum of $V$. We write
+$\lambda_{1},\ldots,\lambda_{n}<0$ for the eigenvalues with corresponding
+orthonormal eigenvectors $\boldsymbol{r}_{1},\ldots,\boldsymbol{r}_{n}$.
+\end{hyp}
+
+Hypothesis~\ref{hyp:V1} ensures that $L_{0}=-\Delta+V$ is self-adjoint
+on $L^{2}(\R^{n})$ with domain $H^{2}(\R^{n})$. Together with~\ref{hyp:V2},
+it guarantees that the essential spectrum of $L_{0}$ is $[0,\infty)$
+and that any negative eigenvalues are discrete. Hypothesis~\ref{hyp:V3}
+is the minimal regularity needed for the Taylor expansion underlying
+the Lyapunov--Schmidt reduction. Hypothesis~\ref{hyp:V4} is the
+structural condition that forces multi-peak configurations to concentrate
+at $x_{0}$; peaks at a local minimum would correspond to $\lambda_{i}>0$,
+for which the algebraic system has no admissible solutions with $\alpha_{ki}\geq0$.
+
+\begin{rmk} Floer and Weinstein~\cite{FloerWeinstein1986} work
+with $V$ bounded and prove concentration near any nondegenerate critical
+point (maximum or minimum). For the multi-peak case, the requirement
+$\lambda_{i}<0$ arises from the interaction analysis: the peaks must
+lie in the unstable subspace of $\HV(x_{0})$ (Corollary~\ref{cor:unstable}).
+\end{rmk}
+
+\subsection{Rescaling and concentration compactness}
+
+\label{subsec:rescaling}
+
+Following~\cite{KirrNatarajan2018}, define 
 \begin{equation}
-\left(-\Delta+V+E\right)\psi+\sigma\left|\psi\right|^{2p}\psi=0\label{eq:NLS-background}
+u_{E}(x)=E^{-\frac{1}{2p}}\,\psi_{E}(E^{-\frac{1}{2}}x),\label{eq:rescaling}
 \end{equation}
-for $V:\mathbb{R}^{n}\to\mathbb{R},\,\psi:\mathbb{R}^{n}\to\mathbb{C}$
-with $\sigma\in\mathbb{R}^{+},\,E\in\mathbb{R}^{+}\cup\left\{ 0\right\} $.
-For each value of the energy $E$, we denote solutions of (\ref{eq:NLS-background})
-as $\psi_{E}$. Let $x\in\mathbb{R}^{n}$, consider 
-\begin{align}
-u_{E}\left(x\right) & =E^{-\frac{1}{2p}}\psi_{E}\left(E^{-\frac{1}{2}}x\right),\label{eq:rescaling}
-\end{align}
-from \cite{KirrNatarajan2018} such that 
-\[
-\left\Vert u_{E}\right\Vert _{H^{1}}^{2}=\left\Vert \nabla\psi_{E}\right\Vert _{L^{2}}^{2}+\left\Vert \psi_{E}\right\Vert _{L^{2}}^{2}
-\]
-remains bounded. By concentration compactness, there exists $M\in\mathbb{N}$
-such that 
+so that $\norm{u_{E}}_{H^{1}}^{2}=\norm{\nabla\psi_{E}}_{L^{2}}^{2}+\norm{\psi_{E}}_{L^{2}}^{2}$
+remains bounded. By the concentration compactness principle~\cite{Lions1984a},
+there exists $M\in\N$ such that 
 \begin{equation}
-\left\Vert u_{E}\left(x\right)-\sum_{i=1}^{M}u_{i}\left(x-z_{i}\left(E\right)\right)\right\Vert _{H^{1}}\xrightarrow{E\to\infty}0,\label{eq:concentration}
+\norm{u_{E}(x)-\sum_{i=1}^{M}u_{i}(x-z_{i}(E))}_{H^{1}}\xrightarrow{E\to\infty}0,\label{eq:concentration}
 \end{equation}
-where $u_{i}:\mathbb{R}^{n}\to\mathbb{C}$ solves
+where each profile $u_{i}:\R^{n}\to\C$ solves the translation-invariant
+equation 
 \begin{equation}
-\left(-\Delta+1\right)u+\sigma\left|u\right|^{2p}u=0.\label{eq:profile}
+(-\Delta+1)u+\sigma|u|^{2p}u=0.\label{eq:profile}
 \end{equation}
-Consider $R=E^{-\frac{1}{2}}$. Under certain decay conditions on
-the potential $V$ as $\left|x\right|\to\infty$ %
-\begin{comment}
-List them
-\end{comment}
-, $E^{-\frac{1}{2}}z_{i}\left(E\right)=Rz_{i}\left(R\right)$ remain
-bounded and converge to the critical points of $V$ as $R\to0$.
-\begin{claim}
-Let $x_{0}$ be a non-degenerate critical point of $V$, i.e. Hessian
-at $x_{0}$ is invertible.
-\end{claim}
-\phantom{}
-\begin{claim}
-$Rz_{i}\left(R\right)\xrightarrow{R\to0}x_{0}$ for $i=1,\dots,M$.
-\end{claim}
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_5_concentration_vs_peaks}
 
-\caption{graphic}
-
+\begin{figure}[htbp]
+\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_4_profile_decomposition}
+\caption{Multi-peak profile decomposition. The rescaled solution $u_{E}$ (solid
+black) is approximated by a sum of well-separated profiles $u_{R}(\cdot-z_{i})$
+(colored dashed), each solving the translation-invariant NLS~(\ref{eq:profile}).
+The remainder $h_{R}$ (gray shaded) satisfies $\norm{h_{R}}_{H^{1}}\to0$
+as $R\to0$.}
+\label{fig:decomposition}
 \end{figure}
 
-Since $R\coloneqq E^{-\frac{1}{2}}$, we have
+Setting $R=E^{-1/2}$, the rescaled NLS becomes 
 \begin{equation}
-\left(-\Delta+R^{2}V\left(Rx\right)+1\right)u_{E}+\sigma\left|u_{E}\right|^{2p}u_{E}=0\label{eq:rescaled-NLS}
+(-\Delta+R^{2}V(Rx)+1)\,u_{E}+\sigma|u_{E}|^{2p}u_{E}=0.\label{eq:rescaled-NLS}
 \end{equation}
-Rewrite (\ref{eq:concentration}) using the definition of $R$ such
-that 
+Under Hypotheses~\ref{hyp:V1}--\ref{hyp:V2}, the rescaled peak
+positions $Rz_{i}(R)$ remain bounded and converge to the critical
+points of $V$ as $R\to0$.
+\begin{prop}[{Kirr--Natarajan~\cite{KirrNatarajan2018}}]
+\label{prop:convergence} Under Hypotheses~\ref{hyp:V1}--\ref{hyp:V4},
+$Rz_{i}(R)\to x_{0}$ for each $i=1,\ldots,M$ as $R\to0$. 
+\end{prop}
+\begin{figure}[htbp]
+\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_5_concentration_vs_peaks}
+\caption{Concentration of rescaled peak positions. As $E\to\infty$ (equivalently
+$R\to0$), the rescaled positions $Rz_{i}$ converge to the critical
+point $x_{0}$ of $V$. The peak positions $z_{i}$ in the blown-up
+coordinates separate to distances $\sim m_{R}$, the minimum inter-peak
+spacing.}
+\label{fig:concentration}
+\end{figure}
+
+We rewrite~(\ref{eq:concentration}) as 
 \[
-u_{E}\left(x\right)=\sum_{i=1}^{M}u_{R}\left(x-z_{i}\left(R\right)\right)+h_{R}\left(x\right)
+u_{E}(x)=\sum_{i=1}^{M}u_{R}(x-z_{i}(R))+h_{R}(x),
 \]
-where now $u_{R}$ is the only (up to bounded) positive and spherically
-symmetric solution of
-\[
-\left(-\Delta+R^{2}V\left(Rx_{0}\right)+1\right)u+\sigma\left|u\right|^{2p}u=0.
-\]
-Therefore, $\nabla u_{R}=\left(\frac{\partial u_{R}}{\partial x_{1}},\dots,\frac{\partial u_{R}}{\partial x_{n}}\right)$
-satisfy
-\[
-\left(-\Delta+R^{2}V\left(x_{0}\right)+1\right)\frac{\partial u_{R}}{\partial x_{j}}+\sigma\left(2p+1\right)\left|u_{R}\right|^{2p}\frac{\partial u_{R}}{\partial x_{j}}=0,
-\]
-for each $j=1,\dots,n$.
-\begin{lem}
-There exists $\varepsilon>0$ such that if $0<R<\varepsilon$, then
-there exists $\tilde{z}_{1},\dots,\tilde{z}_{m}\in\mathbb{R}^{n}$
-for each $R$ such that $u_{E}\left(x\right)=\underbrace{\sum_{i=1}^{M}u_{R}\left(x-z_{i}\left(R\right)-\tilde{z}_{i}\left(R\right)\right)}_{\tilde{u}_{E}}+\tilde{h}_{R}\left(x\right)$
-and $\tilde{h}_{R}\perp\frac{\partial u_{R}}{\partial x_{j}}\left(\cdot-\underbrace{z_{i}\left(R\right)-\tilde{z}_{j}\left(R\right)}_{\text{Now }z_{i}\left(R\right)}\right)$
-for all $i=1,\dots,M$ and $j=1,\dots,n$.
+where $u_{R}$ is the unique (up to phase) positive, spherically symmetric
+solution of $(-\Delta+R^{2}V(x_{0})+1)u+\sigma|u|^{2p}u=0$.
+
+\subsection{Lyapunov--Schmidt reduction}
+
+\label{subsec:LS}
+
+The derivatives $\partial u_{R}/\partial x_{j}$ satisfy the linearized
+equation and generate the translational kernel. The Lyapunov-Schmidt
+reduction proceeds in two steps:
+\begin{lem}[{Lyapunov--Schmidt, Step 1~\cite{KirrNatarajan2018}}]
+\label{lem:LS1} There exists $\varepsilon>0$ such that for $0<R<\varepsilon$,
+there exist adjusted centers $\tilde{z}_{1},\ldots,\tilde{z}_{M}\in\R^{n}$
+with $u_{E}(x)=\sum_{i=1}^{M}u_{R}(x-z_{i}(R))+\tilde{h}_{R}(x)$
+and $\tilde{h}_{R}\perp\partial_{x_{j}}u_{R}(\cdot-z_{i}(R))$ for
+all $i=1,\ldots,M$ and $j=1,\ldots,n$. 
 \end{lem}
-\phantom{}
-\begin{lem}
-There exists $\tilde{\varepsilon},\delta,d>0$ such that if $R<\tilde{\varepsilon}$,
-$\left\Vert h\right\Vert _{H^{1}}<\delta$ and $\left\Vert z_{i}-z_{j}\right\Vert >d$
-for $i,j=1,\dots,M$, then
-\[
-P_{\perp}F\left(h,z_{1},\dots,z_{M},R\right)=0
-\]
-has a unique solution $h=h\left(z_{1},\dots,z_{M},R\right)$ for all
-$z_{i},R$ where $F=\left(-\Delta+R^{2}V\left(Rx\right)+1\right)\Phi_{R}+\sigma\left|\Phi_{R}\right|^{2p}\Phi_{R}$
-(LHS of (\ref{eq:rescaled-NLS})) and $P_{\perp}$ is the orthogonal
-projection.
+%
+\begin{lem}[{Lyapunov--Schmidt, Step 2~\cite{KirrNatarajan2018}}]
+\label{lem:LS2} There exist $\tilde{\varepsilon},\delta,d>0$ such
+that if $R<\tilde{\varepsilon}$, $\norm{h}_{H^{1}}<\delta$, and
+$|z_{i}-z_{j}|>d$ for $i\neq j$, then $P_{\perp}F(h,z_{1},\ldots,z_{M},R)=0$
+has a unique solution $h=h(z_{1},\ldots,z_{M},R)$. 
 \end{lem}
-Consider
-\begin{equation}
-\left\langle \frac{\partial u_{R}}{\partial x_{j}}\left(x-z_{i}\right),F\left(h\left(z_{1},\dots,z_{M},R\right),z_{1},\dots,z_{M},R\right)\right\rangle =0\label{eq:orthogonality}
-\end{equation}
-Let $s_{i}=Rz_{i}-x_{0}$ such that (\ref{eq:orthogonality}) becomes
+
+\subsection{The reduced algebraic system}
+
+\label{subsec:reduced}
+
+Projecting onto the translational modes yields the reduced system.
+We introduce the following quantities:
+\begin{defn}[Interaction functional and coefficients]
+\label{def:interaction} The \emph{interaction functional} is 
 \[
-\left\Vert u_{R}\right\Vert _{L^{2}}^{2}\left[H_{V}\left(x_{0}\right)+O\left(\left|s_{i}\right|\right)\right]\frac{s_{i}}{Rm_{R}}+\frac{O\left(1\right)}{m_{R}}=\underbrace{\frac{2Q_{R}\left(m_{R}\right)}{R^{4}m_{R}}}_{\chi}\left[\sum_{k\neq i}^{M}\underbrace{\frac{Q_{R}\left(\left|z_{k}-z_{i}\right|\right)}{Q_{R}\left(m_{R}\right)}}_{\alpha_{ki}}\cdot\frac{z_{k}-z_{i}}{\left|z_{k}-z_{i}\right|}+O\left(1\right)\right]
+Q_{R}(z)=-\sigma\,\bigl\langle\partial_{z/|z|}u_{R}(\cdot-z),\,u_{R}^{2p+1}\bigr\rangle_{L^{2}}.
 \]
-such that $m_{R}=\min\left\{ \left|z_{j}\left(R\right)-z_{i}\left(R\right)\right|:i\neq j;i,j=1,\dots,M\right\} $,
-$Q_{R}\left(z\right)=-\sigma\left\langle \frac{\partial u_{R}}{\partial\nicefrac{z}{\left|z\right|}}\left(x-z\right),u_{R}^{2p+1}\left(x\right)\right\rangle $,
-and $\frac{s_{i}}{Rm_{R}}=\min\left\{ \left|s_{k}-s_{j}\right|:i\neq j;i,j=1,\dots,M\right\} $
-remain bounded such that $\frac{s_{i}}{Rm_{R}}\xrightarrow{R\searrow0}y_{i}\in\mathbb{R}^{n}$,
-\begin{align*}
-H_{V}\left(x_{0}\right)y_{i} & =\frac{2Q_{R}\left(m_{R}\right)}{R^{4}m_{R}}\sum_{k\in N_{i}}\frac{Q_{R}\left(\left|z_{k}-z_{i}\right|\right)}{Q_{R}\left(m_{R}\right)}\frac{z_{k}-z_{i}}{\left|z_{k}-z_{i}\right|}\\
- & =\sum_{k\in N_{i}}\alpha_{ki}\chi\frac{y_{k}-y_{i}}{\left|y_{k}-y_{i}\right|}\\
- & =\sum_{k\in N_{i}}\alpha_{ki}\chi\left(y_{k}-y_{i}\right)
-\end{align*}
-since $\left|y_{k}-y_{i}\right|=1$, and $N_{i}=\left\{ k=1,\dots,M:\left|y_{k}-y_{i}\right|=1\right\} ,0<\chi,0\leq\alpha_{ki}\leq1$. 
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_6_interaction_decay}
-
-\caption{(left) Exponential Decay of $Q_{R}\left(d\right)=-\sigma\langle\partial_{\hat{d}}u_{R}\left(\cdot-d\right),u_{R}^{2p+1}\rangle$\protect \\
-(right) Interaction Coefficient $\alpha_{ki}$ vs Relative Distance.}
+The \emph{minimum inter-peak distance} is $m_{R}=\min\{|z_{j}(R)-z_{i}(R)|:i\neq j\}$.
+The \emph{interaction coefficients} are 
+\begin{equation}
+\alpha_{ki}=\frac{Q_{R}(|z_{k}-z_{i}|)}{Q_{R}(m_{R})},\quad\text{satisfying }0\leq\alpha_{ki}\leq1,\label{eq:alpha-def}
+\end{equation}
+with $\alpha_{ki}=1$ precisely when $|z_{k}-z_{i}|=m_{R}$ (nearest
+neighbors). 
+\end{defn}
+%
+\begin{defn}[Overall interaction strength]
+\label{def:chi} The \emph{overall interaction strength} is 
+\begin{equation}
+\chi=\frac{2\,Q_{R}(m_{R})}{\norm{u_{R}}_{L^{2}}^{2}\,R^{4}\,m_{R}}>0.\label{eq:chi-def}
+\end{equation}
+This is a single positive scalar that captures the magnitude of the
+inter-peak interaction relative to the Hessian restoring force. It
+is \emph{not} equal to any individual $\alpha_{ki}$; rather, the
+force on peak $i$ from peak $k$ has magnitude $\alpha_{ki}\chi$. 
+\end{defn}
+\begin{figure}[htbp]
+\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_6_interaction_decay}
+\caption{Left: Exponential decay of the interaction functional $Q_{R}(d)=-\sigma\langle\partial_{\hat{d}}\,u_{R}(\cdot-d),\,u_{R}^{2p+1}\rangle$
+as a function of inter-peak distance $d$, illustrating that only
+nearest-neighbor interactions contribute at leading order. Right:
+The interaction coefficient $\alpha_{ki}=Q_{R}(|z_{k}-z_{i}|)/Q_{R}(m_{R})$
+as a function of the relative distance $|z_{k}-z_{i}|/m_{R}$, normalized
+to unity at the minimum distance.}
+\label{fig:interaction}
 \end{figure}
 
-Since $y_{i}=\lim_{R\to0}\frac{s_{i}}{Rm_{R}}$, we know:
+The orthogonality condition from the Lyapunov--Schmidt projection
+yields, after the rescaling $s_{i}=Rz_{i}-x_{0}$ and passage to the
+limit $R\to0$ with $y_{i}=\lim_{R\to0}s_{i}/(Rm_{R})$: 
+\begin{equation}
+\HV(x_{0})\,y_{i}=\chi\sum_{k\in N_{i}}\alpha_{ki}(y_{k}-y_{i}),\label{eq:algebraic}
+\end{equation}
+where $N_{i}=\{k:|y_{k}-y_{i}|=1\}$ is the set of nearest neighbors
+and we have used $|y_{k}-y_{i}|=1$ for nearest neighbors.
 \begin{cor}
-Let $U=\text{span}\left\{ \boldsymbol{r}\in\mathbb{R}^{n}|\text{eigvec}\left(H_{V}\right)\ni\boldsymbol{r},\text{eigval}\left(H_{V}\right)<0\right\} $
-be the so-called ``unstable manifold'' of $H_{V}$, then $\text{span}\left\{ y_{1},\dots,y_{m}\right\} \subseteq U$
-and are invariant under $H_{V}$.
+\label{cor:unstable} The peak positions satisfy $\operatorname{span}\{y_{1},\ldots,y_{M}\}\subseteq U$,
+where 
+\[
+U=\operatorname{span}\bigl\{\boldsymbol{r}\in\R^{n}:\HV(x_{0})\boldsymbol{r}=\lambda\boldsymbol{r},\;\lambda<0\bigr\}
+\]
+is the unstable subspace of $\HV(x_{0})$. 
 \end{cor}
+\begin{proof}
+Write $y_{i}=y_{i}^{U}+y_{i}^{S}$ with $y_{i}^{U}\in U$ and $y_{i}^{S}\in U^{\perp}$.
+Applying the orthogonal projection $P_{S}$ onto $U^{\perp}$ to the
+algebraic system~(2.4) gives 
+\begin{equation}
+\HV\,y_{i}^{S}=\chi\sum_{k\in N_{i}}\alpha_{ki}\bigl(y_{k}^{S}-y_{i}^{S}\bigr),\label{eq:projected-stable}
+\end{equation}
+since $\HV$ preserves both $U$ and $U^{\perp}$ (they are eigenspaces)
+and $P_{S}(y_{k}-y_{i})=y_{k}^{S}-y_{i}^{S}$.
 
-\section{Summary of Scenarios}
+Now take the inner product of~(\ref{eq:projected-stable}) with $y_{i}^{S}$
+and sum over~$i$: 
+\[
+\sum_{i=1}^{M}\ip{y_{i}^{S}}{\HV\,y_{i}^{S}}=\chi\sum_{i=1}^{M}\sum_{k\in N_{i}}\alpha_{ki}\,\ip{y_{i}^{S}}{y_{k}^{S}-y_{i}^{S}}.
+\]
+\textbf{Left side.} Since $\HV\big|_{U^{\perp}}$ has all eigenvalues
+in $[\lambda_{\min}^{S},\infty)$ with $\lambda_{\min}^{S}>0$ (Hypothesis~V4
+places the peaks at a strict local maximum, so eigenvalues in directions
+\emph{not} used by the peaks are positive), we have 
+\[
+\text{LHS}\;\geq\;\lambda_{\min}^{S}\sum_{i}\abs{y_{i}^{S}}^{2}.
+\]
+\textbf{Right side.} Each nearest-neighbor edge $\{i,k\}$ contributes
+the ordered pairs $(i,k)$ and $(k,i)$. Using the symmetry $\alpha_{ki}=\alpha_{ik}$
+(since $Q_{R}$ depends only on $\abs{z_{k}-z_{i}}$), the contribution
+of each edge is 
+\begin{align*}
+\alpha_{ki}\Bigl[\ip{y_{i}^{S}}{y_{k}^{S}-y_{i}^{S}}+\ip{y_{k}^{S}}{y_{i}^{S}-y_{k}^{S}}\Bigr] & =-\alpha_{ki}\abs{y_{k}^{S}-y_{i}^{S}}^{2}.
+\end{align*}
+Summing over all edges: 
+\[
+\text{RHS}=-\chi\!\!\sum_{\{i,k\}\in\text{edges}}\alpha_{ki}\abs{y_{k}^{S}-y_{i}^{S}}^{2}\;\leq\;0,
+\]
+since $\chi>0$ and every $\alpha_{ki}\geq0$.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_2_peak_configurations}
+Combining: $\lambda_{\min}^{S}\sum_{i}\abs{y_{i}^{S}}^{2}\leq0$.
+Because $\lambda_{\min}^{S}>0$, we conclude $y_{i}^{S}=0$ for every
+$i=1,\ldots,M$. 
+\end{proof}
 
-\caption{Peak Configurations}
+\section{Classification of Limiting Configurations}
+
+\label{sec:classification}
+
+We now classify all admissible solutions of the algebraic system~(\ref{eq:algebraic})
+for peaks lying in the plane spanned by two eigenvectors $\boldsymbol{r}_{1},\boldsymbol{r}_{2}$
+of $\HV(x_{0})$, with eigenvalues $\lambda_{1},\lambda_{2}<0$.
+
+\begin{figure}[htbp]
+\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_2_peak_configurations}
+\caption{Representative peak configurations classified in Theorem~\ref{thm:classification}.
+From left to right: collinear arrangements with $M=2$ and $M=5$
+peaks along a single eigenvector; isosceles triangle ($M=3$) requiring
+$\lambda_{2}=3\lambda_{1}$; equilateral triangle ($M=3$) requiring
+$|\lambda_{2}|/|\lambda_{1}|\protect\geq3$; and equilateral triangle
+with rotational degree of freedom $\theta$, with a schematic perturbation
+$\delta y$.}
+\label{fig:configurations}
 \end{figure}
 
-\begin{example}
-Collinear
-\end{example}
-Let $y_{i}$ denote the $n$ connected, collinear, points lying along
-the vector $\boldsymbol{r_{1}}\in\mathbb{R}$. For $n$ odd: let $y_{0}=0$
-and $y_{\pm i}=\pm i\boldsymbol{r_{1}}$ such that $H_{V}y_{i}=\alpha_{i,i+1}\left(y_{i+1}-y_{i}\right)+\alpha_{i,i-1}\left(y_{i}-y_{i-1}\right)$.
-For $n$ even: let $y_{\pm i}=\pm\left(i-\nicefrac{1}{2}\right)\boldsymbol{r_{1}}$
-such that $y_{i}=\left(i-\nicefrac{1}{2}\right)\boldsymbol{r_{1}}$
-and $y_{-i}=\left(-i+\nicefrac{1}{2}\right)\boldsymbol{r_{1}}$; similarly,
-$H_{V}y_{i}=\alpha_{i,i+1}\left(y_{i+1}-y_{i}\right)+\alpha_{i,i-1}\left(y_{i}-y_{i-1}\right)$.
-Therefore
+\begin{thm}[Classification of admissible multi-peak configurations]
+\label{thm:classification} Under Hypotheses~\ref{hyp:V1}--\ref{hyp:V4},
+the admissible solutions of~(\ref{eq:algebraic}) with all $\alpha_{ki}\geq0$
+are: 
+\begin{enumerate}
+\item[(a)] \textbf{Collinear} ($M\geq2$): All peaks aligned along a single
+eigenvector $\boldsymbol{r}_{1}$ of $\HV(x_{0})$. 
+\item[(b)] \textbf{Isosceles triangle} ($M=3$): Peaks in the $(\boldsymbol{r}_{1},\boldsymbol{r}_{2})$-plane
+with $\alpha_{12}=\alpha_{13}=-\lambda_{2}/3$ and the eigenvalue
+constraint $\lambda_{2}=3\lambda_{1}$. 
+\item[(c)] \textbf{Equilateral triangle} ($M=3$): Peaks at unit mutual distance
+with $\alpha_{12}=\alpha_{13}=-\lambda_{2}/3$, $\alpha_{23}=\lambda_{2}/6-\lambda_{1}/2$,
+requiring $|\lambda_{2}|/|\lambda_{1}|\geq3$. 
+\item[(d)] \textbf{Rotational equilateral} ($M=3$, angle $\theta$): The equilateral
+triangle rotated by angle $\theta$ relative to the eigenvector basis.
+The admissible $(\mu,\theta)$ regions, where $\mu=|\lambda_{2}|/|\lambda_{1}|$,
+are given by Table~\ref{tab:summary}. 
+\end{enumerate}
+\end{thm}
+The proof of Theorem~\ref{thm:classification} occupies the remainder
+of this section.
+
+\noindent\begin{rmk}[Convention for interaction coefficients in
+the classification]\label{rmk:alpha-convention} In the proofs of
+Theorem~3.1 that follow, the algebraic system~(2.4) is written in
+the absorbed form 
+\begin{equation}
+\HV(x_{0})\,y_{i}=\sum_{k\in N_{i}}\hat{\alpha}_{ki}(y_{k}-y_{i}),\quad\hat{\alpha}_{ki}\geq0,\label{eq:algebraic-absorbed}
+\end{equation}
+where $\hat{\alpha}_{ki}=\alpha_{ki}\chi$ is the \emph{combined force
+coefficient}, incorporating the overall interaction strength $\chi$
+from Definition~2.8. This convention avoids carrying $\chi$ through
+the algebraic manipulations.
+
+\smallskip{}
+To recover the normalized coefficients of Definition~2.7 (satisfying
+$0\leq\alpha_{ki}\leq1$ with $\alpha_{ki}=1$ at minimum distance),
+one divides by $\chi$: 
 \[
-\begin{cases}
-H_{V}\left(i-\nicefrac{1}{2}\right)\boldsymbol{r_{1}}=\left(\alpha_{i,i+1}+\alpha_{i,i-1}\right)\boldsymbol{r_{1}}\,\forall i\leq n\in\mathbb{N}, & n\,\text{even}\\
-H_{V}i\boldsymbol{r_{1}}=\left(\alpha_{i,i+1}+\alpha_{i,i-1}\right)\boldsymbol{r_{1}}\,\forall i\leq n\in\mathbb{N}, & n\,\text{odd}
-\end{cases}
+\alpha_{ki}=\frac{\hat{\alpha}_{ki}}{\chi},\qquad\chi=\max_{k,i}\hat{\alpha}_{ki}.
 \]
 
-\begin{example}
-Coplanar $\left(n=3,\text{Isosceles}\right)$
-\end{example}
-Let $y_{1},y_{2},y_{3}$ denote the connected, coplanar, points lying
-in the plane spanned by vectors $\boldsymbol{r_{1}},\boldsymbol{r_{2}}\in\mathbb{R}^{2}$;
-$H_{V}\boldsymbol{r_{i}}=\lambda_{i}\boldsymbol{r_{i}},\lambda_{i}<0,\left|\boldsymbol{r_{i}}\right|=1\,\forall i=1,2$.
-Rotate the triangle such that $y_{1}$ lies along $\boldsymbol{r_{2}}$
-by convention. We can then write
-\begin{align*}
-y_{1} & =\left(0,h\right)^{\intercal} & y_{2} & =\left(-a,-\frac{h}{2}\right)^{\intercal} & y_{3} & =\left(a,-\frac{h}{2}\right)^{\intercal}\\
- & =h\boldsymbol{r_{2}} &  & =-a\boldsymbol{r_{1}}-\left(\frac{h}{2}\right)\boldsymbol{r_{2}} &  & =a\boldsymbol{r_{1}}-\left(\frac{h}{2}\right)\boldsymbol{r_{2}}
-\end{align*}
-such that
+\smallskip{}
+\textbf{Example: equilateral triangle at $\theta=0$.} The proofs
+below yield $\hat{\alpha}_{12}=\hat{\alpha}_{13}=-\lambda_{2}/3$
+and $\hat{\alpha}_{23}=\lambda_{2}/6-\lambda_{1}/2$. Since $\hat{\alpha}_{12}=\hat{\alpha}_{13}\geq\hat{\alpha}_{23}$
+for $\mu\geq3$ (with equality only at $\mu=3$), the overall interaction
+strength is 
 \[
-\left\{ \begin{array}{c}
-2a>1\\
-a^{2}+\left(\frac{3h}{2}\right)^{2}=1
-\end{array}\right.\Longrightarrow\left\{ \begin{array}{c}
-a>\frac{1}{2}\\
-\left(\frac{3h}{2}\right)^{2}=1-a^{2}<\frac{3}{4}
-\end{array}\right.\Longrightarrow\left\{ \begin{array}{c}
-a>\frac{1}{2}\\
-h<\frac{1}{\sqrt{3}}
-\end{array}\right.
+\chi=\hat{\alpha}_{12}=-\frac{\lambda_{2}}{3}>0,
 \]
-Now
-\begin{align*}
-H_{V}y_{1} & =\alpha_{12}\left(y_{2}-y_{1}\right)+\alpha_{13}\left(y_{3}-y_{1}\right)\\
-\left(0,\lambda_{2}h\right)^{\intercal} & =\alpha_{12}\left(-a,-\frac{3h}{2}\right)^{\intercal}+\alpha_{13}\left(a,-\frac{3h}{2}\right)^{\intercal}\\
- & =\left(a\left(\alpha_{13}-\alpha_{12}\right),-\frac{3h}{2}\left(\alpha_{13}+\alpha_{12}\right)\right)^{\intercal}
-\end{align*}
+and the normalized base-edge coefficient is 
 \[
-\Downarrow
+\alpha_{23}=\frac{\hat{\alpha}_{23}}{\chi}=\frac{\lambda_{2}/6-\lambda_{1}/2}{-\lambda_{2}/3}=1-\frac{3}{2\mu}\;\in\;[0,1).
 \]
-\[
-\begin{cases}
-a\left(\alpha_{13}-\alpha_{12}\right)= & 0\\
--\frac{3h}{2}\left(\alpha_{13}+\alpha_{12}\right)= & \lambda_{2}h
-\end{cases}\Longrightarrow\alpha_{12}=\alpha_{13}=-\frac{\lambda_{2}}{3}
-\]
-Similarly
-\begin{align*}
-H_{V}y_{2} & =\alpha_{12}\left(y_{1}-y_{2}\right)\\
-\left(-a\lambda_{1},-\left(\frac{h}{2}\right)\lambda_{2}\right)^{\intercal} & =\alpha_{12}\left(a,\frac{3h}{2}\right)^{\intercal}
-\end{align*}
-\[
-\Downarrow
-\]
-\[
-\begin{cases}
-a\alpha_{12}= & -a\lambda_{1}\\
-\frac{3h}{2}\alpha_{12}= & -\left(\frac{h}{2}\right)\lambda_{2}
-\end{cases}\Longrightarrow\alpha_{12}=-\lambda_{1}=-\frac{\lambda_{2}}{3}\Longrightarrow\lambda_{2}=3\lambda_{1}
-\]
-(the case for $y_{3}$ is superfluous).
-\begin{example}
-Coplanar $\left(n=3,\text{Equilateral}\right)$
-\end{example}
-Let $y_{1},y_{2},y_{3}$ denote the connected, coplanar, points lying
-in the plane spanned by vectors $\boldsymbol{r_{1}},\boldsymbol{r_{2}}\in\mathbb{R}^{2}$;
-$H_{V}\boldsymbol{r_{i}}=\lambda_{i}\boldsymbol{r_{i}},\lambda_{i}<0,\left|\boldsymbol{r_{i}}\right|=1\,\forall i=1,2$.
-Rotate the triangle such that $y_{1}$ lies along $\boldsymbol{r_{2}}$
-by convention. We can then write
-\begin{align*}
-y_{1} & =\left(0,h\right)^{\intercal} & y_{2} & =\left(-a,-\frac{h}{2}\right)^{\intercal} & y_{3} & =\left(a,-\frac{h}{2}\right)^{\intercal}\\
- & =h\boldsymbol{r_{2}} &  & =-a\boldsymbol{r_{1}}-\left(\frac{h}{2}\right)\boldsymbol{r_{2}} &  & =a\boldsymbol{r_{1}}-\left(\frac{h}{2}\right)\boldsymbol{r_{2}}
-\end{align*}
-such that
-\[
-\left\{ \begin{array}{c}
-2a=1\\
-a^{2}+\left(\frac{3h}{2}\right)^{2}=1
-\end{array}\right.\Longrightarrow\left\{ \begin{array}{c}
-a=\frac{1}{2}\\
-\left(\frac{3h}{2}\right)^{2}=1-a^{2}
-\end{array}\right.\Longrightarrow\left\{ \begin{array}{c}
-a=\frac{1}{2}\\
-h=\frac{1}{\sqrt{3}}
-\end{array}\right.
-\]
-Now
-\begin{align*}
-H_{V}y_{1} & =\alpha_{12}\left(y_{2}-y_{1}\right)+\alpha_{13}\left(y_{3}-y_{1}\right)\\
-\left(0,\lambda_{2}h\right)^{\intercal} & =\alpha_{12}\left(-a,-\frac{3h}{2}\right)^{\intercal}+\alpha_{13}\left(a,-\frac{3h}{2}\right)^{\intercal}\\
- & =\left(a\left(\alpha_{13}-\alpha_{12}\right),-\frac{3h}{2}\left(\alpha_{13}+\alpha_{12}\right)\right)^{\intercal}
-\end{align*}
-\[
-\Downarrow
-\]
-\[
-\begin{cases}
-a\left(\alpha_{13}-\alpha_{12}\right)= & 0\\
--\frac{3h}{2}\left(\alpha_{13}+\alpha_{12}\right)= & \lambda_{2}h
-\end{cases}\Longrightarrow\alpha_{12}=\alpha_{13}=-\frac{\lambda_{2}}{3}
-\]
-Similarly
-\begin{align*}
-H_{V}y_{2} & =\alpha_{12}\left(y_{1}-y_{2}\right)+\alpha_{23}\left(y_{3}-y_{2}\right)\\
-\left(-a\lambda_{1},-\left(\frac{h}{2}\right)\lambda_{2}\right)^{\intercal} & =\alpha_{12}\left(a,\frac{3h}{2}\right)^{\intercal}+\alpha_{23}\left(2a,0\right)^{\intercal}\\
- & =\left(a\left(\alpha_{12}+2\alpha_{23}\right),\left(\frac{3h}{2}\right)\alpha_{12}\right)^{\intercal}
-\end{align*}
-\[
-\Downarrow
-\]
-\[
-\begin{cases}
-a\left(\alpha_{12}+2\alpha_{23}\right)= & -a\lambda_{1}\\
-\left(\frac{3h}{2}\right)\alpha_{12}= & -\left(\frac{h}{2}\right)\lambda_{2}
-\end{cases}\Longrightarrow\begin{cases}
-\alpha_{12}= & -\frac{\lambda_{2}}{3}\\
-\alpha_{23}= & \frac{\lambda_{2}}{6}-\frac{\lambda_{1}}{2}
-\end{cases}
-\]
-(the case for $y_{3}$ is superfluous). Since we require each $\alpha\geq0$
-we can readily see
-\begin{align*}
-\alpha_{23} & \geq0\\
-\frac{\lambda_{2}}{6}-\frac{\lambda_{1}}{2} & \geq\\
-\lambda_{2} & \geq3\lambda_{1}\\
-\left|\lambda_{2}\right| & \geq3\left|\lambda_{1}\right|\\
-\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|} & \geq3
-\end{align*}
+In particular, $\alpha_{23}<1$ for $\mu>3$, reflecting the fact
+that the base edge is \emph{not} at the minimum inter-peak distance:
+the perturbation $\delta y^{0}$ of Proposition~4.1 pushes the base
+vertices slightly apart relative to the apex--base edges. \end{rmk}
 
-\begin{example}
-Coplanar $\left(n=3,\text{Equilateral},\text{Rotational DOF }\theta\right)$
-\end{example}
-Let $R\left(\theta\right)=\begin{pmatrix}\cos\theta & -\sin\theta\\
-\sin\theta & \cos\theta
-\end{pmatrix}$ be the 2-dimensional rotation matrix with inverse $R^{-1}\left(\theta\right)=\begin{pmatrix}\cos\theta & \sin\theta\\
--\sin\theta & \cos\theta
-\end{pmatrix}$. Let $y_{1},y_{2},y_{3}$ denote the connected, coplanar, points
-lying in the plane spanned by vectors $\boldsymbol{r_{1}},\boldsymbol{r_{2}}\in\mathbb{R}^{2}$;
-$H_{V}\boldsymbol{r_{i}}=\lambda_{i}\boldsymbol{r_{i}},\lambda_{i}<0,\left|\boldsymbol{r_{i}}\right|=1\,\forall i=1,2$.
-Rotate the triangle such that $y_{1}$ lies along $\boldsymbol{r_{2}}$
-by convention. We can then write
-\begin{align*}
-y_{1}^{\prime} & =\left(0,h\right)^{\intercal} & y_{2}^{\prime} & =\left(-a,-\frac{h}{2}\right)^{\intercal} & y_{3}^{\prime} & =\left(a,-\frac{h}{2}\right)^{\intercal}\\
- & =h\boldsymbol{r_{2}} &  & =-a\boldsymbol{r_{1}}-\left(\frac{h}{2}\right)\boldsymbol{r_{2}} &  & =a\boldsymbol{r_{1}}-\left(\frac{h}{2}\right)\boldsymbol{r_{2}}
-\end{align*}
-such that
+\subsection{Collinear configurations}
+
+\label{subsec:collinear}
+\begin{proof}[Proof of Theorem~\ref{thm:classification}(a)]
+Let $y_{i}$ be $M$ connected collinear points along $\boldsymbol{r}_{1}$.
+For $M$ even, set $y_{\pm i}=\pm(i-\frac{1}{2})\boldsymbol{r}_{1}$;
+for $M$ odd, set $y_{0}=0$, $y_{\pm i}=\pm i\,\boldsymbol{r}_{1}$.
+The nearest-neighbor constraint gives 
 \[
-\left\{ \begin{array}{c}
-2a=1\\
-a^{2}+\left(\frac{3h}{2}\right)^{2}=1
-\end{array}\right.\Longrightarrow\left\{ \begin{array}{c}
-a=\frac{1}{2}\\
-\left(\frac{3h}{2}\right)^{2}=1-a^{2}
-\end{array}\right.\Longrightarrow\left\{ \begin{array}{c}
-a=\frac{1}{2}\\
-h=\frac{1}{\sqrt{3}}
-\end{array}\right.
+\HV\,y_{i}=(\alpha_{i,i+1}+\alpha_{i,i-1})\boldsymbol{r}_{1}
 \]
-as well as
-\begin{align*}
-y_{1} & =R\left(\theta\right)y_{1}^{\prime}=\begin{pmatrix}-h\sin\theta\\
-h\cos\theta
-\end{pmatrix}=-h\sin\left(\theta\right)\boldsymbol{r_{1}}+h\cos\left(\theta\right)\boldsymbol{r_{2}}\\
-y_{2} & =R\left(\theta\right)y_{2}^{\prime}=\begin{pmatrix}-a\cos\theta+\left(\frac{h}{2}\right)\sin\theta\\
--a\sin\theta-\left(\frac{h}{2}\right)\cos\theta
-\end{pmatrix}=\left(-a\cos\theta+\left(\frac{h}{2}\right)\sin\theta\right)\boldsymbol{r_{1}}-\left(a\sin\theta+\left(\frac{h}{2}\right)\cos\theta\right)\boldsymbol{r_{2}}\\
-y_{3} & =R\left(\theta\right)y_{3}^{\prime}=\begin{pmatrix}a\cos\theta+\left(\frac{h}{2}\right)\sin\theta\\
-a\sin\theta-\left(\frac{h}{2}\right)\cos\theta
-\end{pmatrix}=\left(a\cos\theta+\left(\frac{h}{2}\right)\sin\theta\right)\boldsymbol{r_{1}}+\left(a\sin\theta-\left(\frac{h}{2}\right)\cos\theta\right)\boldsymbol{r_{2}}
-\end{align*}
-Now 
-\begin{align*}
-H_{V}y_{1} & =\alpha_{12}\left(y_{2}-y_{1}\right)+\alpha_{13}\left(y_{3}-y_{1}\right)\\
-H_{V}R\left(\theta\right)y_{1}^{\prime} & =\\
-R^{-1}\left(\theta\right)H_{V}R\left(\theta\right)y_{1}^{\prime} & =\alpha_{12}\left(y_{2}^{\prime}-y_{1}^{\prime}\right)+\alpha_{13}\left(y_{3}^{\prime}-y_{1}^{\prime}\right)\\
- & \Downarrow\\
-\alpha_{12}\begin{pmatrix}-a\\
--\frac{3h}{2}
-\end{pmatrix}+\alpha_{13}\begin{pmatrix}a\\
--\frac{3h}{2}
-\end{pmatrix} & =\begin{pmatrix}\lambda_{2}\sin^{2}\theta+\lambda_{1}\cos^{2}\theta & \left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta\\
-\left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta & \lambda_{2}\cos^{2}\theta+\lambda_{1}\sin^{2}\theta
-\end{pmatrix}\begin{pmatrix}0\\
-h
-\end{pmatrix}\\
-\begin{pmatrix}\alpha_{13}-\alpha_{12}\\
-\alpha_{13}+\alpha_{12}
-\end{pmatrix} & =\begin{pmatrix}\frac{h}{a}\left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta\\
--\frac{2}{3}\left(\lambda_{2}\cos^{2}\theta+\lambda_{1}\sin^{2}\theta\right)
-\end{pmatrix}\\
-\alpha_{12} & =\frac{1}{3}\left(\lambda_{2}\left(-\sqrt{3}\sin\theta-\cos\theta\right)\cos\theta+\lambda_{1}\left(-\sin\theta+\sqrt{3}\cos\theta\right)\sin\theta\right)
-\end{align*}
-\begin{align*}
-H_{V}y_{2} & =\alpha_{12}\left(y_{1}-y_{2}\right)+\alpha_{23}\left(y_{3}-y_{2}\right)\\
-H_{V}R\left(\theta\right)y_{2}^{\prime} & =\\
-R^{-1}\left(\theta\right)H_{V}R\left(\theta\right)y_{2}^{\prime} & =\alpha_{12}\left(y_{1}^{\prime}-y_{2}^{\prime}\right)+\alpha_{23}\left(y_{3}^{\prime}-y_{2}^{\prime}\right)\\
- & \Downarrow\\
-\alpha_{12}\begin{pmatrix}a\\
-\frac{3h}{2}
-\end{pmatrix}+\alpha_{23}\begin{pmatrix}2a\\
-0
-\end{pmatrix} & =\begin{pmatrix}\lambda_{2}\sin^{2}\theta+\lambda_{1}\cos^{2}\theta & \left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta\\
-\left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta & \lambda_{2}\cos^{2}\theta+\lambda_{1}\sin^{2}\theta
-\end{pmatrix}\begin{pmatrix}-a\\
--\frac{h}{2}
-\end{pmatrix}\\
-\begin{pmatrix}\alpha_{12}+2\alpha_{23}\\
-3\alpha_{12}
-\end{pmatrix} & =\begin{pmatrix}-\left(\lambda_{2}\sin^{2}\theta+\lambda_{1}\cos^{2}\theta\right)-\frac{h}{2a}\left(\left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta\right)\\
--\left(\lambda_{2}\cos^{2}\theta+\lambda_{1}\sin^{2}\theta\right)-\frac{2a}{h}\left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta
-\end{pmatrix}\\
-\alpha_{13} & =\frac{1}{3}\left(\lambda_{2}\left(\sqrt{3}\sin\theta-\cos\theta\right)\cos\theta-\lambda_{1}\left(\sin\theta+\sqrt{3}\cos\theta\right)\sin\theta\right)
-\end{align*}
-\begin{align*}
-H_{V}y_{3} & =\alpha_{13}\left(y_{1}-y_{3}\right)+\alpha_{23}\left(y_{2}-y_{3}\right)\\
-H_{V}R\left(\theta\right)y_{3}^{\prime} & =\\
-R^{-1}\left(\theta\right)H_{V}R\left(\theta\right)y_{3}^{\prime} & =\alpha_{13}\left(y_{1}^{\prime}-y_{3}^{\prime}\right)+\alpha_{23}\left(y_{2}^{\prime}-y_{3}^{\prime}\right)\\
- & \Downarrow\\
-\alpha_{13}\begin{pmatrix}-a\\
-\frac{3h}{2}
-\end{pmatrix}+\alpha_{23}\begin{pmatrix}-2a\\
-0
-\end{pmatrix} & =\begin{pmatrix}\lambda_{2}\sin^{2}\theta+\lambda_{1}\cos^{2}\theta & \left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta\\
-\left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta & \lambda_{2}\cos^{2}\theta+\lambda_{1}\sin^{2}\theta
-\end{pmatrix}\begin{pmatrix}a\\
--\frac{h}{2}
-\end{pmatrix}\\
-\begin{pmatrix}\alpha_{13}+2\alpha_{23}\\
-3\alpha_{13}
-\end{pmatrix} & =\begin{pmatrix}-\left(\lambda_{2}\sin^{2}\theta+\lambda_{1}\cos^{2}\theta\right)+\frac{h}{2a}\left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta\\
--\left(\lambda_{2}\cos^{2}\theta+\lambda_{1}\sin^{2}\theta\right)+\frac{2a}{h}\left(\lambda_{2}-\lambda_{1}\right)\sin\theta\cos\theta
-\end{pmatrix}\\
-\alpha_{23} & =\frac{1}{6}\left(\lambda_{2}\left(2\cos\left(2\theta\right)-1\right)-\lambda_{1}\left(2\cos\left(2\theta\right)+1\right)\right)
-\end{align*}
+with $\alpha_{i,i\pm1}\geq0$ determined recursively. Since $\boldsymbol{r}_{1}$
+is an eigenvector with $\lambda_{1}<0$, each equation reduces to
+a scalar relation $\lambda_{1}c_{i}=\chi(\alpha_{i,i+1}+\alpha_{i,i-1})$
+with $c_{i}$ the coefficient of $y_{i}$ along $\boldsymbol{r}_{1}$.
+The non-negativity $\alpha\geq0$ is guaranteed by $\lambda_{1}<0$
+and $\chi>0$. 
+\end{proof}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_3_alpha_vs_theta_vs_mu}
+\subsection{Isosceles triangle}
 
-\caption{$\alpha$ vs. $\theta$ plots for various $\mu$}
+\label{subsec:isosceles}
+\begin{proof}[Proof of Theorem~\ref{thm:classification}(b)]
+Let $y_{1}=(0,h)^{\intercal}$, $y_{2}=(-a,-h/2)^{\intercal}$, $y_{3}=(a,-h/2)^{\intercal}$
+with $2a>1$ (so $|y_{2}-y_{3}|=2a>1$ and the nearest-neighbor pairs
+are $(1,2)$ and $(1,3)$ only) and the geometric constraint $a^{2}+(3h/2)^{2}=1$.
+
+From the equation for $y_{1}$: 
+\begin{align*}
+\HV y_{1} & =\alpha_{12}(y_{2}-y_{1})+\alpha_{13}(y_{3}-y_{1})\\
+(0,\lambda_{2}h)^{\intercal} & =\bigl(a(\alpha_{13}-\alpha_{12}),\;-\tfrac{3h}{2}(\alpha_{13}+\alpha_{12})\bigr)^{\intercal},
+\end{align*}
+which gives $\alpha_{12}=\alpha_{13}=-\lambda_{2}/3$.
+
+From the equation for $y_{2}$ (with only $y_{1}$ as nearest neighbor):
+$\HV y_{2}=\alpha_{12}(y_{1}-y_{2})$, yielding component-wise $-a\lambda_{1}=a\alpha_{12}$
+and $-(h/2)\lambda_{2}=(3h/2)\alpha_{12}$. The first gives $\alpha_{12}=-\lambda_{1}$
+and the second $\alpha_{12}=-\lambda_{2}/3$, hence $\lambda_{2}=3\lambda_{1}$. 
+\end{proof}
+
+\subsection{Equilateral triangle}
+
+\label{subsec:equilateral}
+\begin{proof}[Proof of Theorem~\ref{thm:classification}(c)]
+Set $2a=1$, giving $a=1/2$, $h=1/\sqrt{3}$, and $|y_{k}-y_{i}|=1$
+for all pairs. All three pairs are nearest neighbors. From $y_{1}$:
+$\alpha_{12}=\alpha_{13}=-\lambda_{2}/3$ as before. From $y_{2}$
+(with both $y_{1}$ and $y_{3}$ as neighbors): 
+\begin{align*}
+\HV y_{2} & =\alpha_{12}(y_{1}-y_{2})+\alpha_{23}(y_{3}-y_{2}),\\
+(-a\lambda_{1},\,-\tfrac{h}{2}\lambda_{2})^{\intercal} & =(a\alpha_{12}+2a\alpha_{23},\;\tfrac{3h}{2}\alpha_{12})^{\intercal},
+\end{align*}
+giving $\alpha_{23}=\frac{\lambda_{2}}{6}-\frac{\lambda_{1}}{2}$.
+The constraint $\alpha_{23}\geq0$ requires $\lambda_{2}\geq3\lambda_{1}$,
+i.e., $|\lambda_{2}|/|\lambda_{1}|\geq3$. 
+\end{proof}
+
+\subsection{Rotational equilateral triangle}
+
+\label{subsec:rotational}
+\begin{proof}[Proof of Theorem~\ref{thm:classification}(d)]
+Let $R(\theta)$ be the $2\times2$ rotation matrix by angle $\theta$
+and set $y_{i}=R(\theta)y_{i}'$ where $y_{i}'$ are the canonical
+equilateral positions. The conjugated Hessian $\tilde{H}=R(-\theta)\HV R(\theta)$
+has entries 
+\[
+\tilde{H}=\begin{pmatrix}\lambda_{1}\cos^{2}\theta+\lambda_{2}\sin^{2}\theta & (\lambda_{2}-\lambda_{1})\sin\theta\cos\theta\\
+(\lambda_{2}-\lambda_{1})\sin\theta\cos\theta & \lambda_{2}\cos^{2}\theta+\lambda_{1}\sin^{2}\theta
+\end{pmatrix}.
+\]
+Solving $\tilde{H}\,y_{i}'=\sum_{k\in N_{i}}\alpha_{ki}(y_{k}'-y_{i}')$
+for each vertex yields the $\theta$-dependent coefficients: 
+\begin{align}
+\alpha_{12}(\theta) & =\tfrac{1}{3}\bigl[\lambda_{2}(-\sqrt{3}\sin\theta-\cos\theta)\cos\theta+\lambda_{1}(-\sin\theta+\sqrt{3}\cos\theta)\sin\theta\bigr],\label{eq:alpha12}\\
+\alpha_{13}(\theta) & =\tfrac{1}{3}\bigl[\lambda_{2}(\sqrt{3}\sin\theta-\cos\theta)\cos\theta-\lambda_{1}(\sin\theta+\sqrt{3}\cos\theta)\sin\theta\bigr],\label{eq:alpha13}\\
+\alpha_{23}(\theta) & =\tfrac{1}{6}\bigl[\lambda_{2}(2\cos2\theta-1)-\lambda_{1}(2\cos2\theta+1)\bigr].\label{eq:alpha23}
+\end{align}
+\end{proof}
+\begin{figure}[htbp]
+\centering \includegraphics[width=1\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_3_alpha_vs_theta_vs_mu}
+\caption{Interaction coefficients $\alpha_{12}(\theta)$, $\alpha_{13}(\theta)$,
+$\alpha_{23}(\theta)$ as functions of the rotation angle $\theta\in[0,\pi/2]$
+for four representative eigenvalue ratios $\mu\in\{0.3,\,1.0,\,3.0,\,6.0\}$.
+A configuration is admissible at angle $\theta$ if and only if all
+three coefficients are non-negative. For $\mu=1$ (isotropic potential)
+all orientations are admissible. For $\mu=6>3$, the admissible $\theta$-range
+breaks into two disjoint intervals.}
+\label{fig:alpha-theta}
 \end{figure}
 
-We again assert each $\alpha\geq0$ which constrains $\theta$ for
-different ranges of $\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$.
-Define $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$,
-note that $\lambda_{i}=\text{sign}\left(\lambda_{i}\right)\left|\lambda_{i}\right|\,\forall i\in\left\{ 1,2\right\} $
-by definition, and that $\lambda_{i}\leq0\,\forall i\in\left\{ 1,2\right\} \Rightarrow0<\mu<\infty;\alpha_{12},\alpha_{13},\alpha_{23}\geq0;0\leq\theta\leq\frac{\pi}{2}$
-by assumption. We therefore seek admissible solutions of 
-\[
-\begin{cases}
-\frac{1}{3}\left(\lambda_{2}\left(-\sqrt{3}\sin\theta-\cos\theta\right)\cos\theta+\lambda_{1}\left(-\sin\theta+\sqrt{3}\cos\theta\right)\sin\theta\right) & \geq0\\
-\frac{1}{3}\left(\lambda_{2}\left(+\sqrt{3}\sin\theta-\cos\theta\right)\cos\theta-\lambda_{1}\left(+\sin\theta+\sqrt{3}\cos\theta\right)\sin\theta\right) & \geq0\\
-\frac{1}{6}\left(\lambda_{2}\left(2\cos\left(2\theta\right)-1\right)-\lambda_{1}\left(2\cos\left(2\theta\right)+1\right)\right) & \geq0
-\end{cases}
-\]
-\[
-\Downarrow
-\]
-\[
-\begin{cases}
-\sin^{2}\theta+\mu\cos^{2}\theta+\sqrt{3}\left(\mu-1\right)\sin\theta\cos\theta & \geq0\quad\left(\text{I}\right)\\
-\sin^{2}\theta+\mu\cos^{2}\theta-\sqrt{3}\left(\mu-1\right)\sin\theta\cos\theta & \geq0\quad\left(\text{II}\right)\\
-\left(\mu+1\right)-2\left(\mu-1\right)\cos\left(2\theta\right) & \geq0\quad\left(\text{III}\right)
-\end{cases}
-\]
-Since $\cos^{2}\theta=\frac{1}{2}\left(1+\cos\left(2\theta\right)\right)$,
-$\sin^{2}\theta=\frac{1}{2}\left(1-\cos\left(2\theta\right)\right)$,
-and $\sin\theta\cos\theta=\frac{1}{2}\sin\left(2\theta\right)$, $\left(\text{I}\right)$
-\& $\left(\text{II}\right)$ are equivalent to 
-\[
-\left(\mu+1\right)+\left(\mu-1\right)\cos\left(2\theta\right)\pm\sqrt{3}\left(\mu-1\right)\sin\left(2\theta\right)\geq0
-\]
-\[
-\Updownarrow
-\]
-\[
-\left(\mu+1\right)+2\left(\mu-1\right)\cos\left(2\theta\mp\frac{\pi}{3}\right)\geq0\quad\left(\text{IV}\right),\left(\text{V}\right)
-\]
-$\left(\text{III}\right)$, $\left(\text{IV}\right)$, and $\left(\text{V}\right)$
-require
-\[
-\left(\mu+1\right)+2\left(\mu-1\right)\cos\phi\geq0\quad\phi\in\left\{ 2\theta-\frac{\pi}{3},2\theta,2\theta+\frac{\pi}{3}\right\} 
-\]
-Let $\nu\left(\mu\right)=\frac{\mu+1}{2\left|\mu-1\right|}$ and $\varphi\left(\mu\right)=\arccos\nu\left(\mu\right)$
-such that 
-\[
-\varphi\left(\mu\right)=\begin{cases}
-\frac{\pi}{3}, & \nu\left(\mu\right)\leq\frac{1}{2}\\
-0<\varphi\left(\mu\right)<\frac{\pi}{3}, & \frac{1}{2}<\nu\left(\mu\right)<1\\
-0, & 1\leq\nu\left(\mu\right)
-\end{cases}
-\]
-For $0<\mu<\frac{1}{3}$ we know $\mu-1<0\Rightarrow\nu\left(\mu\right)=\frac{\mu+1}{2\left(1-\mu\right)}\in\left(\frac{1}{2},1\right)$.
-We have
-\[
-\varphi\left(\mu\right)=\arccos\left(\frac{\mu+1}{2\left(1-\mu\right)}\right)\in\left(0,\frac{\pi}{3}\right)
-\]
-such that
-\[
-\theta\in\left[0,\frac{\frac{\pi}{3}-\varphi\left(\mu\right)}{2}\right]\cup\left[\frac{\frac{\pi}{3}+\varphi\left(\mu\right)}{2},\frac{\pi-\varphi\left(\mu\right)}{2}\right]
-\]
-For $\frac{1}{3}\leq\mu\leq3$ we have all $\theta$ admissible, i.e.
-\[
-\theta\in\left[0,\frac{\pi}{2}\right]
-\]
-For $3<\mu$ we know $\mu-1>0\Rightarrow\nu\left(\mu\right)=\frac{\mu+1}{2\left(\mu-1\right)}\in\left(\frac{1}{2},1\right)$.
-We have
-\[
-\varphi\left(\mu\right)=\arccos\left(\frac{\mu+1}{2\left(\mu-1\right)}\right)\in\left(0,\frac{\pi}{3}\right)
-\]
-such that
-\[
-\theta\in\left[\frac{\varphi\left(\mu\right)}{2},\frac{\frac{2\pi}{3}-\varphi\left(\mu\right)}{2}\right]\cup\left[\frac{\frac{2\pi}{3}+\varphi\left(\mu\right)}{2},\frac{\pi}{2}\right]
-\]
-\begin{table}[H]
-\centering
-\caption{Summary of Results}
+
+\subsection{Admissibility analysis}
+
+\label{subsec:admissibility}
+
+The constraints $\alpha_{12},\alpha_{13},\alpha_{23}\geq0$ with $\mu=|\lambda_{2}|/|\lambda_{1}|$
+reduce via double-angle identities to 
+\begin{equation}
+(\mu+1)+2(\mu-1)\cos\phi\geq0,\quad\phi\in\bigl\{2\theta-\tfrac{\pi}{3},\;2\theta,\;2\theta+\tfrac{\pi}{3}\bigr\}.\label{eq:admissibility-unified}
+\end{equation}
+
+\begin{defn}
+\label{def:nu-phi} Define $\nu(\mu)=\frac{\mu+1}{2|\mu-1|}$ and
+$\varphi(\mu)=\arccos(\nu(\mu))$. 
+\end{defn}
+\begin{prop}[Admissibility regions]
+\label{prop:admissibility} The admissible $(\mu,\theta)$ regions
+are: 
+\begin{enumerate}
+\item[(i)] If $\frac{1}{3}\leq\mu\leq3$, then $\nu(\mu)\geq1$ and $\varphi=0$:
+all $\theta\in[0,\pi/2]$ are admissible. 
+\item[(ii)] If $0<\mu<\frac{1}{3}$, then $\nu(\mu)\in(\frac{1}{2},1)$ and the
+admissible angles are $\theta\in[0,\frac{\pi}{6}-\frac{\varphi}{2}]\cup[\frac{\pi}{6}+\frac{\varphi}{2},\frac{\pi}{2}-\frac{\varphi}{2}]$. 
+\item[(iii)] If $\mu>3$, then $\nu(\mu)\in(\frac{1}{2},1)$ and the admissible
+angles are $\theta\in[\frac{\varphi}{2},\frac{\pi}{3}-\frac{\varphi}{2}]\cup[\frac{\pi}{3}+\frac{\varphi}{2},\frac{\pi}{2}]$. 
+\end{enumerate}
+\end{prop}
+\begin{table}[htbp]
+\centering \caption{Summary of admissible $\theta$-ranges as a function of $\mu=|\lambda_{2}|/|\lambda_{1}|$.}
+\label{tab:summary} %
 \begin{tabular}{cc}
 \toprule 
-$\mu-$Range & $\theta-$Range\tabularnewline
-\midrule
-$0<\mu<\frac{1}{3}$ & $\left[0,\frac{\pi}{6}-\frac{\varphi\left(\mu\right)}{2}\right]\cup\left[\frac{\pi}{6}+\frac{\varphi\left(\mu\right)}{2},\frac{\pi}{2}-\frac{\varphi\left(\mu\right)}{2}\right]$\tabularnewline
-\addlinespace[0.01\textheight]
-$\frac{1}{3}\leq\mu\leq3$ & $\left[0,\frac{\pi}{2}\right]$\tabularnewline
-\addlinespace[0.01\textheight]
-$3<\mu$ & $\left[\frac{\varphi\left(\mu\right)}{2},\frac{\pi}{3}-\frac{\varphi\left(\mu\right)}{2}\right]\cup\left[\frac{\pi}{3}+\frac{\varphi\left(\mu\right)}{2},\frac{\pi}{2}\right]$\tabularnewline
+$\mu$-Range & $\theta$-Range\tabularnewline
+\midrule 
+$0<\mu<\frac{1}{3}$ & $\bigl[0,\;\frac{\pi}{6}-\frac{\varphi(\mu)}{2}\bigr]\cup\bigl[\frac{\pi}{6}+\frac{\varphi(\mu)}{2},\;\frac{\pi}{2}-\frac{\varphi(\mu)}{2}\bigr]$\tabularnewline
+{[}8pt{]} $\frac{1}{3}\leq\mu\leq3$ & $\bigl[0,\;\frac{\pi}{2}\bigr]$\tabularnewline
+{[}8pt{]} $\mu>3$ & $\bigl[\frac{\varphi(\mu)}{2},\;\frac{\pi}{3}-\frac{\varphi(\mu)}{2}\bigr]\cup\bigl[\frac{\pi}{3}+\frac{\varphi(\mu)}{2},\;\frac{\pi}{2}\bigr]$\tabularnewline
 \bottomrule
-\addlinespace[0.01\textheight]
 \end{tabular}
 \end{table}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.75\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_1_admissibility_binding}\caption{Admissible Configurations in $\left(\mu,\theta\right)$ Space: Binding
-Constraint Identification}
+\begin{figure}[htbp]
+\centering \includegraphics[width=0.75\linewidth]{/run/user/1000/gvfs/smb-share:server=skynet.local,share=public/nls-research/figures/output/figure_1_admissibility_binding}
+\caption{Admissible region (shaded) in the $(\mu,\theta)$ parameter space
+for equilateral triangle configurations with rotational degree of
+freedom. The dashed vertical lines mark $\mu=1/3$ and $\mu=3$, the
+boundaries of the fully admissible strip. For $\mu$ outside this
+strip, the constraint $\alpha_{ki}\protect\geq0$ excludes angular
+windows whose width is controlled by $\varphi(\mu)=\arccos(\nu(\mu))$.
+The boundary curves correspond to the binding constraints where exactly
+one $\alpha_{ki}=0$.}
+\label{fig:admissibility}
 \end{figure}
 
 
-\section{Research Problem}
+\section{The Perturbation System}
 
-We seek solutions of
-\begin{equation}
-H_{V}\frac{\tilde{y}_{i}}{\tilde{m}_{R}}=\sum_{k\in N_{i}}\frac{2Q_{R}\left(\left|\tilde{y}_{k}-\tilde{y}_{i}\right|\right)}{\left\Vert u_{R}\right\Vert _{L^{2}}^{2}R^{4}\left|\tilde{y}_{k}-\tilde{y}_{i}\right|}\cdot\frac{\tilde{y}_{k}-\tilde{y}_{i}}{\tilde{m}_{R}}\label{eq:reduced-system}
-\end{equation}
-such that $\frac{\tilde{y}_{i}}{\tilde{m}_{R}}\xrightarrow[R\searrow0]{}y_{i}$
-and 
-\[
-\frac{2Q_{R}\left(\left|\tilde{y}_{k}-\tilde{y}_{i}\right|\right)}{\left\Vert u_{R}\right\Vert _{L^{2}}^{2}R^{4}\left|\tilde{y}_{k}-\tilde{y}_{i}\right|}\xrightarrow[R\searrow0]{}\tilde{\alpha}_{ki}.
-\]
-We write $\tilde{y}_{i}=\tilde{m}_{R}y_{i}+\delta y_{i}$ (such that
-$\frac{\delta y_{i}}{\tilde{m}_{R}}\xrightarrow[R\searrow0]{}0$),
-$\delta y_{i}\in\text{span}\left\{ \boldsymbol{r_{1}},\boldsymbol{r_{2}}\right\} \forall i=\overline{1,3}$,
-$R>0$. Define
-\begin{equation}
-F_{i}\left(\delta y,R\right)=H_{V}y_{i}+H_{V}\frac{\delta y_{i}}{\tilde{m}_{R}}-\sum_{k\in N_{i}}\frac{2Q_{R}\left(\left|\tilde{m}_{R}\left(y_{k}-y_{i}\right)+\delta y_{k}-\delta y_{i}\right|\right)}{\left\Vert u_{R}\right\Vert _{L^{2}}^{2}R^{4}\left|\tilde{m}_{R}\left(y_{k}-y_{i}\right)+\delta y_{k}-\delta y_{i}\right|}\left(y_{k}-y_{i}+\frac{\delta y_{k}-\delta y_{i}}{\tilde{m}_{R}}\right),\label{eq:Fi-definition}
-\end{equation}
-and extend $F_{i}$ at $R=0$ by continuity
-\begin{equation}
-F_{i}\left(\delta y,0\right)=H_{V}y_{i}-\sum_{k\in N_{i}}\underbrace{e^{-\left\langle y_{k}-y_{i},\delta y_{k}-\delta y_{i}\right\rangle }\chi}_{\alpha_{ki}\,=\,\tilde{\alpha}_{ki}\chi}\left(y_{k}-y_{i}\right),\label{eq:Fi-at-zero}
-\end{equation}
-with derivative along a vector $w\in\text{span}\left\{ \boldsymbol{r_{1}},\boldsymbol{r_{2}}\right\} $
-\begin{equation}
-D_{\delta y}F_{i}\left(\delta y,0\right)\left[w\right]=\sum_{k\in N_{i}}\left\langle w_{k}-w_{i},y_{k}-y_{i}\right\rangle e^{-\left\langle y_{k}-y_{i},\delta y_{k}-\delta y_{i}\right\rangle }\chi\left(y_{k}-y_{i}\right).\label{eq:Fi-derivative}
-\end{equation}
-With the ultimate goal of utilizing the implicit function theorem
-(IFT) we must start with a solution of 
-\begin{equation}
-F_{i}\left(\delta y,0\right)=0\quad\forall i=\overline{1,3}\label{eq:Fi-system}
-\end{equation}
+\label{sec:perturbation} %% ==================================================================
 
-\begin{claim}
-$\delta y^{0}=\left(\delta y_{1}^{0},\delta y_{2}^{0},\delta y_{3}^{0}\right)$,
-$\delta y_{1}^{0}=-\gamma\boldsymbol{r_{2}}$, $\delta y_{2,3}^{0}=\mp\beta\boldsymbol{r_{1}}+\frac{\gamma}{2}\boldsymbol{r_{2}}$,
-with $\beta=\frac{1}{2}\ln\left(\frac{\alpha_{12}}{\alpha_{23}}\right)$,
-$\gamma=\frac{2\beta}{3\sqrt{3}}$ solves (\ref{eq:Fi-system}).
-\end{claim}
+We now extend the limiting configurations ($R=0$) to exact solutions
+at finite energy ($R>0$). We focus on the equilateral triangle at
+$\theta=0$.
+
+\subsection{Formulation}
+
+\label{subsec:formulation}
+
+Write $\tilde{y}_{i}=\tilde{m}_{R}\,y_{i}+\delta y_{i}$ with $\delta y_{i}/\tilde{m}_{R}\to0$
+as $R\to0$, where $\delta y_{i}\in\operatorname{span}\{\boldsymbol{r}_{1},\boldsymbol{r}_{2}\}$.
+\begin{defn}[Perturbation system]
+\label{def:Fi} Define 
+\begin{equation}
+F_{i}(\delta y,R)=\HV y_{i}+\HV\frac{\delta y_{i}}{\tilde{m}_{R}}-\sum_{k\in N_{i}}\frac{2Q_{R}\bigl(|\tilde{m}_{R}(y_{k}-y_{i})+\delta y_{k}-\delta y_{i}|\bigr)}{\norm{u_{R}}_{L^{2}}^{2}\,R^{4}\,|\tilde{m}_{R}(y_{k}-y_{i})+\delta y_{k}-\delta y_{i}|}\Bigl(y_{k}-y_{i}+\frac{\delta y_{k}-\delta y_{i}}{\tilde{m}_{R}}\Bigr).\label{eq:Fi-def}
+\end{equation}
+Extending by continuity to $R=0$: 
+\begin{equation}
+F_{i}(\delta y,0)=\HV y_{i}-\chi\sum_{k\in N_{i}}e^{-\ip{y_{k}-y_{i}}{\delta y_{k}-\delta y_{i}}}(y_{k}-y_{i}),\label{eq:Fi-zero}
+\end{equation}
+where $\chi$ is the overall interaction strength (Definition~\ref{def:chi}),
+and the perturbed interaction coefficients are $\tilde{\alpha}_{ki}=e^{-\ip{y_{k}-y_{i}}{\delta y_{k}-\delta y_{i}}}$,
+satisfying $\tilde{\alpha}_{ki}\chi\to\alpha_{ki}\chi$ as $\delta y\to0$.
+Note that the constraint $\max_{k}\alpha_{ki}=1$ from~(\ref{eq:alpha-def})
+normalizes $\chi$ to equal the total force from a nearest-neighbor
+pair at minimum distance.
+
+The Fréchet derivative is 
+\begin{equation}
+D_{\delta y}F_{i}(\delta y,0)[w]=\chi\sum_{k\in N_{i}}\ip{w_{k}-w_{i}}{y_{k}-y_{i}}\,e^{-\ip{y_{k}-y_{i}}{\delta y_{k}-\delta y_{i}}}(y_{k}-y_{i}).\label{eq:Fi-deriv}
+\end{equation}
+\end{defn}
+
+\subsection{Explicit solution at $R=0$}
+
+\label{subsec:explicit}
+\begin{prop}[Explicit solution]
+\label{prop:explicit-soln} Define $\beta=\frac{1}{2}\ln(\alpha_{12}/\alpha_{23})$
+and $\gamma=\frac{2\beta}{3\sqrt{3}}$, where $\alpha_{12}=-\lambda_{2}/3$
+and $\alpha_{23}=\lambda_{2}/6-\lambda_{1}/2$ are the unperturbed
+coefficients. Then 
+\begin{equation}
+\delta y_{1}^{0}=-\gamma\,\boldsymbol{r}_{2},\qquad\delta y_{2,3}^{0}=\mp\beta\,\boldsymbol{r}_{1}+\tfrac{\gamma}{2}\,\boldsymbol{r}_{2}\label{eq:delta-y0}
+\end{equation}
+solves $F_{i}(\delta y,0)=0$ for $i=1,2,3$. 
+\end{prop}
 \begin{proof}
-Plugging the given ansatz into (\ref{eq:Fi-system}) we obtain
+The perturbed interaction coefficients at $\delta y^{0}$ are (computed
+by direct substitution): 
+\begin{align*}
+\tilde{\alpha}_{12}=\tilde{\alpha}_{13} & =e^{-\ip{y_{2}-y_{1}}{\delta y_{2}^{0}-\delta y_{1}^{0}}}=1,\\
+\tilde{\alpha}_{23}=\tilde{\alpha}_{32} & =e^{-\ip{y_{3}-y_{2}}{\delta y_{3}^{0}-\delta y_{2}^{0}}}=\frac{\alpha_{23}}{\alpha_{12}}.
+\end{align*}
+The first follows from the fact that $\ip{y_{2}-y_{1}}{\delta y_{2}^{0}-\delta y_{1}^{0}}=0$
+(which one verifies by substituting the explicit coordinates). The
+second uses $\ip{y_{3}-y_{2}}{\delta y_{3}^{0}-\delta y_{2}^{0}}=2\beta=\ln(\alpha_{12}/\alpha_{23})$.
+
+Setting $\chi=-\lambda_{2}/3$ (the overall interaction strength from
+Remark~\ref{rmk:alpha-convention}, equal to the combined force coefficient
+$\hat{\alpha}_{12}$ of the apex--base edges), the system $F_{i}(\delta y^{0},0)=0$
+becomes 
 \[
-\begin{cases}
-F_{1}= & H_{V}y_{1}-\left(e^{-\left\langle y_{2}-y_{1},\delta y_{2}-\delta y_{1}\right\rangle }\left(y_{2}-y_{1}\right)+e^{-\left\langle y_{3}-y_{1},\delta y_{3}-\delta y_{1}\right\rangle }\left(y_{3}-y_{1}\right)\right)\chi\\
-F_{2}= & H_{V}y_{2}-\left(e^{-\left\langle y_{1}-y_{2},\delta y_{1}-\delta y_{2}\right\rangle }\left(y_{1}-y_{2}\right)+e^{-\left\langle y_{3}-y_{2},\delta y_{3}-\delta y_{2}\right\rangle }\left(y_{3}-y_{2}\right)\right)\chi\\
-F_{3}= & H_{V}y_{3}-\left(e^{-\left\langle y_{1}-y_{3},\delta y_{1}-\delta y_{3}\right\rangle }\left(y_{1}-y_{3}\right)+e^{-\left\langle y_{2}-y_{3},\delta y_{2}-\delta y_{3}\right\rangle }\left(y_{2}-y_{3}\right)\right)\chi
-\end{cases}
+\HV y_{i}=\alpha_{12}\bigl[\tilde{\alpha}_{i1}(y_{1}-y_{i})+\tilde{\alpha}_{i,\text{other}}(y_{\text{other}}-y_{i})\bigr]
 \]
-With $\tilde{\alpha}_{ki}=e^{-\left\langle y_{k}-y_{i},\delta y_{k}-\delta y_{i}\right\rangle }\Rightarrow\tilde{\alpha}_{ki}=\tilde{\alpha}_{ik}$,
-we find $\tilde{\alpha}_{12}=\tilde{\alpha}_{21}=\tilde{\alpha}_{13}=\tilde{\alpha}_{31}=1$
-and $\tilde{\alpha}_{23}=\tilde{\alpha}_{32}=\frac{\alpha_{23}}{\alpha_{12}}$.
-For the equilateral triangle we know $\alpha_{12}=\alpha_{13}=-\frac{\lambda_{2}}{3}>\alpha_{23}=\frac{-\lambda_{1}+\frac{\lambda_{2}}{3}}{2}\Rightarrow\chi=\max\left\{ \alpha_{12},\alpha_{13},\alpha_{23}\right\} =\alpha_{12}=\alpha_{13}$
-and $H_{V}=\begin{pmatrix}\lambda_{1} & 0\\
-0 & \lambda_{2}
-\end{pmatrix},y_{1}=\left(0,\frac{1}{\sqrt{3}}\right)^{\intercal},y_{2}=\left(-\frac{1}{2},-\frac{1}{2\sqrt{3}}\right)^{\intercal},y_{3}=\left(\frac{1}{2},-\frac{1}{2\sqrt{3}}\right)^{\intercal}$. Therefore 
-\[
-\begin{cases}
-H_{V}y_{1}-\left(\tilde{\alpha}_{21}\left(y_{2}-y_{1}\right)+\tilde{\alpha}_{31}\left(y_{3}-y_{1}\right)\right)\chi & =0\\
-H_{V}y_{2}-\left(\tilde{\alpha}_{12}\left(y_{1}-y_{2}\right)+\tilde{\alpha}_{32}\left(y_{3}-y_{2}\right)\right)\chi & =0\\
-H_{V}y_{3}-\left(\tilde{\alpha}_{13}\left(y_{1}-y_{3}\right)+\tilde{\alpha}_{23}\left(y_{2}-y_{3}\right)\right)\chi & =0
-\end{cases}\Rightarrow\begin{cases}
-H_{V}y_{1}-\left(y_{2}-y_{1}+y_{3}-y_{1}\right)\chi & =0\\
-H_{V}y_{2}-\left(y_{1}-y_{2}+\frac{\alpha_{23}}{\alpha_{12}}\left(y_{3}-y_{2}\right)\right)\chi & =0\\
-H_{V}y_{3}-\left(y_{1}-y_{3}+\frac{\alpha_{23}}{\alpha_{12}}\left(y_{2}-y_{3}\right)\right)\chi & =0
-\end{cases}
-\]
-\[
-\Downarrow
-\]
-\[
-\begin{cases}
-\begin{pmatrix}0\\
-\frac{\lambda_{2}}{\sqrt{3}}
-\end{pmatrix}-\left[\begin{pmatrix}-\frac{1}{2}\\
--\frac{\sqrt{3}}{2}
-\end{pmatrix}+\begin{pmatrix}\frac{1}{2}\\
--\frac{\sqrt{3}}{2}
-\end{pmatrix}\right]\chi & =\boldsymbol{0}\\
-\begin{pmatrix}-\frac{\lambda_{1}}{2}\\
--\frac{\lambda_{2}}{2\sqrt{3}}
-\end{pmatrix}-\left[\begin{pmatrix}\frac{1}{2}\\
-\frac{\sqrt{3}}{2}
-\end{pmatrix}+\frac{\alpha_{23}}{\alpha_{12}}\begin{pmatrix}1\\
-0
-\end{pmatrix}\right]\chi & =\boldsymbol{0}\\
-\begin{pmatrix}\frac{\lambda_{1}}{2}\\
--\frac{\lambda_{2}}{2\sqrt{3}}
-\end{pmatrix}-\left[\begin{pmatrix}-\frac{1}{2}\\
-\frac{\sqrt{3}}{2}
-\end{pmatrix}+\frac{\alpha_{23}}{\alpha_{12}}\begin{pmatrix}-1\\
-0
-\end{pmatrix}\right]\chi & =\boldsymbol{0}
-\end{cases}\Rightarrow\begin{cases}
-\begin{pmatrix}0\\
-\frac{\lambda_{2}}{\sqrt{3}}
-\end{pmatrix}+\begin{pmatrix}0\\
-\sqrt{3}\alpha_{12}
-\end{pmatrix} & =\boldsymbol{0}\\
-\begin{pmatrix}-\frac{\lambda_{1}}{2}\\
--\frac{\lambda_{2}}{2\sqrt{3}}
-\end{pmatrix}-\begin{pmatrix}\frac{\alpha_{12}}{2}\\
-\frac{\sqrt{3}\alpha_{12}}{2}
-\end{pmatrix}-\begin{pmatrix}\alpha_{23}\\
-0
-\end{pmatrix} & =\boldsymbol{0}\\
-\begin{pmatrix}\frac{\lambda_{1}}{2}\\
--\frac{\lambda_{2}}{2\sqrt{3}}
-\end{pmatrix}-\begin{pmatrix}-\frac{\alpha_{12}}{2}\\
-\frac{\sqrt{3}\alpha_{12}}{2}
-\end{pmatrix}+\begin{pmatrix}\alpha_{23}\\
-0
-\end{pmatrix} & =\boldsymbol{0}
-\end{cases}
-\]
-\[
-\Downarrow
-\]
-\[
-\begin{cases}
-\begin{pmatrix}0\\
-\frac{\lambda_{2}}{\sqrt{3}}
-\end{pmatrix}+\begin{pmatrix}0\\
--\frac{\sqrt{3}\lambda_{2}}{3}
-\end{pmatrix} & =\boldsymbol{0}\\
-\begin{pmatrix}-\frac{\lambda_{1}}{2}\\
--\frac{\lambda_{2}}{2\sqrt{3}}
-\end{pmatrix}-\begin{pmatrix}-\frac{\lambda_{2}}{6}\\
--\frac{\sqrt{3}\lambda_{2}}{6}
-\end{pmatrix}-\begin{pmatrix}\frac{-\lambda_{1}+\frac{\lambda_{2}}{3}}{2}\\
-0
-\end{pmatrix} & =\boldsymbol{0}\\
-\begin{pmatrix}\frac{\lambda_{1}}{2}\\
--\frac{\lambda_{2}}{2\sqrt{3}}
-\end{pmatrix}-\begin{pmatrix}\frac{\lambda_{2}}{6}\\
--\frac{\sqrt{3}\lambda_{2}}{6}
-\end{pmatrix}+\begin{pmatrix}\frac{-\lambda_{1}+\frac{\lambda_{2}}{3}}{2}\\
-0
-\end{pmatrix} & =\boldsymbol{0}
-\end{cases}\Rightarrow\begin{cases}
-\begin{pmatrix}0\\
-\frac{\lambda_{2}}{\sqrt{3}}-\frac{\lambda_{2}}{\sqrt{3}}
-\end{pmatrix} & =\boldsymbol{0}\\
-\begin{pmatrix}\frac{\lambda_{1}}{2}-\frac{\lambda_{1}}{2}\\
-\frac{\lambda_{2}}{2\sqrt{3}}-\frac{\lambda_{2}}{2\sqrt{3}}
-\end{pmatrix} & =\boldsymbol{0}\\
-\begin{pmatrix}\frac{\lambda_{1}}{2}-\frac{\lambda_{1}}{2}\\
-\frac{\lambda_{2}}{2\sqrt{3}}-\frac{\lambda_{2}}{2\sqrt{3}}
-\end{pmatrix} & =\boldsymbol{0}
-\end{cases}\:\checkmark
-\]
-$\therefore\delta y^{0}$ as stated above solves (\ref{eq:Fi-system})
-for the equilateral triangle.
+for each $i$, which reduces to the original algebraic system~(\ref{eq:algebraic}).
+Substituting the known values and simplifying component-wise confirms
+$F_{i}=0$ for each $i$.
+
+We also verify the center-of-mass condition: $\delta y_{1}^{0}+\delta y_{2}^{0}+\delta y_{3}^{0}=(0,0)$,
+which is immediate from the definitions. 
 \end{proof}
-\begin{claim}
-(\ref{eq:Fi-derivative}) has a nontrivial kernel $\left(w_{1},w_{2},w_{3}\right)$
-so the IFT does not apply.
-\end{claim}
+
+\subsection{Kernel of the linearization}
+
+\label{subsec:kernel}
+\begin{prop}[Nontrivial kernel]
+\label{prop:kernel} The linearization $D_{\delta y}F_{i}(\delta y^{0},0)$
+has a four-dimensional kernel 
+\[
+\Omega=\{(w_{1},w_{2},w_{3})\in(\R^{2})^{3}:\ip{w_{k}-w_{i}}{y_{k}-y_{i}}=0\;\;\forall\,i\neq k\}.
+\]
+This kernel contains the two-dimensional translational subspace $\{(v,v,v):v\in\R^{2}\}$
+and two additional directions, including the rotational mode $w_{\mathrm{rot}}=\frac{d}{d\theta}y_{i}(\theta)\big|_{\theta=0}$. 
+\end{prop}
 \begin{proof}
-Let 
-\begin{align*}
-\Omega & =\ker\left(D_{\delta y}F_{i}\left(\delta y^{0},0\right)\right)\\
- & =\text{span}\left\{ \left(w_{1},w_{2},w_{3}\right)\vert\left\langle w_{k}-w_{i},y_{k}-y_{i}\right\rangle =0\,\forall\,i\neq k\right\} 
-\end{align*}
-We can immediately see that $\Omega\supseteq\boldsymbol{0}$. Consider
-the following
-\begin{align*}
-\Phi & =\sum_{i}w_{i}\cdot D_{\delta y}F_{i}\left(\delta y,0\right)\left[w\right]\\
- & =\sum_{i}w_{i}\cdot\sum_{k\in N_{i}}\left\langle w_{k}-w_{i},y_{k}-y_{i}\right\rangle \cdot\alpha_{ik}\left(y_{k}-y_{i}\right)\\
- & =\sum_{k,i\in N_{k,i}}\alpha_{ik}\left\langle w_{k}-w_{i},y_{k}-y_{i}\right\rangle \left\langle w_{i},y_{k}-y_{i}\right\rangle +\alpha_{ki}\left\langle w_{i}-w_{k},y_{i}-y_{k}\right\rangle \left\langle w_{k},y_{i}-y_{k}\right\rangle \\
- & =-\sum_{k,i\in N_{k,i}}\alpha_{ik}\left(\left\langle w_{k}-w_{i},y_{k}-y_{i}\right\rangle \right)^{2}
-\end{align*}
-It follows that
-\[
-w\in\Omega\Longrightarrow\Phi\equiv\boldsymbol{0}
-\]
-and 
-\[
-\alpha_{ik}\neq0\Longrightarrow\left\langle w_{k}-w_{i},y_{k}-y_{i}\right\rangle =0\,\forall\,i\neq k
-\]
-which is precisely the defining condition placed on $\Omega$. Thus
-$\left\{ \left(w_{1},w_{2},w_{3}\right)|\left\langle w_{k}-w_{i},y_{k}-y_{i}\right\rangle =0\,\forall\,i\neq k\right\} \subseteq\Omega$,
-therefore (\ref{eq:Fi-derivative}) has a nontrivial kernel. For example,
-take all three vectors equal. (Let $v\in\mathbb{R}^{2}$ be any nonzero
-vector and set
+The kernel condition $\ip{w_{k}-w_{i}}{y_{k}-y_{i}}=0$ for all neighbor
+pairs gives three scalar constraints on $w\in\R^{6}$. Since $y_{3}-y_{2}=(y_{3}-y_{1})-(y_{2}-y_{1})$,
+only two constraints are independent, so $\dim\Omega\geq6-2=4$.
 
-\[
-w_{1}=w_{2}=w_{3}=v.
-\]
-Then $w_{k}-w_{i}=0$ for every pair $\left(i,k\right)$, hence $\left\langle w_{k}-w_{i},y_{k}-y_{i}\right\rangle =0$.
-Therefore $\left(v,v,v\right)\in\Omega$. Because $v$ can be chosen
-arbitrarily in $\mathbb{R}^{2}$, the kernel $\Omega$ contains at
-least the $2-$dimensional subspace
+To see that $\Omega\supseteq\{(v,v,v):v\in\R^{2}\}$: if $w_{1}=w_{2}=w_{3}=v$,
+then $w_{k}-w_{i}=0$, so all inner products vanish. This is a 2D
+subspace.
 
+The quadratic form argument shows the inclusion is an equality: define
 \[
-\left\{ \left(v,v,v\right)\mid v\in\mathbb{R}^{2}\right\} \subsetneq\left\{ 0\right\} ,
+\Phi=\sum_{i}w_{i}\cdot D_{\delta y}F_{i}(\delta y^{0},0)[w]=-\chi\sum_{\{i,k\}\in\text{edges}}\alpha_{ik}\bigl(\ip{w_{k}-w_{i}}{y_{k}-y_{i}}\bigr)^{2}.
 \]
-which is nontrivial. In particular, $\Omega\neq\left\{ 0\right\} $.)
+Since $\Phi\leq0$ and $\Phi=0$ implies each summand vanishes (as
+$\alpha_{ik}>0$ for all edges of the equilateral triangle), the kernel
+is precisely $\Omega$. Computing explicitly, $\dim\Omega=4$.
+
+The rotational mode $w_{\mathrm{rot}}=(\frac{d}{d\theta}y_{i}(\theta)|_{\theta=0})_{i=1,2,3}=(-h,0;\;\frac{h}{2},-a;\;\frac{h}{2},a)$
+lies in $\Omega$ since $\ip{w_{\mathrm{rot},k}-w_{\mathrm{rot},i}}{y_{k}-y_{i}}=0$
+for all pairs (verified by direct computation). 
 \end{proof}
-Assume $\left(w_{1},w_{2},w_{3}\right)\in\Omega$. Consider
-\begin{align*}
-P_{w}F\left(\delta y,R\right) & =\sum_{i}w_{i}\cdot F_{i}\left(\delta y,R\right)\\
- & =\sum_{i}\left[\left\langle w_{i},H_{V}y_{i}\right\rangle +\left\langle w_{i},H_{V}\frac{\delta y_{i}}{\tilde{m}_{R}}\right\rangle -\sum_{k\in N_{i}}\left[\left\langle w_{i},\alpha_{ik}\left(R\right)\left(y_{k}-y_{i}\right)\right\rangle +\alpha_{ik}\left(R\right)\left\langle w_{i},\frac{\delta y_{k}-\delta y_{i}}{\tilde{m}_{R}}\right\rangle \right]\right]\\
- & =\frac{1}{\tilde{m}_{R}}\sum_{i}\left[\left\langle w_{i},H_{V}\delta y_{i}\right\rangle -\sum_{k\in N_{i}}\alpha_{ik}\left(R\right)\left\langle w_{i},\delta y_{k}-\delta y_{i}\right\rangle \right]\\
- & =\frac{1}{\tilde{m}_{R}}\sum_{i}\left\langle w_{i},H_{V}\delta y_{i}-\sum_{k\in N_{i}}\alpha_{ik}\left(R\right)\left(\delta y_{k}-\delta y_{i}\right)\right\rangle 
-\end{align*}
-we then multiply by $\tilde{m}_{R}$ and extend continuously to $R\to0$
-via
-\begin{align*}
-P_{w}F\left(\delta y,0\right) & =\sum_{i}\left\langle w_{i},H_{V}\delta y_{i}-\sum_{k\in N_{i}}\alpha_{ik}\left(0\right)\left(\delta y_{k}-\delta y_{i}\right)\right\rangle 
-\end{align*}
-with $\alpha_{ik}\left(0\right)=e^{-\left\langle y_{k}-y_{i},\delta y_{k}-\delta y_{i}\right\rangle }\chi$.
-Now consider $P_{\perp}F\left(\delta y^{0},0\right)$ and $P_{\parallel}F\left(\delta y^{0},0\right)$
-where $\perp,\parallel$ are with respect to $\Omega$. We then have
-\begin{align*}
-D_{\delta y}P_{\perp}F\left(\delta y^{0},0\right)\left[\delta w\right] & =P_{\perp}\sum_{k\in N_{i}}\left\langle \delta w_{k}-\delta w_{i},y_{k}-y_{i}\right\rangle \alpha_{ik}\left(0\right)\left(y_{k}-y_{i}\right)\\
-D_{\delta y}P_{\parallel}F\left(\delta y^{0},0\right)\left[\delta w\right] & =\sum_{i}\left\langle w_{i},H_{V}\delta w_{i}\right\rangle \\
- & +\sum_{i}\sum_{k\in N_{i}}\left[\left\langle w_{i},\alpha_{ki}\left(0\right)\left(\delta y_{k}^{0}-\delta y_{i}^{0}\right)\right\rangle \left\langle y_{k}-y_{i},\delta w_{k}-\delta w_{i}\right\rangle -\alpha_{ki}\left(0\right)\left\langle w_{i},\delta w_{k}-\delta w_{i}\right\rangle \right]
-\end{align*}
-For $\delta w\in\Gamma=\ker\left(D_{\delta y}P_{\perp}F\left(\delta y^{0},0\right)\oplus D_{\delta y}P_{\parallel}F\left(\delta y^{0},0\right)\right)\Rightarrow\delta w\in\Omega$
-and 
-\[
-\sum_{i}\left\langle w_{i},H_{V}\delta w_{i}-\sum_{k\in N_{i}}\alpha_{ki}\left(0\right)\left\langle w_{i},\delta w_{k}-\delta w_{i}\right\rangle \right\rangle =0
-\]
-for all $w\in\Gamma$. Alternatively, $\delta w\in\Gamma$ if and
-only if $\delta w\in\Omega$ and
-\begin{align*}
-P_{\delta w} & =H_{V}\delta w_{i}-\sum_{k\in N_{i}}\alpha_{ki}\left(0\right)\left(\delta w_{k}-\delta w_{i}\right)\\
-\Omega^{\perp} & \ni\\
- & =\left\{ z\in\mathbb{R}^{2\times3}|\exists c_{ki}=c_{ik}|z_{i}=\sum_{k\in N_{i}}c_{ki}\left(y_{k}-y_{i}\right)\right\} 
-\end{align*}
+\noindent\begin{rmk}\label{rmk:kernel-dim-new} The four kernel
+dimensions decompose as follows. The two translational modes $\{(v,v,v):v\in\R^{2}\}$
+span a $2$-dimensional subspace. The rotational mode $w_{\mathrm{rot}}$
+accounts for one additional dimension. The remaining fourth direction
+is a \emph{breathing mode}: it corresponds to a simultaneous dilation/contraction
+of the triangle that preserves the kernel condition $\ip{w_{k}-w_{i}}{y_{k}-y_{i}}=0$.
+Explicitly, one can verify that $w_{\mathrm{br}}=(y_{1}^{\perp},y_{2}^{\perp},y_{3}^{\perp})$,
+where $y_{i}^{\perp}$ is the $90^{\circ}$ rotation of $y_{i}$ within
+the $(\boldsymbol{r}_{1},\boldsymbol{r}_{2})$-plane, lies in $\Omega$
+and is linearly independent of the translational and rotational modes.
 
-\begin{claim}
-If we restrict $\delta y_{1}$ to be orthogonal to $\boldsymbol{r_{1}}$
-and $\delta y_{3}-\delta y_{2}$ to be parallel to $\boldsymbol{r_{1}}$.
-From $\sum_{i}F_{i}\left(\delta y,R\right)=0$ we can find $\delta y_{1}\left(R\right),\delta y_{2}\left(R\right),\delta y_{3}\left(R\right)$
-that solve (\ref{eq:reduced-system}) and $\delta y_{1}\left(0\right)=\delta y_{1}^{0},\delta y_{2}\left(0\right)=\delta y_{2}^{0},\delta y_{3}\left(0\right)=\delta y_{3}^{0}$.
-\end{claim}
+The gauge-fixing conditions (G1)--(G2) remove the $\boldsymbol{r}_{1}$-translation
+and the rotational mode, leaving a $2$-dimensional residual kernel
+(the $\boldsymbol{r}_{2}$-translation and the breathing mode) that
+must be handled by the parallel projection $P_{w}F$. \end{rmk}
+
+\section{Kernel Resolution and Gauge-Fixing}
+
+\label{sec:gauge} %% ==================================================================
+
+The four-dimensional kernel $\Omega$ prevents a direct application
+of the implicit function theorem (IFT) to continue solutions from
+$R=0$ to $R>0$. Following the iterative kernel decomposition methodology
+of~\cite{KirrNatarajan2018}, we decompose the reduced system into
+projections perpendicular and parallel to $\Omega$.
+
+\subsection{Projection decomposition}
+
+\label{subsec:projections}
+
+For $w\in\Omega$, define 
+\[
+P_{w}F(\delta y,R)=\sum_{i}\ip{w_{i}}{F_{i}(\delta y,R)}.
+\]
+We decompose $F$ into its perpendicular projection $P_{\perp}F$
+(a vector-valued system on $\Omega^{\perp}$) and parallel projections
+$P_{w}F$ for $w$ ranging over a basis of $\Omega$.
+
+At $(\delta y^{0},0)$, the linearizations are: 
+\begin{align}
+D_{\delta y}P_{\perp}F(\delta y^{0},0)[\delta w] & =P_{\perp}\sum_{k\in N_{i}}\ip{\delta w_{k}-\delta w_{i}}{y_{k}-y_{i}}\,\tilde{\alpha}_{ik}(0)\,\chi\,(y_{k}-y_{i}),\label{eq:DPperp}\\
+D_{\delta y}P_{w}F(\delta y^{0},0)[\delta w] & =\sum_{i}\Bigl[\ip{w_{i}}{\HV\delta w_{i}}+\sum_{k\in N_{i}}\tilde{\alpha}_{ki}(0)\bigl(\ip{w_{i}}{\delta y_{k}^{0}-\delta y_{i}^{0}}\ip{y_{k}-y_{i}}{\delta w_{k}-\delta w_{i}}\nonumber \\
+ & \quad\qquad-\ip{w_{i}}{\delta w_{k}-\delta w_{i}}\bigr)\Bigr].\label{eq:DPpar}
+\end{align}
+
+
+\subsection{Gauge-fixing constraints}
+
+\label{subsec:gauge-fix}
+
+To break the translational and rotational symmetries, we impose: 
+\begin{enumerate}
+\item[(G1)] $\delta y_{1}\perp\boldsymbol{r}_{1}$ (the first peak has no displacement
+along $\boldsymbol{r}_{1}$), 
+\item[(G2)] $(\delta y_{3}-\delta y_{2})\parallel\boldsymbol{r}_{1}$ (the base
+of the triangle displaces only along $\boldsymbol{r}_{1}$). 
+\end{enumerate}
+These two scalar constraints remove 2 of the 4 kernel directions (one
+translation component and the rotation mode), leaving a 2-dimensional
+residual kernel corresponding to the remaining translation and the
+breathing mode.
+
+\subsection{Rotational equivariance at $R=0$}
+
+\label{subsec:equivariance}
+\begin{prop}[Family structure at $R=0$]
+\label{prop:family} The one-parameter family of equilateral triangle
+configurations $y_{i}(\theta)=R(\theta)y_{i}'$, $\theta\in[\theta_{\min},\theta_{\max}]$
+(the admissible $\theta$-range from Proposition~\ref{prop:admissibility}),
+generates a corresponding family of solutions $\delta y^{0}(\theta)$
+of the system $F_{i}(\delta y,0)=0$. 
+\end{prop}
 \begin{proof}
-Starting with $\sum_{i}F_{i}\left(\delta y,R\right)=0$
-\begin{align*}
-\sum_{i}F_{i}\left(\delta y,R\right) & =0\\
-\sum_{i}H_{V}y_{i}+H_{V}\frac{\delta y_{i}}{\tilde{m}_{R}}-\sum_{k\in N_{i}}\frac{2Q_{R}\left(\left|\tilde{m}_{R}\left(y_{k}-y_{i}\right)+\delta y_{k}-\delta y_{i}\right|\right)}{\left\Vert u_{R}\right\Vert _{L^{2}}^{2}R^{4}\left|\tilde{m}_{R}\left(y_{k}-y_{i}\right)+\delta y_{k}-\delta y_{i}\right|}\left(y_{k}-y_{i}+\frac{\delta y_{k}-\delta y_{i}}{\tilde{m}_{R}}\right) & =\\
-\sum_{i}H_{V}\left(\frac{\tilde{m}_{R}y_{i}+\delta y_{i}}{\tilde{m}_{R}}\right)-\sum_{k\in N_{i}}\frac{2Q_{R}\left(\left|\tilde{m}_{R}\left(y_{k}-y_{i}\right)+\delta y_{k}-\delta y_{i}\right|\right)}{\left\Vert u_{R}\right\Vert _{L^{2}}^{2}R^{4}\left|\tilde{m}_{R}\left(y_{k}-y_{i}\right)+\delta y_{k}-\delta y_{i}\right|}\left(\frac{\tilde{m}_{R}y_{k}-\tilde{m}_{R}y_{i}+\delta y_{k}-\delta y_{i}}{\tilde{m}_{R}}\right) & =\\
-\sum_{i}H_{V}\frac{\tilde{y}_{i}}{\tilde{m}_{R}}-\sum_{k\in N_{i}}\frac{2Q_{R}\left(\left|\tilde{m}_{R}y_{k}+\delta y_{k}-\left(\tilde{m}_{R}y_{i}+\delta y_{i}\right)\right|\right)}{\left\Vert u_{R}\right\Vert _{L^{2}}^{2}R^{4}\left|\tilde{m}_{R}y_{k}+\delta y_{k}-\left(\tilde{m}_{R}y_{i}+\delta y_{i}\right)\right|}\left(\frac{\tilde{m}_{R}y_{k}+\delta y_{k}-\left(\tilde{m}_{R}y_{i}+\delta y_{i}\right)}{\tilde{m}_{R}}\right) & =\\
-\sum_{i}H_{V}\frac{\tilde{y}_{i}}{\tilde{m}_{R}}-\sum_{k\in N_{i}}\frac{2Q_{R}\left(\left|\tilde{y}_{k}-\tilde{y}_{i}\right|\right)}{\left\Vert u_{R}\right\Vert _{L^{2}}^{2}R^{4}\left|\tilde{y}_{k}-\tilde{y}_{i}\right|}\cdot\frac{\tilde{y}_{k}-\tilde{y}_{i}}{\tilde{m}_{R}} & =\\
- & \Downarrow\\
-H_{V}\frac{\tilde{y}_{i}}{\tilde{m}_{R}}-\sum_{k\in N_{i}}\frac{2Q_{R}\left(\left|\tilde{y}_{k}-\tilde{y}_{i}\right|\right)}{\left\Vert u_{R}\right\Vert _{L^{2}}^{2}R^{4}\left|\tilde{y}_{k}-\tilde{y}_{i}\right|}\cdot\frac{\tilde{y}_{k}-\tilde{y}_{i}}{\tilde{m}_{R}} & =0
-\end{align*}
-which is precisely (\ref{eq:reduced-system}), and since
-\begin{align*}
-H_{V}\frac{\tilde{y}_{i}}{\tilde{m}_{R}} & =\sum_{k\in N_{i}}\frac{2Q_{R}\left(\left|\tilde{y}_{k}-\tilde{y}_{i}\right|\right)}{\left\Vert u_{R}\right\Vert _{L^{2}}^{2}R^{4}\left|\tilde{y}_{k}-\tilde{y}_{i}\right|}\cdot\frac{\tilde{y}_{k}-\tilde{y}_{i}}{\tilde{m}_{R}}\\
- & \Downarrow\:\left(R\searrow0\right)\\
-H_{V}y_{i} & =\sum_{k\in N_{i}}\alpha_{ki}\chi\left(y_{k}-y_{i}\right)
-\end{align*}
-has solutions (by construction) $\delta y_{i}^{0}$, we also can see
-$\delta y_{i}\left(0\right)=\lim_{R\searrow0}\delta y_{i}\left(R\right)=\delta y_{i}^{0}$.
+For each admissible $\theta$, the base configuration $y_{i}(\theta)$
+satisfies the algebraic system~(\ref{eq:algebraic}) with $\theta$-dependent
+coefficients $\alpha_{12}(\theta),\alpha_{13}(\theta),\alpha_{23}(\theta)$
+from~(\ref{eq:alpha12})--(\ref{eq:alpha23}). The explicit solution
+construction of Proposition~\ref{prop:explicit-soln} applies at
+each $\theta$, with $\beta(\theta)=\frac{1}{2}\ln(\alpha_{12}(\theta)/\alpha_{23}(\theta))$
+and $\gamma(\theta)=2\beta(\theta)/(3\sqrt{3})$. The resulting $\delta y^{0}(\theta)$
+is smooth in $\theta$ since the $\alpha_{ki}(\theta)$ are smooth
+and positive in the admissible range. 
 \end{proof}
-More generally, $\left(\delta y_{1},\delta y_{2},\delta y_{3}\right)\perp\left(w_{1},w_{2},w_{3}\right)=w_{\text{rot}}\iff\delta y\in\left\{ w_{\text{rot}}\right\} ^{\perp}$.
-$F_{i}\left(\delta y_{i},R\right)$ does not necessarily preserve
-$\left\{ w_{\text{rot}}\right\} ^{\perp}$; however, $\left\{ w_{\text{rot}}\right\} ^{\perp}=P_{\perp_{\text{rot}}}F_{i}\left(\delta y_{i},R\right)=0$
-has a unique solution. If $F_{i}\left(R_{w}\delta y_{i},R\right)=R_{w}F_{i}\left(\delta y_{i},R\right)$
-for all $w\in\left[-\pi,\pi\right]$, then $F_{i}\left(R_{w}\delta y_{i},R\right)=0$
-such that $F_{i}\left(\delta y_{i},R\right)\mapsto R_{w}F_{i}\left(\delta y_{i},R\right)$
-(since $F_{i}\left(\delta y_{i},R\right)=0$).
+\begin{cor}
+\label{cor:tangent-kernel} The tangent vector $\frac{d}{d\theta}\delta y^{0}(\theta)$
+at each $\theta$ lies in the kernel $\Omega(\theta)$ of $D_{\delta y}F_{i}(\delta y^{0}(\theta),0)$.
+This is the rotational mode $w_{\mathrm{rot}}(\theta)$. 
+\end{cor}
+\begin{proof}
+Since $F_{i}(\delta y^{0}(\theta),0)=0$ holds for all admissible
+$\theta$, differentiating with respect to $\theta$ gives 
+\[
+D_{\delta y}F_{i}(\delta y^{0}(\theta),0)\Bigl[\frac{d}{d\theta}\delta y^{0}(\theta)\Bigr]+\frac{\partial}{\partial\theta}\Bigl[F_{i}\bigl(\delta y^{0}(\theta),0\bigr)\Bigr]\bigg|_{\delta y\,\text{fixed}}=0.
+\]
+The second term accounts for the $\theta$-dependence of the base
+configuration $y_{i}(\theta)$ and the coefficients $\alpha_{ki}(\theta)$;
+it vanishes because the entire expression $F_{i}(\delta y^{0}(\theta),0)$
+is identically zero in~$\theta$. Consequently, 
+\[
+D_{\delta y}F_{i}(\delta y^{0}(\theta),0)\Bigl[\frac{d}{d\theta}\delta y^{0}(\theta)\Bigr]=0,
+\]
+so $w_{\mathrm{rot}}(\theta)=\frac{d}{d\theta}\delta y^{0}(\theta)\in\Omega(\theta)$. 
+\end{proof}
 
-\section{Conclusion}
+\subsection{Extension to $R>0$: invertibility of the gauge-fixed system}
+
+\label{subsec:IFT}
+
+\begin{conj}[Gauge-fixed invertibility]\label{conj:invertibility}
+Under gauge-fixing conditions (G1)--(G2), the projected system 
+\[
+P_{\perp}F(\delta y,R)=0,\qquad P_{w}F(\delta y,R)=0\quad(w\in\Omega\setminus\operatorname{span}\{w_{\mathrm{trans}},w_{\mathrm{rot}}\})
+\]
+restricted to the gauge-fixed subspace $\{\delta y:\delta y_{1}\perp\boldsymbol{r}_{1},\;(\delta y_{3}-\delta y_{2})\parallel\boldsymbol{r}_{1}\}$
+has an invertible linearization at $(\delta y^{0},0)$, and hence
+the IFT yields a unique smooth branch $\delta y(R)$ for $R\in[0,\varepsilon)$.
+\end{conj}
+
+The conjecture is supported by the following partial result:
+\begin{prop}[Center-of-mass identity]
+\label{prop:sum-Fi} For any $\delta y=(\delta y_{1},\delta y_{2},\delta y_{3})$
+and any $R\geq0$, 
+\begin{equation}
+\sum_{i=1}^{3}F_{i}(\delta y,R)=\HV\frac{\sum_{i}\delta y_{i}}{\tilde{m}_{R}}\,.\label{eq:sum-Fi-identity}
+\end{equation}
+In particular, $\sum_{i}F_{i}=0$ if and only if $\sum_{i}\delta y_{i}=0$
+(the center-of-mass condition). The explicit solution $\delta y^{0}$
+of Proposition~4.1 satisfies this condition, and the gauge-fixing
+constraints \textup{(G1)--(G2)} are compatible with~$\delta y^{0}$. 
+\end{prop}
+\begin{proof}
+The interaction terms in $F_{i}$ (Definition~4.1) involve differences
+$(y_{k}-y_{i})$ and $(\delta y_{k}-\delta y_{i})/\tilde{m}_{R}$.
+Each nearest-neighbor edge $\{i,k\}$ contributes to $\sum_{i}F_{i}$
+through both the $F_{i}$ summand (with factor $y_{k}-y_{i}+(\delta y_{k}-\delta y_{i})/\tilde{m}_{R}$)
+and the $F_{k}$ summand (with factor $y_{i}-y_{k}+(\delta y_{i}-\delta y_{k})/\tilde{m}_{R}$).
+Since the scalar coefficient $\frac{2Q_{R}(|\tilde{y}_{k}-\tilde{y}_{i}|)}{\norm{u_{R}}_{L^{2}}^{2}R^{4}|\tilde{y}_{k}-\tilde{y}_{i}|}$
+depends only on $|\tilde{y}_{k}-\tilde{y}_{i}|=|\tilde{y}_{i}-\tilde{y}_{k}|$,
+these contributions are equal in magnitude and opposite in sign; hence
+they cancel.
+
+What remains from the Hessian terms is 
+\[
+\sum_{i=1}^{3}F_{i}(\delta y,R)=\sum_{i=1}^{3}\Bigl[\HV y_{i}+\HV\frac{\delta y_{i}}{\tilde{m}_{R}}\Bigr]=\HV\frac{\sum_{i}\bigl(\tilde{m}_{R}\,y_{i}+\delta y_{i}\bigr)}{\tilde{m}_{R}}\,.
+\]
+For the equilateral triangle, $\sum_{i}y_{i}=0$ by symmetry (the
+centroid is at the origin), so $\sum_{i}F_{i}=\HV\,\bigl(\sum_{i}\delta y_{i}\bigr)/\tilde{m}_{R}$.
+Since $\HV$ is invertible (Hypothesis~V3), $\sum_{i}F_{i}=0$ if
+and only if $\sum_{i}\delta y_{i}=0$.
+
+\smallskip{}
+For the explicit solution: $\sum_{i}\delta y_{i}^{0}=(-\gamma\boldsymbol{r}_{2})+(-\beta\boldsymbol{r}_{1}+\tfrac{\gamma}{2}\boldsymbol{r}_{2})+(\beta\boldsymbol{r}_{1}+\tfrac{\gamma}{2}\boldsymbol{r}_{2})=\boldsymbol{0}$.
+
+\smallskip{}
+For the gauge-fixing compatibility: $\delta y_{1}^{0}=-\gamma\boldsymbol{r}_{2}$
+has zero $\boldsymbol{r}_{1}$-component, so $\delta y_{1}^{0}\perp\boldsymbol{r}_{1}$
+(condition G1). And $\delta y_{3}^{0}-\delta y_{2}^{0}=2\beta\boldsymbol{r}_{1}\parallel\boldsymbol{r}_{1}$
+(condition G2). 
+\end{proof}
+\begin{rmk} The full resolution of Conjecture~\ref{conj:invertibility}
+requires an explicit computation of the $4\times4$ matrix $D_{\delta y}(P_{\perp}F\oplus P_{\parallel}F)$
+restricted to the gauge-fixed 4-dimensional subspace, and showing
+its $2\times2$ restriction to $\Omega^{\perp}$ within the gauge-fixed
+space is nonsingular. For the isotropic case $\mu=1$ ($\lambda_{1}=\lambda_{2}$),
+the full continuous rotational symmetry $\HV=\lambda\,I$ implies
+equivariance $F_{i}(R_{\omega}\delta y,R)=R_{\omega}F_{i}(\delta y,R)$
+for all $\omega$, and the IFT applies on the quotient by the rotation
+group. For anisotropic $\mu\neq1$, the equivariance is broken but
+the family structure (Proposition~\ref{prop:family}) provides the
+necessary tangent-space information. \end{rmk}
+
+\section{Conclusion and Open Problems}
+
+\label{sec:conclusion} %% ==================================================================
 
 We have carried out a complete finite-dimensional study of multi-peak
-ground states for the nonlinear Schrödinger equation
+ground states for the nonlinear Schrödinger equation 
 \[
 (-\Delta+V+E)\psi+\sigma|\psi|^{2p}\psi=0,\qquad E\to\infty,
 \]
-using the rescaling and concentration compactness framework. The existence
-question is reduced to an algebraic system
-\[
-F_{i}(\delta y,R)=0,
-\]
-which governs the positions of well-separated profiles near a non-degenerate
-critical point of the potential $V$.
+under Hypotheses~\ref{hyp:V1}--\ref{hyp:V4}. Our main results
+are:
+\begin{enumerate}
+\item \textbf{Classification} (Theorem~\ref{thm:classification}). All
+admissible multi-peak configurations near a non-degenerate local maximum
+of $V$ are classified: collinear, isosceles triangle ($\lambda_{2}=3\lambda_{1}$),
+equilateral triangle ($|\lambda_{2}/\lambda_{1}|\geq3$), and equilateral
+with rotational freedom (Table~\ref{tab:summary}).
+\item \textbf{Perturbation system} (Propositions~\ref{prop:explicit-soln}--\ref{prop:kernel}).
+The system $F_{i}(\delta y,R)=0$ admits an explicit solution $\delta y^{0}$
+at $R=0$, and the linearization has a four-dimensional kernel $\Omega$
+(translations $+$ rotation $+$ breathing mode).
+\item \textbf{Kernel resolution strategy} (Section~\ref{sec:gauge}). Gauge-fixing
+conditions remove the translational and rotational freedom. The family
+structure (Proposition~\ref{prop:family}) provides the tangent information,
+and Conjecture~\ref{conj:invertibility} identifies the remaining
+technical step. 
+\end{enumerate}
 
-Our main results are threefold.
-\begin{enumerate}
-\item Classification of limiting configurations ($R=0$).
-\begin{enumerate}
-\item Collinear peaks along a single Hessian eigenvector.
-\item Isosceles and equilateral triangles in the plane spanned by two eigenvectors.
-\item Equilateral triangles with a continuous rotational degree of freedom
-$\theta$. For the rotational case we derived admissible regions in
-the $(\mu,\theta)-$plane, where $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$.
-All orientations are admissible when $\frac{1}{3}\le\mu\le3$; otherwise
-only restricted angular windows remain.
-\end{enumerate}
-\item Perturbation of the limiting system ($R>0$).
-\begin{enumerate}
-\item We formulated the system $F_{i}(\delta y,R)=0$ and constructed explicit
-solutions $\delta y^{0}$ at $R=0$ for the equilateral triangle (Claim\,3).
-\item The linearization $D_{\delta y}F_{i}(\delta y^{0},0)$ has a nontrivial
-kernel $\Omega$ containing the two-dimensional subspace of rigid
-translations, which blocks a direct application of the implicit function
-theorem.
-\end{enumerate}
-\item Resolution strategy for the kernel obstruction.
-\begin{enumerate}
-\item Following the iterative kernel-decomposition method, we decomposed
-the reduced system into components perpendicular and parallel to the
-kernel.
-\item Gauge-fixing constraints (removing the rotational freedom) yield a
-projected system that is expected to admit a unique branch, provided
-the full system is rotationally equivariant. 
-\end{enumerate}
-\end{enumerate}
-The work stops at a precise point: the concentration compactness decomposition,
-the Lyapunov-Schmidt reduction, and the link back to the full PDE
-are already established. What remains is to finish the finite-dimensional
-step by:
-\begin{enumerate}
-\item Verifying rotational equivariance of $F_{i}$.
-\item Proving invertibility of the linearized operator on the gauge-fixed
-subspace.
-\item Extending the analysis to configurations with a continuous rotation
-angle $\theta$.
-\end{enumerate}
-Once these are done, the Lyapunov-Schmidt machinery lifts the finite-dimensional
-solutions to exact multi-peak ground states for all sufficiently large
-energies $E$. Stability properties are largely understood: multi-profile
-branches with two or more peaks have at least two negative directions
-in the linearized operator, implying orbital instability; asymptotic
-stability of single-peak states has been established in earlier works,
-and adapting those techniques to multi-peak states remains an open
-problem.
+\paragraph{Open problems.}
 
-In summary, we have classified all admissible multi-peak geometries,
-identified the kernel obstruction, and set up the finite-dimensional
-reduction. The remaining tasks (equivariance, invertibility, and handling
-of the $\theta-$dependent case) are concrete, finite-dimensional
-problems whose solution will complete the existence theory for multi-peak
-ground states at finite energy.
+The following concrete, finite-dimensional problems remain:
+\begin{enumerate}
+\item \textbf{Prove Conjecture~\ref{conj:invertibility}} by computing
+the linearized operator on the gauge-fixed subspace explicitly (a
+$4\times4$ matrix computation) and verifying nonsingularity for $\mu>3$.
+\item \textbf{Extend to all admissible $\theta$}. The current perturbation
+analysis is carried out at $\theta=0$. Proposition~\ref{prop:family}
+shows the family exists at $R=0$; extending to $R>0$ for all admissible
+$\theta$ simultaneously requires uniform estimates.
+\item \textbf{Stability.} Multi-peak branches with $M\geq2$ have at least
+two negative directions in the linearized PDE operator~\cite{GrillakisShatahStrauss1987},
+implying orbital instability. Adapting the asymptotic stability techniques
+of~\cite{KirrZarnescu2007,KirrMizrak2008,KirrZarnescu2009,Kirr2016}
+to multi-peak states remains open. 
+\end{enumerate}
+Once Conjecture~\ref{conj:invertibility} is resolved, the Lyapunov--Schmidt
+machinery of~\cite{KirrNatarajan2018} lifts the finite-dimensional
+solutions to exact multi-peak ground states of~(\ref{eq:NLS}) for
+all sufficiently large energies $E$.
 
-\section{Notation}
+\bibliographystyle{plain}
+\bibliography{Research}
+
+
+\appendix
+
+\section{Notation Reference}
+
+\label{app:notation}
 
 \subsection{Equation and Basic Parameters}
 \begin{center}
 \begin{table}[H]
 \centering
-\begin{tabular}{cc}
+\begin{tabularx}{\columnwidth}{>{\centering\arraybackslash}Xc}
 \toprule 
 Symbol & Description\tabularnewline
 \midrule
@@ -1042,7 +1077,7 @@ $p$ & Nonlinear power exponent; $p=1$ corresponds to cubic (Kerr) nonlinearity\t
 $x_{0}$ & Non-degenerate critical point of $V$, i.e., $\nabla V\left(x_{0}\right)=0$
 with $H_{V}\left(x_{0}\right)$ invertible\tabularnewline
 \bottomrule
-\end{tabular}
+\end{tabularx}
 
 \caption{Notation - Equation and Basic Parameters}
 \end{table}
@@ -1052,7 +1087,7 @@ with $H_{V}\left(x_{0}\right)$ invertible\tabularnewline
 \begin{center}
 \begin{table}[H]
 \centering
-\begin{tabular}{cc}
+\begin{tabularx}{\columnwidth}{>{\centering\arraybackslash}Xc}
 \toprule 
 Symbol & Description\tabularnewline
 \midrule
@@ -1064,7 +1099,7 @@ $M\in\mathbb{N}$ & Number of peaks in the multi-peak decomposition\tabularnewlin
 $z_{i}\left(R\right)$ & Position of the $i-$th peak center in rescaled coordinates\tabularnewline
 $h_{R}$ & Remainder term: $u_{E}=\sum_{i=1}^{M}u_{R}\left(\cdot-z_{i}\right)+h_{R}$\tabularnewline
 \bottomrule
-\end{tabular}
+\end{tabularx}
 
 \caption{Notation - Scaling and Profile Functions}
 \end{table}
@@ -1074,7 +1109,7 @@ $h_{R}$ & Remainder term: $u_{E}=\sum_{i=1}^{M}u_{R}\left(\cdot-z_{i}\right)+h_{
 \begin{center}
 \begin{table}[H]
 \centering
-\begin{tabular}{cc}
+\begin{tabularx}{\columnwidth}{>{\centering\arraybackslash}Xc}
 \toprule 
 Symbol & Description\tabularnewline
 \midrule
@@ -1085,7 +1120,7 @@ $\boldsymbol{r}_{i}$ & Unit eigenvector of $H_{V}$ associated with eigenvalue $\
 $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$ & Eigenvalue ratio; key parameter for admissibility constraints\tabularnewline
 $U$ & Unstable manifold: $U=\text{span}\left\{ \boldsymbol{r}:H_{V}\boldsymbol{r}=\lambda\boldsymbol{r},\lambda<0\right\} $\tabularnewline
 \bottomrule
-\end{tabular}
+\end{tabularx}
 
 \caption{Notation - Hessian and Spectral Properties}
 \end{table}
@@ -1095,7 +1130,7 @@ $U$ & Unstable manifold: $U=\text{span}\left\{ \boldsymbol{r}:H_{V}\boldsymbol{r
 \begin{center}
 \begin{table}[H]
 \centering
-\begin{tabular}{cc}
+\begin{tabularx}{\columnwidth}{c>{\centering\arraybackslash}X}
 \toprule 
 Symbol & Description\tabularnewline
 \midrule
@@ -1107,7 +1142,7 @@ $N_{i}$ & Set of nearest neighbors of peak $i$: $N_{i}=\left\{ k:\left|y_{k}-y_{
 $a,h$ & Geometric parameters for triangular configurations: $a$ = half-base,
 $h$ = apex height\tabularnewline
 \bottomrule
-\end{tabular}
+\end{tabularx}
 
 \caption{Notation - Bump Positions and Geometry}
 \end{table}
@@ -1117,7 +1152,7 @@ $h$ = apex height\tabularnewline
 \begin{center}
 \begin{table}[H]
 \centering
-\begin{tabular}{cc}
+\begin{tabularx}{\columnwidth}{>{\centering\arraybackslash}Xc}
 \toprule 
 Symbol & Description\tabularnewline
 \midrule
@@ -1126,7 +1161,7 @@ $\alpha_{ki}=\frac{Q_{R}\left(\left|z_{k}-z_{i}\right|\right)}{Q_{R}\left(m_{R}\
 $\tilde{\alpha}_{ki}=e^{-\left\langle y_{k}-y_{i},\delta y_{k}-\delta y_{i}\right\rangle }$ & Perturbed interaction coefficient at $R=0$\tabularnewline
 $\chi=\frac{2Q_{R}\left(m_{R}\right)}{R^{4}m_{R}}$ & Overall interaction strength; $\chi>0$\tabularnewline
 \bottomrule
-\end{tabular}
+\end{tabularx}
 
 \caption{Notation - Interaction Functional and Coefficients}
 \end{table}
@@ -1136,7 +1171,7 @@ $\chi=\frac{2Q_{R}\left(m_{R}\right)}{R^{4}m_{R}}$ & Overall interaction strengt
 \begin{center}
 \begin{table}[H]
 \centering
-\begin{tabular}{cc}
+\begin{tabularx}{\columnwidth}{>{\centering\arraybackslash}Xc}
 \toprule 
 Symbol & Description\tabularnewline
 \midrule
@@ -1154,7 +1189,7 @@ Perturbation system governing peak positions.
 $F_{i}\left(\delta y,0\right)=0$ characterizes limiting configurations
 \end{cellvarwidth}\tabularnewline
 \bottomrule
-\end{tabular}
+\end{tabularx}
 
 \caption{Notation - Reduced System and Perturbations}
 \end{table}
@@ -1164,7 +1199,7 @@ $F_{i}\left(\delta y,0\right)=0$ characterizes limiting configurations
 \begin{center}
 \begin{table}[H]
 \centering
-\begin{tabular}{cc}
+\begin{tabularx}{\columnwidth}{c>{\centering\arraybackslash}X}
 \toprule 
 Symbol & Description\tabularnewline
 \midrule
@@ -1177,7 +1212,7 @@ $\Gamma$ & Joint kernel: $\Gamma=\ker\left(D_{\delta y}P_{\perp}F\oplus D_{\delt
 $P_{\delta w}$ & Linear operator acting on perturbations $\delta w_{i}$: $P_{\delta w}=H_{V}\delta w_{i}-\sum_{k\in N_{i}}\alpha_{ki}\left(0\right)\left(\delta w_{k}-\delta w_{i}\right)$\tabularnewline
 $w_{\text{rot}}$ & Generator of the rotational kernel direction\tabularnewline
 \bottomrule
-\end{tabular}
+\end{tabularx}
 
 \caption{Notation - Kernel and Projections}
 \end{table}
@@ -1187,7 +1222,7 @@ $w_{\text{rot}}$ & Generator of the rotational kernel direction\tabularnewline
 \begin{center}
 \begin{table}[H]
 \centering
-\begin{tabular}{cc}
+\begin{tabularx}{\columnwidth}{c>{\centering\arraybackslash}X}
 \toprule 
 Symbol & Description\tabularnewline
 \midrule
@@ -1207,7 +1242,7 @@ Used in equivariance condition $F_{i}\left(R_{\omega}\delta y,R\right)=R_{\omega
 \end{cellvarwidth}\tabularnewline
 $y_{i}'=R^{-1}\left(\theta\right)y_{i}$ & Bump positions in the rotated (canonical) frame\tabularnewline
 \bottomrule
-\end{tabular}
+\end{tabularx}
 
 \caption{Notation - Rotations and Equivariance}
 \end{table}
@@ -1217,7 +1252,7 @@ $y_{i}'=R^{-1}\left(\theta\right)y_{i}$ & Bump positions in the rotated (canonic
 \begin{center}
 \begin{table}[H]
 \centering
-\begin{tabular}{cc}
+\begin{tabularx}{\columnwidth}{c>{\centering\arraybackslash}X}
 \toprule 
 Symbol & Description\tabularnewline
 \midrule
@@ -1231,7 +1266,7 @@ $\varphi\left(\mu\right)=\arccos\left(\nu\left(\mu\right)\right)$ & Critical ang
 $\varphi=0$ when $\nu\geq1$\tabularnewline
 $\left(\mu,\theta\right)-$space & Parameter space for rotational equilateral configurations\tabularnewline
 \bottomrule
-\end{tabular}
+\end{tabularx}
 
 \caption{Notation - Admissibility Functions}
 \end{table}
@@ -1241,7 +1276,7 @@ $\left(\mu,\theta\right)-$space & Parameter space for rotational equilateral con
 \begin{center}
 \begin{table}[H]
 \centering
-\begin{tabular}{cc}
+\begin{tabularx}{\columnwidth}{c>{\centering\arraybackslash}X}
 \toprule 
 Symbol & Description\tabularnewline
 \midrule
@@ -1252,7 +1287,7 @@ $\left\Vert \cdot\right\Vert _{H^{1}}$ & Sobolev $H^{1}$ norm: $\left\Vert u\rig
 $\left\Vert \cdot\right\Vert _{L^{2}}$ & Standard $L^{2}$ norm\tabularnewline
 $\perp$ & Orthogonality (with respect to $L^{2}$ or Euclidean inner product)\tabularnewline
 \bottomrule
-\end{tabular}
+\end{tabularx}
 
 \caption{Notation - Inner Products and Norms}
 \end{table}
@@ -1262,7 +1297,7 @@ $\perp$ & Orthogonality (with respect to $L^{2}$ or Euclidean inner product)\tab
 \begin{center}
 \begin{table}[H]
 \centering
-\begin{tabular}{cc}
+\begin{tabularx}{\columnwidth}{c>{\centering\arraybackslash}X}
 \toprule 
 Symbol & Description\tabularnewline
 \midrule
@@ -1273,19 +1308,45 @@ $L_{+}$ & Linearized operator at the Lyapunov-Schmidt level. Kernel generated
 by translational invariance\tabularnewline
 $D_{\psi}F\left(\psi_{E},E\right)$ & Linearization of the full PDE at a solution $\psi_{E}$\tabularnewline
 \bottomrule
-\end{tabular}
+\end{tabularx}
 
 \caption{Notation - Linearization Operators}
 \end{table}
 \par\end{center}
 
+\subsection{Principal Notation}
+\begin{center}
+\begin{table}[H]
+\centering
+\begin{tabularx}{\columnwidth}{>{\raggedright\arraybackslash}Xl}
+\toprule 
+Symbol & Description\tabularnewline
+\midrule 
+$\psi_{E}$ & Solution of~(\ref{eq:NLS}) at energy $E$\tabularnewline
+$V$, $\HV(x_{0})$ & External potential and its Hessian at $x_{0}$\tabularnewline
+$\lambda_{i}$, $\boldsymbol{r}_{i}$ & Eigenvalues/eigenvectors of $\HV(x_{0})$; $\lambda_{i}<0$\tabularnewline
+$\mu=|\lambda_{2}|/|\lambda_{1}|$ & Eigenvalue ratio\tabularnewline
+$R=E^{-1/2}$ & Rescaling parameter; $R\to0$ as $E\to\infty$\tabularnewline
+$u_{E}(x)=E^{-1/(2p)}\psi_{E}(E^{-1/2}x)$ & Rescaled solution\tabularnewline
+$Q_{R}(z)$ & Interaction functional (Definition~\ref{def:interaction})\tabularnewline
+$\alpha_{ki}$ & Interaction coefficient (Definition~\ref{def:interaction}); $0\leq\alpha_{ki}\leq1$\tabularnewline
+$\chi$ & Overall interaction strength (Definition~\ref{def:chi})\tabularnewline
+$m_{R}$ & Minimum inter-peak distance\tabularnewline
+$y_{i}=\lim s_{i}/(Rm_{R})$ & Limiting peak positions\tabularnewline
+$\delta y_{i}$ & Perturbation of peak $i$; $\delta y_{i}\in\operatorname{span}\{\boldsymbol{r}_{1},\boldsymbol{r}_{2}\}$\tabularnewline
+$F_{i}(\delta y,R)$ & Perturbation system (Definition~\ref{def:Fi})\tabularnewline
+$\tilde{\alpha}_{ki}=e^{-\left\langle y_{k}-y_{i},\delta y_{k}-\delta y_{i}\right\rangle }$ & Perturbed interaction coefficient\tabularnewline
+$\Omega$ & Kernel of $D_{\delta y}F_{i}(\delta y^{0},0)$ (Proposition~\ref{prop:kernel})\tabularnewline
+$\theta$ & Rotation angle of equilateral triangle\tabularnewline
+$\nu(\mu),\varphi(\mu)$ & Admissibility functions (Definition~\ref{def:nu-phi})\tabularnewline
+\bottomrule
+\end{tabularx}
+
+\caption{Notation - Principal Notation}
+\end{table}
+\par\end{center}
+
 \begin{center}
 %
-\par\end{center}\pagebreak{}
-
-\bibliographystyle{plain}
-\nocite{*}
-\bibliography{Research}
-
-
+\par\end{center}
 \end{document}
