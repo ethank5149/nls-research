@@ -1,6 +1,6 @@
-# Multi-Peak Ground States of the Nonlinear Schrödinger Equation with External Potential
+# Multi-Peak Ground-State Solutions for the Nonlinear Schrödinger Equation with External Potential
 
-Mathematical research on multi-peak ground-state solutions of the stationary NLS with external potential in the high-energy regime ($E \to \infty$), using concentration compactness and Lyapunov-Schmidt reduction. The work establishes existence and classification of ground-state configurations with multiple concentration peaks at a non-degenerate local maximum of the potential $V$.
+Mathematical research on multi-peak ground-state solutions of the stationary NLS with external potential in the high-energy regime ($E \to \infty$), using concentration compactness and Lyapunov–Schmidt reduction. The work establishes existence and classification of ground-state configurations with multiple concentration peaks at a non-degenerate local maximum of the potential $V$.
 
 ## Authors
 
@@ -20,70 +20,69 @@ as $E \to \infty$. The work is motivated by optical fiber physics — the envelo
 Following Kirr, Kevrekidis, and Pelinovsky (2011), Floer and Weinstein (1986), and Kirr and Natarajan (2018):
 
 - **(V1)** $V \in L^\infty\left(\mathbb{R}^n\right)$ — bounded and measurable.
-- **(V2)** $\lim_{\left|x\right|\to\infty} V\left(x\right) = 0$ — vanishes at infinity.
-- **(V3)** $V$ is $C^2$ near $x_0$, a non-degenerate critical point: $\nabla V\left(x_0\right) = 0$ and $H_V\left(x_0\right)$ invertible.
-- **(V4)** All eigenvalues of $H_V\left(x_0\right)$ are strictly negative — $x_0$ is a strict local maximum.
+- **(V2)** $\lim\_{\left|x\right|\to\infty} V\left(x\right) = 0$ — vanishes at infinity.
+- **(V3)** $V$ is $C^2$ near $x\_0$, a non-degenerate critical point: $\nabla V\left(x\_0\right) = 0$ and $H\_V\left(x\_0\right)$ invertible.
+- **(V4)** All eigenvalues of $H\_V\left(x\_0\right)$ are strictly negative — $x\_0$ is a strict local maximum.
 
 ### Key Framework
 
-1. **Rescaling.** Define $u_E\left(x\right) = E^{-\frac{1}{2p}}\psi_E\left(E^{-\frac12}x\right)$, which transforms the problem into a family of equations parametrized by $R = E^{-\frac12} \to 0$.
+1. **Rescaling.** Define $u\_E\left(x\right) = E^{-\frac{1}{2p}}\psi\_E\left(E^{-\frac12}x\right)$, which transforms the problem into a family of equations parametrized by $R = E^{-\frac12} \to 0$.
+2. **Concentration compactness decomposition.** Each solution decomposes into $M$ well-separated profiles $u\_R$ centered at distinct points $z\_1\left(R\right), \ldots, z\_M\left(R\right)$, with a remainder $h\_R$:
 
-2. **Concentration compactness decomposition.** Each solution decomposes into $M$ well-separated profiles $u_R$ centered at distinct points $z_1\left(R\right), \ldots, z_M\left(R\right)$, with a remainder $h_R$:
+$$u\_E\left(x\right) = \sum\_{i=1}^{M} u\_R\left(x - z\_i\left(R\right)\right) + h\_R\left(x\right)$$
 
-$$u_E\left(x\right) = \sum_{i=1}^{M} u_R\left(x - z_i\left(R\right)\right) + h_R\left(x\right)$$
+3. **Lyapunov–Schmidt reduction.** Projection onto the kernel of the linearized operator yields a finite-dimensional algebraic system for peak positions:
 
-3. **Lyapunov-Schmidt reduction.** Projection onto the kernel of the linearized operator yields a finite-dimensional algebraic system for peak positions:
+$$H\_V\left(x\_0\right) y\_i = \chi \sum\_{k \in N\_i} \alpha\_{ki}\left(y\_k - y\_i\right)$$
 
-$$H_V\left(x_0\right)\, y_i = \chi \sum_{k \in N_i} \alpha_{ki}\left(y_k - y_i\right)$$
+where $H\_V\left(x\_0\right)$ is the Hessian of $V$ at the critical point $x\_0$, $\alpha\_{ki} = \frac{Q\_R\left(\left|z\_k - z\_i\right|\right)}{Q\_R\left(m\_R\right)} \in \left[0,1\right]$ are normalized interaction coefficients, and $\chi > 0$ is the overall interaction strength.
 
-where $H_V\left(x_0\right)$ is the Hessian of $V$ at the critical point $x_0$, $\alpha_{ki} = \frac{Q_R\left(\left|z_k - z_i\right|\right)}{Q_R\left(m_R\right)} \in \left[0,1\right]$ are normalized interaction coefficients, and $\chi > 0$ is the overall interaction strength.
-
-4. **Perturbation system.** The full problem at finite energy $R > 0$ is captured by $F_i\left(\delta y, R\right) = 0$, with $\delta y$ denoting peak displacements from the $R = 0$ limiting configuration.
+4. **Perturbation system.** The full problem at finite energy $R > 0$ is captured by $F\_i\left(\delta y, R\right) = 0$, with $\delta y$ denoting peak displacements from the $R = 0$ limiting configuration.
 
 ## Main Results
 
 ### 1. Classification of Limiting Configurations ($R = 0$)
 
-**Theorem 3.1.** Under Hypotheses (V1)–(V4), the admissible solutions of the algebraic system with all $\alpha_{ki} \geq 0$ are:
+**Theorem 3.1.** Under Hypotheses (V1)–(V4), the admissible solutions of the algebraic system with all $\alpha\_{ki} \geq 0$ are:
 
-- **(a) Collinear** ($M \geq 2$) — Peaks aligned along a single eigenvector $\mathbf{r}_1$ of $H_V\left(x_0\right)$.
-- **(b) Isosceles triangle** ($M = 3$) — Peaks with $\alpha_{12} = \alpha_{13} = -\frac{\lambda_2}{3}$; requires the eigenvalue constraint $\lambda_2 = 3\lambda_1$.
-- **(c) Equilateral triangle** ($M = 3$) — All peaks at unit mutual distance; $\alpha_{12} = \alpha_{13} = -\frac{\lambda_2}{3}$, $\alpha_{23} = \frac{\lambda_2}{6} - \frac{\lambda_1}{2}$; requires $\frac{\left|\lambda_2\right|}{\left|\lambda_1\right|} \geq 3$.
+- **(a) Collinear** ($M \geq 2$) — Peaks aligned along a single eigenvector $\mathbf{r}\_1$ of $H\_V\left(x\_0\right)$.
+- **(b) Isosceles triangle** ($M = 3$) — Peaks with $\alpha\_{12} = \alpha\_{13} = -\frac{\lambda\_2}{3}$; requires the eigenvalue constraint $\lambda\_2 = 3\lambda\_1$.
+- **(c) Equilateral triangle** ($M = 3$) — All peaks at unit mutual distance; $\alpha\_{12} = \alpha\_{13} = -\frac{\lambda\_2}{3}$, $\alpha\_{23} = \frac{\lambda\_2}{6} - \frac{\lambda\_1}{2}$; requires $\frac{\left|\lambda\_2\right|}{\left|\lambda\_1\right|} \geq 3$.
 - **(d) Rotational equilateral** ($M = 3$, angle $\theta$) — Equilateral triangle rotated by $\theta$ relative to the eigenvector basis, with admissible $(\mu, \theta)$ regions given below.
 
-**Admissibility regions** (where $\mu = \frac{\left|\lambda_2\right|}{\left|\lambda_1\right|}$):
+**Admissibility regions** (where $\mu = \frac{\left|\lambda\_2\right|}{\left|\lambda\_1\right|}$):
 
 | $\mu$-Range | $\theta$-Range |
-|---|---|
+| --- | --- |
 | $0 < \mu < \frac{1}{3}$ | $\left[0, \frac{\pi}{6} - \frac{\varphi}{2}\right] \cup \left[\frac{\pi}{6} + \frac{\varphi}{2}, \frac{\pi}{2} - \frac{\varphi}{2}\right]$ |
 | $\frac{1}{3} \leq \mu \leq 3$ | $\left[0, \frac{\pi}{2}\right]$ (all orientations) |
 | $\mu > 3$ | $\left[\frac{\varphi}{2}, \frac{\pi}{3} - \frac{\varphi}{2}\right] \cup \left[\frac{\pi}{3} + \frac{\varphi}{2}, \frac{\pi}{2}\right]$ |
 
 where $\nu\left(\mu\right) = \frac{\mu+1}{2\left|\mu-1\right|}$ and $\varphi\left(\mu\right) = \arccos\left(\nu\left(\mu\right)\right)$.
 
-The peak positions satisfy $\text{span}\lbrace y_1, \ldots, y_M\rbrace \subseteq U$, the unstable subspace of $H_V\left(x_0\right)$.
+The peak positions satisfy $\text{span}\lbrace y\_1, \ldots, y\_M\rbrace \subseteq U$, the unstable subspace of $H\_V\left(x\_0\right)$.
 
 ### 2. Perturbation System ($R > 0$)
 
-- **Explicit solution at $R = 0$ (Proposition 4.1).** For the equilateral triangle at $\theta = 0$, define $\beta = \frac{1}{2}\ln\left(\frac{\alpha_{12}}{\alpha_{23}}\right)$ and $\gamma = \frac{2\beta}{3\sqrt{3}}$. Then:
+- **Explicit solution at $R = 0$ (Proposition 4.1).** For the equilateral triangle at $\theta = 0$, define $\beta = \frac{1}{2}\ln\left(\frac{\alpha\_{12}}{\alpha\_{23}}\right)$ and $\gamma = \frac{2\beta}{3\sqrt{3}}$. Then:
 
-$$\delta y_1^0 = -\gamma\, \mathbf{r}_2, \qquad \delta y_{2,3}^0 = \mp\beta\, \mathbf{r}_1 + \frac{\gamma}{2}\,\mathbf{r}_2$$
+$$\delta y\_1^0 = -\gamma\, \mathbf{r}\_2, \qquad \delta y\_{2,3}^0 = \mp\beta\, \mathbf{r}\_1 + \frac{\gamma}{2}\,\mathbf{r}\_2$$
 
-solves $F_i\left(\delta y, 0\right) = 0$ and satisfies the center-of-mass condition $\sum_i \delta y_i^0 = 0$.
+solves $F\_i\left(\delta y, 0\right) = 0$ and satisfies the center-of-mass condition $\sum\_i \delta y\_i^0 = 0$.
 
-- **Four-dimensional kernel (Proposition 4.2).** The linearization $D_{\delta y} F_i\left(\delta y^0, 0\right)$ has kernel $\Omega = \lbrace\left(w_1, w_2, w_3\right) \in \left(\mathbb{R}^2\right)^3 : \left \langle w_k - w_i, y_k - y_i \right \rangle = 0\rbrace$, decomposing as:
+- **Four-dimensional kernel (Proposition 4.2).** The linearization $D\_{\delta y} F\_i\left(\delta y^0, 0\right)$ has kernel $\Omega = \lbrace\left(w\_1, w\_2, w\_3\right) \in \left(\mathbb{R}^2\right)^3 : \left \langle w\_k - w\_i, y\_k - y\_i \right \rangle = 0\rbrace$, decomposing as:
   - 2 translational modes $\lbrace\left(v,v,v\right) : v \in \mathbb{R}^2\rbrace$
-  - 1 rotational mode $w_{\mathrm{rot}}$
-  - 1 breathing mode $w_{\mathrm{br}} = \left(y_1^\perp, y_2^\perp, y_3^\perp\right)$
+  - 1 rotational mode $w\_{\mathrm{rot}}$
+  - 1 breathing mode $w\_{\mathrm{br}} = \left(y\_1^\perp, y\_2^\perp, y\_3^\perp\right)$
 
 ### 3. Kernel Resolution and Gauge-Fixing
 
-- **Projection decomposition.** The system is split into perpendicular ($P_\perp F$) and parallel ($P_w F$, $w \in \Omega$) projections.
+- **Projection decomposition.** The system is split into perpendicular ($P\_\perp F$) and parallel ($P\_w F$, $w \in \Omega$) projections.
 - **Gauge-fixing constraints:**
-  - **(G1)** $\delta y_1 \perp \mathbf{r}_1$ — first peak has no displacement along $\mathbf{r}_1$.
-  - **(G2)** $\left(\delta y_3 - \delta y_2\right) \parallel \mathbf{r}_1$ — base of triangle displaces only along $\mathbf{r}_1$.
-- **Rotational equivariance (Proposition 5.1).** The one-parameter family $y_i\left(\theta\right) = R\left(\theta\right) y_i'$ generates a smooth family $\delta y^0\left(\theta\right)$ of solutions at $R = 0$.
-- **Center-of-mass identity (Proposition 5.2).** $\sum_i F_i\left(\delta y, R\right) = H_V \frac{\sum_i \delta y_i}{\tilde{m}_R}$, so $\sum_i F_i = 0$ iff $\sum_i \delta y_i = 0$.
+  - **(G1)** $\delta y\_1 \perp \mathbf{r}\_1$ — first peak has no displacement along $\mathbf{r}\_1$.
+  - **(G2)** $\left(\delta y\_3 - \delta y\_2\right) \parallel \mathbf{r}\_1$ — base of triangle displaces only along $\mathbf{r}\_1$.
+- **Rotational equivariance (Proposition 5.1).** The one-parameter family $y\_i\left(\theta\right) = R\left(\theta\right) y\_i'$ generates a smooth family $\delta y^0\left(\theta\right)$ of solutions at $R = 0$.
+- **Center-of-mass identity (Proposition 5.2).** $\sum\_i F\_i\left(\delta y, R\right) = H\_V \frac{\sum\_i \delta y\_i}{\tilde{m}\_R}$, so $\sum\_i F\_i = 0$ iff $\sum\_i \delta y\_i = 0$.
 
 ### Open Problems
 
@@ -95,55 +94,46 @@ solves $F_i\left(\delta y, 0\right) = 0$ and satisfies the center-of-mass condit
 
 ```
 nls-research/
-├── report/                              # Main research paper
-│   ├── Research.lyx                     # Primary LyX source
-│   ├── Research.tex                     # Exported LaTeX source (1400 lines)
-│   ├── Research.pdf                     # Compiled PDF
-│   ├── Research.bib                     # BibTeX bibliography
-│   └── archive/                         # Archived drafts
+├── report/                                # Main research paper
+│   ├── Research.lyx                       # Primary LyX source (~7500 lines)
+│   ├── Research.tex                       # Exported LaTeX source (~1160 lines)
+│   ├── Research.pdf                       # Compiled PDF
+│   └── Research.bib                       # BibTeX bibliography (14 entries)
 │
-├── figures/                             # Figure assets (PNG) and generation
+├── figures/                               # Figure generation and output
+│   ├── figures.py                         # Single-file script generating all 7 figures (~1460 lines)
 │   ├── figure_1_admissibility_binding.png
 │   ├── figure_2_peak_configurations.png
 │   ├── figure_3_alpha_vs_theta_vs_mu.png
 │   ├── figure_4_profile_decomposition.png
 │   ├── figure_5_concentration_vs_peaks.png
 │   ├── figure_6_interaction_decay.png
-│   ├── figure_7_methodology_flowchart.png
-│   └── figures.py                       # Figure generation script
+│   └── figure_7_methodology_flowchart.png
 │
-├── triangle/                            # Mathematica computations
-│   ├── Research-Triangles.nb            # Triangle configuration analysis
-│   ├── Research-Triangle-Pertubation.nb # Perturbation analysis
-│   ├── Research-Triangle-Pertubation.pdf
-│   └── triangle_soln.md                 # Markdown derivation of admissibility
+├── triangle/                              # Mathematica computations
+│   ├── Research-Triangles.nb              # Triangle configuration analysis
+│   ├── Research-Triangle-Perturbation.nb  # Perturbation analysis
+│   ├── Research-Triangle-Perturbation.pdf # Compiled perturbation notebook
+│   └── triangle_soln.md                   # Markdown derivation of admissibility
 │
-├── dev/                                  # Development and verification
-│   ├── notes_from_claude.tex            # Development notes
-│   └── audit/                            # Mathematica audit notebooks
-│       ├── NLS_Mathematical_Audit.nb
-│       ├── NLS_Mathematical_Audit.m
-│       └── NLS_Mathematical_Audit (2).nb
-│
-├── requirements.txt                     # Python dependencies
-├── .forgejo/workflows/                  # CI: GitHub mirror
-├── AGENTS.md                            # Agent configuration
+├── requirements.txt                       # Python dependencies (numpy, matplotlib)
+├── .forgejo/workflows/                    # CI: Forgejo → GitHub mirror
 └── .gitignore
 ```
 
 ## Figures
 
-All 7 figures are in `figures/` as PNG files.
+All 7 figures are generated by `figures/figures.py` and output as PNG at 300 DPI.
 
-| # | Filename | Paper Reference | Description |
-|---|----------|----------------|-------------|
-| 1 | `figure_1_admissibility_binding` | Fig. 6 | $(\mu, \theta)$ admissibility phase diagram, binding constraints, and $\theta$-ranges vs $\mu$ |
-| 2 | `figure_2_peak_configurations` | Fig. 3 | Schematic configurations: collinear ($M=2$, $M=5$), isosceles, equilateral, and perturbation $\delta y^0$ |
-| 3 | `figure_3_alpha_vs_theta_vs_mu` | Fig. 5 | Interaction coefficients $\alpha_{12}$, $\alpha_{13}$, $\alpha_{23}$ vs $\theta$ for $\mu \in \{1/5, 1/2, 1, 2, 3, 5\}$ |
-| 4 | `figure_4_profile_decomposition` | Fig. 2 | Concentration-compactness decomposition for $M=3$ peaks with remainder $h_R$ |
-| 5 | `figure_5_concentration_vs_peaks` | Fig. 1 | Evolution of peak structure with increasing $E$; $Rz_i \to x_0$ convergence |
-| 6 | `figure_6_interaction_decay` | Fig. 4 | Semilog plot of $Q_R(d)$ decay and normalized $\alpha_{ki}$ vs distance ratio |
-| 7 | `figure_7_methodology_flowchart` | Fig. 1 | Analytical pipeline: Kirr-Natarajan (2018) framework → Kirr-Knox (2026) contributions |
+| # | Filename | Description |
+| --- | --- | --- |
+| 1 | `figure_1_admissibility_binding` | $(\mu, \theta)$ admissibility phase diagram with binding constraints |
+| 2 | `figure_2_peak_configurations` | Schematic configurations: collinear ($M=2$, $M=5$), isosceles, equilateral, and perturbation $\delta y^0$ |
+| 3 | `figure_3_alpha_vs_theta_vs_mu` | Interaction coefficients $\alpha\_{12}$, $\alpha\_{13}$, $\alpha\_{23}$ vs $\theta$ for various $\mu$ |
+| 4 | `figure_4_profile_decomposition` | Concentration-compactness decomposition for $M=3$ peaks with remainder $h\_R$ |
+| 5 | `figure_5_concentration_vs_peaks` | Evolution of peak structure with increasing $E$; $Rz\_i \to x\_0$ convergence |
+| 6 | `figure_6_interaction_decay` | Semilog plot of $Q\_R(d)$ decay and normalized $\alpha\_{ki}$ vs distance ratio |
+| 7 | `figure_7_methodology_flowchart` | Analytical pipeline: Kirr–Natarajan (2018) framework → Kirr–Knox (2026) contributions |
 
 ## Paper Outline
 
@@ -153,20 +143,25 @@ The paper (`report/Research.tex`) is organized as follows:
 2. **Setup and Preliminaries**
    - 2.1 Hypotheses (V1)–(V4) on the potential
    - 2.2 Rescaling and concentration compactness decomposition
-   - 2.3 Lyapunov-Schmidt reduction (two lemmas)
-   - 2.4 The reduced algebraic system; interaction functional $Q_R$; coefficients $\alpha_{ki}$; interaction strength $\chi$; corollary on unstable subspace
-3. **Classification of Limiting Configurations** — Theorem 3.1 with proofs for collinear, isosceles, equilateral, and rotational equilateral cases; admissibility analysis with unified constraint; Table 1 summary.
+   - 2.3 Lyapunov–Schmidt reduction (two lemmas)
+   - 2.4 The reduced algebraic system; interaction functional $Q\_R$; coefficients $\alpha\_{ki}$; interaction strength $\chi$; corollary on unstable subspace
+3. **Classification of Limiting Configurations** — Theorem 3.1 with proofs for each configuration type
+   - 3.1 Collinear configurations
+   - 3.2 Isosceles triangle
+   - 3.3 Equilateral triangle
+   - 3.4 Rotational equilateral triangle
+   - 3.5 Admissibility analysis with unified constraint; summary table
 4. **The Perturbation System**
-   - 4.1 Formulation of $F_i\left(\delta y, R\right) = 0$
+   - 4.1 Formulation of $F\_i\left(\delta y, R\right) = 0$
    - 4.2 Explicit solution at $R = 0$ (Proposition 4.1)
    - 4.3 Kernel of the linearization (Proposition 4.2): 4D kernel with translational, rotational, and breathing modes
 5. **Kernel Resolution and Gauge-Fixing**
-   - 5.1 Projection decomposition ($P_\perp F$, $P_w F$)
+   - 5.1 Projection decomposition ($P\_\perp F$, $P\_w F$)
    - 5.2 Gauge-fixing constraints (G1)–(G2)
    - 5.3 Rotational equivariance at $R = 0$ (Proposition 5.1, Corollary 5.1)
    - 5.4 Extension to $R > 0$: Conjecture 5.1 (gauge-fixed invertibility), Proposition 5.2 (center-of-mass identity)
-6. **Conclusion and Open Problems** — Three concrete open problems
-7. **Appendix: Notation Reference** — Comprehensive notation tables (10 subsections)
+6. **Conclusion, Open Problems, and Acknowledgements** — Summary of contributions; three concrete open problems
+7. **Appendix: Notation Reference** — Comprehensive notation tables
 
 ## Prerequisites
 
@@ -179,7 +174,7 @@ The paper (`report/Research.tex`) is organized as follows:
 ### LaTeX / LyX
 
 - LyX 2.4+ (for editing `.lyx` source)
-- A standard LaTeX distribution (TeX Live or MiKTeX) with packages: `extarticle`, `geometry`, `amsmath`, `amsthm`, `amssymb`, `graphicx`, `booktabs`, `varwidth`, `tabularx`, `units`, `float`, `enumitem`, `babel`
+- A standard LaTeX distribution (TeX Live or MiKTeX) with packages: `extarticle`, `geometry`, `amsmath`, `amsthm`, `amssymb`, `graphicx`, `booktabs`, `tabularx`, `units`, `float`
 
 ### Mathematica
 
@@ -194,6 +189,8 @@ cd figures
 pip install -r ../requirements.txt
 python figures.py
 ```
+
+Figures are written to `figures/` as PNG files at 300 DPI.
 
 ### Compiling the Paper
 
@@ -214,11 +211,11 @@ Or open `Research.lyx` in LyX and use the built-in export/compile.
 
 The propagation of intense light through optical fibers is governed by the interplay between linear dispersion and Kerr nonlinearity ($\chi^{(3)}$). Starting from Maxwell's equations in a source-free, non-magnetic dielectric, the electric field is written as a slowly varying envelope modulating a carrier:
 
-$$\mathbf{E}\left(\mathbf{r},t\right) = \frac12\hat{\mathbf{x}}\left[F\left(x,y\right)\,A\left(z,t\right)\,e^{i\left(\beta_0 z - \omega_0 t\right)} + \text{c.c.}\right]$$
+$$\mathbf{E}\left(\mathbf{r},t\right) = \frac12\hat{\mathbf{x}}\left[F\left(x,y\right)\,A\left(z,t\right)\,e^{i\left(\beta\_0 z - \omega\_0 t\right)} + \text{c.c.}\right]$$
 
 The slowly varying envelope approximation yields the NLS equation:
 
-$$i\partial_z A - \frac{\beta_2}{2}\partial_T^2 A + \gamma \left|A\right|^2 A = 0$$
+$$i\partial\_z A - \frac{\beta\_2}{2}\partial\_T^2 A + \gamma \left|A\right|^2 A = 0$$
 
 Spatial variations in the refractive index (fiber Bragg gratings, graded-index fibers, photonic-crystal fibers) enter as an external potential $V\left(\mathbf{x}\right)$. The transverse modal equation is mathematically identical to the stationary Schrödinger equation $-\Delta\psi + V\left(x\right)\psi = E\psi$, making guided modes correspond to bound states of the effective potential.
 
@@ -227,10 +224,10 @@ Spatial variations in the refractive index (fiber Bragg gratings, graded-index f
 The analysis builds on:
 
 - **Concentration compactness** (Lions, 1984) — classifying minimizing sequences into compactness, vanishing, or dichotomy on unbounded domains.
-- **Global bifurcation analysis** (Kirr and Natarajan, 2018) — rescaling and multi-peak decomposition of ground states via equivariant bifurcation theory; the interaction functional $Q_R$ and its exponential decay.
-- **Lyapunov-Schmidt reduction** — reduction to a finite-dimensional algebraic system governing peak positions, with projection onto the translational kernel.
-- **Grillakis-Shatah-Strauss stability theory** — orbital instability of multi-peak states in Hamiltonian systems with symmetry.
-- **Floer-Weinstein semiclassical analysis** (1986) — concentration near non-degenerate critical points for bounded potentials.
+- **Global bifurcation analysis** (Kirr and Natarajan, 2018) — rescaling and multi-peak decomposition of ground states via equivariant bifurcation theory; the interaction functional $Q\_R$ and its exponential decay.
+- **Lyapunov–Schmidt reduction** — reduction to a finite-dimensional algebraic system governing peak positions, with projection onto the translational kernel.
+- **Grillakis–Shatah–Strauss stability theory** — orbital instability of multi-peak states in Hamiltonian systems with symmetry.
+- **Floer–Weinstein semiclassical analysis** (1986) — concentration near non-degenerate critical points for bounded potentials.
 - **Symmetry-breaking bifurcation** (Kirr, Kevrekidis, Pelinovsky, 2011) — formal hypotheses (V1)–(V4) for symmetric potentials.
 
 ## References
