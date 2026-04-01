@@ -61,7 +61,7 @@ where $H_V\left(x_0\right)$ is the Hessian of $V$ at the critical point $x_0$, $
 
 where $\nu\left(\mu\right) = \frac{\mu+1}{2\left|\mu-1\right|}$ and $\varphi\left(\mu\right) = \arccos\left(\nu\left(\mu\right)\right)$.
 
-The peak positions satisfy $\text{span}\left\{y_1, \ldots, y_M\right\} \subseteq U$, the unstable subspace of $H_V\left(x_0\right)$.
+The peak positions satisfy $\text{span}\lbrace y_1, \ldots, y_M\rbrace \subseteq U$, the unstable subspace of $H_V\left(x_0\right)$.
 
 ### 2. Perturbation System ($R > 0$)
 
@@ -71,8 +71,8 @@ $$\delta y_1^0 = -\gamma\, \mathbf{r}_2, \qquad \delta y_{2,3}^0 = \mp\beta\, \m
 
 solves $F_i\left(\delta y, 0\right) = 0$ and satisfies the center-of-mass condition $\sum_i \delta y_i^0 = 0$.
 
-- **Four-dimensional kernel (Proposition 4.2).** The linearization $D_{\delta y} F_i\left(\delta y^0, 0\right)$ has kernel $\Omega = \left\{\left(w_1, w_2, w_3\right) \in \left(\mathbb{R}^2\right)^3 : \left \langle w_k - w_i, y_k - y_i \right \rangle = 0\right\}$, decomposing as:
-  - 2 translational modes $\left\{\left(v,v,v\right) : v \in \mathbb{R}^2\right\}$
+- **Four-dimensional kernel (Proposition 4.2).** The linearization $D_{\delta y} F_i\left(\delta y^0, 0\right)$ has kernel $\Omega = \lbrace\left(w_1, w_2, w_3\right) \in \left(\mathbb{R}^2\right)^3 : \left \langle w_k - w_i, y_k - y_i \right \rangle = 0\rbrace$, decomposing as:
+  - 2 translational modes $\lbrace\left(v,v,v\right) : v \in \mathbb{R}^2\rbrace$
   - 1 rotational mode $w_{\mathrm{rot}}$
   - 1 breathing mode $w_{\mathrm{br}} = \left(y_1^\perp, y_2^\perp, y_3^\perp\right)$
 
