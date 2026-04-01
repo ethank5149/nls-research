@@ -54,7 +54,6 @@
 %%   - Notation section moved to appendix
 
 
-\usepackage{float}
 \usepackage{units}
 \usepackage{enumitem}
 
@@ -84,9 +83,6 @@
   \newtheorem{rmk}[thm]{Remark}%
 }{}
 
-
-% ---- Equation numbering ----
-\numberwithin{equation}{section}
 
 % ---- Convenient macros ----
 \newcommand{\R}{\mathbb{R}}
@@ -278,7 +274,7 @@ analysis identified as an open problem in Remark 4.1 of \cite{KirrNatarajan2018}
 which notes that ``multiple profiles approaching the same critical
 point along eigenvectors with negative eigenvalues'' requires a separate
 treatment from the distinct-critical-point case resolved in their
-Theorem 4.3
+Theorem 4.3.
 
 \section{Setup and Preliminaries}
 
@@ -379,8 +375,8 @@ multi-peak structure. Red triangles mark the peak centers $z_{i}\left(E\right)$;
 purple squares mark the rescaled positions $Rz_{i}$ converging toward
 the critical point $x_{0}$ (green dashed line).\protect \\
 \textbf{Right:} Convergence of $Rz_{i}\left(E\right)=E^{-\frac{1}{2}}z_{i}\left(E\right)$
-to $x_{0}$ as $E\to\infty$, illustrating Claim 2. The convergence
-rate is $\left|Rz_{i}-x_{0}\right|=O\left(E^{-\frac{1}{2}}\right)$.}
+to $x_{0}$ as $E\to\infty$, illustrating Proposition~\ref{prop:convergence}.
+The convergence rate is $\left|Rz_{i}-x_{0}\right|=O\left(E^{-\frac{1}{2}}\right)$.}
 \label{fig:concentration}
 \end{figure}
 
@@ -477,7 +473,7 @@ is the unstable subspace of $\HV(x_{0})$.
 \begin{proof}
 Write $y_{i}=y_{i}^{U}+y_{i}^{S}$ with $y_{i}^{U}\in U$ and $y_{i}^{S}\in U^{\perp}$.
 Applying the orthogonal projection $P_{S}$ onto $U^{\perp}$ to the
-algebraic system~(2.4) gives 
+algebraic system~(\ref{eq:algebraic}) gives 
 \begin{equation}
 \HV\,y_{i}^{S}=\chi\sum_{k\in N_{i}}\alpha_{ki}\bigl(y_{k}^{S}-y_{i}^{S}\bigr),\label{eq:projected-stable}
 \end{equation}
@@ -525,7 +521,7 @@ of $\HV(x_{0})$, with eigenvalues $\lambda_{1},\lambda_{2}<0$.
 \begin{figure}[htbp]
 \centering \includegraphics[width=1\linewidth]{../figures/figure_2_peak_configurations}
 \caption{Schematic representations of the admissible multi-peak configurations
-classified in Section 3 \ref{sec:classification}.\protect \\
+classified in Section~\ref{sec:classification}.\protect \\
 \textbf{(a)} Collinear arrangement with $M=2$ peaks along the eigenvector
 $\boldsymbol{r}_{1}$ of $H_{V}$; the reduced system yields $\alpha_{12}=-\lambda_{1}$.
 \textbf{}\protect \\
@@ -538,9 +534,9 @@ with $\alpha_{23}=0$ (base edge decoupled) and the constraint $\lambda_{2}=3\lam
 \textbf{(d)} Equilateral triangle at $\theta=0$ with explicit $\alpha$
 values; the admissibility condition $\alpha_{23}\protect\geq0$ is
 equivalent to $\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}\protect\geq3$.\textbf{}\protect \\
-\textbf{(e)} The perturbation $\delta y^{0}$ (Claim 3) at $R=0$
-for $\mu=4$: gray circles show the unperturbed positions $y_{i}$,
-colored squares show the perturbed positions $y_{i}+\delta y_{i}^{0}$,
+\textbf{(e)} The perturbation $\delta y^{0}$ (Proposition~\ref{prop:explicit-soln})
+at $R=0$ for $\mu=4$: gray circles show the unperturbed positions
+$y_{i}$, colored squares show the perturbed positions $y_{i}+\delta y_{i}^{0}$,
 with arrows indicating the displacement. The parameters $\beta=\frac{1}{2}\ln\left(\frac{\alpha_{12}}{\alpha_{23}}\right)$
 and $\gamma=\frac{2\beta}{3\sqrt{3}}$ are derived from the requirement
 that $\tilde{\alpha}_{12}=\tilde{\alpha}_{13}=1$.}
@@ -571,20 +567,20 @@ of this section.
 
 \noindent\begin{rmk}[Convention for interaction coefficients in
 the classification]\label{rmk:alpha-convention} In the proofs of
-Theorem~3.1 that follow, the algebraic system~(2.4) is written in
-the absorbed form 
+Theorem~\ref{thm:classification} that follow, the algebraic system~(\ref{eq:algebraic})
+is written in the absorbed form 
 \begin{equation}
 \HV(x_{0})\,y_{i}=\sum_{k\in N_{i}}\hat{\alpha}_{ki}(y_{k}-y_{i}),\quad\hat{\alpha}_{ki}\geq0,\label{eq:algebraic-absorbed}
 \end{equation}
 where $\hat{\alpha}_{ki}=\alpha_{ki}\chi$ is the \emph{combined force
 coefficient}, incorporating the overall interaction strength $\chi$
-from Definition~2.8. This convention avoids carrying $\chi$ through
-the algebraic manipulations.
+from Definition~\ref{def:chi}. This convention avoids carrying $\chi$
+through the algebraic manipulations.
 
 \smallskip{}
-To recover the normalized coefficients of Definition~2.7 (satisfying
-$0\leq\alpha_{ki}\leq1$ with $\alpha_{ki}=1$ at minimum distance),
-one divides by $\chi$: 
+To recover the normalized coefficients of Definition~\ref{def:interaction}
+(satisfying $0\leq\alpha_{ki}\leq1$ with $\alpha_{ki}=1$ at minimum
+distance), one divides by $\chi$: 
 \[
 \alpha_{ki}=\frac{\hat{\alpha}_{ki}}{\chi},\qquad\chi=\max_{k,i}\hat{\alpha}_{ki}.
 \]
@@ -604,8 +600,9 @@ and the normalized base-edge coefficient is
 \]
 In particular, $\alpha_{23}<1$ for $\mu>3$, reflecting the fact
 that the base edge is \emph{not} at the minimum inter-peak distance:
-the perturbation $\delta y^{0}$ of Proposition~4.1 pushes the base
-vertices slightly apart relative to the apex--base edges. \end{rmk}
+the perturbation $\delta y^{0}$ of Proposition~\ref{prop:explicit-soln}
+pushes the base vertices slightly apart relative to the apex--base
+edges. \end{rmk}
 
 \subsection{Collinear configurations}
 
@@ -691,9 +688,9 @@ for each vertex yields the $\theta$-dependent coefficients:
 $\alpha_{13}\left(\theta\right)$, and $\alpha_{23}\left(\theta\right)$
 on the rotation angle $\theta$ for six values of the eigenvalue ratio
 $\mu\in\left\{ \frac{1}{5},\frac{1}{2},1,2,3,5\right\} $. Each coefficient
-is computed from the expressions derived in Example 3.4 (equations
-for $\alpha_{12}$, $\alpha_{13}$, $\alpha_{23}$ as functions of
-$\lambda_{1}$, $\lambda_{2}$, and $\theta$). The shaded region
+is computed from the expressions derived in Section~\ref{subsec:rotational}
+(equations for $\alpha_{12}$, $\alpha_{13}$, $\alpha_{23}$ as functions
+of $\lambda_{1}$, $\lambda_{2}$, and $\theta$). The shaded region
 $\alpha<0$ is forbidden by the physical requirement that inter-peak
 interactions be attractive for the focusing nonlinearity ($\sigma>0$).
 Physical interpretation: $\alpha_{12}$ quantifies the apex-to-base-left
@@ -1004,12 +1001,13 @@ and any $R\geq0$,
 \end{equation}
 In particular, $\sum_{i}F_{i}=0$ if and only if $\sum_{i}\delta y_{i}=0$
 (the center-of-mass condition). The explicit solution $\delta y^{0}$
-of Proposition~4.1 satisfies this condition, and the gauge-fixing
-constraints \textup{(G1)--(G2)} are compatible with~$\delta y^{0}$. 
+of Proposition~\ref{prop:explicit-soln} satisfies this condition,
+and the gauge-fixing constraints \textup{(G1)--(G2)} are compatible
+with~$\delta y^{0}$. 
 \end{prop}
 \begin{proof}
-The interaction terms in $F_{i}$ (Definition~4.1) involve differences
-$(y_{k}-y_{i})$ and $(\delta y_{k}-\delta y_{i})/\tilde{m}_{R}$.
+The interaction terms in $F_{i}$ (Definition~\ref{def:Fi}) involve
+differences $(y_{k}-y_{i})$ and $(\delta y_{k}-\delta y_{i})/\tilde{m}_{R}$.
 Each nearest-neighbor edge $\{i,k\}$ contributes to $\sum_{i}F_{i}$
 through both the $F_{i}$ summand (with factor $y_{k}-y_{i}+(\delta y_{k}-\delta y_{i})/\tilde{m}_{R}$)
 and the $F_{k}$ summand (with factor $y_{i}-y_{k}+(\delta y_{i}-\delta y_{k})/\tilde{m}_{R}$).
@@ -1142,6 +1140,14 @@ as $R\to0$\tabularnewline
 $\Omega$ & Kernel of $D_{\delta y}F_{i}(\delta y^{0},0)$ (Proposition~\ref{prop:kernel})\tabularnewline
 $\theta$ & Rotation angle of equilateral triangle\tabularnewline
 $\nu(\mu),\varphi(\mu)$ & Admissibility functions (Definition~\ref{def:nu-phi})\tabularnewline
+$u_{R}$ & Profile solving $(-\Delta+R^{2}V(x_{0})+1)u+\sigma|u|^{2p}u=0$; unique
+positive radial solution\tabularnewline
+$h_{R}$ & Remainder: $u_{E}=\sum_{i}u_{R}(\cdot-z_{i})+h_{R}$, with $\|h_{R}\|_{H^{1}}\to0$\tabularnewline
+$N_{i}$ & Nearest-neighbor set: $N_{i}=\{k:|y_{k}-y_{i}|=1\}$\tabularnewline
+$\hat{\alpha}_{ki}=\alpha_{ki}\chi$ & Combined force coefficient (Remark~\ref{rmk:alpha-convention})\tabularnewline
+$\beta,\gamma$ & Perturbation parameters (Proposition~\ref{prop:explicit-soln})\tabularnewline
+$P_{\perp},P_{w}$ & Projections onto \$\tabularnewline
+$w_{\mathrm{rot}},w_{\mathrm{br}}$ & Rotational and breathing kernel modes (Remark~\ref{rmk:kernel-dim-new})\tabularnewline
 \bottomrule
 \end{tabularx}
 

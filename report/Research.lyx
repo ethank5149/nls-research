@@ -25,7 +25,6 @@
 %%   - Notation section moved to appendix
 
 
-\usepackage{float}
 \usepackage{units}
 \usepackage{enumitem}
 
@@ -55,9 +54,6 @@
   \newtheorem{rmk}[thm]{Remark}%
 }{}
 
-
-% ---- Equation numbering ----
-\numberwithin{equation}{section}
 
 % ---- Convenient macros ----
 \newcommand{\R}{\mathbb{R}}
@@ -936,7 +932,7 @@ multiple profiles approaching the same critical point along eigenvectors with ne
 \begin_inset Quotes erd
 \end_inset
 
- requires a separate treatment from the distinct-critical-point case resolved in their Theorem 4.3
+ requires a separate treatment from the distinct-critical-point case resolved in their Theorem 4.3.
 \end_layout
 
 \begin_layout Section
@@ -1824,7 +1820,22 @@ Right:
 \end_inset
 
 ,
- illustrating Claim 2.
+ illustrating Proposition
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:convergence"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
  The convergence rate is 
 \begin_inset Formula $\left|Rz_{i}-x_{0}\right|=O\left(E^{-\frac{1}{2}}\right)$
 \end_inset
@@ -2430,7 +2441,18 @@ Write
 \begin_inset space ~
 \end_inset
 
-(2.4) gives 
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:algebraic"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ gives 
 \begin_inset Formula 
 \begin{equation}
 \HV\,y_{i}^{S}=\chi\sum_{k\in N_{i}}\alpha_{ki}\bigl(y_{k}^{S}-y_{i}^{S}\bigr),\label{eq:projected-stable}
@@ -2690,7 +2712,11 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Schematic representations of the admissible multi-peak configurations classified in Section 3 
+Schematic representations of the admissible multi-peak configurations classified in Section
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:classification"
@@ -2807,7 +2833,22 @@ nolink "false"
 \begin_inset Formula $\delta y^{0}$
 \end_inset
 
- (Claim 3) at 
+ (Proposition
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:explicit-soln"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) at 
 \begin_inset Formula $R=0$
 \end_inset
 
@@ -3155,12 +3196,34 @@ name "rmk:alpha-convention"
 \begin_inset space ~
 \end_inset
 
-3.1 that follow,
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:classification"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ that follow,
  the algebraic system
 \begin_inset space ~
 \end_inset
 
-(2.4) is written in the absorbed form 
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:algebraic"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ is written in the absorbed form 
 \begin_inset Formula 
 \begin{equation}
 \HV(x_{0})\,y_{i}=\sum_{k\in N_{i}}\hat{\alpha}_{ki}(y_{k}-y_{i}),\quad\hat{\alpha}_{ki}\geq0,\label{eq:algebraic-absorbed}
@@ -3185,7 +3248,18 @@ combined force coefficient
 \begin_inset space ~
 \end_inset
 
-2.8.
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:chi"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
  This convention avoids carrying 
 \begin_inset Formula $\chi$
 \end_inset
@@ -3201,7 +3275,18 @@ To recover the normalized coefficients of Definition
 \begin_inset space ~
 \end_inset
 
-2.7 (satisfying 
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:interaction"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ (satisfying 
 \begin_inset Formula $0\leq\alpha_{ki}\leq1$
 \end_inset
 
@@ -3301,7 +3386,18 @@ not
 \begin_inset space ~
 \end_inset
 
-4.1 pushes the base vertices slightly apart relative to the apex–base edges.
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:explicit-soln"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ pushes the base vertices slightly apart relative to the apex–base edges.
  
 \begin_inset ERT
 status collapsed
@@ -3855,7 +3951,22 @@ Dependence of the interaction coefficients
 \end_inset
 
 .
- Each coefficient is computed from the expressions derived in Example 3.4 (equations for 
+ Each coefficient is computed from the expressions derived in Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:rotational"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ (equations for 
 \begin_inset Formula $\alpha_{12}$
 \end_inset
 
@@ -5678,7 +5789,18 @@ In particular,
 \begin_inset space ~
 \end_inset
 
-4.1 satisfies this condition,
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:explicit-soln"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ satisfies this condition,
  and the gauge-fixing constraints 
 \shape up
 (G1)–(G2)
@@ -5704,7 +5826,18 @@ The interaction terms in
 \begin_inset space ~
 \end_inset
 
-4.1) involve differences 
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Fi"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) involve differences 
 \begin_inset Formula $(y_{k}-y_{i})$
 \end_inset
 
@@ -6388,7 +6521,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="21" columns="2">
+<lyxtabular version="3" rows="28" columns="2">
 <features booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top" varwidth="true">
 <column alignment="left" valignment="top">
@@ -7025,7 +7158,7 @@ Rotation angle of equilateral triangle
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7037,7 +7170,7 @@ Rotation angle of equilateral triangle
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7049,6 +7182,232 @@ Admissibility functions (Definition
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:nu-phi"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $u_{R}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Profile solving 
+\begin_inset Formula $(-\Delta+R^{2}V(x_{0})+1)u+\sigma|u|^{2p}u=0$
+\end_inset
+
+;
+ unique positive radial solution
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $h_{R}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Remainder:
+ 
+\begin_inset Formula $u_{E}=\sum_{i}u_{R}(\cdot-z_{i})+h_{R}$
+\end_inset
+
+,
+ with 
+\begin_inset Formula $\|h_{R}\|_{H^{1}}\to0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nearest-neighbor set:
+ 
+\begin_inset Formula $N_{i}=\{k:|y_{k}-y_{i}|=1\}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\hat{\alpha}_{ki}=\alpha_{ki}\chi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Combined force coefficient (Remark
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "rmk:alpha-convention"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\beta,\gamma$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Perturbation parameters (Proposition
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:explicit-soln"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P_{\perp},P_{w}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Projections onto $
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $w_{\mathrm{rot}},w_{\mathrm{br}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Rotational and breathing kernel modes (Remark
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "rmk:kernel-dim-new"
 plural "false"
 caps "false"
 noprefix "false"
