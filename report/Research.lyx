@@ -213,7 +213,7 @@ University of Illinois at Urbana-Champaign
 \end_layout
 
 \begin_layout Date
-March 31,
+April 1,
  2026
 \end_layout
 
@@ -1476,12 +1476,9 @@ nolink "false"
 \end_inset
 
  peaks.
+
 \series bold
-
-\begin_inset Newline newline
-\end_inset
-
-Top:
+ Top:
 
 \series default
  The rescaled solution 
@@ -1503,10 +1500,7 @@ Top:
 \end_inset
 
  is indicated.
-\begin_inset Newline newline
-\end_inset
-
-
+ 
 \series bold
 Bottom:
 
@@ -1728,10 +1722,7 @@ Evolution of peak structure with increasing energy
 \end_inset
 
 .
-\begin_inset Newline newline
-\end_inset
-
-
+ 
 \series bold
 Left panels:
 
@@ -1760,10 +1751,7 @@ Left panels:
 \end_inset
 
  (green dashed line).
-\begin_inset Newline newline
-\end_inset
-
-
+ 
 \series bold
 Right:
 
@@ -2247,12 +2235,9 @@ status open
 \end_inset
 
 .
+
 \series bold
-
-\begin_inset Newline newline
-\end_inset
-
-(b)
+ (b)
 \series default
  The interaction coefficient 
 \begin_inset Formula $\alpha_{ki}=\frac{Q_{R}\left(\left|z_{k}-z_{i}\right|\right)}{Q_{R}\left(m_{R}\right)}$
@@ -2663,10 +2648,7 @@ nolink "false"
 \end_inset
 
 .
-\begin_inset Newline newline
-\end_inset
-
-
+ 
 \series bold
 (a)
 \series default
@@ -2690,24 +2672,21 @@ nolink "false"
 .
  
 \series bold
-
-\begin_inset Newline newline
-\end_inset
-
 (b)
 \series default
- Collinear arrangement with $M=5$ (odd) peaks;
+ Collinear arrangement with 
+\begin_inset Formula $M=5$
+\end_inset
+
+ (odd) peaks;
  the nearest-neighbor coupling structure 
 \begin_inset Formula $H_{V}(i\boldsymbol{r}_{1})=(\alpha_{i,i+1}+\alpha_{i,i-1})\boldsymbol{r}_{1}$
 \end_inset
 
  is indicated.
+
 \series bold
-
-\begin_inset Newline newline
-\end_inset
-
-(c)
+ (c)
 \series default
  Isosceles triangle (
 \begin_inset Formula $a>\frac{1}{2}$
@@ -2732,12 +2711,9 @@ nolink "false"
 \end_inset
 
 .
+
 \series bold
-
-\begin_inset Newline newline
-\end_inset
-
-(d)
+ (d)
 \series default
  Equilateral triangle at 
 \begin_inset Formula $\theta=0$
@@ -4392,12 +4368,9 @@ Admissibility analysis for the equilateral triangle configuration with rotationa
 \end_inset
 
  is the Hessian eigenvalue ratio.
+
 \series bold
-
-\begin_inset Newline newline
-\end_inset
-
-(a)
+ (a)
 \series default
  Admissibility region (blue) defined by 
 \begin_inset Formula $\alpha_{12},\alpha_{13},\alpha_{23}\geq0$
@@ -4426,10 +4399,7 @@ Admissibility analysis for the equilateral triangle configuration with rotationa
 \end_inset
 
 .
-\begin_inset Newline newline
-\end_inset
-
-
+ 
 \series bold
 (b)
 \series default
@@ -4450,10 +4420,7 @@ Admissibility analysis for the equilateral triangle configuration with rotationa
 
 .
  The boundary between colored regions corresponds to the loci where two constraints are simultaneously active.
-\begin_inset Newline newline
-\end_inset
-
-
+ 
 \series bold
 (c)
 \series default
