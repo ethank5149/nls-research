@@ -2,6 +2,8 @@ __pycache__/
 .ruff_cache/
 .venv/
 
+*.lyx#
+*.lyx~
 *.eps
 
 eddy-notes/
