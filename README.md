@@ -172,10 +172,6 @@ The report (`Research.lyx`, exported as `Research.tex`) uses the `extarticle` do
 - LyX 2.4+ (for editing the `.lyx` source)
 - A standard LaTeX distribution (TeX Live or MiKTeX) with packages: `extarticle`, `geometry`, `amsmath`, `amsthm`, `amssymb`, `graphicx`, `booktabs`, `tabularx`, `units`, `float`
 
-### Mathematica
-
-- Wolfram Mathematica (for `triangle/*.nb` notebooks)
-
 ## Setup and Usage
 
 ### Generating Figures
