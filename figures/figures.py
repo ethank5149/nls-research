@@ -116,60 +116,49 @@ def arr(ax, x1, y1, x2, y2, color="#2c3e50", lw=1.5, ls="-"):
     )
 
 
-def draw_peak(ax, pos, label, color="#2c3e50", ms=9):
-    ax.plot(*pos, "o", color=color, ms=ms, zorder=5)
+def draw_peak(ax, pos, label, color="#2c3e50", ms=9, offset=(0.06, 0.10)):
+    ax.plot(*pos, "o", color=color, ms=ms, zorder=5, clip_on=False)
     ax.annotate(
-        label,
-        xy=pos,
-        xytext=(pos[0] + 0.06, pos[1] + 0.12),
-        fontsize=10,
-        color=color,
-        ha="center",
+        label, xy=pos, xytext=(pos[0] + offset[0], pos[1] + offset[1]),
+        fontsize=10, color=color, ha="center", clip_on=False,
     )
 
 
-def draw_edge(ax, p1, p2, alpha_val=None, color="#7f8c8d", lw=1.3):
+def draw_edge(ax, p1, p2, alpha_val=None, color="#7f8c8d", lw=1.3,
+              label_offset_scale=0.10, label_fs=7):
     ax.plot([p1[0], p2[0]], [p1[1], p2[1]], "-", color=color, lw=lw, zorder=2)
     if alpha_val is not None:
         mx, my = (p1[0] + p2[0]) / 2, (p1[1] + p2[1]) / 2
         dx, dy = p2[0] - p1[0], p2[1] - p1[1]
         length = np.sqrt(dx**2 + dy**2)
-        nx, ny = -dy / length * 0.1, dx / length * 0.1
+        nx, ny = -dy / length * label_offset_scale, dx / length * label_offset_scale
         ax.text(
-            mx + nx,
-            my + ny,
-            alpha_val,
-            fontsize=7,
-            ha="center",
-            va="center",
-            color="#2980b9",
-            fontweight="bold",
-            bbox=dict(
-                boxstyle="round,pad=0.15",
-                facecolor="white",
-                edgecolor="#ddd",
-                alpha=0.9,
-            ),
+            mx + nx, my + ny, alpha_val, fontsize=label_fs,
+            ha="center", va="center", color="#2980b9", fontweight="bold",
+            bbox=dict(boxstyle="round,pad=0.10", facecolor="white",
+                      edgecolor="#ddd", alpha=0.9),
+            zorder=8,
         )
 
 
-def draw_eigvec(ax, origin, direction, label, color="#c0392b"):
+def draw_eigvec(ax, origin, direction, label, color="#c0392b", fs=9):
     ax.annotate(
-        "",
-        xy=(origin[0] + direction[0], origin[1] + direction[1]),
-        xytext=origin,
+        "", xy=(origin[0] + direction[0], origin[1] + direction[1]), xytext=origin,
         arrowprops=dict(arrowstyle="->", color=color, lw=1.3),
     )
     ax.text(
-        origin[0] + direction[0] * 1.12,
-        origin[1] + direction[1] * 1.12,
-        label,
-        fontsize=9,
-        color=color,
-        ha="center",
-        va="center",
+        origin[0] + direction[0] * 1.18, origin[1] + direction[1] * 1.18,
+        label, fontsize=fs, color=color, ha="center", va="center",
+        zorder=10,
+        bbox=dict(boxstyle="round,pad=0.05", facecolor="white",
+                  edgecolor="none", alpha=0.85),
     )
 
+def info_box(ax, x, y, text, fs=8, fc="#fef9e7", ec="#ddd"):
+    ax.text(
+        x, y, text, fontsize=fs, ha="center", va="top", color="#444",
+        bbox=dict(boxstyle="round,pad=0.25", facecolor=fc, edgecolor=ec),
+    )
 
 def save_figure(fig, output_dir, stem, pad_inches=0.15, *args, **kwargs):
     """Save figure in PNG format."""
@@ -204,7 +193,12 @@ def create_figure_1():
 
     fig, ax = plt.subplots(figsize=(6, 6))
 
-    cmap = ListedColormap(["#e74c3c", "#e67e22", "#7f8c8d", "#ececec"])
+    # Refined palette: muted teal / warm gold / cool slate / light grey
+    c_a12 = "#3a7ca5"   # steel blue
+    c_a13 = "#d4915e"   # warm terracotta
+    c_a23 = "#6b8e7b"   # sage green
+    c_inad = "#e8e4df"  # warm light grey
+    cmap = ListedColormap([c_a12, c_a13, c_a23, c_inad])
     ax.pcolormesh(
         MU, TH, binding_masked, cmap=cmap, vmin=-0.5, vmax=3.5, shading="auto"
     )
@@ -215,41 +209,26 @@ def create_figure_1():
 
     ax.axvline(x=1 / 3, color="white", ls="--", lw=1.3, alpha=0.9)
     ax.axvline(x=3, color="white", ls="--", lw=1.3, alpha=0.9)
-    ax.axvline(x=1, color="#2ecc71", ls=":", lw=1.2, alpha=0.8)
+    ax.axvline(x=1, color="white", ls=":", lw=1.2, alpha=0.6)
 
-    # Reference-line labels — shifted down slightly to avoid legend overlap
-    label_y = np.pi / 2 * 0.88
-    for val, label, col, bg in [
-        (1 / 3, r"$\frac{1}{3}$", "white", "#444"),
-        (3, r"$3$", "white", "#444"),
-        (1, r"$1$", "#2ecc71", "#1a1a2e"),
-    ]:
-        ax.text(
-            val + 0.12,
-            label_y,
-            label,
-            ha="left",
-            fontsize=9,
-            color=col,
-            fontweight="bold",
-            bbox=dict(
-                boxstyle="round,pad=0.12", facecolor=bg, edgecolor="none", alpha=0.8
-            ),
-        )
-
+    # "All θ admissible" label placed just below x-axis
     ax.text(
         1.65,
-        np.pi / 4,
-        "All $\\theta$\nadmissible",
-        fontsize=9,
+        -0.07,
+        r"All $\theta$ admissible",
+        fontsize=8.5,
         ha="center",
-        color="white",
+        va="top",
+        color="#333",
         fontweight="bold",
         style="italic",
-        bbox=dict(
-            boxstyle="round,pad=0.3", facecolor="#333", edgecolor="none", alpha=0.45
-        ),
+        clip_on=False,
     )
+    # Bracket lines from 1/3 to 3 just below axis
+    brac_y = -0.03
+    ax.plot([1/3, 1/3], [0, brac_y], color="#555", lw=0.8, clip_on=False)
+    ax.plot([3, 3], [0, brac_y], color="#555", lw=0.8, clip_on=False)
+    ax.plot([1/3, 3], [brac_y, brac_y], color="#555", lw=0.8, clip_on=False)
 
     ax.plot(3, 0, "o", color="white", ms=6, mec="#1a1a2e", mew=1.5, zorder=5)
     ax.annotate(
@@ -289,16 +268,16 @@ def create_figure_1():
 
     legend_elements = [
         mpatches.Patch(
-            color="#e74c3c",
+            color=c_a12,
             label=r"$\alpha_{12}$ binding (apex $\leftrightarrow$ base-left)",
         ),
         mpatches.Patch(
-            color="#e67e22",
+            color=c_a13,
             label=r"$\alpha_{13}$ binding (apex $\leftrightarrow$ base-right)",
         ),
-        mpatches.Patch(color="#7f8c8d", label=r"$\alpha_{23}$ binding (base edge)"),
+        mpatches.Patch(color=c_a23, label=r"$\alpha_{23}$ binding (base edge)"),
         mpatches.Patch(
-            color="#ececec", label=r"Inadmissible ($\exists\,\alpha_{ij} < 0$)"
+            color=c_inad, label=r"Inadmissible ($\exists\,\alpha_{ij} < 0$)"
         ),
         Line2D([0], [0], color="#1a1a2e", lw=2, label="Admissibility boundary"),
     ]
@@ -318,86 +297,70 @@ def create_figure_1():
 
 
 def create_figure_2():
-    """Figure 2 — Extended Peak Configurations (5 panels)."""
-    print("Creating Figure 2 - Extended Peak Configurations...", end=" ", flush=True)
+    print("Creating Figure 2 - Peak Configurations (2x2 + separate)...", end=" ", flush=True)
 
-    # Use GridSpec: row 0 = 3 panels, row 1 = 2 panels centered
-    fig = plt.figure(figsize=(16, 9))
-    gs = gridspec.GridSpec(
-        2,
-        6,
-        figure=fig,
-        hspace=0.30,
-        wspace=0.40,
-        top=0.93,
-        bottom=0.04,
-        left=0.03,
-        right=0.97,
-    )
-    ax_a = fig.add_subplot(gs[0, 0:2])
-    ax_b = fig.add_subplot(gs[0, 2:4])
-    ax_c = fig.add_subplot(gs[0, 4:6])
-    ax_d = fig.add_subplot(gs[1, 1:3])
-    ax_e = fig.add_subplot(gs[1, 3:5])
+    # ── Layout geometry ──
+    # Manual axes placement: [left, bottom, width, height] in figure coords.
+    # Two rows: top row is short (collinear), bottom row is tall (triangles).
+    # All panels in a row share the exact same bottom and height.
+    margin_l, margin_r = 0.03, 0.03
+    margin_b, margin_t = 0.02, 0.05  # top margin for suptitle area
+    col_gap = 0.04
+    row_gap = 0.04
 
-    # ── (a) Collinear M=2 ──
-    ax = ax_a
+    col_w = (1.0 - margin_l - margin_r - col_gap) / 2.0
+    top_h = 0.22                      # top row height (fraction of figure)
+    bot_h = 1.0 - margin_b - margin_t - row_gap - top_h
+
+    top_bottom = 1.0 - margin_t - top_h
+    bot_bottom = margin_b
+
+    left_x = margin_l
+    right_x = margin_l + col_w + col_gap
+
+    fig = plt.figure(figsize=(10, 8))
+
+    # ── (a) Collinear M=2 ──────────────────────────────────────────────────
+    ax = fig.add_axes([left_x, top_bottom, col_w, top_h])
     peaks = [(-0.5, 0), (0.5, 0)]
     draw_edge(ax, peaks[0], peaks[1], r"$\alpha_{12}$")
     draw_peak(ax, peaks[0], r"$y_{-1}$")
     draw_peak(ax, peaks[1], r"$y_1$")
-    draw_eigvec(ax, (-0.2, -0.45), (0.5, 0), r"$\mathbf{r}_1$")
+    draw_eigvec(ax, (-0.15, -0.28), (0.38, 0), r"$\mathbf{r}_1$")
     ax.annotate(
-        "",
-        xy=(0.5, -0.22),
-        xytext=(-0.5, -0.22),
+        "", xy=(0.5, -0.14), xytext=(-0.5, -0.14),
         arrowprops=dict(arrowstyle="<->", color="#555", lw=0.8),
     )
-    ax.text(0, -0.30, r"$|y_1 - y_{-1}| = 1$", fontsize=8, ha="center", color="#555")
-    ax.text(
-        0,
-        -0.55,
-        r"$H_V y_{\pm 1} = \alpha_{12}\mathbf{r}_1$"
-        "\n"
-        r"$\Rightarrow \alpha_{12} = -\lambda_1$",
-        fontsize=8,
-        ha="center",
-        color="#444",
-        bbox=dict(boxstyle="round,pad=0.3", facecolor="#fef9e7", edgecolor="#ddd"),
-    )
-    ax.set_xlim(-1.1, 1.1)
-    ax.set_ylim(-0.8, 0.5)
-    ax.set_aspect("equal")
+    ax.text(0, -0.21, r"$|y_1 - y_{-1}| = 1$", fontsize=8, ha="center", color="#555")
+    info_box(ax, 0, -0.38,
+             r"$H_V y_{\pm 1} = \alpha_{12}\mathbf{r}_1$"
+             "\n"
+             r"$\Rightarrow \alpha_{12} = -\lambda_1$")
+    ax.set_xlim(-0.85, 0.85)
+    ax.set_ylim(-0.55, 0.18)
     ax.axis("off")
-    ax.set_title(r"(a) Collinear, $M=2$", fontsize=11, pad=10)
+    ax.set_title(r"(a) Collinear, $M=2$", fontsize=11, pad=4)
 
-    # ── (b) Collinear M=5 ──
-    ax = ax_b
+    # ── (b) Collinear M=5 ─────────────────────────────────────────────────
+    ax = fig.add_axes([right_x, top_bottom, col_w, top_h])
     peaks_5 = [(-1, 0), (-0.5, 0), (0, 0), (0.5, 0), (1, 0)]
     labels_5 = [r"$y_{-2}$", r"$y_{-1}$", r"$y_0$", r"$y_1$", r"$y_2$"]
     for i in range(len(peaks_5) - 1):
         draw_edge(ax, peaks_5[i], peaks_5[i + 1])
     for p, l in zip(peaks_5, labels_5):
         draw_peak(ax, p, l)
-    draw_eigvec(ax, (-0.3, -0.4), (0.5, 0), r"$\mathbf{r}_1$")
-    ax.text(
-        0,
-        -0.55,
-        r"$H_V(i\mathbf{r}_1) = (\alpha_{i,i+1} + \alpha_{i,i-1})\mathbf{r}_1$"
-        "\nNearest-neighbor coupling only",
-        fontsize=7.5,
-        ha="center",
-        color="#444",
-        bbox=dict(boxstyle="round,pad=0.3", facecolor="#fef9e7", edgecolor="#ddd"),
-    )
-    ax.set_xlim(-1.5, 1.5)
-    ax.set_ylim(-0.8, 0.5)
-    ax.set_aspect("equal")
+    draw_eigvec(ax, (-0.25, -0.25), (0.38, 0), r"$\mathbf{r}_1$")
+    info_box(ax, 0, -0.38,
+             r"$H_V(i\mathbf{r}_1) = (\alpha_{i,i+1} + \alpha_{i,i-1})\mathbf{r}_1$"
+             "\nNearest-neighbor coupling only",
+             fs=7.5)
+    ax.set_xlim(-1.25, 1.25)
+    ax.set_ylim(-0.55, 0.18)
     ax.axis("off")
-    ax.set_title(r"(b) Collinear, $M=5$ (odd)", fontsize=11, pad=10)
+    ax.set_title(r"(b) Collinear, $M=5$ (odd)", fontsize=11, pad=4)
 
-    # ── (c) Isosceles triangle ──
-    ax = ax_c
+    # ── (c) Isosceles triangle ─────────────────────────────────────────────
+    ax = fig.add_axes([left_x, bot_bottom, col_w, bot_h])
     a_iso, h_iso = 0.55, 0.48
     y1 = (0, h_iso)
     y2 = (-a_iso, -h_iso / 2)
@@ -408,150 +371,148 @@ def create_figure_2():
         (y2, y3, r"$\alpha_{23}=0$"),
     ]:
         c_edge = "#e74c3c" if "=0" in albl else "#7f8c8d"
-        draw_edge(ax, p1, p2, albl, color=c_edge)
+        draw_edge(ax, p1, p2, albl, color=c_edge, label_offset_scale=0.10)
     draw_peak(ax, y1, r"$y_1$")
-    draw_peak(ax, y2, r"$y_2$")
+    draw_peak(ax, y2, r"$y_2$", offset=(-0.12, 0.08))
     draw_peak(ax, y3, r"$y_3$")
-    draw_eigvec(ax, (-0.15, -0.75), (0.45, 0), r"$\mathbf{r}_1$", "#c0392b")
-    draw_eigvec(ax, (-0.75, -0.15), (0, 0.45), r"$\mathbf{r}_2$", "#2980b9")
+    ev_origin = (-0.82, -0.48)
+    draw_eigvec(ax, ev_origin, (0.33, 0), r"$\mathbf{r}_1$", "#c0392b")
+    draw_eigvec(ax, ev_origin, (0, 0.33), r"$\mathbf{r}_2$", "#2980b9")
     ax.text(
-        0,
-        -0.87,
-        r"$\alpha_{12}=\alpha_{13}=-\lambda_1=-\frac{\lambda_2}{3}$"
-        "\n"
-        r"$\Rightarrow \lambda_2 = 3\lambda_1$",
-        fontsize=8,
-        ha="center",
-        color="#444",
-        bbox=dict(boxstyle="round,pad=0.3", facecolor="#fef9e7", edgecolor="#ddd"),
-    )
-    ax.text(
-        0.6,
-        0.45,
+        0.60, 0.46,
         r"$a > \frac{1}{2}$" "\n" r"$h < \frac{1}{\sqrt{3}}$",
-        fontsize=8,
-        color="#8e44ad",
-        bbox=dict(boxstyle="round,pad=0.2", facecolor="#f5eef8", edgecolor="#d2b4de"),
+        fontsize=8, color="#8e44ad",
+        bbox=dict(boxstyle="round,pad=0.15", facecolor="#f5eef8", edgecolor="#d2b4de"),
     )
-    ax.set_xlim(-1.1, 1.1)
-    ax.set_ylim(-1.05, 0.85)
-    ax.set_aspect("equal")
+    info_box(ax, 0, -0.68,
+             r"$\alpha_{12}=\alpha_{13}=-\lambda_1=-\frac{\lambda_2}{3}$"
+             "\n"
+             r"$\Rightarrow \lambda_2 = 3\lambda_1$")
+    ax.set_xlim(-1.05, 1.05)
+    ax.set_ylim(-0.88, 0.75)
     ax.axis("off")
-    ax.set_title(r"(c) Isosceles, $M=3$", fontsize=11, pad=10)
+    ax.set_title(r"(c) Isosceles, $M=3$", fontsize=11, pad=4)
 
-    # ── (d) Equilateral θ=0 with α values ──
-    ax = ax_d
+    # ── (d) Equilateral θ=0 ───────────────────────────────────────────────
+    ax = fig.add_axes([right_x, bot_bottom, col_w, bot_h])
     a_eq = 0.5
     h_eq = 1 / np.sqrt(3)
     y1 = (0, h_eq)
     y2 = (-a_eq, -h_eq / 2)
     y3 = (a_eq, -h_eq / 2)
-    draw_edge(ax, y1, y2, r"$\alpha_{12}=-\frac{\lambda_2}{3}$")
-    draw_edge(ax, y1, y3, r"$\alpha_{13}=-\frac{\lambda_2}{3}$")
-    draw_edge(ax, y2, y3, r"$\alpha_{23}=\frac{\lambda_2/3 - \lambda_1}{2}$")
+    draw_edge(ax, y1, y2, r"$\alpha_{12}=-\frac{\lambda_2}{3}$",
+              label_offset_scale=0.16, label_fs=6.5)
+    draw_edge(ax, y1, y3, r"$\alpha_{13}=-\frac{\lambda_2}{3}$",
+              label_offset_scale=0.16, label_fs=6.5)
+    draw_edge(ax, y2, y3, r"$\alpha_{23}=\frac{\lambda_2/3 - \lambda_1}{2}$",
+              label_offset_scale=0.10, label_fs=6.5)
     draw_peak(ax, y1, r"$y_1$")
-    draw_peak(ax, y2, r"$y_2$")
+    draw_peak(ax, y2, r"$y_2$", offset=(-0.12, 0.08))
     draw_peak(ax, y3, r"$y_3$")
-    draw_eigvec(ax, (-0.15, -0.75), (0.45, 0), r"$\mathbf{r}_1$", "#c0392b")
-    draw_eigvec(ax, (-0.75, -0.15), (0, 0.45), r"$\mathbf{r}_2$", "#2980b9")
-    ax.text(
-        0,
-        -0.90,
-        r"$a = \frac{1}{2},\; h = \frac{1}{\sqrt{3}}$"
-        "\n"
-        r"$\alpha_{23} \geq 0 \Leftrightarrow |\lambda_2|/|\lambda_1| \geq 3$",
-        fontsize=8,
-        ha="center",
-        color="#444",
-        bbox=dict(boxstyle="round,pad=0.3", facecolor="#fef9e7", edgecolor="#ddd"),
-    )
-    ax.set_xlim(-1.1, 1.1)
-    ax.set_ylim(-1.1, 0.85)
-    ax.set_aspect("equal")
+    ev_origin = (-0.82, -0.48)
+    draw_eigvec(ax, ev_origin, (0.33, 0), r"$\mathbf{r}_1$", "#c0392b")
+    draw_eigvec(ax, ev_origin, (0, 0.33), r"$\mathbf{r}_2$", "#2980b9")
+    info_box(ax, 0, -0.68,
+             r"$a = \frac{1}{2},\; h = \frac{1}{\sqrt{3}}$"
+             "\n"
+             r"$\alpha_{23} \geq 0 \Leftrightarrow |\lambda_2|/|\lambda_1| \geq 3$")
+    ax.set_xlim(-1.05, 1.05)
+    ax.set_ylim(-0.88, 0.75)
     ax.axis("off")
-    ax.set_title(r"(d) Equilateral, $\theta = 0$", fontsize=11, pad=10)
+    ax.set_title(r"(d) Equilateral, $\theta = 0$", fontsize=11, pad=4)
 
-    # ── (e) Equilateral with perturbation δy⁰ ── (FIXED LaTeX)
-    ax = ax_e
-    y1_arr = np.array([0, h_eq])
-    y2_arr = np.array([-a_eq, -h_eq / 2])
-    y3_arr = np.array([a_eq, -h_eq / 2])
+    save_figure(fig, OUTPUT_DIR, "figure_2_peak_configurations")
+
+    # ══════════════════════════════════════════════════════════════════════════
+    # FIGURE 2B: Panel (e) — Perturbation δy⁰ at R=0
+    # ══════════════════════════════════════════════════════════════════════════
+    fig_e, ax = plt.subplots(figsize=(5.5, 4.8))
+
     mu_val = 4.0
-    lam1 = -1.0
-    lam2 = -mu_val
-    alpha12 = -lam2 / 3
-    alpha23_val = (-lam1 + lam2 / 3) / 2
-    beta = 0.5 * np.log(alpha12 / alpha23_val)
-    gamma = 2 * beta / (3 * np.sqrt(3))
-    r1 = np.array([1, 0])
-    r2 = np.array([0, 1])
-    dy1 = -gamma * r2
-    dy2 = -beta * r1 + (gamma / 2) * r2
-    dy3 = beta * r1 + (gamma / 2) * r2
-    sc = 0.7
+    theta_rot = np.radians(19.3)
+    ct, st = np.cos(theta_rot), np.sin(theta_rot)
+    R_mat = np.array([[ct, -st], [st, ct]])
+    h_eq = 1 / np.sqrt(3)
+    a_eq = 0.5
+    y1_base = np.array([0, h_eq])
+    y2_base = np.array([-a_eq, -h_eq / 2])
+    y3_base = np.array([a_eq, -h_eq / 2])
+    y1_arr = R_mat @ y1_base
+    y2_arr = R_mat @ y2_base
+    y3_arr = R_mat @ y3_base
+
+    a12_v, a13_v, a23_v = compute_alphas(mu_val, theta_rot)
+    beta = 0.5 * np.log(a12_v / a23_v)
+    gamma_v = 2 * beta / (3 * np.sqrt(3))
+    r1, r2 = np.array([1, 0]), np.array([0, 1])
+    dy1 = -gamma_v * r2
+    dy2 = -beta * r1 + (gamma_v / 2) * r2
+    dy3 = beta * r1 + (gamma_v / 2) * r2
+    sc = 0.25
     dy1s, dy2s, dy3s = dy1 * sc, dy2 * sc, dy3 * sc
 
-    # Original (dashed)
+    # Dashed original triangle
     for p1, p2 in [(y1_arr, y2_arr), (y1_arr, y3_arr), (y2_arr, y3_arr)]:
         ax.plot([p1[0], p2[0]], [p1[1], p2[1]], "--", color="#bdc3c7", lw=1.0, zorder=1)
-    # Perturbed (solid)
+    # Solid perturbed triangle
     py1, py2, py3 = y1_arr + dy1s, y2_arr + dy2s, y3_arr + dy3s
     for p1, p2 in [(py1, py2), (py1, py3), (py2, py3)]:
         ax.plot([p1[0], p2[0]], [p1[1], p2[1]], "-", color="#2c3e50", lw=1.5, zorder=2)
+    # Unperturbed markers
     for pos in [y1_arr, y2_arr, y3_arr]:
-        ax.plot(*pos, "o", color="#bdc3c7", ms=6, zorder=3)
+        ax.plot(*pos, "o", color="#bdc3c7", ms=8, zorder=3)
+    # Perturbed markers
     for pos, col in [(py1, "#e74c3c"), (py2, "#27ae60"), (py3, "#2980b9")]:
-        ax.plot(*pos, "s", color=col, ms=7, zorder=4)
+        ax.plot(*pos, "s", color=col, ms=9, zorder=4)
+    # Perturbation arrows
     for orig, pert, col in [
         (y1_arr, py1, "#e74c3c"),
         (y2_arr, py2, "#27ae60"),
         (y3_arr, py3, "#2980b9"),
     ]:
         ax.annotate(
-            "",
-            xy=pert,
-            xytext=orig,
-            arrowprops=dict(arrowstyle="->", color=col, lw=1.3),
+            "", xy=pert, xytext=orig,
+            arrowprops=dict(arrowstyle="->", color=col, lw=1.5),
         )
 
-    draw_eigvec(ax, (-0.15, -0.7), (0.4, 0), r"$\mathbf{r}_1$", "#c0392b")
-    draw_eigvec(ax, (-0.7, -0.15), (0, 0.4), r"$\mathbf{r}_2$", "#2980b9")
+    # Eigenvectors — bottom-center, well clear of geometry
+    ev_origin = (-0.15, -0.70)
+    draw_eigvec(ax, ev_origin, (0.30, 0), r"$\mathbf{r}_1$", "#c0392b", fs=9)
+    draw_eigvec(ax, ev_origin, (0, 0.30), r"$\mathbf{r}_2$", "#2980b9", fs=9)
 
-    # FIX: Each $...$ on its own line — no multi-line math mode
+    # Formula box
     ax.text(
-        0,
-        -0.90,
-        r"$\delta y_1^0 = -\gamma\mathbf{r}_2$"
-        ", "
+        0.15, -0.92,
+        r"$\delta y_1^0 = -\gamma\mathbf{r}_2$" ", "
         r"$\delta y_{2,3}^0 = \mp\beta\mathbf{r}_1 + \frac{\gamma}{2}\mathbf{r}_2$"
         "\n"
-        r"$\beta = \frac{1}{2}\ln(\alpha_{12}/\alpha_{23})$"
-        ", "
+        r"$\beta = \frac{1}{2}\ln(\alpha_{12}/\alpha_{23})$" ", "
         r"$\gamma = \frac{2\beta}{3\sqrt{3}}$",
-        fontsize=7,
-        ha="center",
-        color="#444",
-        bbox=dict(boxstyle="round,pad=0.35", facecolor="#e8f8f5", edgecolor="#a3e4d7"),
+        fontsize=8.5, ha="center", va="top", color="#444",
+        bbox=dict(boxstyle="round,pad=0.3", facecolor="#e8f8f5", edgecolor="#a3e4d7"),
     )
 
-    ax.plot([], [], "o", color="#bdc3c7", ms=5, label=r"$y_i$ (unperturbed)")
-    ax.plot([], [], "s", color="#555", ms=5, label=r"$y_i + \delta y_i^0$ (Prop. 4.1)")
-    ax.legend(fontsize=7, loc="upper right", framealpha=0.9)
+    # Legend
+    ax.plot([], [], "o", color="#bdc3c7", ms=7, label=r"$y_i$ (unperturbed)")
+    ax.plot([], [], "s", color="#555", ms=7, label=r"$y_i + \delta y_i^0$ (Prop. 4.1)")
+    ax.legend(fontsize=9, loc="upper right", framealpha=0.9, borderpad=0.3,
+              handletextpad=0.4)
 
-    ax.set_xlim(-1.0, 1.0)
-    ax.set_ylim(-1.15, 0.85)
+    ax.set_xlim(-0.90, 1.05)
+    ax.set_ylim(-1.18, 0.72)
     ax.set_aspect("equal")
     ax.axis("off")
     ax.set_title(
-        r"(e) Perturbation $\delta y^0$ at $R=0$, $\mu=4$", fontsize=11, pad=10
+        r"(e) Perturbation $\delta y^0$ at $R=0$, $\mu=4$, $\theta \approx 19^\circ$",
+        fontsize=11, pad=5,
     )
 
-    save_figure(fig, OUTPUT_DIR, "figure_2_peak_configurations")
+    save_figure(fig_e, OUTPUT_DIR, "figure_2b_perturbation")
     print("Done!")
 
 
 def create_figure_3():
-    """Figure 3 — α vs θ for representative μ values."""
+    """Figure 3 — α vs θ for representative μ values (2×2 subplots)."""
     print(
         "Creating Figure 3 - α vs θ for representative μ values...", end=" ", flush=True
     )
@@ -559,97 +520,87 @@ def create_figure_3():
     theta = np.linspace(0, np.pi / 2, 500)
     mu_vals = [0.3, 1.0, 3.0, 6.0]
     mu_colors = ["#8e44ad", "#2980b9", "#27ae60", "#e67e22"]
-    styles = {"a12": ("-", 2.0), "a13": ("--", 1.8), "a23": (":", 2.2)}
 
-    fig, ax = plt.subplots(figsize=(9, 5.5))
+    # Consistent coefficient styling across all panels
+    coeff_styles = {
+        "a12": ("-",  2.0, "#c0392b", r"$\alpha_{12}$"),
+        "a13": ("--", 1.8, "#2980b9", r"$\alpha_{13}$"),
+        "a23": (":",  2.2, "#27ae60", r"$\alpha_{23}$"),
+    }
 
-    ax.axhspan(-4, 0, color="#e74c3c", alpha=0.06, zorder=0)
-    ax.axhline(0, color="k", lw=0.6, zorder=1)
+    fig, axes = plt.subplots(2, 2, figsize=(10, 8), sharex=True, sharey=True)
+    fig.subplots_adjust(hspace=0.28, wspace=0.18)
 
-    for mu, col in zip(mu_vals, mu_colors):
+    for ax, mu, panel_col in zip(axes.flat, mu_vals, mu_colors):
         a12, a13, a23 = compute_alphas(mu, theta)
+
+        # Forbidden region shading
+        ax.axhspan(-4, 0, color="#c0392b", alpha=0.05, zorder=0)
+        ax.axhline(0, color="k", lw=0.6, zorder=1)
+
         for data, key in [(a12, "a12"), (a13, "a13"), (a23, "a23")]:
+            ls, lw, col, label = coeff_styles[key]
             ax.plot(
                 np.degrees(theta),
                 data,
-                ls=styles[key][0],
-                lw=styles[key][1],
+                ls=ls,
+                lw=lw,
                 color=col,
+                label=label,
                 zorder=3,
             )
 
-    # Forbidden label — positioned to avoid curve overlap
-    ax.text(
-        45,
-        -0.35,
-        r"$\alpha < 0$: forbidden (focusing nonlinearity requires attractive interaction)",
-        fontsize=8,
-        ha="center",
-        color="#c0392b",
-        style="italic",
-        bbox=dict(
-            boxstyle="round,pad=0.15", facecolor="white", edgecolor="#fadbd8", alpha=0.9
-        ),
-    )
+        # Check if any coefficient goes negative
+        all_positive = np.all(a12 >= -1e-12) and np.all(a13 >= -1e-12) and np.all(a23 >= -1e-12)
+        if not all_positive:
+            # Find where each goes negative and shade lightly
+            for data, key in [(a12, "a12"), (a13, "a13"), (a23, "a23")]:
+                neg_mask = data < -1e-12
+                if np.any(neg_mask):
+                    theta_deg = np.degrees(theta)
+                    ax.fill_between(
+                        theta_deg, -4, 0,
+                        where=neg_mask,
+                        color=coeff_styles[key][2],
+                        alpha=0.06,
+                        zorder=0,
+                    )
 
-    ax.set_xlabel(r"$\theta$ (degrees)", labelpad=6)
-    ax.set_ylabel(r"$\alpha_{ij}(\theta)$", labelpad=8)
-    ax.set_xlim(0, 90)
-    ax.set_ylim(-0.8, 2.5)
+        ax.set_xlim(0, 90)
+        ax.set_ylim(-0.8, 2.5)
+        ax.set_title(rf"$\mu = {mu}$", fontsize=12, pad=8, color=panel_col, fontweight="bold")
+        ax.grid(True, alpha=0.15, lw=0.5)
 
-    coeff_handles = [
-        Line2D(
-            [0],
-            [0],
-            color="#333",
-            ls="-",
-            lw=2.0,
-            label=r"$\alpha_{12}$  (apex $\leftrightarrow$ base-left)",
-        ),
-        Line2D(
-            [0],
-            [0],
-            color="#333",
-            ls="--",
-            lw=1.8,
-            label=r"$\alpha_{13}$  (apex $\leftrightarrow$ base-right)",
-        ),
-        Line2D(
-            [0], [0], color="#333", ls=":", lw=2.2, label=r"$\alpha_{23}$  (base edge)"
-        ),
+        # Admissibility annotation
+        if all_positive:
+            ax.text(
+                0.5, 0.02, r"All $\theta$ admissible",
+                transform=ax.transAxes, fontsize=8, ha="center",
+                color="#27ae60", style="italic",
+            )
+
+    # Axis labels on outer edges only
+    for ax in axes[1, :]:
+        ax.set_xlabel(r"$\theta$ (degrees)", labelpad=6)
+    for ax in axes[:, 0]:
+        ax.set_ylabel(r"$\alpha_{ij}(\theta)$", labelpad=8)
+
+    # Single shared legend
+    handles = [
+        Line2D([0], [0], color=v[2], ls=v[0], lw=v[1], label=v[3])
+        for v in coeff_styles.values()
     ]
-    mu_handles = [
-        Line2D([0], [0], color=col, ls="-", lw=3, label=rf"$\mu = {mu}$")
-        for mu, col in zip(mu_vals, mu_colors)
-    ]
-    leg1 = ax.legend(
-        handles=coeff_handles,
-        loc="upper left",
-        fontsize=8,
-        title="Coefficient (linestyle)",
-        title_fontsize=8,
+    fig.legend(
+        handles=handles,
+        loc="lower center",
+        ncol=3,
+        fontsize=9,
         framealpha=0.95,
         edgecolor="#ccc",
-        borderpad=0.7,
-    )
-    ax.add_artist(leg1)
-    ax.legend(
-        handles=mu_handles,
-        loc="upper right",
-        fontsize=8,
-        title=r"$\mu = |\lambda_2|/|\lambda_1|$ (color)",
-        title_fontsize=8,
-        framealpha=0.95,
-        edgecolor="#ccc",
-        borderpad=0.7,
-    )
-    ax.set_title(
-        r"Interaction Coefficients $\alpha_{12}$, $\alpha_{13}$, $\alpha_{23}$ vs Orientation $\theta$",
-        fontsize=13,
-        pad=12,
+        bbox_to_anchor=(0.5, -0.01),
     )
 
-    fig.tight_layout(pad=1.2)
+    fig.tight_layout(pad=1.2, rect=[0, 0.04, 1, 1])
     save_figure(fig, OUTPUT_DIR, "figure_3_alpha_vs_theta_vs_mu")
     print("Done!")
 

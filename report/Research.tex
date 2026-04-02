@@ -127,15 +127,15 @@ We prove that near a non-degenerate local maximum $x_{0}$ of $V$,
 the admissible multi-peak configurations are: collinear arrangements
 along a single eigenvector of $H_{V}$; isosceles triangles requiring
 the eigenvalue constraint $\lambda_{2}=3\lambda_{1}$; equilateral
-triangles requiring $|\lambda_{2}|/|\lambda_{1}|\geq3$; and equilateral
-triangles with a continuous rotational degree of freedom $\theta$,
-admissible for all orientations when $\tfrac{1}{3}\leq\mu\leq3$ (where
-$\mu=|\lambda_{2}|/|\lambda_{1}|$) and for restricted angular windows
-otherwise. To extend these to finite energy, we construct explicit
-solutions of the perturbation system $F_{i}(\delta y,R)=0$ at $R=0$,
-identify the four-dimensional kernel of the linearization, and show
-that gauge-fixing constraints reduce the problem to a system amenable
-to the implicit function theorem.
+triangles requiring $\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}\geq3$;
+and equilateral triangles with a continuous rotational degree of freedom
+$\theta$, admissible for all orientations when $\frac{1}{3}\leq\mu\leq3$
+(where $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$)
+and for restricted angular windows otherwise. To extend these to finite
+energy, we construct explicit solutions of the perturbation system
+$F_{i}(\delta y,R)=0$ at $R=0$, identify the four-dimensional kernel
+of the linearization, and show that gauge-fixing constraints reduce
+the problem to a system amenable to the implicit function theorem.
 
 \medskip{}
 \textbf{Keywords:} nonlinear Schrödinger equation, multi-peak solutions,
@@ -164,7 +164,7 @@ Kerr term $\chi^{(3)}$. Starting from Maxwell's equations in a source-free,
 non-magnetic dielectric, the electric field can be written as a slowly
 varying envelope modulating a carrier: 
 \[
-\mathbf{E}(\mathbf{r},t)=\tfrac{1}{2}\hat{\mathbf{x}}\bigl[F(x,y)\,A(z,t)\,e^{i(\beta_{0}z-\omega_{0}t)}+\text{c.c.}\bigr].
+\mathbf{E}(\mathbf{r},t)=\frac{1}{2}\hat{\mathbf{x}}\bigl[F(x,y)\,A(z,t)\,e^{i(\beta_{0}z-\omega_{0}t)}+\text{c.c.}\bigr].
 \]
 Here $F(x,y)$ is the transverse modal shape set by the fiber's refractive-index
 profile, $A(z,t)$ is the envelope, and $\beta_{0}$ is the propagation
@@ -173,7 +173,7 @@ varying envelope approximation and expanding the propagation constant
 to second order in frequency yields the nonlinear Schrödinger equation
 (NLS): 
 \[
-i\partial_{z}A-\tfrac{\beta_{2}}{2}\partial_{T}^{2}A+\gamma|A|^{2}A=0,
+i\partial_{z}A-\frac{\beta_{2}}{2}\partial_{T}^{2}A+\gamma|A|^{2}A=0,
 \]
 where $\beta_{2}$ is the group-velocity-dispersion parameter and
 $\gamma=n_{2}\omega_{0}/(cA_{\text{eff}})$ encodes the Kerr nonlinearity.
@@ -189,7 +189,7 @@ air-hole lattice. In every case, the spatial variation of the index
 enters the governing equations as an external potential $V(\mathbf{x})$.
 The transverse modal equation 
 \[
-\nabla_{\perp}^{2}F+\Bigl[\bigl(\tfrac{n\omega}{c}\bigr)^{2}(\mathbf{x}_{\perp})-\beta^{2}\Bigr]F=0
+\nabla_{\perp}^{2}F+\Bigl[\bigl(\frac{n\omega}{c}\bigr)^{2}(\mathbf{x}_{\perp})-\beta^{2}\Bigr]F=0
 \]
 is mathematically identical to the stationary Schrödinger equation
 $-\Delta\psi+V(x)\psi=E\psi$. Guided modes of the fiber correspond
@@ -229,8 +229,9 @@ against the attractive interaction between neighboring peaks. The
 overall analytical pipeline, building on~\cite{KirrNatarajan2018}
 and extended in the present work, is illustrated in Figure~\ref{fig:pipeline}.
 
-\begin{figure}[htbp]
-\centering \includegraphics[width=1\linewidth]{../figures/figure_7_methodology_flowchart}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\linewidth]{../figures/figure_7_methodology_flowchart}
 \caption{Complete analytical pipeline from the full PDE to the existence of
 multi-peak ground states. The top portion (marked ``Kirr-Natarajan,
 2018'') covers the rescaling, concentration-compactness decomposition,
@@ -339,8 +340,9 @@ equation
 (-\Delta+1)u+\sigma|u|^{2p}u=0.\label{eq:profile}
 \end{equation}
 
-\begin{figure}[htbp]
-\centering \includegraphics[width=1\linewidth]{../figures/figure_4_profile_decomposition}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\linewidth]{../figures/figure_4_profile_decomposition}
 \caption{Illustration of the concentration-compactness decomposition (\ref{eq:profile})
 for $M=3$ peaks.\textbf{}\protect \\
 \textbf{Top:} The rescaled solution $u_{E}\left(x\right)$ (solid
@@ -366,8 +368,9 @@ points of $V$ as $R\to0$.
 \label{prop:convergence} Under Hypotheses~\ref{hyp:V1}--\ref{hyp:V4},
 $Rz_{i}(R)\to x_{0}$ for each $i=1,\ldots,M$ as $R\to0$. 
 \end{prop}
-\begin{figure}[htbp]
-\centering \includegraphics[width=1\linewidth]{../figures/figure_5_concentration_vs_peaks}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\linewidth]{../figures/figure_5_concentration_vs_peaks}
 \caption{Evolution of peak structure with increasing energy $E$.\protect \\
 \textbf{Left panels:} Profiles $\left|\psi_{E}\left(x\right)\right|$
 at $E=1,4,16,64$, showing the transition from a single peak to well-separated
@@ -439,8 +442,9 @@ inter-peak interaction relative to the Hessian restoring force. It
 is \emph{not} equal to any individual $\alpha_{ki}$; rather, the
 force on peak $i$ from peak $k$ has magnitude $\alpha_{ki}\chi$. 
 \end{defn}
-\begin{figure}[htbp]
-\centering \includegraphics[width=1\linewidth]{../figures/figure_6_interaction_decay}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\linewidth]{../figures/figure_6_interaction_decay}
 \caption{\textbf{(a)} Semilog plot of the interaction functional $Q_{R}\left(d\right)=-\sigma\left\langle \partial_{\hat{d}}u_{R}\left(\cdot-d\right),u_{R}^{2p+1}\right\rangle $
 as a function of inter-peak distance $d$ for several values of $R=E^{-\frac{1}{2}}$.
 The exponential decay $Q_{R}\left(d\right)\sim C\cdot d^{-\frac{n-1}{2}}\cdot e^{-d\sqrt{1+R^{2}V\left(x_{0}\right)}}$
@@ -518,8 +522,9 @@ We now classify all admissible solutions of the algebraic system~(\ref{eq:algebr
 for peaks lying in the plane spanned by two eigenvectors $\boldsymbol{r}_{1},\boldsymbol{r}_{2}$
 of $\HV(x_{0})$, with eigenvalues $\lambda_{1},\lambda_{2}<0$.
 
-\begin{figure}[htbp]
-\centering \includegraphics[width=1\linewidth]{../figures/figure_2_peak_configurations}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\linewidth]{../figures/figure_2_peak_configurations}
 \caption{Schematic representations of the admissible multi-peak configurations
 classified in Section~\ref{sec:classification}.\protect \\
 \textbf{(a)} Collinear arrangement with $M=2$ peaks along the eigenvector
@@ -533,14 +538,27 @@ in the plane spanned by $\boldsymbol{r}_{1},\boldsymbol{r}_{2}$,
 with $\alpha_{23}=0$ (base edge decoupled) and the constraint $\lambda_{2}=3\lambda_{1}$.\textbf{}\protect \\
 \textbf{(d)} Equilateral triangle at $\theta=0$ with explicit $\alpha$
 values; the admissibility condition $\alpha_{23}\protect\geq0$ is
-equivalent to $\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}\protect\geq3$.\textbf{}\protect \\
-\textbf{(e)} The perturbation $\delta y^{0}$ (Proposition~\ref{prop:explicit-soln})
-at $R=0$ for $\mu=4$: gray circles show the unperturbed positions
-$y_{i}$, colored squares show the perturbed positions $y_{i}+\delta y_{i}^{0}$,
-with arrows indicating the displacement. The parameters $\beta=\frac{1}{2}\ln\left(\frac{\alpha_{12}}{\alpha_{23}}\right)$
-and $\gamma=\frac{2\beta}{3\sqrt{3}}$ are derived from the requirement
-that $\tilde{\alpha}_{12}=\tilde{\alpha}_{13}=1$.}
+equivalent to $\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}\protect\geq3$.}
 \label{fig:configurations}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{../figures/figure_2b_perturbation}
+
+\caption{The perturbation $\delta y^{0}$ (Proposition \ref{prop:explicit-soln})
+at $R=0$ for the rotated equilateral triangle at $\mu=4$, $\theta\approx19^{\circ}$
+(an admissible point in the $\left(\mu,\theta\right)$ phase diagram
+of Figure \ref{fig:admissibility}). Gray circles mark the unperturbed
+peak positions $y_{i}$; colored squares mark the perturbed positions
+$y_{i}+\delta y_{i}^{0}$, with arrows indicating the displacement
+vector. The parameters $\beta=\frac{1}{2}\ln\left(\frac{\alpha_{12}}{\alpha_{23}}\right)$
+and $\gamma=\frac{2\beta}{3\sqrt{3}}$ are derived from the requirement
+that $\tilde{\alpha}_{12}=\tilde{\alpha}_{13}=1$. Note that the equilateral
+configuration at $\theta=0$ has $\alpha_{23}\protect\leq0$ for $\mu>3$,
+so a nonzero rotation angle is needed for the perturbation formula
+to apply.}
+
+\label{fig:perturbation}
 \end{figure}
 
 \begin{thm}[Classification of admissible multi-peak configurations]
@@ -554,11 +572,11 @@ eigenvector $\boldsymbol{r}_{1}$ of $\HV(x_{0})$.
 with $\alpha_{12}=\alpha_{13}=-\lambda_{2}/3$ and the eigenvalue
 constraint $\lambda_{2}=3\lambda_{1}$. 
 \item[(c)] \textbf{Equilateral triangle} ($M=3$): Peaks at unit mutual distance
-with $\alpha_{12}=\alpha_{13}=-\lambda_{2}/3$, $\alpha_{23}=\lambda_{2}/6-\lambda_{1}/2$,
-requiring $|\lambda_{2}|/|\lambda_{1}|\geq3$. 
+with $\alpha_{12}=\alpha_{13}=-\frac{\lambda_{2}}{3}$, $\alpha_{23}=\frac{\lambda_{2}}{6}-\frac{\lambda_{1}}{2}$,
+requiring $\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}\geq3$. 
 \item[(d)] \textbf{Rotational equilateral} ($M=3$, angle $\theta$): The equilateral
 triangle rotated by angle $\theta$ relative to the eigenvector basis.
-The admissible $(\mu,\theta)$ regions, where $\mu=|\lambda_{2}|/|\lambda_{1}|$,
+The admissible $(\mu,\theta)$ regions, where $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$,
 are given by Table~\ref{tab:summary}. 
 \end{enumerate}
 \end{thm}
@@ -587,8 +605,9 @@ distance), one divides by $\chi$:
 
 \smallskip{}
 \textbf{Example: equilateral triangle at $\theta=0$.} The proofs
-below yield $\hat{\alpha}_{12}=\hat{\alpha}_{13}=-\lambda_{2}/3$
-and $\hat{\alpha}_{23}=\lambda_{2}/6-\lambda_{1}/2$. Since $\hat{\alpha}_{12}=\hat{\alpha}_{13}\geq\hat{\alpha}_{23}$
+below yield $\hat{\alpha}_{12}=\hat{\alpha}_{13}=-\frac{\lambda_{2}}{3}$
+and $\hat{\alpha}_{23}=\frac{\lambda_{2}}{6}-\frac{\lambda_{1}}{2}$.
+Since $\hat{\alpha}_{12}=\hat{\alpha}_{13}\geq\hat{\alpha}_{23}$
 for $\mu\geq3$ (with equality only at $\mu=3$), the overall interaction
 strength is 
 \[
@@ -596,7 +615,7 @@ strength is
 \]
 and the normalized base-edge coefficient is 
 \[
-\alpha_{23}=\frac{\hat{\alpha}_{23}}{\chi}=\frac{\lambda_{2}/6-\lambda_{1}/2}{-\lambda_{2}/3}=1-\frac{3}{2\mu}\;\in\;[0,1).
+\alpha_{23}=\frac{\hat{\alpha}_{23}}{\chi}=\frac{\frac{\lambda_{2}}{6}-\frac{\lambda_{1}}{2}}{-\frac{\lambda_{2}}{3}}=1-\frac{3}{2\mu}\;\in\;[0,1).
 \]
 In particular, $\alpha_{23}<1$ for $\mu>3$, reflecting the fact
 that the base edge is \emph{not} at the minimum inter-peak distance:
@@ -627,14 +646,15 @@ and $\chi>0$.
 
 \label{subsec:isosceles}
 \begin{proof}[Proof of Theorem~\ref{thm:classification}(b)]
-Let $y_{1}=(0,h)^{\intercal}$, $y_{2}=(-a,-h/2)^{\intercal}$, $y_{3}=(a,-h/2)^{\intercal}$
-with $2a>1$ (so $|y_{2}-y_{3}|=2a>1$ and the nearest-neighbor pairs
-are $(1,2)$ and $(1,3)$ only) and the geometric constraint $a^{2}+(3h/2)^{2}=1$.
+Let $y_{1}=\left(0,h\right)^{\intercal}$, $y_{2}=\left(-a,-\frac{h}{2}\right)^{\intercal}$,
+$y_{3}=\left(a,-\frac{h}{2}\right)^{\intercal}$ with $2a>1$ (so
+$|y_{2}-y_{3}|=2a>1$ and the nearest-neighbor pairs are $(1,2)$
+and $(1,3)$ only) and the geometric constraint $a^{2}+\left(\frac{3h}{2}\right)^{2}=1$.
 
 From the equation for $y_{1}$: 
 \begin{align*}
 \HV y_{1} & =\alpha_{12}(y_{2}-y_{1})+\alpha_{13}(y_{3}-y_{1})\\
-(0,\lambda_{2}h)^{\intercal} & =\bigl(a(\alpha_{13}-\alpha_{12}),\;-\tfrac{3h}{2}(\alpha_{13}+\alpha_{12})\bigr)^{\intercal},
+(0,\lambda_{2}h)^{\intercal} & =\bigl(a(\alpha_{13}-\alpha_{12}),\;-\frac{3h}{2}(\alpha_{13}+\alpha_{12})\bigr)^{\intercal},
 \end{align*}
 which gives $\alpha_{12}=\alpha_{13}=-\lambda_{2}/3$.
 
@@ -648,17 +668,17 @@ and the second $\alpha_{12}=-\lambda_{2}/3$, hence $\lambda_{2}=3\lambda_{1}$.
 
 \label{subsec:equilateral}
 \begin{proof}[Proof of Theorem~\ref{thm:classification}(c)]
-Set $2a=1$, giving $a=1/2$, $h=1/\sqrt{3}$, and $|y_{k}-y_{i}|=1$
-for all pairs. All three pairs are nearest neighbors. From $y_{1}$:
-$\alpha_{12}=\alpha_{13}=-\lambda_{2}/3$ as before. From $y_{2}$
-(with both $y_{1}$ and $y_{3}$ as neighbors): 
+Set $2a=1$, giving $a=\frac{1}{2}$, $h=\frac{1}{\sqrt{3}}$, and
+$|y_{k}-y_{i}|=1$ for all pairs. All three pairs are nearest neighbors.
+From $y_{1}$: $\alpha_{12}=\alpha_{13}=-\frac{\lambda_{2}}{3}$ as
+before. From $y_{2}$ (with both $y_{1}$ and $y_{3}$ as neighbors):
 \begin{align*}
 \HV y_{2} & =\alpha_{12}(y_{1}-y_{2})+\alpha_{23}(y_{3}-y_{2}),\\
-(-a\lambda_{1},\,-\tfrac{h}{2}\lambda_{2})^{\intercal} & =(a\alpha_{12}+2a\alpha_{23},\;\tfrac{3h}{2}\alpha_{12})^{\intercal},
+(-a\lambda_{1},\,-\frac{h}{2}\lambda_{2})^{\intercal} & =(a\alpha_{12}+2a\alpha_{23},\;\frac{3h}{2}\alpha_{12})^{\intercal},
 \end{align*}
 giving $\alpha_{23}=\frac{\lambda_{2}}{6}-\frac{\lambda_{1}}{2}$.
 The constraint $\alpha_{23}\geq0$ requires $\lambda_{2}\geq3\lambda_{1}$,
-i.e., $|\lambda_{2}|/|\lambda_{1}|\geq3$. 
+i.e., $\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}\geq3$. 
 \end{proof}
 
 \subsection{Rotational equilateral triangle}
@@ -677,13 +697,14 @@ has entries
 Solving $\tilde{H}\,y_{i}'=\sum_{k\in N_{i}}\alpha_{ki}(y_{k}'-y_{i}')$
 for each vertex yields the $\theta$-dependent coefficients: 
 \begin{align}
-\alpha_{12}(\theta) & =\tfrac{1}{3}\bigl[\lambda_{2}(-\sqrt{3}\sin\theta-\cos\theta)\cos\theta+\lambda_{1}(-\sin\theta+\sqrt{3}\cos\theta)\sin\theta\bigr],\label{eq:alpha12}\\
-\alpha_{13}(\theta) & =\tfrac{1}{3}\bigl[\lambda_{2}(\sqrt{3}\sin\theta-\cos\theta)\cos\theta-\lambda_{1}(\sin\theta+\sqrt{3}\cos\theta)\sin\theta\bigr],\label{eq:alpha13}\\
-\alpha_{23}(\theta) & =\tfrac{1}{6}\bigl[\lambda_{2}(2\cos2\theta-1)-\lambda_{1}(2\cos2\theta+1)\bigr].\label{eq:alpha23}
+\alpha_{12}(\theta) & =\frac{1}{3}\bigl[\lambda_{2}(-\sqrt{3}\sin\theta-\cos\theta)\cos\theta+\lambda_{1}(-\sin\theta+\sqrt{3}\cos\theta)\sin\theta\bigr],\label{eq:alpha12}\\
+\alpha_{13}(\theta) & =\frac{1}{3}\bigl[\lambda_{2}(\sqrt{3}\sin\theta-\cos\theta)\cos\theta-\lambda_{1}(\sin\theta+\sqrt{3}\cos\theta)\sin\theta\bigr],\label{eq:alpha13}\\
+\alpha_{23}(\theta) & =\frac{1}{6}\bigl[\lambda_{2}(2\cos2\theta-1)-\lambda_{1}(2\cos2\theta+1)\bigr].\label{eq:alpha23}
 \end{align}
 \end{proof}
-\begin{figure}[htbp]
-\centering \includegraphics[width=1\linewidth]{../figures/figure_3_alpha_vs_theta_vs_mu}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\linewidth]{../figures/figure_3_alpha_vs_theta_vs_mu}
 \caption{Dependence of the interaction coefficients $\alpha_{12}\left(\theta\right)$,
 $\alpha_{13}\left(\theta\right)$, and $\alpha_{23}\left(\theta\right)$
 on the rotation angle $\theta$ for six values of the eigenvalue ratio
@@ -706,10 +727,10 @@ the curves separate and angular windows of inadmissibility open.}
 
 \label{subsec:admissibility}
 
-The constraints $\alpha_{12},\alpha_{13},\alpha_{23}\geq0$ with $\mu=|\lambda_{2}|/|\lambda_{1}|$
+The constraints $\alpha_{12},\alpha_{13},\alpha_{23}\geq0$ with $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$
 reduce via double-angle identities to 
 \begin{equation}
-(\mu+1)+2(\mu-1)\cos\phi\geq0,\quad\phi\in\bigl\{2\theta-\tfrac{\pi}{3},\;2\theta,\;2\theta+\tfrac{\pi}{3}\bigr\}.\label{eq:admissibility-unified}
+(\mu+1)+2(\mu-1)\cos\phi\geq0,\quad\phi\in\bigl\{2\theta-\frac{\pi}{3},\;2\theta,\;2\theta+\frac{\pi}{3}\bigr\}.\label{eq:admissibility-unified}
 \end{equation}
 
 \begin{defn}
@@ -728,8 +749,9 @@ admissible angles are $\theta\in[0,\frac{\pi}{6}-\frac{\varphi}{2}]\cup[\frac{\p
 angles are $\theta\in[\frac{\varphi}{2},\frac{\pi}{3}-\frac{\varphi}{2}]\cup[\frac{\pi}{3}+\frac{\varphi}{2},\frac{\pi}{2}]$. 
 \end{enumerate}
 \end{prop}
-\begin{table}[htbp]
-\centering \caption{Summary of admissible $\theta$-ranges as a function of $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$.}
+\begin{table}[tbph]
+\centering
+\caption{Summary of admissible $\theta$-ranges as a function of $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$.}
 \label{tab:summary} %
 \begin{tabular}{cc}
 \toprule 
@@ -742,8 +764,9 @@ $\mu>3$ & $\bigl[\frac{\varphi(\mu)}{2},\;\frac{\pi}{3}-\frac{\varphi(\mu)}{2}\b
 \end{tabular}
 \end{table}
 
-\begin{figure}[htbp]
-\centering \includegraphics[width=0.75\linewidth]{../figures/figure_1_admissibility_binding}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{../figures/figure_1_admissibility_binding}
 \caption{Admissibility analysis for the equilateral triangle configuration
 with rotational degree of freedom $\theta$ in the $\left(\mu,\theta\right)$
 parameter space, where $\mu=\frac{\left|\lambda_{2}\right|}{\left|\lambda_{1}\right|}$
@@ -807,12 +830,12 @@ D_{\delta y}F_{i}(\delta y,0)[w]=\chi\sum_{k\in N_{i}}\ip{w_{k}-w_{i}}{y_{k}-y_{
 
 \label{subsec:explicit}
 \begin{prop}[Explicit solution]
-\label{prop:explicit-soln} Define $\beta=\frac{1}{2}\ln(\alpha_{12}/\alpha_{23})$
-and $\gamma=\frac{2\beta}{3\sqrt{3}}$, where $\alpha_{12}=-\lambda_{2}/3$
-and $\alpha_{23}=\lambda_{2}/6-\lambda_{1}/2$ are the unperturbed
-coefficients. Then 
+\label{prop:explicit-soln} Define $\beta=\frac{1}{2}\ln\left(\frac{\alpha_{12}}{\alpha_{23}}\right)$
+and $\gamma=\frac{2\beta}{3\sqrt{3}}$, where $\alpha_{12}=-\frac{\lambda_{2}}{3}$
+and $\alpha_{23}=\frac{\lambda_{2}}{6}-\frac{\lambda_{1}}{2}$ are
+the unperturbed coefficients. Then 
 \begin{equation}
-\delta y_{1}^{0}=-\gamma\,\boldsymbol{r}_{2},\qquad\delta y_{2,3}^{0}=\mp\beta\,\boldsymbol{r}_{1}+\tfrac{\gamma}{2}\,\boldsymbol{r}_{2}\label{eq:delta-y0}
+\delta y_{1}^{0}=-\gamma\,\boldsymbol{r}_{2},\qquad\delta y_{2,3}^{0}=\mp\beta\,\boldsymbol{r}_{1}+\frac{\gamma}{2}\,\boldsymbol{r}_{2}\label{eq:delta-y0}
 \end{equation}
 solves $F_{i}(\delta y,0)=0$ for $i=1,2,3$. 
 \end{prop}
@@ -825,12 +848,12 @@ by direct substitution):
 \end{align*}
 The first follows from the fact that $\ip{y_{2}-y_{1}}{\delta y_{2}^{0}-\delta y_{1}^{0}}=0$
 (which one verifies by substituting the explicit coordinates). The
-second uses $\ip{y_{3}-y_{2}}{\delta y_{3}^{0}-\delta y_{2}^{0}}=2\beta=\ln(\alpha_{12}/\alpha_{23})$.
+second uses $\ip{y_{3}-y_{2}}{\delta y_{3}^{0}-\delta y_{2}^{0}}=2\beta=\ln\left(\frac{\alpha_{12}}{\alpha_{23}}\right)$.
 
-Setting $\chi=-\lambda_{2}/3$ (the overall interaction strength from
-Remark~\ref{rmk:alpha-convention}, equal to the combined force coefficient
-$\hat{\alpha}_{12}$ of the apex--base edges), the system $F_{i}(\delta y^{0},0)=0$
-becomes 
+Setting $\chi=-\frac{\lambda_{2}}{3}$ (the overall interaction strength
+from Remark~\ref{rmk:alpha-convention}, equal to the combined force
+coefficient $\hat{\alpha}_{12}$ of the apex--base edges), the system
+$F_{i}(\delta y^{0},0)=0$ becomes 
 \[
 \HV y_{i}=\alpha_{12}\bigl[\tilde{\alpha}_{i1}(y_{1}-y_{i})+\tilde{\alpha}_{i,\text{other}}(y_{\text{other}}-y_{i})\bigr]
 \]
@@ -952,13 +975,14 @@ satisfies the algebraic system~(\ref{eq:algebraic}) with $\theta$-dependent
 coefficients $\alpha_{12}(\theta),\alpha_{13}(\theta),\alpha_{23}(\theta)$
 from~(\ref{eq:alpha12})--(\ref{eq:alpha23}). The explicit solution
 construction of Proposition~\ref{prop:explicit-soln} applies at
-each $\theta$, with $\beta(\theta)=\frac{1}{2}\ln(\alpha_{12}(\theta)/\alpha_{23}(\theta))$
-and $\gamma(\theta)=2\beta(\theta)/(3\sqrt{3})$. The resulting $\delta y^{0}(\theta)$
-is smooth in $\theta$ since the $\alpha_{ki}(\theta)$ are smooth
-and positive in the admissible range. 
+each $\theta$, with $\beta\left(\theta\right)=\frac{1}{2}\ln\left(\frac{\alpha_{12}\left(\theta\right)}{\alpha_{23}\left(\theta\right)}\right)$
+and $\gamma\left(\theta\right)=\frac{2\beta\left(\theta\right)}{3\sqrt{3}}$.
+The resulting $\delta y^{0}\left(\theta\right)$ is smooth in $\theta$
+since the $\alpha_{ki}\left(\theta\right)$ are smooth and positive
+in the admissible range. 
 \end{proof}
 \begin{cor}
-\label{cor:tangent-kernel} The tangent vector $\frac{d}{d\theta}\delta y^{0}(\theta)$
+\label{cor:tangent-kernel} The tangent vector $\frac{d}{d\theta}\delta y^{0}\left(\theta\right)$
 at each $\theta$ lies in the kernel $\Omega(\theta)$ of $D_{\delta y}F_{i}(\delta y^{0}(\theta),0)$.
 This is the rotational mode $w_{\mathrm{rot}}(\theta)$. 
 \end{cor}
@@ -1026,7 +1050,7 @@ Since $\HV$ is invertible (Hypothesis~V3), $\sum_{i}F_{i}=0$ if
 and only if $\sum_{i}\delta y_{i}=0$.
 
 \smallskip{}
-For the explicit solution: $\sum_{i}\delta y_{i}^{0}=(-\gamma\boldsymbol{r}_{2})+(-\beta\boldsymbol{r}_{1}+\tfrac{\gamma}{2}\boldsymbol{r}_{2})+(\beta\boldsymbol{r}_{1}+\tfrac{\gamma}{2}\boldsymbol{r}_{2})=\boldsymbol{0}$.
+For the explicit solution: $\sum_{i}\delta y_{i}^{0}=(-\gamma\boldsymbol{r}_{2})+(-\beta\boldsymbol{r}_{1}+\frac{\gamma}{2}\boldsymbol{r}_{2})+(\beta\boldsymbol{r}_{1}+\frac{\gamma}{2}\boldsymbol{r}_{2})=\boldsymbol{0}$.
 
 \smallskip{}
 For the gauge-fixing compatibility: $\delta y_{1}^{0}=-\gamma\boldsymbol{r}_{2}$
